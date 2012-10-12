@@ -76,14 +76,23 @@ export INFOPATH
 # I use Emacs. To minimize the pain of my several-second boot (which, yes, is
 # an absurd amount of time for a text editor to start), I use it in server
 # mode when feasible.
-EDITOR=emacsclient
+# Sadly, Emacs isn't available everywhere, so I have a few backup options
+# listed.
+declare -a EDITORS=("emacsclient" "emacs" "zile" "nano" "pico" "vim" "vi")
+for editor in "${EDITORS[@]}"; do
+    editor_path=$(which $editor)
+    if [ -n "$editor_path" ]; then
+        EDITOR=$editor
+        break
+    fi
+done
 export EDITOR
-
-SVN_EDITOR=emacsclient
-export SVN_EDITOR
-
-VISUAL=emacsclient
-export VISUAL
 
 ALTERNATE_EDITOR=emacs   # emacsclient runs this if it can't find a server.
 export ALTERNATE_EDITOR
+
+SVN_EDITOR=$EDITOR
+export SVN_EDITOR
+
+VISUAL=$EDITOR
+export VISUAL
