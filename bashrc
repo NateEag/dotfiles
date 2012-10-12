@@ -80,7 +80,7 @@ export INFOPATH
 # listed.
 declare -a EDITORS=("emacsclient" "emacs" "zile" "nano" "pico" "vim" "vi")
 for editor in "${EDITORS[@]}"; do
-    editor_path=$(which $editor)
+    editor_path=$(which $editor 2> /dev/null)
     if [ -n "$editor_path" ]; then
         EDITOR=$editor
         break
