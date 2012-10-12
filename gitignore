@@ -1,0 +1,21 @@
+# Nate Eagleson
+# April 20, 2010
+
+# My personal .gitignore file.
+# Files that wind up in my git repos as a result of my personal workflow
+# shouldn't be ignored across all clones of the repo - editor backup files,
+# for instance, vary from user to user, as do editor-generated tool-assist
+# files.
+
+# Emacs-related tools.
+.ropeproject
+*~
+.#*
+\#*#
+
+# OS X cruft.
+.DS_Store
+
+# Patch files are quite often handy, but you almost never want them under
+# version control.
+*.patch

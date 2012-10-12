@@ -1,0 +1,15 @@
+# Import .bashrc if it's available.
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+# Adding the path at which LilyPond.app stores the command-line binaries...
+PATH=/Applications/LilyPond.app/Contents/Resources/bin/:$PATH
+
+MANPATH=$MANPATH:/opt/local/share/man:/Users/nate/man:
+INFOPATH=$INFOPATH:/opt/local/share/info
+
+# Setting PATH for MacPython 2.6
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.6/bin:${PATH}"
+export PATH
