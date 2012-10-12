@@ -10,5 +10,8 @@ do
     dot_idx=$(awk -v a="$filename" -v b="." 'BEGIN{print index(a,b)}')
     if [ "$dot_idx" -lt "1" ]; then
         rm ~/.$filename
+        if [ -e ~/.$filename.old ]; then
+            mv ~/.$filename.old ~/.$filename
+        fi
     fi
 done
