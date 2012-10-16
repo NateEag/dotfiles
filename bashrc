@@ -17,13 +17,20 @@ abs_script_dirname () {
     echo "$( cd "$( dirname "${BASH_ARGV[0]}" )" && pwd )"
 }
 
-# Command-line multi-file find-and-replace. I hate using perl, but...
+# Command-line multi-file find-and-replace.
 re-replace () {
     if [ -z "$3" ]; then
-        echo 'Usage: replace pattern-to-match replacement directory'
-    else
-        perl -e "s/$1/$2/g;" -pi $(find $3 -type f)
+        echo 'Usage: replace <pattern-to-match> <replacement> <path> [<file-regex>] '
+        return 1
     fi
+
+    file_regex='.*'
+    if [ -n "$4" ]; then
+        file_regex=$4
+    fi
+
+    find $3 -regextype posix-extended -regex $file_regex -print0 | \
+        xargs -0 perl -pi -e "s:$1:$2:g"
 }
 
 # Convert files from Unix line endings to DOS.
