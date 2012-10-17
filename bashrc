@@ -33,12 +33,40 @@ re-replace () {
         xargs -0 perl -pi -e "s:$1:$2:g"
 }
 
+# Strip excess whitespace from files in a path.
+strip-whitespace () {
+    if [ -z "$1" ]; then
+        echo 'Usage: strip-whitespace <path> [<file-regex]'
+        return 1
+    fi
+
+    # GRIPE I should probably generalize the list of text-ish files to an
+    # array, then set an environment variable to control the defaults throughout
+    # my dotfiles.
+    file_regex='.*\.(html|css|js|py|php|c|h|htm|tmpl|xml|xsd|sh)'
+    if [ -n "$2" ]; then
+        file_regex=$2
+    fi
+
+    find $1 -regextype posix-extended -regex $file_regex -print0 | \
+        xargs -0 sed -i 's/[ \t]*$//g'
+}
+
+# Convert files from DOS line endings to Unix.
+dos2unix () {
+    if [ -z "$2]" ]; then
+        echo "Usage: dos2unix <file>"
+    else
+        perl -i -p -e 's/\r\n/\n/' $1
+    fi
+}
+
 # Convert files from Unix line endings to DOS.
 unix2dos () {
     if [ -z "$2]" ]; then
-        echo "Usage: unix2dos infile outfile"
+        echo "Usage: unix2dos <file>"
     else
-        perl -i -p -e 's/\n/\r\n/' "'$1'" > "'$2'"
+        perl -i -p -e 's/\n/\r\n/' $1
     fi
 }
 
