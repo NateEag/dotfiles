@@ -9,10 +9,12 @@ for filename in $(ls $dir);
 do
     dot_idx=$(awk -v a="$filename" -v b="." 'BEGIN{print index(a,b)}')
     if [ "$dot_idx" -lt "1" ]; then
-        if [ -e ~/.$filename]; then
+        dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+
+        if [ -e ~/.$filename ]; then
             mv ~/.$filename ~/.$filename.old
         fi
 
-        ln $dir/$filename ~/.$filename
+        ln -s $dotfiles_dir/$filename ~/.$filename
     fi
 done
