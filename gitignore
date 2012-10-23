@@ -1,5 +1,4 @@
 # Nate Eagleson
-# April 20, 2010
 
 # My personal .gitignore file.
 # Files that wind up in my git repos as a result of my personal workflow
@@ -7,8 +6,9 @@
 # for instance, vary from user to user, as do editor-generated tool-assist
 # files.
 
-# Emacs-related tools.
+# Emacs-related ignores.
 .ropeproject
+.dir-locals.el
 *~
 .#*
 \#*#
