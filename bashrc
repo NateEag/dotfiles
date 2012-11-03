@@ -95,6 +95,8 @@ classpath () {
 PYTHONPATH=$PYTHONPATH:~/cmdline
 export PYTHONPATH
 
+# Since I'm writing it, I run the dev version of sandbox, too.
+PATH=~/sandbox:$PATH
 PATH=/opt/local/lib/postgresql91/bin:$PATH
 PATH=/usr/local/bin:/opt/local/bin:/usr/local/git/bin:~/bin:~/bin/cron:$PATH
 PATH=/usr/local/pear/bin:$PATH
