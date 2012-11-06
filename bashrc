@@ -7,6 +7,9 @@ alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 # you call it on.
 alias getheaders='curl -s -D - -o /dev/null'
 
+# Source various sub-files.
+source ~/.git-completion
+
 # TODO Move any generally useful shell functions into their own git repo and
 # source them from here, if they exist.
 
