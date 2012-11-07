@@ -1,20 +1,14 @@
 #! /bin/bash
 
-# Link all files in containing directory that do not have an extension from
-# ~/.$FILENAME.
+# Set up the current user's account to use the files in src/ as dotfiles.
 
-dir=$(dirname $0)
+dotfiles_dir=$(dirname $0)/src
 
-for filename in $(ls $dir);
+for filename in $(ls $dotfiles_dir);
 do
-    dot_idx=$(awk -v a="$filename" -v b="." 'BEGIN{print index(a,b)}')
-    if [ "$dot_idx" -lt "1" ]; then
-        dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
-
-        if [ -e ~/.$filename ]; then
-            mv ~/.$filename ~/.$filename.old
-        fi
-
-        ln -s $dotfiles_dir/$filename ~/.$filename
+    if [ -e ~/.$filename ]; then
+        mv ~/.$filename ~/.$filename.old
     fi
+
+    ln -s $dotfiles_dir/$filename ~/.$filename
 done

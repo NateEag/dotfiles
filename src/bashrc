@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # Aliases. I'm not quite sure how much I should use these things.
 alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
 alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
@@ -7,11 +9,14 @@ alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 # you call it on.
 alias getheaders='curl -s -D - -o /dev/null'
 
-# Source various sub-files.
-source ~/.git-completion
-
-# TODO Move any generally useful shell functions into their own git repo and
-# source them from here, if they exist.
+# Source lib files for my dotfiles.
+# GRIPE Hardcoding this is not as clean as letting my dotfiles dir live
+# anywhere, but I'm not sure how to achieve that, since I install dotfiles by
+# symlinking them.
+dotfiles_lib_path=~/dotfiles/lib
+for file in $(ls $dotfiles_lib_path); do
+    source $dotfiles_lib_path/$file
+done
 
 # Print an absolute path to the directory containing the script that calls it.
 # DEBUG This is not usefully reusable. For it to be defined in one place
