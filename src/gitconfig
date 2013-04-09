@@ -29,3 +29,6 @@
     branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
     branchlog = !sh -c \"git log `git oldest-ancestor`..\"
     graph-log = log --graph --pretty=oneline --abbrev-commit
+
+    # Useful for working gitflow-style.
+    strict-merge = merge --no-commit --no-ff
