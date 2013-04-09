@@ -1,9 +1,20 @@
 [user]
 	name = Nate Eagleson
 	email = nate@nateeag.com
+
 [core]
 	editor = emacsclient
 	excludesfile = ~/.gitignore
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+    algorithm = patience
+
+[color]
+	ui = true
+
 [alias]
     # Handy aliases for subtree merges, based on Pro Git's commentary.
     # Add a remote for the project you're pulling in, add a branch that tracks
@@ -18,5 +29,3 @@
     branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
     branchlog = !sh -c \"git log `git oldest-ancestor`..\"
     graph-log = log --graph --pretty=oneline --abbrev-commit
-[color]
-	ui = true
