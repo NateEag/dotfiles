@@ -26,19 +26,23 @@ abs_script_dirname () {
 }
 
 # Command-line multi-file find-and-replace.
+# Just a thin wrapper around find, xargs, and sed, but sufficient for most
+# purposes.
 re-replace () {
     if [ -z "$3" ]; then
-        echo 'Usage: replace <pattern-to-match> <replacement> <path> [<file-regex>] '
+        echo 'Usage: replace <pattern-to-match> <replacement> <path> [<file-glob>] '
+        echo
+        echo 'The sed call uses ":" as a delimiter, so watch out for that.'
         return 1
     fi
 
-    file_regex='.*'
+    file_glob='.*'
     if [ -n "$4" ]; then
-        file_regex=$4
+        file_glob=$4
     fi
 
-    find $3 -regextype posix-extended -regex $file_regex -print0 | \
-        xargs -0 perl -pi -e "s:$1:$2:g"
+    find $3 -iname $file_glob -print0 | \
+        xargs -0 sed -i "s:$1:$2:g"
 }
 
 # Strip excess whitespace from files in a path.
