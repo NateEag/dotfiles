@@ -5,6 +5,10 @@
 [core]
 	editor = emacsclient
 	excludesfile = ~/.gitignore
+	eol = lf
+
+[push]
+	default = simple
 
 [merge]
 	conflictstyle = diff3
@@ -34,3 +38,5 @@
 
     # Useful for working gitflow-style.
     strict-merge = merge --no-commit --no-ff
+[color]
+	interactive = true
