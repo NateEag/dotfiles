@@ -38,5 +38,10 @@
 
     # Useful for working gitflow-style.
     strict-merge = merge --no-commit --no-ff
+
+    # If you have code review, you probably need to delete the same branch in
+    # both places fairly frequently.
+	# TODO Should accept an optional 2nd param for remote.
+	nuke-branch = !sh -c 'git branch -d $1 && git push origin :$1' -
 [color]
 	interactive = true
