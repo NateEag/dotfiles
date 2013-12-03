@@ -23,3 +23,7 @@ TAGS
 # Patch files are quite often handy, but you almost never want them under
 # version control.
 *.patch
+
+# Sometimes you want to keep an old copy of something around, but you don't
+# usually want it in version control.
+*.bak
