@@ -47,6 +47,8 @@
     # Find duplicate files. I had to tweak it for OS X because of non-portable
     # options to uniq, so it's not quite as slick as the original was. It used
     # to output all duplicate objects in the current and the path to them.
+	# Original, in case your uniq has the -D and -w option:
+	# !"git ls-tree -r HEAD | cut -c 13- | sort | uniq -D -w 40"
     duplicate-objects = !"git ls-tree -r HEAD | cut -c 13- | cut -c 1-40 | uniq -d"
 
 [color]
