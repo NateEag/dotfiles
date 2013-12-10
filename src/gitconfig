@@ -43,5 +43,11 @@
     # both places fairly frequently.
     # TODO Should accept an optional 2nd param for remote.
     nuke-branch = !sh -c 'git branch -d $1 && git push origin :$1' -
+
+    # Find duplicate files. I had to tweak it for OS X because of non-portable
+    # options to uniq, so it's not quite as slick as the original was. It used
+    # to output all duplicate objects in the current and the path to them.
+    duplicate-objects = !"git ls-tree -r HEAD | cut -c 13- | cut -c 1-40 | uniq -d"
+
 [color]
     interactive = true
