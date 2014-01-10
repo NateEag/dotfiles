@@ -51,14 +51,18 @@ if [[ "$OSTYPE" == "win32" ]]; then
         fi
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # OS X-specific aliases.
-    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+    # Override OS X's built-in Emacs 22 with Emacs.app, command-line version.
+    function emacs ()
+    {
+        /Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"
+    }
 
+    # OS X-specific aliases.
     alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
     alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
-
 fi
 
+export -f emacs
 # Sometimes, you want to see the headers you get from a site. Enter this
 # handy curl alias, which prints the headers received from whatever URL
 # you call it on.
