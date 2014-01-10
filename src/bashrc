@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [[ "$OSTYPE" == "win32" ]]; then
+if [[ "$OSTYPE" == "msys" ]]; then
     # Support for Windows ssh-agent.
     # This seems like it should work fine on other OSes too, but I haven't
     # really used ssh-agent before, so I'm keeping this Windows-specific for
@@ -56,13 +56,13 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     {
         /Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"
     }
+    export -f emacs
 
     # OS X-specific aliases.
     alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
     alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
 fi
 
-export -f emacs
 # Sometimes, you want to see the headers you get from a site. Enter this
 # handy curl alias, which prints the headers received from whatever URL
 # you call it on.
