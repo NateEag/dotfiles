@@ -1,9 +1,10 @@
 #! /bin/bash
 
-# Support for Windows ssh-agent.
-# This seems like it should work fine on other OSes too, but I haven't really
-# used ssh-agent before, so I'm keeping this Windows-specific for now.
-if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+if [[ "$OSTYPE" == "win32" ]]; then
+    # Support for Windows ssh-agent.
+    # This seems like it should work fine on other OSes too, but I haven't
+    # really used ssh-agent before, so I'm keeping this Windows-specific for
+    # now.
     SSH_ENV="$HOME/.ssh/environment"
 
     # start the ssh-agent
@@ -49,11 +50,14 @@ if [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
             start_agent
         fi
     fi
-fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # OS X-specific aliases.
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 
-# Aliases. I'm not quite sure how much I should use these things.
-alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
-alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+    alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
+    alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+
+fi
 
 # Sometimes, you want to see the headers you get from a site. Enter this
 # handy curl alias, which prints the headers received from whatever URL
