@@ -54,7 +54,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Override OS X's built-in Emacs 22 with Emacs.app, command-line version.
     function emacs ()
     {
-        /Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"
+        /Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/Emacs -nw "$@"
     }
     export -f emacs
 
