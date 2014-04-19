@@ -7,11 +7,12 @@ A set of dotfiles for use on a Unixy system.
 Usage
 =====
 
-``install.sh`` symlinks everything in src/ to ~/.$filename. It moves files that
-would be clobbered to ~/.$filename.old.
+``src/`` contains the actual dotfiles, named without the preceding dot, so that
+they show up in standard UIs and ls commands.
+
+``install.sh`` symlinks everything in src/ to ~/.$filename.
 
 ``uninstall.sh`` undoes ``install.sh``'s hard work. It might give odd results
 if you have not previously run ``install.sh``.
 
-The ``lib`` directory holds things the dotfiles depend on, usually from
-third-party sources.
+``lib/`` contains dependencies that do not need to be installed elsewhere.
