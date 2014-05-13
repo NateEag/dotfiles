@@ -186,11 +186,9 @@ export MANPATH
 INFOPATH=$INFOPATH:/opt/local/share/info
 export INFOPATH
 
-# I use Emacs. To minimize the pain of my several-second boot (which, yes, is
-# an absurd amount of time for a text editor to start), I use it in server
-# mode when feasible.
-# Sadly, Emacs isn't available everywhere, so I have a few backup options
-# listed.
+# I use Emacs. To minimize the pain of my three-second boot, I use it in server
+# mode when feasible. Sadly, Emacs isn't available everywhere, so I have a few
+# backup options listed.
 declare -a EDITORS=("emacsclient" "emacs" "zile" "nano" "pico" "vim" "vi")
 for editor in "${EDITORS[@]}"; do
     editor_path=$(which $editor 2> /dev/null)
