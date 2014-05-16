@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# Simple script to delete a branch locally and remotely.
+
+# GRIPE I don't get tab completion on branch names when using this.
+
+if [[ $# -lt 1 ]]; then
+    echo 'Usage: git nuke-branch <branch> [<remote>]'
+
+    exit 2
+fi
+
+upstream=origin
+if [[ $# -gt 1 ]]; then
+    upstream="$2"
+fi
+
+git branch -D $1 && git push "$upstream" :"$1"

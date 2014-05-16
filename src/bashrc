@@ -52,8 +52,7 @@ if [[ "$OSTYPE" == "msys" ]]; then
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # Override OS X's built-in Emacs 22 with Emacs.app, command-line version.
-    function emacs ()
-    {
+    function emacs () {
         /Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/Emacs -nw "$@"
     }
     export -f emacs
@@ -72,7 +71,8 @@ alias getheaders='curl -s -D - -o /dev/null'
 # GRIPE Hardcoding this is not as clean as letting my dotfiles dir live
 # anywhere, but I'm not sure how to achieve that, since I install dotfiles by
 # symlinking them.
-dotfiles_lib_path=~/dotfiles/lib
+dotfiles_path=~/dotfiles
+dotfiles_lib_path=$dotfiles_path/lib
 for file in $(ls $dotfiles_lib_path); do
     source $dotfiles_lib_path/$file
 done
@@ -165,6 +165,10 @@ classpath () {
 # Since I'm writing it, I run the dev version of cmdline.py.
 PYTHONPATH=$PYTHONPATH:~/cmdline
 export PYTHONPATH
+
+# Add my custom shell commands to path, for when an alias or function just
+# won't hack it.
+PATH="$dotfiles_path/bin:$PATH"
 
 # Since I'm writing it, I run the dev version of sandbox, too.
 PATH=~/sandbox:$PATH
