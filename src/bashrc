@@ -181,6 +181,11 @@ PATH=/opt/local/bin:/opt/local/lib/postgresql91/bin:$PATH
 PATH=~/bin:$PATH
 # Haskell commands I've installed via cabal.
 PATH="$HOME/Library/Haskell/bin:$PATH"
+
+# Change this to change active Python.
+# GRIPE I should really set up some basic commands for doing this.
+PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
 export PATH
 
 MANPATH=$MANPATH:/Users/nate/man
