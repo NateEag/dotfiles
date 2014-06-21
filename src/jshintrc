@@ -1,5 +1,4 @@
 {
-    "file-comment": "This is my personal configuration for JSHint.",
     "undef": true,
     "unused": true
 }
