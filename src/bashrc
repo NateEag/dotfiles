@@ -51,7 +51,10 @@ if [[ "$OSTYPE" == "msys" ]]; then
         fi
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # Override OS X's built-in Emacs 22 with Emacs.app, command-line version.
+    # Override OS X's built-in Emacs 22 with Emacs.app.
+    #
+    # This has to be a function rather than overriding $PATH so we can pass the
+    # "-nw" flag.
     function emacs () {
         /Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/Emacs -nw "$@"
     }
@@ -185,6 +188,10 @@ PATH="$HOME/Library/Haskell/bin:$PATH"
 # Change this to change active Python.
 # GRIPE I should really set up some basic commands for doing this.
 PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
+# Add Emacs 24 commands to my path, so that emacsclient works right on OS X
+# 10.9.
+PATH=/Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/bin:$PATH
 
 export PATH
 
