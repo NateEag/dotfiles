@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Set up the current user's account to use the files in src/ as dotfiles.
+# Set up the current user's account to use the files in src/ as their dotfiles.
 
 # If arguments are passed, each one is a filename to install from src/.
 
@@ -16,9 +16,23 @@ fi
 
 for filename in $files_to_install;
 do
-    if [ -e ~/.$filename ]; then
-        echo "~/.$filename already exists. Not overwriting." >&2
+    # GRIPE This install path logic should be in a function so it's not
+    # duplicated between install.sh/uninstall.sh.
+    target_path="$HOME/.$filename"
+    if [ "$filename" = "gitconfig" ]; then
+        # Install gitconfig to secondary git config path, so ~/.gitconfig can
+        # be used to override settings per-machine. This is handy for
+        # working on an employer's machine, so you can default repos to your
+        # work email address but keep your other git settings.
+        # Note: Older gits will not read from this path.
+        target_path="$HOME/.config/git/config"
+    fi
+
+    if [ -e "$target_path" ]; then
+        echo "$HOME/.$filename already exists. Not overwriting." >&2
     else
-        ln -s "$src_dir/$filename" ~/'.'$filename
+        target_dir=$(dirname "$target_path")
+        mkdir -p "$target_dir"
+        ln -s "$src_dir/$filename" "$target_path"
     fi
 done
