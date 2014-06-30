@@ -176,7 +176,7 @@ PATH="$dotfiles_path/bin:$PATH"
 # Since I'm writing it, I run the dev version of sandbox, too.
 PATH=~/sandbox:$PATH
 # Adding the path at which LilyPond.app stores the command-line binaries...
-PATH=/Applications/LilyPond.app/Contents/Resources/bin/:$PATH
+PATH=/Applications/LilyPond.app/Contents/Resources/bin:$PATH
 PATH=/usr/local/bin:/usr/local/git/bin:~/bin/cron:$PATH
 PATH=/usr/local/pear/bin:$PATH
 PATH=/usr/local/bin/docutils-0.8.1/tools:$PATH
