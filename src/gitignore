@@ -10,6 +10,7 @@
 .ropeproject
 .dir-locals.el
 *~
+*.elc
 .#*
 \#*#
 TAGS
