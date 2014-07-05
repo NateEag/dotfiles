@@ -193,6 +193,8 @@ PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # 10.9.
 PATH=/Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/bin-i386-10.5:$PATH
 
+PATH=~/.cask/bin:$PATH
+
 export PATH
 
 MANPATH=$MANPATH:/Users/nate/man
@@ -223,3 +225,7 @@ export SVN_EDITOR
 
 VISUAL=$EDITOR
 export VISUAL
+
+# Set EMACS var for cask.
+EMACS=/Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/Emacs
+export EMACS
