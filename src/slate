@@ -11,4 +11,4 @@ config windowHintsShowIcons true
 config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
 
-bind e:ctrl,alt,cmd,shift hint ASDFGHJKLQWERTYUIOPZXCVBNM
+bind s:ctrl,alt,cmd,shift hint ASDFGHJKLQWERTYUIOPZXCVBNM
