@@ -1,0 +1,14 @@
+# My personal [Slate](https://github.com/jigish/slate) config.
+#
+# I use [Karabiner](https://pqrs.org/osx/karabiner/index.html.en) to bind
+# individual keys to the obscene modifier cluster for triggering these.
+
+# Not sure what this does. Someone recommended it.
+config defaultToCurrentScreen true
+
+# Make window hints show up for everything, with icons.
+config windowHintsShowIcons
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread
+
+bind e:ctrl,alt,cmd,shift hint ASDFGHJKLQWERTYUIOPZXCVBNM
