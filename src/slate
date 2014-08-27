@@ -7,8 +7,8 @@
 config defaultToCurrentScreen true
 
 # Make window hints show up for everything, with icons.
-config windowHintsShowIcons
+config windowHintsShowIcons true
 config windowHintsIgnoreHiddenWindows false
-config windowHintsSpread
+config windowHintsSpread true
 
 bind e:ctrl,alt,cmd,shift hint ASDFGHJKLQWERTYUIOPZXCVBNM
