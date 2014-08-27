@@ -15,10 +15,16 @@ if [[ $# -gt 0 ]]; then
 fi
 
 # Install Karabiner preferences if necessary.
-karabiner_pref_path="$HOME/Library/Application Support/Karabiner"
-if [[ -d "$karabiner_pref_path" && ! -h "$karabiner_pref_path/private.xml" ]]; then
-    rm -f "$karabiner_pref_path/private.xml"
-    ln -s "$dotfiles_dir/lib/Karabiner/private.xml" "$karabiner_pref_path/private.xml"
+karabiner_xml_path="$HOME/Library/Application Support/Karabiner"
+if [[ -d "$karabiner_xml_path" && ! -h "$karabiner_xml_path/private.xml" ]]; then
+    rm -f "$karabiner_xml_path/private.xml"
+    ln -s "$dotfiles_dir/lib/karabiner/private.xml" "$karabiner_xml_path/private.xml"
+fi
+
+karabiner_conf_path="$HOME/Library/Preferences/org.pqrs.Karabiner.plist"
+if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.Karabiner.plist" ]]; then
+    rm -f "$karabiner_conf_path/org.pqrs.Karabiner.plist"
+    ln -s "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.Karabiner.plist"
 fi
 
 
