@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+Personal keybindings for OS X, via
+[Karabiner](https://pqrs.org/osx/karabiner/index.html.en).
+
+Just symlink this file to "~/Application Support/Karabiner/private.xml".
+-->
+<root>
+    <item>
+        <name>Nate E.'s TECK Bindings</name>
+    </item>
+
+    <item>
+        <identifier>remap.nate_e_teck_binding_del_to_hyper</identifier>
+        <name>Del to Command_L+Option_L-Control_L-Shift_L</name>
+        <appendix>Simulate a Hyper modifier a la Space Cadet via the Del key.</appendix>
+        <autogen>
+            __KeyToKey__
+            KeyCode::FORWARD_DELETE,
+            KeyCode::COMMAND_L | ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
+        </autogen>
+    </item>
+</root>

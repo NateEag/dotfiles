@@ -14,6 +14,14 @@ if [[ $# -gt 0 ]]; then
     files_to_install="$@"
 fi
 
+# Install Karabiner preferences if necessary.
+karabiner_pref_path="$HOME/Library/Application Support/Karabiner"
+if [[ -d "$karabiner_pref_path" && ! -h "$karabiner_pref_path/private.xml" ]]; then
+    rm -f "$karabiner_pref_path/private.xml"
+    ln -s "$dotfiles_dir/lib/Karabiner/private.xml" "$karabiner_pref_path/private.xml"
+fi
+
+
 for filename in $files_to_install;
 do
     # GRIPE This install path logic should be in a function so it's not
