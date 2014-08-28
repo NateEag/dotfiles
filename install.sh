@@ -14,17 +14,22 @@ if [[ $# -gt 0 ]]; then
     files_to_install="$@"
 fi
 
-# Install Karabiner preferences if necessary.
-karabiner_xml_path="$HOME/Library/Application Support/Karabiner"
+# Install Karabiner (KeyRemap4Macbook on older OS Xs) preferences if necessary.
+karabiner_name="Karabiner"
+if [[ -d "/Applications/KeyRemap4MacBook.app" ]]; then
+    karabiner_name="KeyRemap4MacBook"
+fi
+
+karabiner_xml_path="$HOME/Library/Application Support/$karabiner_name"
 if [[ -d "$karabiner_xml_path" && ! -h "$karabiner_xml_path/private.xml" ]]; then
     rm -f "$karabiner_xml_path/private.xml"
     ln -s "$dotfiles_dir/lib/karabiner/private.xml" "$karabiner_xml_path/private.xml"
 fi
 
-karabiner_conf_path="$HOME/Library/Preferences/org.pqrs.Karabiner.plist"
-if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.Karabiner.plist" ]]; then
-    rm -f "$karabiner_conf_path/org.pqrs.Karabiner.plist"
-    ln -s "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.Karabiner.plist"
+karabiner_conf_path="$HOME/Library/Preferences"
+if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.$karabiner_name.plist" ]]; then
+    rm -f "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
+    ln -s "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
 fi
 
 
