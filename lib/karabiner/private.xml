@@ -17,7 +17,7 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         <autogen>
             __KeyToKey__
             KeyCode::FORWARD_DELETE,
-            KeyCode::COMMAND_L | ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
+            KeyCode::COMMAND_L, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
         </autogen>
     </item>
 </root>
