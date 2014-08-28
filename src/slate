@@ -11,7 +11,7 @@ config windowHintsSpread true
 # Keybindings.
 #
 # I use [Karabiner](https://pqrs.org/osx/karabiner/index.html.en) to bind
-# a "Hyper" key combo to the obscene modifier cluster for triggering these
+# a "Hyper" key to the obscene modifier cluster for triggering these
 # things.
 
 # Note that the hints are chosen to roughly distribute things evenly between

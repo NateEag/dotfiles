@@ -7,11 +7,11 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
 -->
 <root>
     <item>
-        <name>Nate E.'s TECK Bindings</name>
+        <name>Nate E.'s Personal Bindings</name>
     </item>
 
     <item>
-        <identifier>remap.nate_e_teck_binding_del_to_hyper</identifier>
+        <identifier>private.bind_del_to_hyper</identifier>
         <name>Del to Command_L+Option_L-Control_L-Shift_L</name>
         <appendix>Simulate a Hyper modifier a la Space Cadet via the Del key.</appendix>
         <autogen>
@@ -20,4 +20,28 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
             KeyCode::COMMAND_L, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
         </autogen>
     </item>
+
+    <!-- This one doesn't work, even though the other one does. Why? -->
+    <item>
+        <identifier>private.bind_rcontrol_rshift_to_hyper</identifier>
+        <name>Shift_R+Control_R to Command_L+Option_L-Control_L-Shift_L</name>
+        <appendix>Simulate a Hyper modifier via Shift_R+Control_R.</appendix>
+        <autogen>
+            __KeyToKey__
+            KeyCode::SHIFT_R, ModifierFlag::CONTROL_R,
+            KeyCode::COMMAND_R, ModifierFlag::SHIFT_R | ModifierFlag::OPTION_R | ModifierFlag::CONTROL_R
+        </autogen>
+    </item>
+
+    <item>
+        <identifier>private.bind_lcontrol_lshift_to_hyper</identifier>
+        <name>Shift_L+Control_L to Command_L+Option_L-Control_L-Shift_L</name>
+        <appendix>Simulate a Hyper modifier via Shift_L+Control_L.</appendix>
+        <autogen>
+            __KeyToKey__
+            KeyCode::SHIFT_L, ModifierFlag::CONTROL_L,
+            KeyCode::COMMAND_L, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
+        </autogen>
+   </item>
+
 </root>
