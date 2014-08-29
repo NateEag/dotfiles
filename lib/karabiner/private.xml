@@ -10,6 +10,10 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         <name>Nate E.'s Personal Bindings</name>
     </item>
 
+    <!-- Note: If I ever run out of space in the Hyper namespace, I could add
+         F19 to this and have another simulated modifier (Mega?), since I now
+         have Hyper firing from Ctrl+Shift.
+    -->
     <item>
         <identifier>private.bind_del_to_hyper</identifier>
         <name>Del to Command_L+Option_L-Control_L-Shift_L</name>
@@ -21,7 +25,21 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         </autogen>
     </item>
 
-    <!-- This one doesn't work, even though the other one does. Why? -->
+    <!--
+        When working on a laptop, it's handy to have symmetrical Control keys,
+        especially if you're an Emacser.
+
+        This one's based on a built-in, but it sends Control_R where the
+        built-in one sends Control_L. That makes it pair cleanly with Shift_R
+        for triggering Hyper.
+    -->
+    <item>
+      <name>Return to Control_R</name>
+      <appendix>(+ When you type Return only, send Return)</appendix>
+      <identifier>private.return2controlR_return</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::CONTROL_R, KeyCode::RETURN</autogen>
+    </item>
+
     <item>
         <identifier>private.bind_rcontrol_rshift_to_hyper</identifier>
         <name>Shift_R+Control_R to Command_L+Option_L-Control_L-Shift_L</name>
@@ -33,6 +51,10 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         </autogen>
     </item>
 
+    <!-- This only worked semi-consistently on my work machine. At home on my
+         laptop, it seems to be working fine - the key seems to be that Control
+         has to be pushed *before* Shift to count as a modifier.
+    -->
     <item>
         <identifier>private.bind_lcontrol_lshift_to_hyper</identifier>
         <name>Shift_L+Control_L to Command_L+Option_L-Control_L-Shift_L</name>
