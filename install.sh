@@ -29,7 +29,10 @@ fi
 karabiner_conf_path="$HOME/Library/Preferences"
 if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.$karabiner_name.plist" ]]; then
     rm -f "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
-    ln -s "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
+    # Karabiner doesn't like symlinks for its preferences file - it replaces
+    # them with a real file. Copying back and forth seems to be the best we can
+    # do, since git operations would break a hardlink.
+    cp "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
 fi
 
 
