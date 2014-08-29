@@ -10,9 +10,9 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         <name>Nate E.'s Personal Bindings</name>
     </item>
 
-    <!-- Note: If I ever run out of space in the Hyper namespace, I could add
-         F19 to this and have another simulated modifier (Mega?), since I now
-         have Hyper firing from Ctrl+Shift.
+    <!-- Note: If I ever run out of Hyper bindings, I could add F19 to this and
+         have another simulated modifier (Mega?), since I now have Hyper firing
+         from Ctrl+Shift.
     -->
     <item>
         <identifier>private.bind_del_to_hyper</identifier>
@@ -40,6 +40,20 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
       <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::CONTROL_R, KeyCode::RETURN</autogen>
     </item>
 
+    <!-- Command_R to Control_L is built-in, but that breaks symmetry. Since I
+         bind Shift + Control symmetrically to Hyper, it's convenient to be
+         able to use mismatched Shift + Control to fire the regular bindings,
+         for the rare shortcuts that require them.
+    -->
+    <item>
+      <name>Command_R to Control_R</name>
+      <identifier>private.commandR2controlR</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::CONTROL_R</autogen>
+    </item>
+
+    <!-- This makes pushing my physical right Control + right Shift fire my
+         Hyper modifier cluster.
+    -->
     <item>
         <identifier>private.bind_rcontrol_rshift_to_hyper</identifier>
         <name>Shift_R+Control_R to Command_L+Option_L-Control_L-Shift_L</name>
@@ -51,9 +65,8 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         </autogen>
     </item>
 
-    <!-- This only worked semi-consistently on my work machine. At home on my
-         laptop, it seems to be working fine - the key seems to be that Control
-         has to be pushed *before* Shift to count as a modifier.
+    <!-- This makes pushing my physical left Control + left Shift fire my Hyper
+         modifier cluster.
     -->
     <item>
         <identifier>private.bind_lcontrol_lshift_to_hyper</identifier>
