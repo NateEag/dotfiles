@@ -10,10 +10,9 @@ config windowHintsSpread true
 
 # Keybindings.
 #
-# I use [Karabiner](https://pqrs.org/osx/karabiner/index.html.en) to bind
-# a "Hyper" key to the obscene modifier cluster for triggering these
-# things.
+# I use ctrl+shift as my trigger combo, as few apps use that particular
+# shortcut pair.
 
 # Note that the hints are chosen to roughly distribute things evenly between
 # the left and right hands, starting with home row, then top, then bottom.
-bind s:ctrl,alt,cmd,shift hint ALSKDJFHGQPWOEIRUTYZMXNCBV
+bind s:ctrl,shift hint ALSKDJFHGQPWOEIRUTYZMXNCBV
