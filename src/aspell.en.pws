@@ -1,4 +1,4 @@
-personal_ws-1.1 en 11 
+personal_ws-1.1 en 12 
 UI
 Eagleson
 jitter
@@ -7,6 +7,7 @@ svg
 customizations
 config
 virtualenv
+DOM
 README
 prepended
 vml
