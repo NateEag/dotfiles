@@ -7,7 +7,62 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
 -->
 <root>
     <item>
-        <name>Nate E.'s Personal Bindings</name>
+        <name>Nate E.'s Personal Keybindings</name>
+    </item>
+
+
+    <!-- MacBook Pro internal keyboard bindings. -->
+
+    <!--
+        Since I'm used to the [Truly Ergonomic](https://www.trulyergonomic.com)
+        layout, I like to have Shift on the home row.
+
+        I use this in conjunction with Seil (nee PCKeyboardHack) to remap Caps
+        Lock to Shift.
+    -->
+    <item>
+      <name>Return to Shift_R</name>
+      <appendix>(+ When you type Return only, send Return)</appendix>
+      <identifier>private.return2shiftR_return</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
+    </item>
+
+    <!-- Since I use Seil to remap Caps Lock to Shift_L, Karabiner can't
+         distinguish between the physical Caps Lock and Shift keys.
+
+         To remap my physical left Shift key to Control, I have Seil turn it
+         into F19, a key my keyboards don't have, then remap that.
+    -->
+    <item>
+      <name>F19 to Control_L</name>
+      <identifier>private.F19TocontrolL</identifier>
+      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CONTROL_L</autogen>
+    </item>
+
+    <!-- As a consequence, when a normal is using my machine, I have to map the
+         F19 key to Shift_L, so that in the Default config, Shift behaves
+         normally.
+    -->
+    <item>
+      <name>F19 to Shift_L</name>
+      <identifier>private.F19ToshiftL</identifier>
+      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::SHIFT_L</autogen>
+    </item>
+
+    <item>
+      <name>Shift_R to Control_R</name>
+      <identifier>private.shiftR2controlR</identifier>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CONTROL_R</autogen>
+    </item>
+
+
+    <!-- TrulyErgonomic-specific bindings. -->
+
+    <!-- Command_R to Control_L is built-in, but that breaks symmetry. -->
+    <item>
+      <name>Command_R to Control_R</name>
+      <identifier>private.commandR2controlR</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::CONTROL_R</autogen>
     </item>
 
     <!-- Note: If I ever run out of Hyper bindings, I could add F19 to this and
@@ -23,28 +78,6 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
             KeyCode::FORWARD_DELETE,
             KeyCode::COMMAND_L, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L
         </autogen>
-    </item>
-
-    <!--
-        When working on a laptop, it's handy to have symmetrical Control keys,
-        especially if you're an Emacser.
-
-        This one's based on a built-in, but it sends Control_R where the
-        built-in one sends Control_L. That makes it pair cleanly with Shift_R
-        for triggering Hyper.
-    -->
-    <item>
-      <name>Return to Control_R</name>
-      <appendix>(+ When you type Return only, send Return)</appendix>
-      <identifier>private.return2controlR_return</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::CONTROL_R, KeyCode::RETURN</autogen>
-    </item>
-
-    <!-- Command_R to Control_L is built-in, but that breaks symmetry. -->
-    <item>
-      <name>Command_R to Control_R</name>
-      <identifier>private.commandR2controlR</identifier>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::CONTROL_R</autogen>
     </item>
 
 </root>
