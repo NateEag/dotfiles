@@ -56,7 +56,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # This has to be a function rather than overriding $PATH so we can pass the
     # "-nw" flag.
     function emacs () {
-        /Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/Emacs -nw "$@"
+        /Applications/Emacsen/Emacs.app/Contents/MacOS/Emacs -nw "$@"
     }
     export -f emacs
 
