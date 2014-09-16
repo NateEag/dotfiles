@@ -193,7 +193,7 @@ PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 
 # Add Emacs 24 commands to my path, so that emacsclient works right on OS X
 # 10.9.
-PATH=/Applications/Emacsen/Emacs-24.4.app/Contents/MacOS/bin-i386-10.5:$PATH
+PATH=/Applications/Emacsen/Emacs.app/Contents/MacOS/bin-i386-10.5:$PATH
 
 PATH=~/.cask/bin:$PATH
 
