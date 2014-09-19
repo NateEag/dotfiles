@@ -9,10 +9,24 @@ config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
 
 # Keybindings.
-#
+
 # I use ctrl+shift as my trigger combo, as few apps use that particular
-# shortcut pair.
+# shortcut pair. A few in Chrome and Emacs.
+alias hyper ctrl;shift
 
 # Note that the hints are chosen to roughly distribute things evenly between
 # the left and right hands, starting with home row, then top, then bottom.
-bind s:ctrl,shift hint ALSKDJFHGQPWOEIRUTYZMXNCBV
+bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
+
+# Relaunch Slate without mousing.
+bind r:${hyper} relaunch
+
+# App keybindings.
+bind e:${hyper} focus 'Emacs'
+bind t:${hyper} focus 'Terminal'
+bind b:${hyper} focus 'Google Chrome'
+# TODO Pick up whether I'm running Slack or a different chat program.
+bind m:${hyper} focus 'Slack'
+# Rather iffy mnemonic for 'headphones', since Pandora is what I usually use
+# when coding.
+bind h:${hyper} focus 'Pandora'
