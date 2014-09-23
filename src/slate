@@ -36,9 +36,10 @@ bind k:${hyper} corner bottom-right
 bind l:${hyper} corner bottom-left
 bind h:${hyper} corner top-left
 
-# Window resizing.
-bind left:${hyper} resize +10% +0 top-right
-bind right:${hyper} resize +10% +0 top-left
+# Window resizing
+
+bind [:ctrl;shift resize +10% +0 top-right
+bind ]:ctrl;shift resize +10% +0 top-left
 
 bind home:${hyper} resize -10% -0 top-left
 bind end:${hyper} resize -10% -0 top-right
