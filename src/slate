@@ -27,15 +27,14 @@ bind t:${hyper} focus 'Terminal'
 bind b:${hyper} focus 'Google Chrome'
 # TODO Pick up whether I'm running Slack or a different chat program.
 bind m:${hyper} focus 'Slack'
-# Rather iffy mnemonic for 'headphones', since Pandora is what I usually use
-# when coding.
-bind h:${hyper} focus 'Pandora'
+# Not a mnemonic, but I needed something.
+bind y:${hyper} focus 'Pandora'
 
 # Window movement keys.
 bind j:${hyper} corner top-right
 bind k:${hyper} corner bottom-right
 bind l:${hyper} corner bottom-left
-bind ;:${hyper} corner top-left
+bind h:${hyper} corner top-left
 
 # Window resizing.
 bind left:${hyper} resize +10% +0 top-right
