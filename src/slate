@@ -30,3 +30,9 @@ bind m:${hyper} focus 'Slack'
 # Rather iffy mnemonic for 'headphones', since Pandora is what I usually use
 # when coding.
 bind h:${hyper} focus 'Pandora'
+
+# Window movement keys.
+bind j:${hyper} corner top-right
+bind k:${hyper} corner bottom-right
+bind l:${hyper} corner bottom-left
+bind ;:${hyper} corner top-left
