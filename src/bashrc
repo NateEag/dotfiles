@@ -186,6 +186,7 @@ PATH=/opt/local/bin:/opt/local/lib/postgresql91/bin:$PATH
 PATH=~/bin:$PATH
 # Haskell commands I've installed via cabal.
 PATH="$HOME/Library/Haskell/bin:$PATH"
+PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
 
 # Change this to change active Python.
 # GRIPE I should really set up some basic commands for doing this.
@@ -196,6 +197,9 @@ PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 PATH=/Applications/Emacsen/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
 
 PATH=~/.cask/bin:$PATH
+
+# I'm trying out installing npm locally. We'll see how it goes.
+PATH=~/npm/bin:$PATH
 
 export PATH
 
