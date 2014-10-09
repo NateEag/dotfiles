@@ -38,8 +38,15 @@ bind h:${hyper} corner top-left
 
 # Window resizing
 
-bind [:ctrl;shift resize +10% +0 top-right
-bind ]:ctrl;shift resize +10% +0 top-left
+# N.B.: There's a known bug where you cannot resize windows that are flush with
+# the right edge of the screen:
+#
+# https://github.com/jigish/slate/issues/259
+#
+# The easiest workaround is to shrink right-side windows to the left, expand
+# them to the right a few times, then throw them back to the right.
+bind left:${hyper} resize +10% +0 top-right
+bind right:${hyper} resize +10% +0 top-left
 
 bind home:${hyper} resize -10% -0 top-left
 bind end:${hyper} resize -10% -0 top-right
