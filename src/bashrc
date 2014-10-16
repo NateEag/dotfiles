@@ -75,10 +75,10 @@ alias getheaders='curl -s -D - -o /dev/null'
 # anywhere, but I'm not sure how to achieve that, since I install dotfiles by
 # symlinking them.
 dotfiles_path=~/dotfiles
-dotfiles_lib_path=$dotfiles_path/lib
-for file in $(ls $dotfiles_lib_path); do
-    if [[ ! -d "$dotfiles_lib_path/$file" ]]; then
-        source "$dotfiles_lib_path/$file"
+dotfiles_lib_path=$dotfiles_path/lib/
+for file in "$dotfiles_lib_path"/*.sh; do
+    if [[ ! -d "$file" ]]; then
+        source "$file"
     fi
 done
 
