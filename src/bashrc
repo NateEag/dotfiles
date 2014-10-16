@@ -196,7 +196,6 @@ PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # 10.9.
 PATH=/Applications/Emacsen/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
 
-PATH=~/.emacs.d/bin:$PATH
 PATH=~/.cask/bin:$PATH
 
 # I'm trying out installing npm locally. We'll see how it goes.
