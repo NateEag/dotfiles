@@ -106,7 +106,7 @@ re-replace () {
     fi
 
     find $3 -iname "$file_glob" -print0 | \
-        xargs -0 sed -i "s:$1:$2:g"
+        xargs -0 sed -i '' "s:$1:$2:g"
 }
 
 # Strip excess whitespace from files in a path.
