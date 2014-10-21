@@ -18,8 +18,10 @@ alias hyper ctrl;shift
 # the left and right hands, starting with home row, then top, then bottom.
 bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
 
+
 # Relaunch Slate without mousing.
 bind r:${hyper} relaunch
+
 
 # App keybindings.
 bind e:${hyper} focus 'Emacs'
@@ -30,11 +32,13 @@ bind m:${hyper} focus 'Slack'
 # Not a mnemonic, but I needed something.
 bind y:${hyper} focus 'Pandora'
 
+
 # Window movement keys.
 bind j:${hyper} corner top-right
 bind k:${hyper} corner bottom-right
 bind l:${hyper} corner bottom-left
 bind h:${hyper} corner top-left
+
 
 # Window resizing
 
@@ -50,3 +54,8 @@ bind right:${hyper} resize +10% +0 top-left
 
 bind home:${hyper} resize -10% -0 top-left
 bind end:${hyper} resize -10% -0 top-right
+
+
+# Activate screensaver from keyboard. If your machine is set up to lock the
+# display on screensaver, this is a handy shortcut for locking the display.
+bind a:${hyper} shell path:~ '/usr/bin/open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
