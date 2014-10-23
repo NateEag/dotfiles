@@ -34,10 +34,10 @@ bind y:${hyper} focus 'Pandora'
 
 
 # Window movement keys.
-bind j:${hyper} corner top-right
-bind k:${hyper} corner bottom-right
-bind l:${hyper} corner bottom-left
 bind h:${hyper} corner top-left
+bind j:${hyper} corner top-right
+bind k:${hyper} corner bottom-left
+bind l:${hyper} corner bottom-right
 
 
 # Window resizing
