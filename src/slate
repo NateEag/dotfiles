@@ -56,6 +56,12 @@ bind home:${hyper} resize -10% -0 top-left
 bind end:${hyper} resize -10% -0 top-right
 
 
+# Bindings for running one-off commands.
+
 # Activate screensaver from keyboard. If your machine is set up to lock the
 # display on screensaver, this is a handy shortcut for locking the display.
 bind a:${hyper} shell path:~ '/usr/bin/open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
+
+# Start up a new Emacs instance. Useful when I'm writing init code and want to
+# test it.
+bind w:${hyper} shell path:~ '/usr/bin/open -n -a Emacs.app'
