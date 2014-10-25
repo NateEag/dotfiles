@@ -171,10 +171,6 @@ classpath () {
 PYTHONPATH=$PYTHONPATH:~/cmdline
 export PYTHONPATH
 
-# Add my custom shell commands to path, for when an alias or function just
-# won't hack it.
-PATH="$dotfiles_path/bin:$PATH"
-
 # Since I'm writing it, I run the dev version of sandbox, too.
 PATH=~/sandbox:$PATH
 # Adding the path at which LilyPond.app stores the command-line binaries...
@@ -200,6 +196,11 @@ PATH=~/.cask/bin:$PATH
 
 # I'm trying out installing npm locally. We'll see how it goes.
 PATH=~/npm/bin:$PATH
+
+# Add my custom shell commands to path, for when an alias or function just
+# won't hack it.
+PATH="$dotfiles_path/lib/node_modules/.bin:$PATH"
+PATH="$dotfiles_path/bin:$PATH"
 
 export PATH
 
