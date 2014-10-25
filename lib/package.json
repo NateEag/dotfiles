@@ -1,11 +1,12 @@
 {
-    "name": "nateeag-emacs-node-packages",
-    "version": "0.0.1",
-    "dependencies": {
-        "jshint": "2.5.2",
-        "tern": "0.7.0",
-        "csslint": "0.10.0",
-        "coffee-script": "1.8.0",
-        "coffeelint": "1.6.0"
-    }
+  "name": "nateeag-emacs-node-packages",
+  "version": "0.0.1",
+  "dependencies": {
+    "coffee-script": "1.8.0",
+    "coffeelint": "1.6.0",
+    "csslint": "0.10.0",
+    "http-server": "^0.7.2",
+    "jshint": "2.5.2",
+    "tern": "0.7.0"
+  }
 }
