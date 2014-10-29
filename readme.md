@@ -1,12 +1,12 @@
-========
 dotfiles
 ========
 
 A set of dotfiles for use on a Unixy system.
 
-Also provides remappings to make a MacBook Pro's keyboard feel more like a
+Inclues remappings to make a MacBook Pro's keyboard feel more like a
 TrulyErgonomic keyboard, and to make Emacsing on a TrulyErgonomic more
-satisfactory. They are implemented with [Karabiner](https://pqrs.org/osx/karabiner/) and
+satisfactory. They are implemented with
+[Karabiner](https://pqrs.org/osx/karabiner/) and
 [Seil](https://pqrs.org/osx/karabiner/seil.html.en).
 
 Usage
