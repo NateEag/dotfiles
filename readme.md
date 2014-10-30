@@ -1,16 +1,17 @@
 dotfiles
 ========
 
-A set of dotfiles for use on a Unixy system.
+A set of dotfiles for use on a Unixy system, along with a few extras:
 
-Includes remappings to make a MacBook Pro's keyboard feel more like a
+* Keyboard remappings to make a MacBook Pro's keyboard feel more like a
 TrulyErgonomic keyboard, and to make Emacsing on a TrulyErgonomic more
 satisfactory. They are implemented with
 [Karabiner](https://pqrs.org/osx/karabiner/) and
 [Seil](https://pqrs.org/osx/karabiner/seil.html.en).
 
-Also contains a semi-random collection of interpreted commands from third
-parties, mostly in the form of npm packages.
+* A semi-random collection of useful third-party commands, mostly npm packages.
+
+* A not-very-comprehensive [Slate](https://github.com/jigish/slate) config.
 
 Usage
 =====
