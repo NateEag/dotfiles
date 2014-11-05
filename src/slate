@@ -81,3 +81,5 @@ layout CinemaDisplay 'Terminal' corner bottom-left
 # hardcoded window sizes in it. However, that does not seem to be working. Not
 # sure what I might be missing.
 default CinemaDisplay count:2
+
+bind 1:${hyper} layout CinemaDisplay
