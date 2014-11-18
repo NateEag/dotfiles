@@ -93,3 +93,10 @@ layout MacBookPro 'Terminal' corner bottom-left
 default MacBookPro count:1
 
 bind 2:${hyper} layout MacBookPro
+
+layout MacBookPro17 'Emacs' corner top-left
+layout MacBookPro17 'Google Chrome' corner top-right resize:916;1028
+layout MacBookPro17 'Adium' corner bottom-right resize
+layout MacBookPro17 'Terminal' corner bottom-left
+
+bind 3:${hyper} layout MacBookPro17
