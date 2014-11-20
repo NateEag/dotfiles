@@ -14,6 +14,9 @@ config windowHintsSpread true
 # shortcut pair. A few in Chrome and Emacs.
 alias hyper ctrl;shift
 
+# There are a few things I use an alternate key combo for.
+alias mega cmd;alt;shift
+
 # Note that the hints are chosen to roughly distribute things evenly between
 # the left and right hands, starting with home row, then top, then bottom.
 bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
@@ -66,6 +69,17 @@ bind a:${hyper} shell path:~ '/usr/bin/open -a /System/Library/Frameworks/Screen
 # Start up a new Emacs instance. Useful when I'm writing init code and want to
 # test it.
 bind w:${hyper} shell path:~ '/usr/bin/open -n -a Emacs.app'
+
+
+# Bindings for changing keyboard layouts.
+#
+# These are for KeyRemap4MacBook. For Karabiner, I'd have to use
+# /Applications/Karabiner.app/Contents/Library/bin/karabiner as the command.
+
+# Activate MacBook Pro KeyRemap4MacBook profile.
+bind x:${mega} shell '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli select 2'
+# Activate Default KeyRemap4MacBook profile (mainly used by my wife).
+bind z:${mega} shell '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli select 1'
 
 
 # Window layouts.
