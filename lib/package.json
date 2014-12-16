@@ -5,7 +5,7 @@
     "coffee-script": "1.8.0",
     "coffeelint": "1.6.0",
     "csslint": "0.10.0",
-    "eslint": "^0.10.1",
+    "eslint": "*",
     "http-server": "^0.7.2",
     "jshint": "2.5.2",
     "tern": "0.7.0"
