@@ -1,0 +1,4 @@
+;; Magical incantation from https://github.com/ecraven/mit-scheme-swank
+;; that should load
+(load-option 'format)
+(load "~/.emacs.d/site-lisp/swank.scm" (->environment '(runtime swank)))
