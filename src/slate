@@ -31,7 +31,8 @@ bind e:${hyper} focus 'Emacs'
 bind t:${hyper} focus 'Terminal'
 bind b:${hyper} focus 'Google Chrome'
 # TODO Pick up whether I'm running Slack or a different chat program.
-bind m:${hyper} focus 'Slack'
+bind i:${hyper} focus 'Slack'
+bind m:${hyper} focus 'Mail'
 # Not a mnemonic, but I needed something.
 bind y:${hyper} focus 'Pandora'
 
