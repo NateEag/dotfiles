@@ -8,10 +8,10 @@
 # platform, install a more recent Python and get it first on your path. Once
 # the virtualenv's built, that shouldn't matter, of course...
 
-bin_dir=$(dirname $0)
-virtualenv $bin_dir/flake8-env
+project_dir=$(dirname $(dirname "$0"))
+virtualenv $project_dir/lib/flake8-env
 
-source $bin_dir/flake8-env/bin/activate
+source $project_dir/lib/flake8-env/bin/activate
 
 # Recent versions of virtualenv auto-install pip, but for a sufficiently old
 # version you may need to uncomment this.
