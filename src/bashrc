@@ -105,7 +105,7 @@ re-replace () {
         file_glob=$4
     fi
 
-    find $3 -iname "$file_glob" -print0 | \
+    find "$3" -iname "$file_glob" -print0 | \
         xargs -0 sed -i '' "s:$1:$2:g"
 }
 
