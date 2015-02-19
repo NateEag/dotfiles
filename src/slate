@@ -30,8 +30,8 @@ bind r:${hyper} relaunch
 bind e:${hyper} focus 'Emacs'
 bind t:${hyper} focus 'Terminal'
 bind b:${hyper} focus 'Google Chrome'
-# TODO Pick up whether I'm running Slack or a different chat program.
-bind i:${hyper} focus 'Slack'
+# TODO Pick up which IM program is running intelligently.
+bind i:${hyper} focus 'Adium'
 bind m:${hyper} focus 'Mail'
 # Not a mnemonic, but I needed something.
 bind y:${hyper} focus 'Pandora'
@@ -91,15 +91,12 @@ bind z:${mega} shell '/Applications/KeyRemap4MacBook.app/Contents/Applications/K
 # GRIPE I would like to set window sizes dynamically based on Emacs' window
 # size, which is itself chosen dynamically based on monitor resolution/pixel
 # density. Alas, I do not see a way to make Slate do that.
+
+# For use with a single 27-inch Apple Cinema Display.
 layout CinemaDisplay 'Emacs' corner top-left
 layout CinemaDisplay 'Google Chrome' corner top-right resize:1058;939
 layout CinemaDisplay 'Slack' corner bottom-right resize:1058;478
 layout CinemaDisplay 'Terminal' corner bottom-left
-
-# I would like to set this with the default resolutions: option, since I have
-# hardcoded window sizes in it. However, that does not seem to be working. Not
-# sure what I might be missing.
-default CinemaDisplay count:2
 
 bind 1:${hyper} layout CinemaDisplay
 
@@ -112,9 +109,25 @@ default MacBookPro count:1
 
 bind 2:${hyper} layout MacBookPro
 
+# For use with a MacBook Pro 17", no external displays.
 layout MacBookPro17 'Emacs' corner top-left
 layout MacBookPro17 'Google Chrome' corner top-right resize:916;1028
 layout MacBookPro17 'Adium' corner bottom-right resize
 layout MacBookPro17 'Terminal' corner bottom-left
 
 bind 3:${hyper} layout MacBookPro17
+
+# For use with a MacBook Pro 17" with an external 19" monitor.
+#
+# More Slate bugs: 'throw' does not work reliably in layouts. Use 'move'
+# instead.
+layout MBP17Plus19 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
+layout MBP17Plus19 'Emacs' corner top-left
+layout MBP17Plus19 'Mail':REPEAT move screenOriginX;screenOriginY screenSizeX*2/3;screenSizeY*2/3 1
+
+bind 4:${hyper} layout MBP17Plus19
+
+# I would like to set this with the default resolutions: option, since I have
+# hardcoded window sizes in it. However, that does not seem to be working. Not
+# sure what I might be missing.
+default MacBookPro17Plus19 count:2
