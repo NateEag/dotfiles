@@ -105,8 +105,6 @@ layout MacBookPro 'Google Chrome' corner top-right resize:675;878
 layout MacBookPro 'Slack' corner bottom-right resize:773;398
 layout MacBookPro 'Terminal' corner bottom-left
 
-default MacBookPro count:1
-
 bind 2:${hyper} layout MacBookPro
 
 # For use with a MacBook Pro 17", no external displays.
@@ -116,6 +114,8 @@ layout MacBookPro17 'Adium' corner bottom-right resize
 layout MacBookPro17 'Terminal' corner bottom-left
 
 bind 3:${hyper} layout MacBookPro17
+
+default MacBookPro17 count:1
 
 # For use with a MacBook Pro 17" with an external 19" monitor.
 #
