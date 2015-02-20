@@ -121,11 +121,11 @@ bind 3:${hyper} layout MacBookPro17
 #
 # More Slate bugs: 'throw' does not work reliably in layouts. Use 'move'
 # instead.
-layout MBP17Plus19 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
-layout MBP17Plus19 'Emacs' corner top-left
-layout MBP17Plus19 'Mail':REPEAT move screenOriginX;screenOriginY screenSizeX*2/3;screenSizeY*2/3 1
+layout MacBookPro17Plus19 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
+layout MacBookPro17Plus19 'Emacs' corner top-left
+layout MacBookPro17Plus19 'Mail':REPEAT move screenOriginX;screenOriginY screenSizeX*2/3;screenSizeY*2/3 1
 
-bind 4:${hyper} layout MBP17Plus19
+bind 4:${hyper} layout MacBookPro17Plus19
 
 # I would like to set this with the default resolutions: option, since I have
 # hardcoded window sizes in it. However, that does not seem to be working. Not
