@@ -1,0 +1,11 @@
+" As an evil-mode user, I don't have a heavily-customized vim setup.
+"
+" I do, however, want vim to behave roughly like my evil-mode setup.
+
+" Use jk to return to normal mode. This is a test...
+inoremap jk <esc>
+
+" Leader keybindings.
+let mapleader=" "
+
+noremap <Leader>w :w<CR>
