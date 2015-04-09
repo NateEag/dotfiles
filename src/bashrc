@@ -63,6 +63,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # OS X-specific aliases.
     alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
     alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+
+    # Load pyenv into my shell.
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 # Sometimes, you want to see the headers you get from a site. Enter this
