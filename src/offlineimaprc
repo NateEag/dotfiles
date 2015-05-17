@@ -1,0 +1,21 @@
+[general]
+accounts = nate_gmail
+pythonfile=~/dotfiles/bin/offlineimap.py
+
+[Account nate_gmail]
+localrepository = Local
+remoterepository = nate_gmail_repo
+
+[Repository Local]
+type = Maildir
+localfolders = ~/mail
+
+[Repository nate_gmail_repo]
+type = Gmail
+maxconnections = 1
+remoteuser = nate4d@gmail.com
+remotepasseval = get_keychain_pass(account="nate4d@gmail.com", server="imap.gmail.com")
+realdelete=no
+# TODO Convert hardcoding to general-case name translator.
+nametrans = lambda folder: folder.replace('[Gmail]/', '').replace(' ', '-').lower()
+cert_fingerprint=deb7e7cb169284cdf59b3dd87f71b0fd6b566df7
