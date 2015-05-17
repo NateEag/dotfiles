@@ -1,4 +1,4 @@
-personal_ws-1.1 en 21 
+personal_ws-1.1 en 22 
 UI
 Eagleson
 jitter
@@ -8,6 +8,7 @@ vertices
 API
 svg
 preprocessor
+TODO
 JSHint
 customizations
 codebase
