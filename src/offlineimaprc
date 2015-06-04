@@ -9,6 +9,20 @@ remoterepository = nate_gmail_repo
 [Repository Local]
 type = Maildir
 localfolders = ~/mail
+nametrans = lambda folder: {
+                            'sent': '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
+                            'trash': '[Gmail]/Trash',
+                            'drafts': '[Gmail]/Drafts',
+                            'important': '[Gmail]/Important',
+                            'archive': '[Gmail]/All Mail',
+                            'code-review': '[Gmail]/Code Review Notifications',
+                            'crashes': '[Gmail]/Crash Notifications',
+                            'online-receipts': '[Gmail]/online receipts',
+                            'online-receipts.online-receipts-archive': '[Gmail]/online receipts/online receipts archive',
+                            'projects': '[Gmail]/Project Notifications',
+                            'third-party-software':'[Gmail]/Third-party Software',
+                            }.get(folder, folder)
 
 [Repository nate_gmail_repo]
 type = Gmail
@@ -16,6 +30,20 @@ maxconnections = 1
 remoteuser = nate4d@gmail.com
 remotepasseval = get_keychain_pass(account="nate4d@gmail.com", server="imap.gmail.com")
 realdelete=no
-# TODO Convert hardcoding to general-case name translator.
-nametrans = lambda folder: folder.replace('[Gmail]/', '').replace(' ', '-').lower()
+# TODO Convert hardcoding to general-case name translator?
+nametrans = lambda folder: {
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred': 'flagged',
+                            '[Gmail]/Trash': 'trash',
+                            '[Gmail]/Drafts': 'drafts',
+                            '[Gmail]/Important': 'important',
+                            '[Gmail]/All Mail': 'archive',
+                            '[Gmail]/Code Review Notifications': 'code-review',
+                            '[Gmail]/Crash Notifications': 'crashes',
+                            '[Gmail]/online receipts': 'online-receipts',
+                            '[Gmail]/online receipts/online receipts archive': 'online-receipts.online-receipts-archive',
+                            '[Gmail]/Project Notifications': 'projects',
+                            '[Gmail]/Third-party Software': 'third-party-software',
+                            }.get(folder, folder)
+
 cert_fingerprint=deb7e7cb169284cdf59b3dd87f71b0fd6b566df7
