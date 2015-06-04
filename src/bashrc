@@ -176,16 +176,13 @@ classpath () {
 PYTHONPATH=$PYTHONPATH:~/cmdline
 export PYTHONPATH
 
-# Since I'm writing it, I run the dev version of sandbox, too.
-PATH=~/sandbox:$PATH
-# Adding the path at which LilyPond.app stores the command-line binaries...
+PATH=~/notmuch:$PATH
 PATH=/Applications/LilyPond.app/Contents/Resources/bin:$PATH
 PATH=/usr/local/bin:/usr/local/git/bin:~/bin/cron:$PATH
 PATH=/usr/local/pear/bin:$PATH
 PATH=/usr/local/bin/docutils-0.8.1/tools:$PATH
 PATH=/opt/local/bin:/opt/local/lib/postgresql91/bin:$PATH
 PATH=~/bin:$PATH
-# Haskell commands I've installed via cabal.
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
 
