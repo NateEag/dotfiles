@@ -1,0 +1,15 @@
+#! /bin/bash
+
+# Script to index my new mail via notmuch.
+
+notmuch new
+
+# Tag third-party software notifications as such, and skip the inbox.
+
+notmuch tag -inbox +third-party-software to:notmuch@notmuchmail.org
+notmuch tag -inbox +third-party-software to:info-gnu-emacs@gnu.org
+notmuch tag -inbox +third-party-software from:webc-users@googlegroups.com
+notmuch tag -inbox +third-party-software subject:"[Eastgate]"
+# Supposed to get all github notifications that weren't sent directly to
+# me via one of my repos. Really not sure it's right.
+notmuch tag -inbox +third-party-software from:notifications@github.com -to:nateeag

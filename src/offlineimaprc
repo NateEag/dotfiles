@@ -5,6 +5,7 @@ pythonfile=~/dotfiles/bin/offlineimap.py
 [Account nate_gmail]
 localrepository = Local
 remoterepository = nate_gmail_repo
+postsynchook = ~/dotfiles/bin/offlineimap-postsync
 
 [Repository Local]
 type = Maildir
