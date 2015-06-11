@@ -12,17 +12,17 @@ type = Maildir
 localfolders = ~/mail
 nametrans = lambda folder: {
                             'sent': '[Gmail]/Sent Mail',
-                            'flagged': '[Gmail]/Starred',
-                            'trash': '[Gmail]/Trash',
-                            'drafts': '[Gmail]/Drafts',
+                            'flagged': '[Gmail].Starred',
+                            'trash': '[Gmail].Trash',
+                            'drafts': '[Gmail].Drafts',
                             'important': '[Gmail]/Important',
                             'archive': '[Gmail]/All Mail',
-                            'code-review': '[Gmail]/Code Review Notifications',
-                            'crashes': '[Gmail]/Crash Notifications',
-                            'online-receipts': '[Gmail]/online receipts',
-                            'online-receipts.online-receipts-archive': '[Gmail]/online receipts/online receipts archive',
-                            'projects': '[Gmail]/Project Notifications',
-                            'third-party-software':'[Gmail]/Third-party Software',
+                            'code-review': '[Gmail].Code Review Notifications',
+                            'crashes': '[Gmail].Crash Notifications',
+                            'online-receipts': '[Gmail].online receipts',
+                            'online-receipts.online-receipt-archive': '[Gmail]/online receipts/online receipt archive',
+                            'projects': '[Gmail].Project Notifications',
+                            'third-party-software':'[Gmail].Third-party Software',
                             }.get(folder, folder)
 
 [Repository nate_gmail_repo]
@@ -42,9 +42,10 @@ nametrans = lambda folder: {
                             '[Gmail]/Code Review Notifications': 'code-review',
                             '[Gmail]/Crash Notifications': 'crashes',
                             '[Gmail]/online receipts': 'online-receipts',
-                            '[Gmail]/online receipts/online receipts archive': 'online-receipts.online-receipts-archive',
+                            '[Gmail]/online receipts/online receipt archive': 'online-receipts.online-receipt-archive',
                             '[Gmail]/Project Notifications': 'projects',
                             '[Gmail]/Third-party Software': 'third-party-software',
                             }.get(folder, folder)
 
-cert_fingerprint=deb7e7cb169284cdf59b3dd87f71b0fd6b566df7
+# cert_fingerprint=deb7e7cb169284cdf59b3dd87f71b0fd6b566df7
+cert_fingerprint=2d3d801997e470c20896c2ebd03ec6b45a538d6d
