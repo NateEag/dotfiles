@@ -48,3 +48,9 @@
 
 [color]
     interactive = true
+
+[sendemail]
+	smtpEncryption = tls
+	smtpServer = smtp.gmail.com
+	smtpUser = nate4d@gmail.com
+	smtpServerPort = 465

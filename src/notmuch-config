@@ -7,3 +7,7 @@ ignore=
 
 [search]
 exclude_tags=deleted;spam
+
+[user]
+primary_email=nate@nateeag.com
+name=Nate Eagleson
