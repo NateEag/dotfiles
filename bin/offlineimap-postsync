@@ -5,7 +5,7 @@
 notmuch new
 
 # Tag things related to learning more about tech.
-notmuch tag -inbox +learn-tech from:kale@hackernewletter.com
+notmuch tag -inbox +learn-tech from:kale@hackernewsletter.com
 notmuch tag -inbox +learn-tech from:weekly@changelog.com
 
 # Tag third-party software notifications as such, and skip the inbox.
