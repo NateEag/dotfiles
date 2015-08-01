@@ -53,4 +53,4 @@
 	smtpEncryption = tls
 	smtpServer = smtp.gmail.com
 	smtpUser = nate4d@gmail.com
-	smtpServerPort = 465
+	smtpServerPort = 587
