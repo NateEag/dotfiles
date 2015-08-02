@@ -29,14 +29,23 @@ if [ $? -ne 0 ]; then
     exit
 fi
 
+SITES_OKAY=0
 for SITE in ${SITES[*]}; do
     linkchecker --check-extern "$SITE" 2> /dev/null
+
+    # FIXME Without this, growlnotify fails silently. Race condition?
+    echo "Checking $SITE..."
+
     if [ "$?" != "0" ]; then
-        # FIXME Without the echo statement, the growlnotify command does not
-        # work consistently. Some sort of race condition?
-        echo "This shouldn't make a difference..."
+        SITES_OKAY=1
         growlnotify -s -m "$SITE has broken links."
     fi
 
     echo "$NOW" > "$DATESTAMP_PATH"
 done
+
+if [ $SITES_OKAY -eq 0 ]; then
+    # Explicitly telling us the site looks okay mitigates the risk of silent
+    # failure - if we don't get the all clear, we know we need to research.
+    growlnotify -s -m "All sites' links look good."
+fi
