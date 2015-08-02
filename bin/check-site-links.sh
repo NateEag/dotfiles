@@ -6,13 +6,16 @@
 # network for the first time in a day, I just get notified if the sites have
 # issues.
 
+# Constants.
+SITES=("http://www.nateeag.com" "http://howicode.nateeag.com")
 DATESTAMP_PATH=~/.check-site-links-last-run
 
-# Format dates like numbers, so we can compare them as integers.
+# Format the current date as a number, so we can compare it to the last run date
+# with -ne.
 NOW=$(date +'%Y%m%d')
 
+# If the datestamp is missing, assume we've never run.
 LAST_RUN=$(cat "$DATESTAMP_PATH")
-# If the datestamp can't be read, assume we've never run.
 LAST_RUN=${LAST_RUN:-0}
 
 if [ $NOW -le $LAST_RUN ]; then
@@ -20,8 +23,11 @@ if [ $NOW -le $LAST_RUN ]; then
     exit
 fi
 
-
-SITES=("http://www.nateeag.com" "http://howicode.nateeag.com")
+ping -c 1 ${SITES[0]:7}
+if [ $? -ne 0 ]; then
+    echo "Cannot reach site; assuming no net connection."
+    exit
+fi
 
 for SITE in ${SITES[*]}; do
     linkchecker --check-extern "$SITE" 2> /dev/null
