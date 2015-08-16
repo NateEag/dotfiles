@@ -46,6 +46,10 @@
 	# !"git ls-tree -r HEAD | cut -c 13- | sort | uniq -D -w 40"
     duplicate-objects = !"git ls-tree -r HEAD | cut -c 13- | cut -c 1-40 | uniq -d"
 
+    # Some aliases for amending commits.
+    amend = commit --amend --no-edit -a
+    reword = commit --amend
+
 [color]
     interactive = true
 
