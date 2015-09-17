@@ -8,7 +8,7 @@
     "eslint": "*",
     "http-server": "^0.7.2",
     "jshint": "2.5.2",
-    "tern": "0.10.0",
+    "tern": "0.15.0",
     "iectrl": "*"
   }
 }
