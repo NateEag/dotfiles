@@ -13,6 +13,12 @@
 [merge]
 	conflictstyle = diff3
 
+[pager]
+	# Highlight sub-line changes in my h-command aliases.
+	# These lines are why the alias exists.
+	hdiff = diff-highlight | less
+	hshow = diff-highlight | less
+
 [diff]
     algorithm = patience
 
@@ -35,6 +41,10 @@
 
     # Pretty command-line history.
     graph-log = log --graph --pretty=oneline --decorate --abbrev-commit
+
+	# For when you want to see diffs with changes highlighted inside lines.
+	hdiff = diff
+	hshow = show
 
     # Useful for working gitflow-style.
     strict-merge = merge --no-commit --no-ff
