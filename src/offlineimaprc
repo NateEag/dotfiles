@@ -29,7 +29,7 @@ nametrans = lambda folder: {
 type = Gmail
 maxconnections = 1
 remoteuser = nate4d@gmail.com
-remotepasseval = get_keychain_pass(account="nate4d@gmail.com", server="imap.gmail.com")
+remotepasseval = get_authinfo_password('imap.gmail.com', 'nate4d@gmail.com')
 realdelete=no
 # TODO Convert hardcoding to general-case name translator?
 nametrans = lambda folder: {
