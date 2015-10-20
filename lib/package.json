@@ -9,6 +9,7 @@
     "http-server": "^0.7.2",
     "jshint": "2.5.2",
     "tern": "0.15.0",
+    "tern-lint": "^0.5.0",
     "iectrl": "*"
   }
 }
