@@ -1,0 +1,5 @@
+2015-10-21 Update my install script to put GPG conf somewhere it will actually be read.
+
+2013-06-26 Tweak my bash history setup based on this post: http://www.talug.org/events/20030709/cmdline_history.html
+
+2013-06-26 Figure out how to make git grep colorize output when being routed through a terminal.
