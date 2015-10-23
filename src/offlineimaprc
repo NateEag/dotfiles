@@ -47,5 +47,6 @@ nametrans = lambda folder: {
                             '[Gmail]/Third-party Software': 'third-party-software',
                             }.get(folder, folder)
 
-# cert_fingerprint=deb7e7cb169284cdf59b3dd87f71b0fd6b566df7
-cert_fingerprint=2d3d801997e470c20896c2ebd03ec6b45a538d6d
+# On OS X, if OpenSSL has been installed by homebrew, there's a CA cert at this
+# path: http://stackoverflow.com/a/28274272/1128957
+sslcacertfile = /usr/local/etc/openssl/cert.pem
