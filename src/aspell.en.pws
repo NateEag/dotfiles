@@ -1,4 +1,4 @@
-personal_ws-1.1 en 26 
+personal_ws-1.1 en 27 
 UI
 Eagleson
 jitter
@@ -12,6 +12,7 @@ preprocessor
 TODO
 tstzrange
 JSHint
+Hypotheticals
 customizations
 codebase
 config
