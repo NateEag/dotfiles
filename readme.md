@@ -17,9 +17,10 @@ Usage
 =====
 
 ``src/`` contains the actual dotfiles, named without the preceding dot, so that
-they show up in standard UIs and ls commands.
+they show up in standard UIs and ls commands. I'm beginning to regret that
+decision and may yet change it.
 
-``install.sh`` symlinks everything in src/ to ~/.$filename.
+``install.sh`` symlinks each file or top-level folder in src/ to ~/.$filename.
 
 ``uninstall.sh`` undoes ``install.sh``'s hard work. It might give odd results
 if you have not previously run ``install.sh``.

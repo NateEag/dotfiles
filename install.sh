@@ -35,9 +35,6 @@ if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.$karabine
     cp "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
 fi
 
-# FIXME This does not handle files that belong in a dot directory.
-# I now have two of these in this repo (personal GPG config), so I'll have to fix
-# it next time I install on a new system.
 for filename in $files_to_install;
 do
     # GRIPE This install path logic should be in a function so it's not
