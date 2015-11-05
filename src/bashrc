@@ -60,10 +60,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # }
     # export -f emacs
 
-    # OS X-specific aliases.
-    alias mysqlstart='sudo /opt/local/bin/mysqld_safe5'
-    alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
-
     # Load pyenv into my shell.
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
