@@ -50,21 +50,16 @@ if [[ "$OSTYPE" == "msys" ]]; then
             start_agent
         fi
     fi
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    # Override OS X's built-in Emacs 22 with Emacs.app.
-    #
-    # This has to be a function rather than overriding $PATH so we can pass the
-    # "-nw" flag.
-    # function emacs () {
-    #     /Applications/Emacsen/Emacs.app/Contents/MacOS/Emacs -nw "$@"
-    # }
-    # export -f emacs
-
-    # Load pyenv into my shell.
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
 fi
+
+# Load pyenv into my shell.
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Load nvm into my shell.
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
 
 # Start gpg-agent if it's not running.
 if test -f ~/.gpg-agent-info && \
