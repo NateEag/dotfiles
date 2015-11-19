@@ -15,6 +15,14 @@
 SITES=("http://www.nateeag.com" "http://howicode.nateeag.com")
 DATESTAMP_PATH=~/.check-site-links-last-run
 
+
+# Functions
+notify () {
+    # Use AppleScript to trigger an OS X notification.
+    osascript -e "display notification \"$1\"with title \"$2\""
+}
+
+
 # Format the current date as a number, so we can compare it to the last run date
 # with -ne.
 NOW=$(date +'%Y%m%d')
@@ -42,9 +50,7 @@ for SITE in ${SITES[*]}; do
     linkchecker --check-extern "$SITE" 2> /dev/null
 
     if [ $? -ne 0 ]; then
-        # FIXME Without this echo, growlnotify fails silently. Race condition?
-        echo "Checked $SITE"
-        growlnotify -s -m "$SITE has broken links."
+        notify "$SITE has broken links." "Link Checker"
 
         SITES_OKAY=1
     fi
@@ -55,5 +61,5 @@ echo "$NOW" > "$DATESTAMP_PATH"
 if [ $SITES_OKAY -eq 0 ]; then
     # Explicitly telling us the site looks okay mitigates the risk of silent
     # failure - if we don't get the all clear, we know we need to research.
-    growlnotify -s -m "All sites' links look good."
+    notify "All sites' links look good." "Link Checker"
 fi
