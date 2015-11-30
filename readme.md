@@ -13,6 +13,10 @@ satisfactory. They are implemented with
 
 * A not-very-comprehensive [Slate](https://github.com/jigish/slate) config.
 
+* My personal [Plover](http://stenoknight.com/wiki/Main_Page) dictionary.
+  Note that I am a complete novice with Plover and stenography, so it may
+  contain some poor choices. You have to start somewhere...
+
 Usage
 =====
 
