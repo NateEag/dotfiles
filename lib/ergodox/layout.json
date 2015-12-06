@@ -1,0 +1,349 @@
+{
+  "type": "ergodox_ez",
+  "description": "",
+  "properties": {},
+  "layers": [
+    {
+      "description": "",
+      "properties": {},
+      "keymap": [
+        {
+          "code": "KC_GRAVE",
+          "label": "`"
+        },
+        {
+          "code": "KC_1",
+          "label": "1"
+        },
+        {
+          "code": "KC_2",
+          "label": "2"
+        },
+        {
+          "code": "KC_3",
+          "label": "3"
+        },
+        {
+          "code": "KC_4",
+          "label": "4"
+        },
+        {
+          "code": "KC_5",
+          "label": "5"
+        },
+        {
+          "code": "KC_MINUS",
+          "label": "-"
+        },
+        {
+          "code": "KC_SLASH",
+          "label": "/"
+        },
+        {
+          "code": "KC_Q",
+          "label": "Q"
+        },
+        {
+          "code": "KC_W",
+          "label": "W"
+        },
+        {
+          "code": "KC_E",
+          "label": "E"
+        },
+        {
+          "code": "KC_R",
+          "label": "R"
+        },
+        {
+          "code": "KC_T",
+          "label": "T"
+        },
+        {
+          "code": "KC_TAB",
+          "label": "&#x21e5;"
+        },
+        {
+          "code": "KC_LSHIFT",
+          "label": "&#x21e7;"
+        },
+        {
+          "code": "KC_A",
+          "label": "A"
+        },
+        {
+          "code": "KC_S",
+          "label": "S"
+        },
+        {
+          "code": "KC_D",
+          "label": "D"
+        },
+        {
+          "code": "KC_F",
+          "label": "F"
+        },
+        {
+          "code": "KC_G",
+          "label": "G"
+        },
+        {
+          "code": "KC_LCTRL",
+          "label": "&#x2732;"
+        },
+        {
+          "code": "KC_Z",
+          "label": "Z"
+        },
+        {
+          "code": "KC_X",
+          "label": "X"
+        },
+        {
+          "code": "KC_C",
+          "label": "C"
+        },
+        {
+          "code": "KC_V",
+          "label": "V"
+        },
+        {
+          "code": "KC_B",
+          "label": "B"
+        },
+        {
+          "code": "KC_BSPACE",
+          "label": "&#x232b;"
+        },
+        {
+          "code": "KC_LGUI",
+          "label": "&#x2318;"
+        },
+        {
+          "code": "KC_LALT",
+          "label": "&#x2325;"
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_SPACE",
+          "label": "&#x23b5;"
+        },
+        {
+          "code": "KC_ENTER",
+          "label": "&#x23ce;"
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_KP_EQUAL",
+          "label": "="
+        },
+        {
+          "code": "KC_6",
+          "label": "6"
+        },
+        {
+          "code": "KC_7",
+          "label": "7"
+        },
+        {
+          "code": "KC_8",
+          "label": "8"
+        },
+        {
+          "code": "KC_9",
+          "label": "9"
+        },
+        {
+          "code": "KC_0",
+          "label": "0"
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TAB",
+          "label": "&#x21e5;"
+        },
+        {
+          "code": "KC_Y",
+          "label": "Y"
+        },
+        {
+          "code": "KC_U",
+          "label": "U"
+        },
+        {
+          "code": "KC_I",
+          "label": "I"
+        },
+        {
+          "code": "KC_O",
+          "label": "O"
+        },
+        {
+          "code": "KC_P",
+          "label": "P"
+        },
+        {
+          "code": "KC_BSLASH",
+          "label": "\\"
+        },
+        {
+          "code": "KC_H",
+          "label": "H"
+        },
+        {
+          "code": "KC_J",
+          "label": "J"
+        },
+        {
+          "code": "KC_K",
+          "label": "K"
+        },
+        {
+          "code": "KC_L",
+          "label": "L"
+        },
+        {
+          "code": "KC_SCOLON",
+          "label": ";"
+        },
+        {
+          "code": "KC_LSHIFT",
+          "label": "&#x21e7;"
+        },
+        {
+          "code": "KC_BSPACE",
+          "label": "&#x232b;"
+        },
+        {
+          "code": "KC_N",
+          "label": "N"
+        },
+        {
+          "code": "KC_M",
+          "label": "M"
+        },
+        {
+          "code": "KC_COMMA",
+          "label": ","
+        },
+        {
+          "code": "KC_DOT",
+          "label": "."
+        },
+        {
+          "code": "KC_QUOTE",
+          "label": "'"
+        },
+        {
+          "code": "KC_LCTRL",
+          "label": "&#x2732;"
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_LALT",
+          "label": "&#x2325;"
+        },
+        {
+          "code": "KC_LGUI",
+          "label": "&#x2318;"
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_ENTER",
+          "label": "&#x23ce;"
+        },
+        {
+          "code": "KC_SPACE",
+          "label": "&#x23b5;"
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        },
+        {
+          "code": "KC_TRANSPARENT",
+          "label": ""
+        }
+      ]
+    }
+  ]
+}
