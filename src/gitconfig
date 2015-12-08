@@ -68,3 +68,10 @@
 	smtpServer = smtp.gmail.com
 	smtpUser = nate4d@gmail.com
 	smtpServerPort = 587
+
+# Note to self: sometimes you know you'll be working with multiple repositories
+# over HTTPS, and the server's cert is self-signed. Rather than telling git "don't
+# verify SSL connections", or "use this cert for this repo" repeatedly, copy your
+# machine's global cert bundle to some private location, and add each cert you
+# want to trust to that file. Then, set http.sslCAInfo to point to that file.
+# That way, you'll be warned in event of man-in-the-middle attacks in future.
