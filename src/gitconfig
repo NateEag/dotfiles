@@ -49,6 +49,9 @@
     # Useful for working gitflow-style.
     strict-merge = merge --no-commit --no-ff
 
+	# Remind myself what files I have explicitly ignored...
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
+
     # Find duplicate files. I had to tweak it for OS X because of non-portable
     # options to uniq, so it's not quite as slick as the original was. It used
     # to output all duplicate objects in the current and the path to them.
