@@ -25,6 +25,9 @@
 [color]
 	ui = true
 
+[fetch]
+	prune = true
+
 [alias]
     # Handy aliases for subtree merges, based on Pro Git's commentary.
     # Add a remote for the project you're pulling in, add a branch that tracks
