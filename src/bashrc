@@ -174,15 +174,15 @@ classpath () {
 
 # Environment variables.
 
-PATH=/Applications/LilyPond.app/Contents/Resources/bin:$PATH
+PATH=~/Applications/LilyPond.app/Contents/Resources/bin:$PATH
 PATH=/usr/local/bin:/usr/local/git/bin:~/bin/cron:$PATH
 PATH=~/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
 
 # Add Emacs 24 commands to my path, so that emacsclient works right on OS X.
-PATH=/Applications/Emacsen/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
-PATH=/Applications/Emacsen/Emacs.app/Contents/MacOS:$PATH
+PATH=/Applications/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
+PATH=/Applications/Emacs.app/Contents/MacOS:$PATH
 
 # Set EMACS var for cask.
 EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
