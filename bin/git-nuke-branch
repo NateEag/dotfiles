@@ -1,16 +1,20 @@
 #! /bin/bash
 
-# Simple script to delete a branch locally and remotely.
+# Delete a local branch and whatever remote branch it tracks.
 
 if [[ $# -lt 1 ]]; then
-    echo 'Usage: git nuke-branch <branch> [<remote>]'
+    echo 'Usage: git nuke-branch <branch>'
 
     exit 2
 fi
 
-upstream=origin
-if [[ $# -gt 1 ]]; then
-    upstream="$2"
+remote=$(git config branch."$1".remote)
+
+upstream=$(git config branch."$1".merge)
+upstream="${upstream#refs/heads/}"
+
+if [ -n "$upstream" ]; then
+    git push "$remote" :"$upstream" || exit 1
 fi
 
-git branch -D "$1" && git push "$upstream" :"$1"
+git branch -D "$1"
