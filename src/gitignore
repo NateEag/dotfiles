@@ -14,6 +14,7 @@
 .#*
 \#*#
 TAGS
+.projectile
 
 # Tern is an awesome tool, but don't include its turdfiles in version control.
 .tern-project
