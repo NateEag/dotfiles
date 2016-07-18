@@ -1,4 +1,4 @@
-personal_ws-1.1 en 29 
+personal_ws-1.1 en 30 
 UI
 Eagleson
 JS
@@ -21,6 +21,7 @@ screenreaders
 virtualenv
 DOM
 CSS
+transpile
 se
 nullable
 README
