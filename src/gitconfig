@@ -46,6 +46,12 @@
     branchdiff = !sh -c \"git diff `git oldest-ancestor`..\"
     branchlog = !sh -c \"git log `git oldest-ancestor`..\"
 
+    # Sometimes you want to get *only* the branch you're currently on.
+    # Mostly useful for things like copying to clipboard, e.g.:
+    #
+    #     git current-branch | clip
+    current-branch = symbolic-ref HEAD --short
+
     # Pretty command-line history.
     graph-log = log --graph --pretty=oneline --decorate --abbrev-commit
 
