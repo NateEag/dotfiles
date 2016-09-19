@@ -9,7 +9,7 @@ source $dotfiles_dir/lib/functions.sh
 dotfiles_dir=$(abspath $dotfiles_dir)
 
 src_dir="$dotfiles_dir/src/"
-files_to_install=$(ls $src_dir)
+files_to_install=$(ls -a $src_dir)
 if [[ $# -gt 0 ]]; then
     files_to_install="$@"
 fi
@@ -37,10 +37,13 @@ fi
 
 for filename in $files_to_install;
 do
-    # GRIPE This install path logic should be in a function so it's not
-    # duplicated between install.sh/uninstall.sh.
-    target_path="$HOME/.$filename"
-    if [ "$filename" = "gitconfig" ]; then
+    target_path="$HOME/$filename"
+
+    if [ "$filename" == "." ] || [ "$filename" == ".." ]; then
+	continue
+    fi
+
+    if [ "$filename" = ".gitconfig" ]; then
         # Install gitconfig to secondary git config path, so ~/.gitconfig can
         # be used to override settings per-machine. This is handy for
         # working on an employer's machine, so you can default repos to your
@@ -50,7 +53,7 @@ do
     fi
 
     if [ -e "$target_path" ]; then
-        echo "$HOME/.$filename already exists. Not overwriting." >&2
+        echo "$target_path already exists. Not overwriting." >&2
     else
         target_dir=$(dirname "$target_path")
         mkdir -p "$target_dir"

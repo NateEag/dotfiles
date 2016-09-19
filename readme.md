@@ -20,9 +20,7 @@ satisfactory. They are implemented with
 Usage
 =====
 
-``src/`` contains the actual dotfiles, named without the preceding dot, so that
-they show up in standard UIs and ls commands. I'm beginning to regret that
-decision and may yet change it.
+``src/`` contains the actual dotfiles.
 
 ``install.sh`` symlinks each file or top-level folder in src/ to ~/.$filename.
 
