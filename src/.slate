@@ -43,6 +43,11 @@ bind j:${hyper} corner top-right
 bind k:${hyper} corner bottom-left
 bind l:${hyper} corner bottom-right
 
+# Make current window half the monitor size, Useful for side-by-siding windows.
+# 'divide' is a bad mnemonic, but watcha gonna do?
+# ...besides call Ghostbusters.
+bind d:${hyper} move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+
 bind f:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
 # Cycle windows between screens.
