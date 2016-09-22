@@ -179,6 +179,7 @@ PATH=/usr/local/bin:/usr/local/git/bin:~/bin/cron:$PATH
 PATH=~/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
+PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 # Add Emacs 24 commands to my path, so that emacsclient works right on OS X.
 PATH=/Applications/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
