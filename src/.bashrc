@@ -52,15 +52,6 @@ if [[ "$OSTYPE" == "msys" ]]; then
     fi
 fi
 
-# Load pyenv into my shell.
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# Load nvm into my shell.
-export NVM_DIR=~/.nvm
-source ~/.nvm/nvm.sh
-
 # Start gpg-agent if it's not running.
 if test -f ~/.gpg-agent-info && \
     kill -0 $(cut -d: -f 2 ~/.gpg-agent-info) 2>/dev/null; then
@@ -222,3 +213,19 @@ export SVN_EDITOR
 
 VISUAL=$EDITOR
 export VISUAL
+
+## Shell extensions.
+
+# Load pyenv into my shell.
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Load nvm into my shell.
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
+
+# Load direnv, if available.
+if [ $(command -v direnv) ]; then
+    eval "$(direnv hook bash)"
+fi
