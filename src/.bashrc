@@ -214,6 +214,18 @@ export SVN_EDITOR
 VISUAL=$EDITOR
 export VISUAL
 
+# Customizations that require [Homebrew](http://brew.sh) to be installed.
+if command -v brew > /dev/null ; then
+    # If available, use Homebrew's SSL cert file. This works around various
+    # issues with SSL in the OS X command line:
+    #
+    # http://stackoverflow.com/questions/24675167/ca-certificates-mac-os-x
+    INSTALLED_SSL_CERT_PATH=$(brew --prefix)/etc/openssl/cert.pem 2> /dev/null
+    if [ -e "$INSTALLED_SSL_CERT_PATH" ]; then
+        export SSL_CERT_FILE="$INSTALLED_SSL_CERT_PATH"
+    fi
+fi
+
 ## Shell extensions.
 
 # Load pyenv into my shell.
