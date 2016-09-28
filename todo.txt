@@ -1,3 +1,10 @@
-2013-06-26 Tweak my bash history setup based on this post: http://www.talug.org/events/20030709/cmdline_history.html
+2016-09-28 Install python binaries with a single script that uses pyenv to
+install the required python version, then creates a distinct virtualenv for
+each pypy package, then symlinks all binaries from a gitignored directory in my
+dotfiles. That should solve the stupid error message I'm getting by not having
+the command on PATH at all unless it's installed.
+
+2013-06-26 Tweak my bash history setup based on this post:
+http://www.talug.org/events/20030709/cmdline_history.html
 
 2013-06-26 Figure out how to make git grep colorize output when being routed through a terminal.
