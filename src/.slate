@@ -1,5 +1,8 @@
 # My personal [Slate](https://github.com/jigish/slate) config.
 
+# Note - I'm also trying out Flycut, bound to a shortcut in my Slate
+# 'namespace', if you will - Control-Shift-v. We'll see how it works.
+
 # Not sure what this does. Someone recommended it.
 config defaultToCurrentScreen true
 
