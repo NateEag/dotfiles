@@ -37,7 +37,7 @@ if [ $NOW -le $LAST_RUN ]; then
 fi
 
 # Load my personal PATH and similar settings, since launchd doesn't include them.
-. /Users/nate/.bashrc
+. ~/.bashrc
 
 /sbin/ping -c 1 ${SITES[0]:7}
 if [ $? -ne 0 ]; then
