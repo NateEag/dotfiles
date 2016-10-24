@@ -233,6 +233,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# Load Pipsi into my shell.
+export PATH="$HOME/.local/bin:$PATH"
+
 # Load nvm into my shell.
 export NVM_DIR=~/.nvm
 source ~/.nvm/nvm.sh

@@ -1,7 +1,0 @@
-#! /bin/bash
-
-# Simple wrapper to run proselint command in lib/ directory.
-#
-# Exists only to keep my exec-path simpler.
-project_dir=$(dirname $(dirname "$0"))
-"$project_dir/lib/proselint/bin/proselint" "$@"
