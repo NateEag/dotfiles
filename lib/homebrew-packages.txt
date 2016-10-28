@@ -1,6 +1,7 @@
 aspell
 cmark
 direnv
+editorconfig
 freetype
 ghostscript
 git
