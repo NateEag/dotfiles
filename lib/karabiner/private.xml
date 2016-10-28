@@ -10,24 +10,32 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         <name>Nate E.'s Personal Keybindings</name>
     </item>
 
+    <!-- MacBook Pro internal keyboard bindings.
 
-    <!-- MacBook Pro internal keyboard bindings. -->
+         Note the use of device_only throughout to preserve normal behavior for
+         external keyboards.
+    -->
 
     <!--
         Since I'm used to the [Truly Ergonomic](https://www.trulyergonomic.com)
         layout, I like to have Shift on the home row.
 
-        I use this in conjunction with Seil (nee PCKeyboardHack) to remap Caps
-        Lock to Shift.
+        I use this in conjunction with Seil (nee PCKeyboardHack) to remap the
+        internal Caps Lock to Shift.
     -->
     <item>
       <name>Return to Shift_R</name>
       <appendix>(+ When you type Return only, send Return)</appendix>
       <identifier>private.return2shiftR_return</identifier>
+      <device_only>
+          DeviceVendor::APPLE_INC,
+          DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+      </device_only>
+
       <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
     </item>
 
-    <!-- Since I use Seil to remap Caps Lock to Shift_L, Karabiner can't
+    <!-- Since I use Seil to remap Caps Lock to F19, Karabiner can't
          distinguish between the physical Caps Lock and Shift keys.
 
          To remap my physical left Shift key to Control, I have Seil turn it
@@ -36,7 +44,15 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
     <item>
       <name>F19 to Control_L</name>
       <identifier>private.F19TocontrolL</identifier>
-      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CONTROL_L</autogen>
+      <block>
+          <device_only>
+              DeviceVendor::APPLE_INC,
+              DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+          </device_only>
+
+          <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CONTROL_L</autogen> </block>
+
+      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CAPSLOCK</autogen>
     </item>
 
     <!-- As a consequence, when a normal is using my machine, I have to map the
@@ -46,13 +62,37 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
     <item>
       <name>F19 to Shift_L</name>
       <identifier>private.F19ToshiftL</identifier>
-      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::SHIFT_L</autogen>
+      <block>
+          <device_only>
+              DeviceVendor::APPLE_INC,
+              DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+          </device_only>
+          <autogen>__KeyToKey__ KeyCode::F19, KeyCode::SHIFT_L</autogen>
+      </block>
+
+      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CAPSLOCK</autogen>
     </item>
 
     <item>
       <name>Shift_R to Control_R</name>
       <identifier>private.shiftR2controlR</identifier>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CONTROL_R</autogen>
+      <device_only>
+          DeviceVendor::APPLE_INC,
+          DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+      </device_only>
+    </item>
+
+    <!-- Shift_L to Control_L is built-in, but I need it to apply only to
+         Apple's internal keyboard, so a custom rule it is. -->
+    <item>
+      <name>Shift_L to Control_L</name>
+      <identifier>private.shiftL2controlL</identifier>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
+      <device_only>
+          DeviceVendor::APPLE_INC,
+          DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+      </device_only>
     </item>
 
 
