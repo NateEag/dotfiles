@@ -1,0 +1,41 @@
+#! /bin/bash
+
+# A thin wrapper around the brew command.
+#
+# It has one (primary) purpose, to record interactive installs/uninstalls of
+# packages.
+#
+# This way, I don't have to remember to track what I've installed myself.
+#
+# As far as I've found, Homebrew has no built-in hooks to support this:
+#
+# https://github.com/Homebrew/legacy-homebrew/issues/24907
+#
+# and yes, I know that's the old repo, but I saw nothing about it in the
+# current one.
+
+set -e
+
+command=''
+for arg in "$@"; do
+    if [[ "$arg" != "--"* ]]; then
+        command="$arg"
+
+        break;
+    fi
+done
+
+# I have set SSL_CERT_FILE to point at the one installed by homebrew in my
+# .bashrc to work around SSL cert validation problems at $DAYJOB.
+#
+# Oddly enough, that causes homebrew to fail on SSL cert validation, so this
+# wrapper script is a convenient place to work around it.
+unset SSL_CERT_FILE
+
+# Pass the actual work off to homebrew.
+brew "$@"
+
+# Update the list of installed packages if necessary.
+if [ "$command" = 'install' ] || [ "$command" = 'uninstall' ]; then
+    brew leaves > ~/dotfiles/lib/homebrew-packages.txt
+fi

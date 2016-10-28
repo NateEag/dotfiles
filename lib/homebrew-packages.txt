@@ -1,0 +1,15 @@
+aspell
+cmark
+direnv
+freetype
+ghostscript
+git
+gpg-agent
+httpie
+libtool
+pyenv
+python3
+shellcheck
+terminal-notifier
+the_silver_searcher
+xmlstarlet
