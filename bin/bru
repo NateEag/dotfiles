@@ -25,8 +25,8 @@ for arg in "$@"; do
     fi
 done
 
-# I have set SSL_CERT_FILE to point at the one installed by homebrew in my
-# .bashrc to work around SSL cert validation problems at $DAYJOB.
+# In my .bashrc I have set SSL_CERT_FILE to point at the one installed by
+# homebrew to work around SSL cert validation problems at $DAYJOB.
 #
 # Oddly enough, that causes homebrew to fail on SSL cert validation, so this
 # wrapper script is a convenient place to work around it.
