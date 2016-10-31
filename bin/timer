@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# Simple wrapper around notification commands and sleep to send messages after
+# a set amount of time has passed.
+
+sleep "$1" && terminal-notifier -message "$2" -title "Time's up"
