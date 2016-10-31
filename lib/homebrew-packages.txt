@@ -13,4 +13,5 @@ python3
 shellcheck
 terminal-notifier
 the_silver_searcher
+unar
 xmlstarlet
