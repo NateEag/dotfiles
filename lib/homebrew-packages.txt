@@ -1,5 +1,7 @@
 aspell
+osx-cross/avr/avr-libc
 cmark
+dfu-programmer
 direnv
 editorconfig
 freetype

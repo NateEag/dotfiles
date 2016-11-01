@@ -13,6 +13,10 @@
 #
 # and yes, I know that's the old repo, but I saw nothing about it in the
 # current one.
+#
+# Note that it seems to remember packages installed via taps. I'm not sure, but
+# it looks like a package's tap name might be 'beginning of string through last
+# /'.
 
 set -e
 
