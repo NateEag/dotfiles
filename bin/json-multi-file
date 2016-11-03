@@ -1,14 +1,12 @@
 #! /bin/bash
 
-# TODO Figure out how to pass everything but file paths on to the JSON command.
+# TODO Figure out how to pass everything but file paths on to the json command.
 #
 # Since this is just a quick one-off, I doubt that will ever happen.
 
 if [ $# -lt 2 ]; then
     script_name=$(basename "$0")
-    echo 'Print value of JSON path in files to stdout.'
-    echo
-    echo 'Prints the results to standard output.'
+    echo 'Print value of JSON path in multiple files to stdout.'
     echo
     echo 'Mainly useful for piping the results through sort | uniq to see '
     echo 'how many different values there are.'
