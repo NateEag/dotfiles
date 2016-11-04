@@ -110,7 +110,7 @@ layout CinemaDisplay 'Terminal' corner bottom-left
 bind 1:${hyper} layout CinemaDisplay
 
 layout MacBookPro 'Emacs' corner top-left
-layout MacBookPro 'Google Chrome' corner top-right resize:675;878
+layout MacBookPro 'Google Chrome' corner top-right resize:842;878
 layout MacBookPro 'Slack' corner bottom-right resize:773;398
 layout MacBookPro 'Terminal' corner bottom-left
 
