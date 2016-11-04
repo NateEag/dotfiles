@@ -9,6 +9,7 @@ ghostscript
 git
 gpg-agent
 httpie
+jq
 libtool
 pyenv
 python3
