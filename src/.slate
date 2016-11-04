@@ -31,6 +31,7 @@ bind r:${hyper} relaunch
 
 # App keybindings.
 bind e:${hyper} focus 'Emacs'
+bind c:${hyper} focus 'Calendar'
 bind t:${hyper} focus 'Terminal'
 bind b:${hyper} focus 'Google Chrome'
 # TODO Pick up which IM program is running intelligently.
