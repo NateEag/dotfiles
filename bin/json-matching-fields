@@ -1,0 +1,27 @@
+#! /bin/bash
+
+if [ "$#" -lt 2 ]; then
+    script_name=$(basename "$0")
+
+    echo "Print keys for the object at <json_path> in a set of JSON files that "
+    echo "share the same value."
+    echo
+    echo "It is slow and buggy (e.g. it does not compare objects correctly), but"
+    echo "it worked okay for my immediate needs, which was finding config items"
+    echo "that were likely unnecessary."
+    echo
+    echo "Usage: $script_name <json_path> <files>..."
+
+    exit 2
+fi
+
+
+while read -r key; do
+    values=$(json-multi-file "$1.$key" "${@:2}")
+
+    num_unique_values=$(echo "$values" | sort | uniq | wc -l)
+
+    if [ "$num_unique_values" -lt 2 ]; then
+        echo "$key"
+    fi
+done <<< "$(json-keys-at-path "$1" "$2")"

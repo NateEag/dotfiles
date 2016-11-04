@@ -1,0 +1,14 @@
+#! /bin/bash
+
+if [ "$#" -lt 2 ]; then
+    script_name=$(basename "$0")
+
+    echo "Usage: $script_name <path> <file>"
+    echo
+    echo 'Print keys for JSON object at <path> from <file>, one per line.'
+
+    exit 2
+fi
+
+
+jq -r ".$1 | keys[]" "$2"
