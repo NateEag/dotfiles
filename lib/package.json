@@ -11,6 +11,7 @@
     "iectrl": "*",
     "jshint": "2.5.2",
     "json": "^9.0.4",
+    "json-diff": "^0.3.1",
     "jsonlint": "^1.6.2",
     "tern": "0.15.0",
     "tern-lint": "^0.5.0"
