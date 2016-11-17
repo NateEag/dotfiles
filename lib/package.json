@@ -4,6 +4,7 @@
   "dependencies": {
     "coffee-script": "1.8.0",
     "coffeelint": "1.6.0",
+    "cordova-plugins-tern-condense": "git+https://github.com/albertinad/cordova-plugins-tern-condense.git",
     "csslint": "0.10.0",
     "eslint": "*",
     "eslint-plugin-promise": "^1.1.0",
