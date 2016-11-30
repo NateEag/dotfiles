@@ -1,5 +1,6 @@
 aspell
 osx-cross/avr/avr-libc
+bash-completion
 cmark
 dfu-programmer
 direnv

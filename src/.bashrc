@@ -224,6 +224,10 @@ if command -v brew > /dev/null ; then
     if [ -e "$INSTALLED_SSL_CERT_PATH" ]; then
         export SSL_CERT_FILE="$INSTALLED_SSL_CERT_PATH"
     fi
+
+    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+        source $(brew --prefix)/etc/bash_completion
+    fi
 fi
 
 ## Shell extensions.
