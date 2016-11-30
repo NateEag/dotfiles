@@ -192,9 +192,16 @@ PATH="$dotfiles_path/bin:$PATH"
 
 export PATH
 
-# I use Emacs. To minimize the pain of my several-second boot, I use it in server
-# mode when feasible. Sadly, Emacs isn't available everywhere, so I have a few
-# backup options listed.
+# Use CDPATH to get a poor man's 'named directories' from zsh.
+#
+# Just symlink the folders you want to jump to from ~/cdpaths.
+#
+# ...I should probably just cave in and move to zsh.
+export CDPATH=~/cdpaths
+
+# I use Emacs. To minimize the pain of my several-second boot, I use it in
+# server mode when feasible. Sadly, Emacs isn't available everywhere, so I
+# have a few backup options listed.
 declare -a EDITORS=("emacsclient" "emacs" "vim" "vi")
 for editor in "${EDITORS[@]}"; do
     editor_path=$(which $editor 2> /dev/null)
