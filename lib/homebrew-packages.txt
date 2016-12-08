@@ -10,6 +10,7 @@ ghostscript
 git
 gpg-agent
 httpie
+imagemagick
 jq
 ledger
 libtool
