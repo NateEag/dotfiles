@@ -1,0 +1,5 @@
+# Mount my personal FAT32 thumbdrive with permissions just for me on OS X, so
+# SSH can safely read keys from it, per this article:
+#
+# https://glyph.twistedmatrix.com/2009/02/using-ssh-keys-on-usb-drive-on-macos-x.html
+LABEL=AYMAIRN none msdos -u=135286569,-m=700
