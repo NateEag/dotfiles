@@ -22,6 +22,14 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
 
         I use this in conjunction with Seil (nee PCKeyboardHack) to remap the
         internal Caps Lock to Shift.
+
+NOTE WELL: different Apple laptops have different internal keyboard
+identifiers. Update them accordingly when setting up a new machine. My personal
+17" MacBook Pro, for instance, uses APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236.
+
+A list of the pre-existing codes can be found at:
+
+https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/core/server/Resources/deviceproductdef.xml
     -->
     <item>
       <name>Return to Shift_R</name>
