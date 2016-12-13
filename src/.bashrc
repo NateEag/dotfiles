@@ -255,3 +255,8 @@ source ~/.nvm/nvm.sh
 if [ $(command -v direnv) ]; then
     eval "$(direnv hook bash)"
 fi
+
+# Load any machine-specific customizations.
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
