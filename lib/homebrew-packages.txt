@@ -6,6 +6,7 @@ dfu-programmer
 direnv
 editorconfig
 freetype
+fswatch
 ghostscript
 git
 gpg-agent
