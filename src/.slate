@@ -34,6 +34,7 @@ bind e:${hyper} focus 'Emacs'
 bind c:${hyper} focus 'Calendar'
 bind t:${hyper} focus 'Terminal'
 bind b:${hyper} focus 'Google Chrome'
+bind f:${hyper} focus 'Finder'
 # TODO Pick up which IM program is running intelligently.
 bind i:${hyper} focus 'Adium'
 bind m:${hyper} focus 'Mail'
@@ -52,7 +53,9 @@ bind l:${hyper} corner bottom-right
 # ...besides call Ghostbusters.
 bind d:${hyper} move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 
-bind f:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
+# I use fullscreen windows a lot less than I swap to Finder. Therefore,
+# commenting this out for the time being.
+#bind f:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
 # Cycle windows between screens.
 bind o:${hyper} throw next
