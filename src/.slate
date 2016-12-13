@@ -36,7 +36,7 @@ bind t:${hyper} focus 'Terminal'
 bind b:${hyper} focus 'Google Chrome'
 bind f:${hyper} focus 'Finder'
 # TODO Pick up which IM program is running intelligently.
-bind i:${hyper} focus 'Adium'
+bind i:${hyper} focus 'Slack'
 bind m:${hyper} focus 'Mail'
 # Not a mnemonic, but I needed something.
 bind y:${hyper} focus 'Pandora'
