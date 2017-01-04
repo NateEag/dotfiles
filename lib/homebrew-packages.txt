@@ -8,6 +8,7 @@ editorconfig
 freetype
 fswatch
 ghostscript
+gifsicle
 git
 gpg-agent
 httpie
