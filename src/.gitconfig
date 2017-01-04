@@ -68,6 +68,9 @@
 	# !"git ls-tree -r HEAD | cut -c 13- | sort | uniq -D -w 40"
     duplicate-objects = !"git ls-tree -r HEAD | cut -c 13- | cut -c 1-40 | uniq -d"
 
+	# List the branches that haven't gone anywhere else.
+	unpushed-branches = log --branches --not --remotes --simplify-by-decoration --decorate --oneline
+
     # Some aliases for amending commits.
     amend = commit --amend --no-edit -a
     reword = commit --amend
