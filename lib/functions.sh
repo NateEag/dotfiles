@@ -13,3 +13,10 @@ function abspath () {
 }
 
 export -f abspath
+
+# Adapted from http://stackoverflow.com/a/449890/1128957.
+function rand-line () {
+    head -$((RANDOM % `wc -l < "$1"` + 1)) "$1" | tail -1
+}
+
+export -f rand-line
