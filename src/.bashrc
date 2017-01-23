@@ -168,6 +168,7 @@ classpath () {
 PATH=~/Applications/LilyPond.app/Contents/Resources/bin:$PATH
 PATH=/usr/local/bin:/usr/local/git/bin:~/bin/cron:$PATH
 PATH=~/bin:$PATH
+PATH=~/the_silver_searcher:$PATH
 PATH=~/finances/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
