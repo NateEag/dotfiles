@@ -21,8 +21,8 @@ ledger
 nginx
 notmuch
 offlineimap
-postgresql
 pass
+postgresql
 pyenv
 python3
 sdcv
