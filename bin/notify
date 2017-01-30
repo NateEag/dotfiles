@@ -1,0 +1,19 @@
+#! /bin/bash
+
+# Command to abstract sending a graphical notification message from the terminal.
+#
+# I always forget the syntax for doing this, so I'm introducing this tiny
+# command.
+#
+# As time passes I expect I'll wind up expanding this to work on platforms
+# besides OS X.
+#
+# I mostly use it when I'm running a slow process in an interactive terminal
+# and want to be notified when it's done.
+
+title='Notification'
+if [ -n "$2" ]; then
+    title="$2"
+fi
+
+terminal-notifier -message "$1" -title "$title"
