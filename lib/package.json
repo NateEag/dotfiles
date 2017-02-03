@@ -16,7 +16,8 @@
     "jsonlint": "^1.6.2",
     "tern": "0.20.0",
     "tern-cordovajs": "^0.1.0",
-    "tern-lint": "^0.5.0"
+    "tern-lint": "^0.5.0",
+    "typescript": "^2.1.5"
   },
   "devDependencies": {
     "eslint": "^2.10.2",
