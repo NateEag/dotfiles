@@ -173,6 +173,7 @@ PATH=~/finances/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
 PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+PATH="$HOME/icsv2ledger:$PATH"
 
 # Add Emacs 24 commands to my path, so that emacsclient works right on OS X.
 PATH=/Applications/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
