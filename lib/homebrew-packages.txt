@@ -4,6 +4,7 @@ osx-cross/avr/avr-libc
 bash-completion
 bats
 cmark
+coreutils
 dfu-programmer
 direnv
 editorconfig
@@ -19,6 +20,7 @@ imagesnap
 jq
 ledger
 nginx
+nmap
 notmuch
 offlineimap
 pass
