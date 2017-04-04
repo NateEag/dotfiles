@@ -173,6 +173,7 @@ PATH=~/finances/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
 PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # Set up for building Chrome.
 PATH="$HOME/chromium-build/depot_tools:$PATH"
