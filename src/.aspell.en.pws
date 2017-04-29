@@ -1,8 +1,9 @@
-personal_ws-1.1 en 33 
+personal_ws-1.1 en 35 
 website
 UI
 Eagleson
 JS
+iOS
 jitter
 env
 Linode
@@ -27,6 +28,7 @@ transpile
 se
 nullable
 README
+CLI
 prepended
 scss
 homeschool

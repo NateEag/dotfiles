@@ -17,6 +17,9 @@
 # It would also be nice if this auto-updated the .tern-project file to have the
 # full list of currently-installed plugins. some cleverness with the json
 # command could probably do that...
+#
+# TODO Rewrite this as a Node program and submit it to upstream.
+# It would be more portable, more readable, and longer as a node program.
 
 
 plugin_names=$(cordova plugins list | cut -d' ' -f1)
@@ -24,9 +27,6 @@ plugin_names=$(cordova plugins list | cut -d' ' -f1)
 script_path=$(dirname "$0")
 node_modules_path="$script_path/../lib/node_modules"
 
-# TODO Find a way to dump all of this into one file.
-#
-# Either that or find a way to make tern load a bunch of files implicitly.
 libs_json_arr=""
 for plugin_name in $plugin_names; do
     "$node_modules_path/tern/bin/condense" \
@@ -37,7 +37,7 @@ for plugin_name in $plugin_names; do
         libs_json_arr="$libs_json_arr,"
     fi
 
-    libs_json_arr="$libs_json_arr\"$plugin_name\""
+    libs_json_arr="$libs_json_arr\".tern-defs/$plugin_name\""
 done
 
 # A JSON string for a .tern-project file that does nothing but load all the

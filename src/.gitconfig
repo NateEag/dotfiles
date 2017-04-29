@@ -25,6 +25,7 @@
 
 [diff]
     algorithm = patience
+	compactionHeuristic = true
 
 [color]
 	ui = true

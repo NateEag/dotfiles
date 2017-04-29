@@ -7,16 +7,12 @@
 # Echo the absolute path to $1. Capture output to a variable by subshelling:
 # foo_abs_path=$(abspath $foo_rel_path)
 # This one's all over the place - just know I didn't write it.
-function abspath () {
+abspath () {
   # $1 : relative filename
   echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
 }
 
-export -f abspath
-
 # Adapted from http://stackoverflow.com/a/449890/1128957.
-function rand-line () {
+rand-line () {
     head -$((RANDOM % `wc -l < "$1"` + 1)) "$1" | tail -1
 }
-
-export -f rand-line
