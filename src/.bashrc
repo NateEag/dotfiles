@@ -228,6 +228,14 @@ export SVN_EDITOR
 VISUAL=$EDITOR
 export VISUAL
 
+# Uncomment the following (and its sibling at file bottom) to profile .bashrc.
+#
+# When things start slowing down, NVM and bash completion are my big killers.
+#
+# PS4='+ $(gdate "+%s.%N")\011 '
+# exec 3>&2 2>/tmp/bashstart.$$.log
+# set -x
+
 # Customizations that require [Homebrew](http://brew.sh) to be installed.
 if command -v brew > /dev/null ; then
     # If available, use Homebrew's SSL cert file. This works around various
@@ -267,3 +275,8 @@ fi
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
+
+# Uncomment the following (along with the preamble at top) to profile .bashrc.
+#
+# set +x
+# exec 2>&3 3>&-
