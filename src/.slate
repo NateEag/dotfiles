@@ -38,8 +38,11 @@ bind f:${hyper} focus 'Finder'
 # TODO Pick up which IM program is running intelligently.
 bind i:${hyper} focus 'Slack'
 bind m:${hyper} focus 'Mail'
-# Not a mnemonic, but I needed something.
-bind y:${hyper} focus 'Pandora'
+# I'm currently using YakYak as a Google Hangouts desktop client, because Adium
+# does not work with Google Hangouts, and the official "native app" for
+# Hangouts is a stupid Chrome app, which means it just gets lumped in with my
+# other Chrome tabs, where I absolutely don't want it.
+bind y:${hyper} focus 'YakYak'
 
 
 # Window movement keys.
