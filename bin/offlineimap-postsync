@@ -8,6 +8,7 @@ notmuch new
 notmuch tag -inbox +learn-tech from:kale@hackernewsletter.com
 notmuch tag -inbox +learn-tech from:weekly@changelog.com
 notmuch tag -inbox +learn-tech subject:"GitHub explore the month of"
+notmuch tag -inbox +learn-tech subject:"[learn-tech]"
 
 # Tag third-party software notifications as such, and skip the inbox.
 
@@ -18,3 +19,13 @@ notmuch tag -inbox +third-party-software subject:"[Eastgate]"
 # Supposed to get all github notifications that weren't sent directly to
 # me via one of my repos. Really not sure it's right.
 notmuch tag -inbox +third-party-software from:notifications@github.com -to:nateeag
+
+# Tag receipts as, well... receipts.
+notmuch tag -inbox +receipts from:HomeDepotReceipt@homedepot.com
+notmuch tag -inbox +receipts from:no-reply@toasttab.com
+notmuch tag -inbox +receipts from:ATMReceipts@pnc.com
+
+# Financial statements.
+notmuch tag +financial-statements from:PNCBank_Statements@pnc.com
+notmuch tag +financial-statements from:billpay@billpay.bankofamerica.com
+notmuch tag +financial-statements from:servicecenter@rch1.com
