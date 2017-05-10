@@ -8,14 +8,15 @@ notmuch new
 notmuch tag -inbox +learn-tech from:kale@hackernewsletter.com
 notmuch tag -inbox +learn-tech from:weekly@changelog.com
 notmuch tag -inbox +learn-tech subject:"GitHub explore the month of"
-notmuch tag -inbox +learn-tech subject:"[learn-tech]"
+notmuch tag -inbox +learn-tech subject:"\"[learn-tech]\""
+notmuch tag -inbox +learn-tech subject:"\"[learn tech]\""
 
 # Tag third-party software notifications as such, and skip the inbox.
 
 notmuch tag -inbox +third-party-software to:notmuch@notmuchmail.org
 notmuch tag -inbox +third-party-software to:info-gnu-emacs@gnu.org
 notmuch tag -inbox +third-party-software from:webc-users@googlegroups.com
-notmuch tag -inbox +third-party-software subject:"[Eastgate]"
+notmuch tag -inbox +third-party-software subject:"\"[Eastgate]\""
 # Supposed to get all github notifications that weren't sent directly to
 # me via one of my repos. Really not sure it's right.
 notmuch tag -inbox +third-party-software from:notifications@github.com -to:nateeag
@@ -44,9 +45,14 @@ notmuch tag -inbox +calendar-events from:newsletters@worldcafelive.com
 notmuch tag -inbox +calendar-events from:jtams@ptd.net
 
 # Note media recommendations I send to myself.
-notmuch tag -inbox +media subject:"[media]"
+notmuch tag -inbox +media subject:"\"[media]\""
+
+# It may be useful to have a good corpus of spam, come the day I eventually
+# stop using gmail as my backend...
+notmuch tag -inbox +spam from:noreply@companycapitalsource.com
 
 # Things I tried to unsubscribe from that refused to respect it or were too
 # annoying to bother getting through the process with.
 notmuch tag -inbox +deleted subject:"Glassdoor Update"
+notmuch tag -inbox +deleted info@mail.glassdoor.com
 notmuch tag -inbox +deleted from:no-reply@youversion.com subject:"This month"
