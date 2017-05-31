@@ -1,0 +1,80 @@
+#!/usr/bin/expect
+
+# Script to use [pass](https://www.passwordstore.org/) to start interactive
+# SSH sessions for destinations pass has the username/password for.
+#
+# The proper answer to passwordless (or low-password) logins is, of course, SSH
+# keys, and they're the right answer.
+#
+# Sometimes, though, one works on infrastructure where passwords are what's
+# used, and changing that is not the highest priority.
+#
+# In such cases, this can save some suffering.
+#
+# I believe this approach is fairly secure - since expect is directly executing
+# the pass command to decrypt the password, then supplying it interactively to
+# SSH, the password is not passed as a command-line argument anywhere, nor is
+# it ever stored as plaintext in an environment variable or file (some
+# approaches to password management can leave the plaintext password in a shell
+# history file or an editor's swapfile, which this should not do).
+#
+# A sufficiently-motivated attacker could probably find a way to extract the
+# decrypted password out of the process's memory while you're using the child
+# SSH process interactively - the OS tries to protect you from that, but humans
+# aren't perfect and neither are humans.
+#
+# In hopes of mitigating that a little, we unset the variable after we're done
+# using it, but I don't know how Tcl does vars under the hood - there's an
+# excellent chance the password remains in memory as garbage for a long time,
+# maybe the lifetime of the process.
+#
+# The main risk here, though, is the one introduced by using pass at all, which
+# is that anyone with physical access to your machine can dig out any of the
+# passwords you have saved, if you use GPG in a way that doesn't require you
+# to type your master password on every password decryption (that is, if you're
+# favoring usability over security).
+#
+# sshpass exists to automatically send a password into SSH, but it seems to do
+# so in a far less secure manner. This script came to exist because I already
+# had a collection of encrypted passwords for use with pass, and I thought "It
+# *has* to be possible to just feed these into SSH."
+#
+# All that said, I'm not a security expert, and it's quite possible I'm missing
+# something important in this analysis. Use at your own risk.
+#
+# Such as it is, this file is under the MIT license:
+#
+# https://opensource.org/licenses/MIT
+
+set program_name [info script]
+set program_name [file tail "$program_name"]
+
+if { $argc < 1 } {
+    puts "Usage: $program_name ssh_target \[password_path\]"
+    puts ""
+    puts "ssh_target is the usual SSH \[user@\]hostname."
+    puts ""
+    puts "If the password's path in the pass store is different from that,"
+    puts "pass it as the optional second argument."
+
+    exit 2
+}
+
+set ssh_dest [lindex $argv 0]
+set pass_file [lindex $argv 0]
+
+if { $argc > 1 } {
+    set pass_file [lindex $argv 1]
+}
+
+set password [exec pass show $pass_file]
+
+eval spawn ssh "$ssh_dest"
+
+set prompt "password:|#|\\\$"
+interact -o -nobuffer -re $prompt return
+send "$password\r"
+
+unset password
+
+interact
