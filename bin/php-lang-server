@@ -1,0 +1,3 @@
+#! /bin/bash
+
+php "$HOME/third-party/php-language-server/bin/php-language-server.php"
