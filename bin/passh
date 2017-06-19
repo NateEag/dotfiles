@@ -21,7 +21,7 @@
 # A sufficiently-motivated attacker could probably find a way to extract the
 # decrypted password out of the process's memory while you're using the child
 # SSH process interactively - the OS tries to protect you from that, but humans
-# aren't perfect and neither are humans.
+# aren't perfect and neither are OSes.
 #
 # In hopes of mitigating that a little, we unset the variable after we're done
 # using it, but I don't know how Tcl does vars under the hood - there's an
