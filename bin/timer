@@ -3,4 +3,20 @@
 # Simple wrapper around notification commands and sleep to send messages after
 # a set amount of time has passed.
 
+script_name=$(basename "$0")
+usage_msg="Send a notification after a certain number of seconds have passed.
+
+Usage: $script_name <seconds> <message>"
+
+if [ "$1" = '--help' ]; then
+    echo "$usage_msg"
+
+    exit
+elif [ $# -ne 2 ]; then
+    echo "$usage_msg" >&2
+
+    exit 2
+fi
+
+
 sleep "$1" && terminal-notifier -message "$2" -title "Time's up"
