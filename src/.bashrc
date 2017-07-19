@@ -252,6 +252,9 @@ if command -v brew > /dev/null ; then
     fi
 fi
 
+# Tab completions for PHP tools like Composer, Artisan, and the like.
+eval "$(symfony-autocomplete)"
+
 ## Shell extensions.
 
 # Load pyenv into my shell.
