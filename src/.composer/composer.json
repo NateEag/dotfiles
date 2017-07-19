@@ -1,6 +1,7 @@
 {
     "require": {
         "laravel/homestead": "2.1.8",
-        "psy/psysh": "^0.8.9"
+        "psy/psysh": "^0.8.9",
+        "bamarni/symfony-console-autocomplete": "^1.2"
     }
 }
