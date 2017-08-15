@@ -23,13 +23,14 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
         I use this in conjunction with Seil (nee PCKeyboardHack) to remap the
         internal Caps Lock to Shift.
 
-NOTE WELL: different Apple laptops have different internal keyboard
-identifiers. Update them accordingly when setting up a new machine. My personal
-17" MacBook Pro, for instance, uses APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236.
+        Note that I bind a bunch of rules to any Apple device. The intent
+        behind that is to apply these keybindings on any internal Apple
+        keyboard. The "Don't remap external keyboards" checkbox is insufficient
+        for my purposes - since I do use Seil for remapping the internal Caps
+        Lock to something else, I also need to remap external Caps Locks back
+        to, well, Caps Lock.
 
-A list of the pre-existing codes can be found at:
-
-https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/core/server/Resources/deviceproductdef.xml
+        Yeah, it's hacky, but typing comfort is really important to me.
     -->
     <item>
       <name>Return to Shift_R</name>
@@ -37,8 +38,8 @@ https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/core/server/Resourc
       <identifier>private.return2shiftR_return</identifier>
       <device_only>
           DeviceVendor::APPLE_INC,
-          DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
-      </device_only>
+          DeviceProduct::ANY
+       </device_only>
 
       <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
     </item>
@@ -50,12 +51,12 @@ https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/core/server/Resourc
          into F19, a key my keyboards don't have, then remap that.
     -->
     <item>
-      <name>F19 to Control_L</name>
+      <name>F19 to Control_L (Apple Keyboards)</name>
       <identifier>private.F19TocontrolL</identifier>
       <block>
           <device_only>
               DeviceVendor::APPLE_INC,
-              DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+              DeviceProduct::ANY
           </device_only>
 
           <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CONTROL_L</autogen> </block>
@@ -68,12 +69,12 @@ https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/core/server/Resourc
          normally.
     -->
     <item>
-      <name>F19 to Shift_L</name>
+      <name>F19 to Shift_L (Apple Keyboards)</name>
       <identifier>private.F19ToshiftL</identifier>
       <block>
           <device_only>
               DeviceVendor::APPLE_INC,
-              DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+              DeviceProduct::ANY
           </device_only>
           <autogen>__KeyToKey__ KeyCode::F19, KeyCode::SHIFT_L</autogen>
       </block>
@@ -82,27 +83,37 @@ https://github.com/tekezo/Karabiner/blob/version_10.22.0/src/core/server/Resourc
     </item>
 
     <item>
-      <name>Shift_R to Control_R</name>
+      <name>Shift_R to Control_R (Apple Keyboards)</name>
       <identifier>private.shiftR2controlR</identifier>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CONTROL_R</autogen>
       <device_only>
           DeviceVendor::APPLE_INC,
-          DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+          DeviceProduct::ANY
       </device_only>
     </item>
 
     <!-- Shift_L to Control_L is built-in, but I need it to apply only to
          Apple's internal keyboard, so a custom rule it is. -->
     <item>
-      <name>Shift_L to Control_L</name>
+      <name>Shift_L to Control_L (Apple Keyboards)</name>
       <identifier>private.shiftL2controlL</identifier>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
       <device_only>
           DeviceVendor::APPLE_INC,
-          DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262
+          DeviceProduct::ANY
       </device_only>
     </item>
 
+
+    <!-- For external keyboards, translate F19 to Caps Lock, so Seil can
+         translate Caps Lock to Shift for the internal but Caps Lock will still
+         work on the external. -->
+    <item>
+        <name>F19 to Caps Lock (non-Apple Keyboards)</name>
+        <identifier>private.f19ToCapsLock</identifier>
+        <autogen>__KeyToKey__ KeyCode::F19, KeyCode::CAPSLOCK</autogen>
+        <device_not>DeviceVendor::APPLE_INC, DeviceProduct::ANY</device_not>
+    </item>
 
     <!-- TrulyErgonomic-specific bindings. -->
 

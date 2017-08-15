@@ -2,6 +2,8 @@
 
 cli=/Applications/Karabiner.app/Contents/Library/bin/karabiner
 
+$cli set private.f19ToCapsLock 1
+/bin/echo -n .
 $cli set private.F19ToshiftL 1
 /bin/echo -n .
 $cli set private.return2shiftR_return 1
