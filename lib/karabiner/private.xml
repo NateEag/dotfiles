@@ -83,9 +83,9 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
     </item>
 
     <item>
-      <name>Shift_R to Control_R (Apple Keyboards)</name>
+      <name>Shift_R to Control_R (+Esc if tapped) (Apple Keyboards)</name>
       <identifier>private.shiftR2controlR</identifier>
-      <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CONTROL_R</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
       <device_only>
           DeviceVendor::APPLE_INC,
           DeviceProduct::ANY
@@ -93,17 +93,17 @@ Just symlink this file to "~/Application Support/Karabiner/private.xml".
     </item>
 
     <!-- Shift_L to Control_L is built-in, but I need it to apply only to
-         Apple's internal keyboard, so a custom rule it is. -->
+         Apple's internal keyboard, and to trigger Escape if it's only tapped,
+         so a custom rule it is. -->
     <item>
-      <name>Shift_L to Control_L (Apple Keyboards)</name>
+      <name>Shift_L to Control_L (+Esc if tapped) (Apple Keyboards)</name>
       <identifier>private.shiftL2controlL</identifier>
-      <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
       <device_only>
           DeviceVendor::APPLE_INC,
           DeviceProduct::ANY
       </device_only>
     </item>
-
 
     <!-- For external keyboards, translate F19 to Caps Lock, so Seil can
          translate Caps Lock to Shift for the internal but Caps Lock will still
