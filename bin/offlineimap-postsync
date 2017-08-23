@@ -52,6 +52,7 @@ notmuch tag -inbox +media subject:"\"[media]\""
 # stop using gmail as my backend...
 notmuch tag -inbox +spam from:noreply@companycapitalsource.com
 notmuch tag -inbox +spam from:noreply@smallbusinessloansfundsource.com
+notmuch tag -inbox +spam from:noreply@grabthebestoffers.com
 
 # Things I tried to unsubscribe from that refused to respect it or were too
 # annoying to bother getting through the process with.
