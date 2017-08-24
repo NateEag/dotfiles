@@ -53,6 +53,9 @@ notmuch tag -inbox +media subject:"\"[media]\""
 notmuch tag -inbox +spam from:noreply@companycapitalsource.com
 notmuch tag -inbox +spam from:noreply@smallbusinessloansfundsource.com
 notmuch tag -inbox +spam from:noreply@grabthebestoffers.com
+notmuch tag -inbox +spam from:info@bluecapitalinc.com
+notmuch tag -inbox +spam from:noreply@grammarnews.com
+notmuch tag -inbox +spam from:noreply@merchantaccount4highrisk.com
 
 # Things I tried to unsubscribe from that refused to respect it or were too
 # annoying to bother getting through the process with.
