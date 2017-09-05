@@ -2,12 +2,6 @@
 # to Emacs-style bindings. We'll see.
 set editing-mode vi
 
-# Keybindings for insert-mode.
-set keymap vi-insert
-
-# Use 'jk' to go to normal-mode, since it's easier to type than Escape.
-"jk": vi-movement-mode
-
 # Keybindings for what a vimmer would call normal-mode.
 set keymap vi-command
 
