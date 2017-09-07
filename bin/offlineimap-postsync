@@ -14,7 +14,6 @@ notmuch tag -inbox +learn-tech subject:"\"[learn tech]\""
 # Tag third-party software notifications as such, and skip the inbox.
 
 notmuch tag -inbox +third-party-software to:notmuch@notmuchmail.org
-notmuch tag -inbox +third-party-software to:info-gnu-emacs@gnu.org
 notmuch tag -inbox +third-party-software from:webc-users@googlegroups.com
 notmuch tag -inbox +third-party-software subject:"\"[Eastgate]\""
 # Supposed to get all github notifications that weren't sent directly to
