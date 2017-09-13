@@ -1,0 +1,10 @@
+#! /bin/bash
+
+usage_msg="Sometimes Emacs can hang hard enough that Control-G won't fix it.
+
+This command sends running instances of Emacs.app the SIGUSR2 signal, which is
+reputed to solve such hangs.
+
+I've turned it into a command because I sometimes forget the invocation."
+
+killall -SIGUSR2 -m Emacs
