@@ -4,6 +4,7 @@
 
 import re
 import os
+import sys
 import subprocess
 
 
@@ -37,4 +38,5 @@ def get_keychain_pass(account=None, server=None):
     return re.match(r'password: "(.*)"', outtext).group(1)
 
 if __name__ == '__main__':
-    get_keychain_pass('nate4d@gmail.com', 'imap.gmail.com')
+    password = get_authinfo_password(sys.argv[2], sys.argv[1])
+    sys.stdout.write(password)

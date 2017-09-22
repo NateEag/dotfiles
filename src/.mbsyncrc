@@ -1,0 +1,23 @@
+IMAPAccount nxtbook
+Host imap.gmail.com
+User neagleson@nxtbookmedia.com
+PassCmd "offlineimap.py neagleson@nxtbookmedia.com imap.gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1
+# On OS X, if OpenSSL has been installed by homebrew, there's a CA cert at this
+# path: http://stackoverflow.com/a/28274272/1128957
+CertificateFile /usr/local/etc/openssl/cert.pem
+
+
+IMAPStore nxtbook-remote
+Account nxtbook
+
+MaildirStore nxtbook-local
+Path ~/.mail/nxtbook/
+Inbox ~/.mail/nxtbook/Inbox
+
+Channel nxtbook
+Master :nxtbook-remote:
+Slave :nxtbook-local:
+SyncState *
