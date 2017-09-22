@@ -14,10 +14,12 @@ IMAPStore nxtbook-remote
 Account nxtbook
 
 MaildirStore nxtbook-local
-Path ~/.mail/nxtbook/
-Inbox ~/.mail/nxtbook/Inbox
+Path ~/mail/nxtbook/
+Inbox ~/mail/nxtbook/Inbox
 
 Channel nxtbook
 Master :nxtbook-remote:
 Slave :nxtbook-local:
+Patterns *
+Create Both
 SyncState *
