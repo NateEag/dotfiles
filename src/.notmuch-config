@@ -1,6 +1,3 @@
-[database]
-path=/Users/nate/mail
-
 [new]
 tags=unread;inbox
 ignore=
