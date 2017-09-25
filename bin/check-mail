@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# I've started experimenting with mbsync for fetching mail on my work machine.
+#
+# It seems to be faster and cleaner than offlineimap, but it doesn't have hooks
+# built-in.
+#
+# Therefore, I have this tiny wrapper script to simulate that job.
+
+mbsync "$1"
+
+# TODO I should arguably just call my offlineimap-postsync script in here. In
+# turn, I guess that script should maybe just be named 'check-mail-postsync',
+# since it's actually just running after syncs, no matter what program you use
+# for the syncing.
+notmuch new
