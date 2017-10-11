@@ -1,0 +1,16 @@
+# Since I run a very custom setup, most of my crontab entries will depend on my
+# env setup - hence the common idiom of sourcing $HOME/.bashrc before running a
+# command.
+
+# Some cron versions allow you to set environment variables globally in a
+# crontab file, and I'm currently using one of them. Therefore, do that.
+
+# Don't send me worthless emails to my local account.
+MAILTO=""
+
+# I write plenty of stuff in bash, so loading my config won't work if we don't
+# use it.
+SHELL="/bin/bash"
+
+# Sync email every fifteen minutes.
+15 * * * * source "$HOME/.bashrc"; check-mail nxtbook >"$HOME/cron.log" 2>/"$HOME/cron.err"

@@ -14,6 +14,8 @@ if [[ $# -gt 0 ]]; then
     files_to_install="$@"
 fi
 
+crontab "$dotfiles_dir/lib/.crontab"
+
 # Install Karabiner (KeyRemap4Macbook on older OS Xs) preferences if necessary.
 karabiner_name="Karabiner"
 if [[ -d "/Applications/KeyRemap4MacBook.app" ]]; then

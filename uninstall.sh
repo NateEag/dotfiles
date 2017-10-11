@@ -5,6 +5,8 @@
 
 dir=$(dirname $0)/src
 
+crontab -r
+
 for filename in $(ls -a $dir);
 do
     target_path="$HOME/$filename"
