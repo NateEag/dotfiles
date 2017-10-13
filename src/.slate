@@ -56,9 +56,11 @@ bind l:${hyper} corner bottom-right
 # ...besides call Ghostbusters.
 bind d:${hyper} move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 
-# I use fullscreen windows a lot less than I swap to Finder. Therefore,
-# commenting this out for the time being.
-#bind f:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
+# Made window take up the full screen. I don't really like OS X's actual
+# fullscreen feature, for reasons I can't articulate. Bound to s because it
+# wasn't taken and it's next to 'd', which I'm already using for half-sizing a
+# window.
+bind s:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
 # Cycle windows between screens.
 bind o:${hyper} throw next
