@@ -9,6 +9,7 @@ source $dotfiles_dir/lib/functions.sh
 dotfiles_dir=$(abspath $dotfiles_dir)
 
 src_dir="$dotfiles_dir/src/"
+bin_dir="$dotfiles_dir/bin"
 files_to_install=$(ls -a $src_dir)
 if [[ $# -gt 0 ]]; then
     files_to_install="$@"
@@ -37,12 +38,27 @@ if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.$karabine
     cp "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
 fi
 
+if command -v notmuch > /dev/null; then
+    # Make sure notmuch post-new hook is installed.
+    notmuch_db_path="$(notmuch config get database.path)"
+    notmuch_hooks_path="$notmuch_db_path/.notmuch/hooks"
+
+    mkdir -p "$notmuch_hooks_path"
+
+    if [ -e "$notmuch_hooks_path/post-new" ]; then
+        "Notmuch post-new hook already installed."
+    else
+        ln -s "$bin_dir/notmuch-post-new-hook" "$notmuch_hooks_path/post-new"
+    fi
+fi
+
+
 for filename in $files_to_install;
 do
     target_path="$HOME/$filename"
 
     if [ "$filename" == "." ] || [ "$filename" == ".." ]; then
-	continue
+        continue
     fi
 
     if [ "$filename" = ".gitconfig" ]; then
