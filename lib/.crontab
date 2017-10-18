@@ -13,4 +13,4 @@ MAILTO=""
 SHELL="/bin/bash"
 
 # Sync email every fifteen minutes.
-15 * * * * source "$HOME/.bashrc"; check-mail nxtbook >"$HOME/cron.log" 2>/"$HOME/cron.err"
+00,15,30,45 * * * * source "$HOME/.bashrc"; check-mail nxtbook >"$HOME/cron.log" 2>/"$HOME/cron.err"
