@@ -34,9 +34,10 @@
 # to type your master password on every password decryption (that is, if you're
 # favoring usability over security).
 #
-# sshpass exists to automatically send a password into SSH, but it seems to do
-# so in a far less secure manner. This script came to exist because I already
-# had a collection of encrypted passwords for use with pass, and I thought "It
+# sshpass exists to automatically send a password into SSH, but allows doing so
+# in a less secure manner and doesn't have support for using the pass command
+# directly. This script came to exist because I already had a collection of
+# encrypted passwords for use with the pass password manager, and I thought "It
 # *has* to be possible to just feed these into SSH."
 #
 # All that said, I'm not a security expert, and it's quite possible I'm missing
@@ -49,27 +50,43 @@
 set program_name [info script]
 set program_name [file tail "$program_name"]
 
+# TODO Derive the password_path from user/hostname. First try exact match,
+# followed by hostname/username, then just username. If none have a hit, throw
+# an error and tell the user to pass one explicitly.
 if { $argc < 1 } {
-    puts "Usage: $program_name ssh_target \[password_path\]"
+    puts "Usage: $program_name user@hostname \[password_path\]"
     puts ""
-    puts "ssh_target is the usual SSH \[user@\]hostname."
+    puts "If `password_path` is not passed, this script tries to get the"
+    puts "password from the password store at \$hostname/\$user. If none is found"
+    puts "it will look for a password under \$user."
     puts ""
-    puts "If the password's path in the pass store is different from that,"
-    puts "pass it as the optional second argument."
+    puts "If `password_path` is passed explicitly it is used blindly."
 
     exit 2
 }
 
 set ssh_dest [lindex $argv 0]
-set pass_file [lindex $argv 0]
+
+set ssh_info [split $ssh_dest "@"]
+
+set username [lindex $ssh_info 0]
+set hostname [lindex $ssh_info 1]
 
 if { $argc > 1 } {
     set pass_file [lindex $argv 1]
+} else {
+    set pass_file [concat $hostname/$username]
+
+    set result [catch {exec pass show $pass_file}]
+
+    if { $result != 0 } {
+        set pass_file "$username"
+    }
 }
 
 set password [exec pass show $pass_file]
 
-eval spawn ssh "$ssh_dest"
+eval spawn ssh $ssh_dest
 
 set prompt "password:|#|\\\$"
 interact -o -nobuffer -re $prompt return
