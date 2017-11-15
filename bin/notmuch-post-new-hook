@@ -53,6 +53,7 @@ notmuch tag -inbox +spam from:noreply@grabthebestoffers.com
 notmuch tag -inbox +spam from:info@bluecapitalinc.com
 notmuch tag -inbox +spam from:noreply@grammarnews.com
 notmuch tag -inbox +spam from:noreply@merchantaccount4highrisk.com
+notmuch tag -inbox +spam from:quantum@communications.quantum.com
 
 # Things I tried to unsubscribe from that refused to respect it or were too
 # annoying to bother getting through the process with.
