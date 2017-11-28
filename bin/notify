@@ -1,15 +1,30 @@
 #! /bin/bash
 
-# Command to abstract sending a graphical notification message from the terminal.
-#
-# I always forget the syntax for doing this, so I'm introducing this tiny
-# command.
-#
-# As time passes I expect I'll wind up expanding this to work on platforms
-# besides OS X.
-#
-# I mostly use it when I'm running a slow process in an interactive terminal
-# and want to be notified when it's done.
+script_name="$(basename "$0")"
+help_msg="Send a notification to the user.
+
+Only works on Mac OS X, and then only if terminal-notifier is installed.
+
+It should be easy enough to port to other platforms next time I'm on one of them.
+
+A number of the scripts in my dotfiles depend on this for letting me know if
+something interesting has happened.
+
+It's also handy in its own right, usually for letting me ignore slow commands
+until they've either succeeded or failed.
+
+Usage: $script_name <message> [<title>]"
+
+if [ $1 = '--help' ]; then
+    echo "$help_msg"
+
+    exit
+elif [ $# -lt 1 ]; then
+    echo "$help_msg" >&2
+
+    exit 2
+fi
+
 
 title='Notification'
 if [ -n "$2" ]; then
