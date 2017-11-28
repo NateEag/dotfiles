@@ -65,3 +65,28 @@ notmuch tag -inbox +deleted from:JCPenney@e.jcpenney.com
 # Individuals who have sent me a lot of email irrelevant to me with no attempt
 # at all at actual personal interaction.
 notmuch tag -inbox +deleted +spam +individual from:"mziegler@proscape.com"
+
+# Propagate tags intended for threads to all emails in the thread, per the
+# notmuch docs: https://notmuchmail.org/faq/#index10h2
+THREAD_TAGS="watched"
+for tag in $THREAD_TAGS; do
+    notmuch tag +$tag $(notmuch search --output=threads tag:$tag)
+done
+
+# Notify me if there are unread emails in threads I'm watching.
+#
+# With this and a simple crontab entry, I can be made aware of new emails in
+# threads where I decide time-to-response is important, while blissfully
+# batch-processing most of the emails I receive in a day.
+#
+# I mostly watch threads that involve external clients, so I can be responsive
+# for them. TODO Auto-watch unread emails from previously-unseen addresses?
+# That might be a decent proxy for 'inbound client email', which is an
+# important case I haven't dealt with yet.
+num_unread_threads=$(notmuch search --output=threads \
+                             tag:watched and tag:unread | wc -l)
+if [ $num_unread_threads -gt 0 ]; then
+    msg="You have unread emails in $num_unread_threads watched threads."
+
+    notify "$msg" 'New Watched Emails'
+fi
