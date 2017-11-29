@@ -1,5 +1,6 @@
 #! /bin/bash
 
+script_name="$(basename "$0")"
 help_msg="Tag emails sent via Emacs' notmuch interface sanely.
 
 As of this writing, when you send an email in notmuch's Emacs interface, it's
@@ -7,7 +8,19 @@ tagged as 'inbox' and 'unread'.
 
 'inbox' might make some sense, but 'unread'? For something you sent?
 
-This script is part of my workaround, and is meant to be called from Emacs."
+This script is part of my workaround, and is meant to be called from Emacs.
+
+Usage: $script_name"
+
+if [ $1 == '--help' ]; then
+    echo "$help_msg"
+
+    exit
+elif [ $# -gt 0 ]; then
+    echo "$help_msg" >&2
+
+    exit 2
+fi
 
 primary_email="$(notmuch config get user.primary_email)"
-notmuch tag -unread -- "from:$primary_email" and is:unread
+notmuch tag -unread -inbox -- "from:$primary_email" and is:unread
