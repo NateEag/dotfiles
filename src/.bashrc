@@ -233,6 +233,10 @@ export SVN_EDITOR
 VISUAL=$EDITOR
 export VISUAL
 
+# In here for notmuch, really. On work machines I override this in my
+# .bashrc.local file.
+export EMAIL=nate@nateeag.com
+
 # Uncomment the following (and its sibling at file bottom) to profile .bashrc.
 #
 # When things start slowing down, NVM and bash completion are my big killers.
