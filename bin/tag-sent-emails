@@ -12,7 +12,7 @@ This script is part of my workaround, and is meant to be called from Emacs.
 
 Usage: $script_name"
 
-if [ $1 == '--help' ]; then
+if [ $# -gt 0 ] && [ $1 == '--help' ]; then
     echo "$help_msg"
 
     exit
