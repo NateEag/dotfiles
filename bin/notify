@@ -15,7 +15,7 @@ until they've either succeeded or failed.
 
 Usage: $script_name <message> [<title>]"
 
-if [ $1 = '--help' ]; then
+if [ "$1" = '--help' ]; then
     echo "$help_msg"
 
     exit
