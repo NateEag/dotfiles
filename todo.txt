@@ -1,3 +1,9 @@
+2017-12-18 Figure out how to use multiple password stores with pass (e.g., work
+and personal). I guess one answer could be setting PASSWORD_STORE_DIR with
+direnv in, say, ~/personal/.envrc, except direnv does not have great support
+for nested direnvs. Maybe I can add something to ~/direnvrc to get me there (or
+just skip direnv and add my own bash hook for setting env vars in ~/personal).
+
 2016-10-27 Figure out a way to get notified when third-party files are updated
 (for instance, lib/git-svn.sh). A list of RSS feed URLs that install.sh
 subscribes to is the obvious way, I guess, but arbitrary software doesn't
