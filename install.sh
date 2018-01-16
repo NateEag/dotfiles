@@ -9,8 +9,13 @@ source $dotfiles_dir/lib/functions.sh
 dotfiles_dir=$(abspath $dotfiles_dir)
 
 src_dir="$dotfiles_dir/src/"
+config_dir="$dotfiles_dir/.config"
 bin_dir="$dotfiles_dir/bin"
-files_to_install=$(ls -a $src_dir)
+
+config_files_to_install=$(cd "$dotfiles_dir"; find "src" -depth 1)
+config_dirs_to_install=$(cd "$dotfiles_dir"; find ".config" -depth 1)
+
+# Let you manually override the list of files to symlink.
 if [[ $# -gt 0 ]]; then
     files_to_install="$@"
 fi
@@ -53,21 +58,13 @@ if command -v notmuch > /dev/null; then
 fi
 
 
-for filename in $files_to_install;
+for filename in $config_files_to_install;
 do
+    filename="$(basename "$filename")"
     target_path="$HOME/$filename"
 
     if [ "$filename" == "." ] || [ "$filename" == ".." ]; then
         continue
-    fi
-
-    if [ "$filename" = ".gitconfig" ]; then
-        # Install gitconfig to secondary git config path, so ~/.gitconfig can
-        # be used to override settings per-machine. This is handy for
-        # working on an employer's machine, so you can default repos to your
-        # work email address but keep your other git settings.
-        # Note: Older gits will not read from this path.
-        target_path="$HOME/.config/git/config"
     fi
 
     if [ -e "$target_path" ]; then
@@ -77,4 +74,15 @@ do
         mkdir -p "$target_dir"
         ln -s "$src_dir/$filename" "$target_path"
     fi
+done
+
+for filename in $config_dirs_to_install; do
+    target_path="$HOME/$filename"
+
+    if [ -e "$target_path" ]; then
+        echo "$target_path already exists. Not overwriting." >&2
+    else
+        ln -s "$dotfiles_dir/$filename" "$HOME/$filename"
+    fi
+
 done
