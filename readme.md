@@ -25,6 +25,8 @@ Usage
 
 `src/` contains the actual dotfiles.
 
+`.config/` contains folders to be symlinked into `~/.config`.
+
 `install.sh` symlinks each file or top-level folder in src/ to ~/.$filename.
 
 `uninstall.sh` undoes `install.sh`'s hard work. It might give odd results if
