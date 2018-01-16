@@ -13,8 +13,8 @@ TrulyErgonomic keyboard. They are implemented with
 
 * A not-very-comprehensive [Slate](https://github.com/mattr-/slate) config.
   Since Slate is abandonware these days, I'm considering moving to
-  [Hammerspoon](), but then I'm considering leaving OS X entirely, so it might
-  just be a waste of time.
+  [Hammerspoon](http://www.hammerspoon.org/), but then I'm considering leaving
+  OS X entirely, so it might just be a waste of time.
 
 * My personal [Plover](http://stenoknight.com/wiki/Main_Page) dictionary. Note
   that I am a complete novice with Plover and stenography, so it may contain
@@ -23,11 +23,14 @@ TrulyErgonomic keyboard. They are implemented with
 Usage
 =====
 
-``src/`` contains the actual dotfiles.
+`src/` contains the actual dotfiles.
 
-``install.sh`` symlinks each file or top-level folder in src/ to ~/.$filename.
+`install.sh` symlinks each file or top-level folder in src/ to ~/.$filename.
 
-``uninstall.sh`` undoes ``install.sh``'s hard work. It might give odd results
-if you have not previously run ``install.sh``.
+`uninstall.sh` undoes `install.sh`'s hard work. It might give odd results if
+you have not previously run `install.sh`.
 
-``lib/`` contains dependencies that do not need to be installed elsewhere.
+`bin/` contains my personal collection of command-line programs. They're mostly
+wrappers around existing tools so I don't have to remember arcane interfaces.
+
+`lib/` contains dependencies that do not need to be installed elsewhere.
