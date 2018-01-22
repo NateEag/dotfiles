@@ -15,12 +15,14 @@
 #
 # TODO Figure out a more elegant way to check this.
 keygrip=$(gpg --fingerprint --with-keygrip "$EMAIL" |
-              grep 'Keygrip =' |
+              grep 'Keygrip = ' |
               head -1 |
-              sed 's/^.*Keygrip = \([A-F0-9]\)/1/')
+              sed 's/^.*Keygrip = \([A-F0-9]\)/\1/')
+
 key_loaded=$(echo "KEYINFO --no-ask $keygrip Err Pmt Des" |
-                  gpg-connect-agent |
+                  gpg-connect-agent --no-autostart |
                   sed -n 2p)
+
 if [ "$key_loaded" != 'OK' ]; then
 
     msg='GPG key not loaded; aborting mail check'
