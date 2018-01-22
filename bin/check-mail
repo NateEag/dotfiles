@@ -7,6 +7,32 @@
 #
 # Therefore, I have this tiny wrapper script to simulate that job.
 
+# Error out if GPG doesn't have authorization for a key linked to the active
+# email address in this session.
+#
+# The technique, which works only with GPG 2, was found on SO:
+# https://unix.stackexchange.com/a/342461
+#
+# TODO Figure out a more elegant way to check this.
+keygrip=$(gpg --fingerprint --with-keygrip "$EMAIL" |
+              grep 'Keygrip =' |
+              head -1 |
+              sed 's/^.*Keygrip = \([A-F0-9]\)/1/')
+key_loaded=$(echo "KEYINFO --no-ask $keygrip Err Pmt Des" |
+                  gpg-connect-agent |
+                  sed -n 2p)
+if [ "$key_loaded" != 'OK' ]; then
+
+    msg='GPG key not loaded; aborting mail check'
+
+    # TODO Output this to stderr and notify when cron error logs grow. That
+    # would be a much more general solution.
+    notify "$msg"
+
+    exit 1
+fi
+
+
 mbsync "$1"
 
 # TODO I should arguably just call my offlineimap-postsync script in here. In
