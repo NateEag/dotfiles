@@ -59,13 +59,6 @@ fi
 # https://bbs.archlinux.org/viewtopic.php?pid=1648479#p1648479
 GPG_TTY="$(tty)"
 export GPG_TTY
-if test -f ~/.gpg-agent-info && \
-    kill -0 $(cut -d: -f 2 ~/.gpg-agent-info) 2>/dev/null; then
-    GPG_AGENT_INFO=$(cat ~/.gpg-agent-info | cut -c 16-)
-else
-    eval `gpg-agent --daemon --no-grab --write-env-file ~/.gpg-agent-info`
-fi
-export GPG_AGENT_INFO
 
 # Sometimes, you want to see the headers you get from a site. Enter this
 # handy curl alias, which prints the headers received from whatever URL
