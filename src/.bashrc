@@ -52,10 +52,8 @@ if [[ "$OSTYPE" == "msys" ]]; then
     fi
 fi
 
-# Start gpg-agent if it's not running.
-#
-# Note that we export GPG_TTY to work around a failure I don't really
-# understand but resolved with the aid of this post:
+# We export GPG_TTY to work around a failure I don't really understand but
+# resolved with the aid of this post:
 # https://bbs.archlinux.org/viewtopic.php?pid=1648479#p1648479
 GPG_TTY="$(tty)"
 export GPG_TTY
