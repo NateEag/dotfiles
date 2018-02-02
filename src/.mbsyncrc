@@ -10,6 +10,33 @@ SSLVersions TLSv1
 CertificateFile /usr/local/etc/openssl/cert.pem
 
 
+IMAPAccount gmail
+Host imap.gmail.com
+User nate4d@gmail.com
+PassCmd "offlineimap.py nate4d@gmail.com imap.gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1
+# On OS X, if OpenSSL has been installed by homebrew, there's a CA cert at this
+# path: http://stackoverflow.com/a/28274272/1128957
+CertificateFile /usr/local/etc/openssl/cert.pem
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/Inbox
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns *
+Create Both
+SyncState *
+
+
+
 IMAPStore nxtbook-remote
 Account nxtbook
 

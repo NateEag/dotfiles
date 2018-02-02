@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# A stupid workaround for the fact that I'm having a hard time getting Chrome
+# to work with chrome-pass on my home machine.
+#
+# Instead of doing it the right way, by setting the environment with launchd,
+# I'm just adding this script I can Spotlight for on the rare occasions Chrome
+# is not open (mostly after restarts, really).
+
+source "$HOME/.bashrc"
+
+open '/Applications/Google Chrome.app'
