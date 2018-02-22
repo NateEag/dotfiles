@@ -85,7 +85,7 @@ bind end:${hyper} resize -10% -0 top-right
 
 # Activate screensaver from keyboard. If your machine is set up to lock the
 # display on screensaver, this is a handy shortcut for locking the display.
-bind a:${hyper} shell path:~ '/usr/bin/open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
+bind a:${hyper} shell path:~ '/Users/neagleson/dotfiles/bin/screensaver'
 
 # Start up a new Emacs instance. Useful when I'm writing init code and want to
 # test it.

@@ -1,0 +1,23 @@
+#! /bin/bash
+
+# Idiotic workaround for my funky keyboard shortcut setup sending an event after
+# I hit the binding that triggers this script, and thus waking it up
+# immediately after it's gone to sleep:
+#
+# just sleep for a half-second before starting the screensaver.
+#
+# I feel guilty about this hack, but I'm not clear where the actual failure
+# lies and I'm not sure how to figure out.
+#
+# It was definitely brought on by a change to my keyboard firmware this
+# morning, so it's probably at fault. However, the only symptom so far is the
+# screensaver getting woken up right after invocation, which feels like an
+# extra keystroke getting set, and that only happens when I have Slate running,
+# which in turn is eating whatever event wakes things back up. The events never
+# make it to EventViewer if Slate's running, and when it's not nothing seems to
+# be wrong, so it's just conceivable that it's something weird about how Slate
+# and my tap-dance key setup are interacting.
+#
+# If I find any other issues being caused by my custom firmware, I'll roll up my
+# sleeves and dig into it.
+/bin/sleep 0.5 && /usr/bin/open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app
