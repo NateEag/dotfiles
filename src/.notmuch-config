@@ -6,7 +6,10 @@ ignore=
 exclude_tags=deleted;spam
 
 [user]
-primary_email=nate@nateeag.com
+# notmuch picks up primary email from the EMAIL environment variable if the
+# primary_email setting is not specified. I rely on that behavior so I can
+# change the primary email account on work machines using ~/.bashrc.local,
+# rather than having to avoid committing hacks to this config file.
 name=Nate Eagleson
 
 [maildir]
