@@ -1,4 +1,4 @@
-personal_ws-1.1 en 56
+personal_ws-1.1 en 58
 skeuomorphism
 dest
 prepended
@@ -32,6 +32,7 @@ timestamp
 DOM
 millennia
 CSS
+Biggerstaff
 JS
 xml
 codebase
@@ -39,6 +40,7 @@ screenreaders
 NXT
 DRM
 svg
+Str
 tstzrange
 monospace
 timeline
