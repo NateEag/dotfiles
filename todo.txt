@@ -1,3 +1,8 @@
+2018-02-16 Load expensive bash extensions (nvm, pyenv, etc) in background if
+possible. I think you could probably abuse PROMPT_COMMAND to save "last
+interaction time" and a sleeping poll loop to see when you're inactive then
+kick off a load.
+
 2017-12-18 Figure out how to use multiple password stores with pass (e.g., work
 and personal). I guess one answer could be setting PASSWORD_STORE_DIR with
 direnv in, say, ~/personal/.envrc, except direnv does not have great support
