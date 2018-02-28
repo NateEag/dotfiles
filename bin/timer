@@ -4,9 +4,9 @@
 # a set amount of time has passed.
 
 script_name=$(basename "$0")
-usage_msg="Send a notification after a certain number of seconds have passed.
+usage_msg="Send a notification after a certain number of minutes have passed.
 
-Usage: $script_name <seconds> <message>"
+Usage: $script_name <minutes> <message>"
 
 if [ "$1" = '--help' ]; then
     echo "$usage_msg"
@@ -19,4 +19,4 @@ elif [ $# -ne 2 ]; then
 fi
 
 
-sleep "$1" && terminal-notifier -message "$2" -title "Time's up"
+sleep "$(( 60 * $1 ))" && terminal-notifier -message "$2" -title "Time's up"
