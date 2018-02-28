@@ -228,6 +228,8 @@ export VISUAL
 # .bashrc.local file.
 export EMAIL=nate@nateeag.com
 
+export SLACK_CLI_TOKEN_CMD='pass show api.slack.com/token'
+
 # Uncomment the following (and its sibling at file bottom) to profile .bashrc.
 #
 # When things start slowing down, NVM and bash completion are my big killers.

@@ -3,7 +3,9 @@
 bindir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 etcdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [ -f "${etcdir}/.slack" ]; then
+if [ -n "$SLACK_CLI_TOKEN_CMD" ]; then
+  token="$($SLACK_CLI_TOKEN_CMD)"
+elif [ -f "${etcdir}/.slack" ]; then
   token=$(sed -n '1p' < "${etcdir}/.slack")
 else
   token="${SLACK_CLI_TOKEN}"
