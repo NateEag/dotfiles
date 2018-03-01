@@ -1,0 +1,37 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+
+settings_dir="$HOME/.announce-goal"
+last_announced_path="$settings_dir/last-announced"
+goal_path="$settings_dir/goal"
+
+no_goal_today="I have no idea what I'm doing today."
+
+msg="Announce today's goal in team chat, or admit it if you haven't set one.
+
+If '$last_announced_path' contains today's date, exit without doing anything,
+because an announcement has already been made.
+
+If a file exists at '$goal_path', send its contents to the team chat, insert
+today's date in '$last_announced_path', and delete '$goal_path'.
+
+If '$goal_path' does not exist, send the team the message '$no_goal_today'
+
+If you schedule this to execute early in your workday, it provides incentive
+for you to actually define a goal, to avoid embarrassment. Further, your
+manager will likely ask you what you actually *are* doing, since you just said
+you don't know.
+
+(Obviously it can be trivially worked around, but so can any system - this is
+just a nudge in the right direction.)
+
+Depends on some other tools I have living in my dotfiles.
+
+Usage: $script_name"
+
+if [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+fi
