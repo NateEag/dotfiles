@@ -254,6 +254,11 @@ if command -v brew > /dev/null ; then
     fi
 fi
 
+# Install local completions
+for file in "$dotfiles_path/etc/completions.d/"*; do
+    source "$file"
+done
+
 # Tab completions for PHP tools like Composer, Artisan, and the like.
 eval "$(symfony-autocomplete)"
 
