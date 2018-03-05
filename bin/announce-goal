@@ -39,3 +39,23 @@ fi
 if [ ! -d "$settings_dir" ]; then
     mkdir -p "$settings_dir"
 fi
+
+today="$(date +%Y-%m-%d)"
+last_announced=''
+
+if [ -e "$last_announced_path" ]; then
+    last_announced="$(cat "$last_announced_path")"
+fi
+
+if [ "$last_announced" == "$today" ]; then
+    echo "Goal already announced today ($today); doing nothing."
+
+    exit
+fi
+
+
+# TODO Implement the actual announcement logic.
+echo 'Imagine I announced a goal for today.'
+
+# Record the fact that we've announced a goal today.
+date +%Y-%m-%d > "$last_announced_path"
