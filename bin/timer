@@ -26,5 +26,5 @@ fi
 
 # FIXME Figure out why this has started firing an alert that says
 # "terminal-notifier.app "
-$(sleep "$seconds" && terminal-notifier -message "$1" \
-                                        -title "Time's up") &
+applescript="display notification \"$1\" with title \"Time's up\" "
+$(sleep "$seconds" && osascript -e "$applescript") &
