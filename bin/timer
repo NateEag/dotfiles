@@ -4,19 +4,27 @@
 # a set amount of time has passed.
 
 script_name=$(basename "$0")
-usage_msg="Send a notification after a certain number of minutes have passed.
+usage_msg="Send a notification after a certain amount of time has passed.
 
-Usage: $script_name <minutes> <message>"
+Usage: $script_name <message> <minutes> [<seconds>]"
 
 if [ "$1" = '--help' ]; then
     echo "$usage_msg"
 
     exit
-elif [ $# -ne 2 ]; then
+elif [ $# -lt 2 ] || [ $# -gt 3 ]; then
     echo "$usage_msg" >&2
 
     exit 2
 fi
 
+seconds="$(( $2 * 60 ))"
 
-sleep "$(( 60 * $1 ))" && terminal-notifier -message "$2" -title "Time's up"
+if [ $# -eq 3 ]; then
+    seconds="$(( $seconds + $3 ))"
+fi
+
+# FIXME Figure out why this has started firing an alert that says
+# "terminal-notifier.app "
+$(sleep "$seconds" && terminal-notifier -message "$1" \
+                                        -title "Time's up") &
