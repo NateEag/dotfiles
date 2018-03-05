@@ -35,3 +35,7 @@ if [ "$1" == '--help' ]; then
 
     exit
 fi
+
+if [ ! -d "$settings_dir" ]; then
+    mkdir -p "$settings_dir"
+fi
