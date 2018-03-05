@@ -10,6 +10,10 @@ no_goal_today="I have no idea what I'm doing today."
 
 msg="Announce today's goal in team chat, or admit it if you haven't set one.
 
+If today is a weekend day, exit without doing anything, because you don't need
+a work-related goal on the weekends. TODO Extend this to handle vacation and
+nolidays.
+
 If '$last_announced_path' contains today's date, exit without doing anything,
 because an announcement has already been made.
 
@@ -39,6 +43,14 @@ fi
 if [ ! -d "$settings_dir" ]; then
     mkdir -p "$settings_dir"
 fi
+
+weekday="$(date +%A)"
+if [ "$weekday" == 'Sunday' ] || [ "$weekday" == 'Saturday' ]; then
+    echo "It's the weekend. No auto-announcing goals today."
+
+    exit
+fi
+
 
 today="$(date +%Y-%m-%d)"
 last_announced=''
