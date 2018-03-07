@@ -24,7 +24,5 @@ if [ $# -eq 3 ]; then
     seconds="$(( $seconds + $3 ))"
 fi
 
-# FIXME Figure out why this has started firing an alert that says
-# "terminal-notifier.app "
 applescript="display notification \"$1\" with title \"Time's up\" "
 $(sleep "$seconds" && osascript -e "$applescript") &
