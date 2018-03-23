@@ -30,3 +30,6 @@ TAGS
 # Sometimes you want to keep an old copy of something around, but you don't
 # usually want it in version control.
 *.bak
+
+# cquery is great, but its index files probably don't belong in VCS.
+compile_commands.json
