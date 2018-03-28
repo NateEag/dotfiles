@@ -43,6 +43,7 @@ Account nxtbook
 MaildirStore nxtbook-local
 Path ~/mail/nxtbook/
 Inbox ~/mail/nxtbook/Inbox
+SubFolders Legacy
 
 Channel nxtbook
 Master :nxtbook-remote:
