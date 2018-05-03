@@ -18,6 +18,25 @@ elif [ $# -lt 2 ] || [ $# -gt 3 ]; then
     exit 2
 fi
 
+is-int () {
+    [[ "$1" =~ ^[0-9]+$ ]]
+
+    return $?
+}
+
+if ! is-int "$2"; then
+    echo "$2 is not an integer!" >&2
+
+    exit 1
+fi
+
+if [ ! -z "$3" ] && ! is-int "$3"; then
+    echo "$3 is not an integer!" >&2
+
+    exit 1
+fi
+
+
 seconds="$(( $2 * 60 ))"
 
 if [ $# -eq 3 ]; then
