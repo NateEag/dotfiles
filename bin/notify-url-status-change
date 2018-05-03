@@ -1,0 +1,27 @@
+#! /bin/bash
+
+# Lame hack to notify me when a URL's status code changes.
+#
+# I found myself waiting for a URL to go from 500 to 200, so I figured rather
+# than polling manually, I'd let the computer poll for me.
+#
+# TODO Add support for watching for URL content change.
+
+url="$1"
+
+get-status-code () {
+    curl --silent --output /dev/null \
+         --write-out '%{http_code}' "$1"
+}
+
+start_status_code="$(get-status-code "$url")"
+status_code="$start_status_code"
+
+echo "Starting status: $start_status_code"
+while [ $status_code -eq $status_code ]; do
+    sleep 30
+
+    status_code="$(get-status-code "$url")"
+done
+
+notify "Status code changed from $start_status_code to $status_code!"
