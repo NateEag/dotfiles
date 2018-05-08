@@ -61,6 +61,7 @@ notmuch tag -inbox +deleted subject:"Glassdoor Update"
 notmuch tag -inbox +deleted info@mail.glassdoor.com
 notmuch tag -inbox +deleted from:no-reply@youversion.com subject:"This month"
 notmuch tag -inbox +deleted from:JCPenney@e.jcpenney.com
+notmuch tag -inbox +deleted from:reply@ticketmanager.co
 
 # Individuals who have sent me a lot of email irrelevant to me with no attempt
 # at all at actual personal interaction.
