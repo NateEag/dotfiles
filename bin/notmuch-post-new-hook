@@ -67,6 +67,12 @@ notmuch tag -inbox +deleted from:reply@ticketmanager.co
 # at all at actual personal interaction.
 notmuch tag -inbox +deleted +spam +individual from:"mziegler@proscape.com"
 
+# Run any work-specific logic I have. This is just to keep work-related email
+# info out of my personal config.
+if command -v notmuch-post-new-hook-work; then
+    notmuch-post-new-hook-work
+fi
+
 # Propagate tags intended for threads to all emails in the thread, per the
 # notmuch docs: https://notmuchmail.org/faq/#index10h2
 THREAD_TAGS="watched"
