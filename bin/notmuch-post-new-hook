@@ -89,7 +89,8 @@ done
 # I mostly watch threads that involve external clients, so I can be responsive
 # for them. TODO Auto-watch unread emails from previously-unseen addresses?
 # That might be a decent proxy for 'inbound client email', which is an
-# important case I haven't dealt with yet.
+# important case I haven't dealt with yet. It would only work if I were
+# applying a local spamfilter before reaching this stage.
 num_unread_threads=$(notmuch search --output=threads \
                              tag:watched and tag:unread | wc -l)
 if [ $num_unread_threads -gt 0 ]; then
