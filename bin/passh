@@ -88,8 +88,10 @@ set password [exec pass show $pass_file]
 
 eval spawn ssh $ssh_dest
 
-set prompt "password:|#|\\\$"
-interact -o -nobuffer -re $prompt return
+# TODO Figure out a reasonable way to make Tcl treat the prompt regex as
+# case-insensitive.
+set prompt "(Password|password):|#|\\\$"
+interact -o -nobuffer -re "$prompt" return
 send "$password\r"
 
 unset password
