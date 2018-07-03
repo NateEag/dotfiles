@@ -29,10 +29,12 @@
 # maybe the lifetime of the process.
 #
 # The main risk here, though, is the one introduced by using pass at all, which
-# is that anyone with physical access to your machine can dig out any of the
-# passwords you have saved, if you use GPG in a way that doesn't require you
-# to type your master password on every password decryption (that is, if you're
-# favoring usability over security).
+# is that anyone who gets physical access to your machine while it's unlocked
+# can dig out any of the passwords you have saved, if you use GPG in a way that
+# doesn't require you to type your master password on every password decryption
+# (that is, if you're favoring usability over security). Anyone with full root
+# access can of course do that too, but that's by design (though it's a good
+# reason to keep your personal stuff off your work systems).
 #
 # sshpass exists to automatically send a password into SSH, but allows doing so
 # in a less secure manner and doesn't have support for using the pass command
