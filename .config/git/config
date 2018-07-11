@@ -98,6 +98,11 @@
 	smtpUser = nate4d@gmail.com
 	smtpServerPort = 587
 
+[svn]
+	# Make git-svn auto-delete empty directories, because that's what I think
+	# makes sense.
+	rmdir = true
+
 # Note to self: sometimes you know you'll be working with multiple repositories
 # over HTTPS, and the server's cert is self-signed. Rather than telling git "don't
 # verify SSL connections", or "use this cert for this repo" repeatedly, copy your
