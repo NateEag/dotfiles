@@ -140,8 +140,8 @@ default MacBookPro17 count:1
 # instead.
 layout MacBookPro17Plus19 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
 layout MacBookPro17Plus19 'Emacs' corner top-left
-layout MacBookPro17Plus19 'Mail':REPEAT move screenOriginX;screenOriginY screenSizeX*2/3;screenSizeY*2/3 1
-layout MacBookPro17Plus19 'Adium' move screenOriginX+screenSizeX-windowSizeX;screenOriginY+screenSizeY-windowSizeY windowSizeX;windowSizeY 1 | move screenOriginX;screenOriginY windowSizeX;windowSizeY 1
+layout MacBookPro17Plus19 'Slack' move screenOriginX+screenSizeX-windowSizeX;screenOriginY+screenSizeY-windowSizeY windowSizeX;windowSizeY 0 | move screenOriginX;screenOriginY windowSizeX;windowSizeY 0
+layout MacBookPro17Plus19 'Terminal':REPEAT move screenOriginX;screenOriginY screenSizeX/2;screenSizeY 1
 
 bind 4:${hyper} layout MacBookPro17Plus19
 
