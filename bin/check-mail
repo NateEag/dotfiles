@@ -23,8 +23,9 @@ key_loaded=$(echo "KEYINFO --no-ask $keygrip Err Pmt Des" |
                   gpg-connect-agent --no-autostart |
                   sed -n 2p)
 
+# This check doesn't seem to do what I want. I don't always get notifications
+# when I wind up being required to authenticate to get the mail check working.
 if [ "$key_loaded" != 'OK' ]; then
-
     msg='GPG key not loaded; aborting mail check'
 
     # TODO Output this to stderr and notify when cron error logs grow. That
