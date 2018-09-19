@@ -1,0 +1,19 @@
+#! /bin/bash
+
+# A dumb little script to extract the svn commit ID of a given commit in a
+# git-svn repo.
+#
+# Defaults to current commit if none is specified.
+#
+# Mostly useful when updating issue trackers with svn revision information.
+
+commit_id="$1"
+if [ -z "$1" ]; then
+    commit_id="HEAD"
+fi
+
+revision_num="$(git rev-list --format=%B --max-count=1 "$commit_id" |
+                    grep '^git-svn-id:' |
+                    sed 's/.*@\([0-9]*\).*/\1/')"
+
+echo -n "$revision_num"
