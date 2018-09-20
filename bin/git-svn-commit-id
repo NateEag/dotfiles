@@ -16,4 +16,11 @@ revision_num="$(git rev-list --format=%B --max-count=1 "$commit_id" |
                     grep '^git-svn-id:' |
                     sed 's/.*@\([0-9]*\).*/\1/')"
 
-echo -n "$revision_num"
+# For interactive use, output a newline afterwards. In pipelines, don't.
+#
+# https://stackoverflow.com/a/911213/1128957
+if [ -t 1 ]; then
+    echo "$revision_num"
+else
+    echo -n "$revision_num"
+fi
