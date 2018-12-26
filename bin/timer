@@ -2,6 +2,8 @@
 
 # Simple wrapper around notification commands and sleep to send messages after
 # a set amount of time has passed.
+#
+# TODO Use the at command instead of sleep?
 
 script_name=$(basename "$0")
 usage_msg="Send a notification after a certain amount of time has passed.
