@@ -149,3 +149,17 @@ bind 4:${hyper} layout MacBookPro17Plus19
 # hardcoded window sizes in it. However, that does not seem to be working. Not
 # sure what I might be missing.
 default MacBookPro17Plus19 count:2
+
+
+# TODO Figure out what to do with dual 27" dispays. I now have them for the
+# first time since MapQuest and I'm a little overwhelmed by the sheer amount of
+# available space.
+#
+# I'm not sure what to do with the right monitor. Just splitting to a pair of
+# side-by-side browser windows seems like a waste, but at present I don't see
+# what else to do with it.
+#
+# The left side suggests some obvious things, though:
+#
+# - Triple-pane my main Emacs window
+# - Put Terminal in the empty space by the Emacs window
