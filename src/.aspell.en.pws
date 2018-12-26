@@ -1,6 +1,7 @@
-personal_ws-1.1 en 63 
+personal_ws-1.1 en 65 
 skeuomorphism
 dest
+durations
 prepended
 monospace
 JSON
@@ -22,8 +23,8 @@ cordova
 vertices
 keystores
 TODO
-website
 programmatically
+website
 whitespace
 HTTPS
 Eagleson
@@ -57,6 +58,7 @@ timesink
 env
 defun
 arg
+params
 se
 iOS
 transpile
