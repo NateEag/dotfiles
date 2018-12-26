@@ -7,6 +7,31 @@
 #
 # Therefore, I have this tiny wrapper script to simulate that job.
 
+lockfile_path="$HOME/.check-mail-active"
+
+# This lockfile / trap combination is intended to make it safe for me to run
+# this script whenever I feel like it, without worrying about the fact that
+# there's a cron job scheduled to run it every five minutes.
+#
+# The logic has a race condition, I think. In principle two runs could start
+# nigh-simultaneously and get executed such that each one passes the "does the
+# file exist?" check before the other one manages to create the file.
+#
+# In practice it's been working okay.
+#
+# That said, I have to clean it up by hand in event of a power outage or
+# similar hard interruption that keeps the trap from running.
+if [ -f "$lockfile_path" ]; then
+    exit
+fi
+
+touch "$lockfile_path"
+
+cleanup() {
+    rm -f "$lockfile_path"
+}
+trap cleanup INT TERM EXIT
+
 # Error out if GPG doesn't have authorization for a key linked to the active
 # email address in this session.
 #
