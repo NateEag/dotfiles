@@ -145,10 +145,18 @@ layout MacBookPro17Plus19 'Terminal':REPEAT move screenOriginX;screenOriginY scr
 
 bind 4:${hyper} layout MacBookPro17Plus19
 
+# For use with my pair of 27-inch ASUS displays at home.
+layout Dual27s 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
+layout Dual27s 'Emacs' corner top-left
+layout Dual27s 'Slack' move screenOriginX+screenSizeX-windowSizeX;screenOriginY+screenSizeY-windowSizeY windowSizeX;windowSizeY 0 | move screenOriginX;screenOriginY windowSizeX;windowSizeY 0
+layout Dual27s 'Terminal':REPEAT move screenSizeX-732;screenOriginY 732;screenSizeY 0
+
+bind 5:${hyper} layout Dual27s
+
 # I would like to set this with the default resolutions: option, since I have
 # hardcoded window sizes in it. However, that does not seem to be working. Not
 # sure what I might be missing.
-default MacBookPro17Plus19 count:2
+default Dual27s count:2
 
 
 # TODO Figure out what to do with dual 27" dispays. I now have them for the
@@ -162,4 +170,3 @@ default MacBookPro17Plus19 count:2
 # The left side suggests some obvious things, though:
 #
 # - Triple-pane my main Emacs window
-# - Put Terminal in the empty space by the Emacs window
