@@ -1,0 +1,23 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Generate an image showing the differences between two other images.
+
+The diff image is placed in $PWD/diff.png.
+
+Largely a wrapper around existing features in the ImageMagick suite because I'm
+too lazy to be forever trying to remember which parameters I need to pass it.
+
+Usage: $script_name <left-img> <right-img>"
+
+if [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -lt 2 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+magick compare "$1" "$2" -compose src ./diff.png
