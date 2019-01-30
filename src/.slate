@@ -24,7 +24,6 @@ alias mega cmd;alt;shift
 # the left and right hands, starting with home row, then top, then bottom.
 bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
 
-
 # Relaunch Slate without mousing.
 bind r:${hyper} relaunch
 
@@ -43,6 +42,10 @@ bind m:${hyper} focus 'Mail'
 # Hangouts is a stupid Chrome app, which means it just gets lumped in with my
 # other Chrome tabs, where I absolutely don't want it.
 bind y:${hyper} focus 'YakYak'
+
+
+# Let me dismiss OS X notifications with my keyboard.
+bind n:${hyper} shell '~/dotfiles/bin/dismiss-notifications'
 
 
 # Window movement keys.

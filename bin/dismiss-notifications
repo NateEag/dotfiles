@@ -1,0 +1,10 @@
+#! /usr/bin/osascript
+
+-- Dismiss all OS X notifications. Handy when bound to a key.
+--
+-- I should probably add a comand-line flag that lets you choose whether to
+-- dismiss all windows or whether to click on a notification.
+
+tell application "System Events" to tell process "Notification Center"
+    click button 1 in every window
+end tell
