@@ -2,13 +2,24 @@
 
 -- Dismiss all OS X notifications. Handy when bound to a key.
 --
+-- Inspired by the AppleScripts here:
+--
+-- https://bezhermoso.github.io/2016/01/17/breeze-through-osx-notifications-with-effiency-through-keyboard-shortcuts/
+--
 -- I should probably add a comand-line flag that lets you choose whether to
 -- dismiss all windows or whether to click on the top notification.
---
--- This snippet lets you do the latter:
---
--- click last item of windows
 
-tell application "System Events" to tell process "Notification Center"
-    click button 1 in every window
-end tell
+on run argv
+    tell application "System Events" to tell process "Notification Center"
+        if argv is not equal to {} and item 1 of argv is equal to "click-latest" then
+            click first item of windows
+        else if argv is not equal to {} and item 1 of argv is equal to "defer" then
+            -- This doesn't work for notifications from Reminders. Maybe
+            -- because it's a menu, not a button?
+            click button 2 of first item of windows
+        else
+            -- Dismissing all notifications is the default action.
+            click button 1 in every window
+        end if
+    end tell
+end run
