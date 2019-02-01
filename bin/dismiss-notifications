@@ -1,24 +1,40 @@
 #! /usr/bin/osascript
 
--- Dismiss all OS X notifications. Handy when bound to a key.
+-- Dismiss all OS X notifications. Handy when bound to a key. Depends on
+-- Terminal.app being in the list of apps allowed unfettered accessibility
+-- access in System Preferences.
 --
 -- Inspired by the AppleScripts here:
 --
 -- https://bezhermoso.github.io/2016/01/17/breeze-through-osx-notifications-with-effiency-through-keyboard-shortcuts/
---
--- I should probably add a comand-line flag that lets you choose whether to
--- dismiss all windows or whether to click on the top notification.
 
 on run argv
     tell application "System Events" to tell process "Notification Center"
-        if argv is not equal to {} and item 1 of argv is equal to "click-latest" then
+        set subcommand to ""
+
+        if argv is not equal to {} then
+            set subcommand to item 1 of argv
+        end if
+
+        if subcommand is equal to "click-latest" then
+            -- Jump to whatever spawned the notification.
             click first item of windows
-        else if argv is not equal to {} and item 1 of argv is equal to "defer" then
-            -- This doesn't work for notifications from Reminders. Maybe
-            -- because it's a menu, not a button?
-            click button 2 of first item of windows
+        else if subcommand is equal to "defer-latest" then
+            -- Click the notification's secondary action.
+            set notification to first item of windows
+
+            -- Some notifications use a menu button for their second option, so
+            -- we have to figure out if that's true here.
+            if menu button 1 of notification exists then
+                click menu button 1 of notification
+            else
+                click button 2 of notification
+            end if
+        else if subcommand is equal to "dismiss-latest" then
+            -- Dismiss just the latest action.
+            click button 1 of first item of windows
         else
-            -- Dismissing all notifications is the default action.
+            -- Default action is to dismiss all notifications.
             click button 1 in every window
         end if
     end tell
