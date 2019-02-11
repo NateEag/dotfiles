@@ -1,6 +1,3 @@
-2019-02-11 Get bin/notify working on High Sierra. Seems to be a bug in
-terminal-notifier: https://github.com/julienXX/terminal-notifier/issues/243
-
 2019-02-11 Get High Sierra to wake / end screensaver on keyboard input. This
 seems to be an unacknowledged bug, which can be worked around by giving each
 external monitor its own Space (yuck):
