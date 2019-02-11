@@ -20,4 +20,4 @@
 #
 # If I find any other issues being caused by my custom firmware, I'll roll up my
 # sleeves and dig into it.
-/bin/sleep 0.5 && /usr/bin/open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app
+/bin/sleep 0.5 && /usr/bin/open -a /System/Library/CoreServices/ScreenSaverEngine.app
