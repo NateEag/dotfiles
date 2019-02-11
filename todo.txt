@@ -1,3 +1,14 @@
+2019-02-11 Get bin/notify working on High Sierra. Seems to be a bug in
+terminal-notifier: https://github.com/julienXX/terminal-notifier/issues/243
+
+2019-02-11 Get High Sierra to wake / end screensaver on keyboard input. This
+seems to be an unacknowledged bug, which can be worked around by giving each
+external monitor its own Space (yuck):
+https://apple.stackexchange.com/a/320402/307408
+
+2019-02-11 Get my "sleep / lock" shortcut working again on High Sierra. Looks
+like path to system-level app that starts the screensaver has changed.
+
 2018-02-16 Load expensive bash extensions (nvm, pyenv, etc) in background if
 possible. I think you could probably abuse PROMPT_COMMAND to save "last
 interaction time" and a sleeping poll loop to see when you're inactive then
