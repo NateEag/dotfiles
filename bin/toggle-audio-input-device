@@ -1,0 +1,36 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Toggle between audio input devices.
+
+I hoped that if the built-in microphone was set to Mute with 'Audio MIDI
+Setup.app', this should effectively serve as a command to mute audio input.
+
+Alas, it seems apps quite reasonably hold on to the audio device they started
+receiving input with, so no dice.
+
+I hoped this could be a workaround for Mac OS X not having a way to mute my
+audio input level via keyboard. Originally I wanted a shortcut for muting Slack
+calls, then I thought 'Why not just go global?'
+
+I also tried using AppleScript to set the volume input level to 0, but it turns
+out that leaves sound pretty audible. So, that approach was a wash, too.
+
+I guess one could AppleScript 'Audio MIDI Setup.app' to mute/unmute all input
+devices simultaneously, but that's starting to get kind of crazy. A test with
+Chrome and a page to test browser-based microphone access suggests it would
+work, though.
+
+Usage: $script_name"
+
+if ! command -v SwitchAudioSource; then
+    msg="You must have SwitchAudioSource installed:
+
+https://github.com/deweller/switchaudio-osx"
+
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+SwitchAudioSource -t input -n
