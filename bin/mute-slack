@@ -1,0 +1,17 @@
+#! /usr/bin/osascript
+
+-- Send Slack the 'm' shortcut. As long as a call is Slack's frontmost window,
+-- that will cause it to mute/unmute the current call, so I can pop into/out of
+-- the discussion without bouncing over to Slack manually.
+--
+-- TODO Figure out how to do this while leaving Slack in the background.
+
+set old_app to (path to frontmost application as text)
+
+tell application "Slack"
+    activate
+end tell
+
+tell application "System Events" to keystroke "m"
+
+activate application old_app

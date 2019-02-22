@@ -21,6 +21,15 @@ devices simultaneously, but that's starting to get kind of crazy. A test with
 Chrome and a page to test browser-based microphone access suggests it would
 work, though.
 
+I then thought to look at Slack's shortcuts and discovered that there is a
+built-in shortcut for muting, and I felt foolish for not having looked that up
+before.
+
+For a global shortcut, I can just get AppleScript to send 'm' to the main
+WebView component in Slack.
+
+This stuck around as a memento mori, or perhaps as a 'monument to all my sins'.
+
 Usage: $script_name"
 
 if ! command -v SwitchAudioSource; then
