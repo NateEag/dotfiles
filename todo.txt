@@ -1,3 +1,7 @@
+2019-03-11 Filter emails based on dumb keywords - if it contains the text
+"Unsubscribe", there's a good chance I don't want to read it. Hat tip:
+https://news.ycombinator.com/item?id=19328189
+
 2019-02-11 Get High Sierra to wake / end screensaver on keyboard input. This
 seems to be an unacknowledged bug, which can be worked around by giving each
 external monitor its own Space (yuck):
