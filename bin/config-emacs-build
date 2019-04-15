@@ -1,0 +1,21 @@
+#! /bin/bash
+
+# My configuration for building Emacs from source.
+#
+# Largely ripped from this post on Reddit:
+#
+# https://www.reddit.com/r/emacs/comments/bclyyc/building_emacs_from_source_on_macos/
+#
+# Note that the second instance of CPPFLAGS is a workaround for brew not
+# including libxml2's include files in /usr/local/include.
+
+./configure --with-ns \
+            --with-imagemagick \
+            --with-modules \
+            --enable-silent-rules \
+            PKG_CONFIG_PATH=/opt/local/lib/pkgconfig \
+            LDFLAGS="-L/usr/local/lib" \
+            LDFLAGS="-L/usr/lib" \
+            CPPFLAGS="-I/usr/local/include" \
+            CPPFLAGS="-I/usr/local/Cellar/libxml2/2.9.7/include/libxml2" \
+            CC=clang OBJC=clang CFLAGS="-g -O2"
