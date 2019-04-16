@@ -143,7 +143,7 @@ default MacBookPro17 count:1
 # More Slate bugs: 'throw' does not work reliably in layouts. Use 'move'
 # instead.
 layout MacBookPro17Plus19 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
-layout MacBookPro17Plus19 'Emacs' corner top-left
+layout MacBookPro17Plus19 'Emacs' move screenOriginX;screenOriginY windowSizeX;windowSizeY 0
 layout MacBookPro17Plus19 'Slack' move screenOriginX+screenSizeX-windowSizeX;screenOriginY+screenSizeY-windowSizeY windowSizeX;windowSizeY 0 | move screenOriginX;screenOriginY windowSizeX;windowSizeY 0
 layout MacBookPro17Plus19 'Terminal':REPEAT move screenOriginX;screenOriginY screenSizeX/2;screenSizeY 1
 
@@ -151,7 +151,7 @@ bind 4:${hyper} layout MacBookPro17Plus19
 
 # For use with my pair of 27-inch ASUS displays at home.
 layout Dual27s 'Google Chrome':REPEAT move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY 1
-layout Dual27s 'Emacs' corner top-left
+layout Dual27s 'Emacs' move screenOriginX;screenOriginY windowSizeX;windowSizeY 0
 layout Dual27s 'Slack' move screenOriginX+screenSizeX-windowSizeX;screenOriginY+screenSizeY-windowSizeY windowSizeX;windowSizeY 0 | move screenOriginX;screenOriginY windowSizeX;windowSizeY 0
 layout Dual27s 'Terminal':REPEAT move screenSizeX-732;screenOriginY 732;screenSizeY 0
 
