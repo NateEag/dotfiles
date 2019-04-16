@@ -175,8 +175,8 @@ PATH="$HOME/.composer/vendor/bin:$PATH"
 # Set up for building Chrome.
 PATH="$HOME/chromium-build/depot_tools:$PATH"
 
-# Add Emacs 24 commands to my path, so that emacsclient works right on OS X.
-PATH=/Applications/Emacs.app/Contents/MacOS/bin-i386-10_5:$PATH
+# Add Emacs commands to my path, so that emacsclient works right on OS X.
+PATH=/Applications/Emacs.app/Contents/MacOS/bin:$PATH
 PATH=/Applications/Emacs.app/Contents/MacOS:$PATH
 
 # Set EMACS var for cask.
