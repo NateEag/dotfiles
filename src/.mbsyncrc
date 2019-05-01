@@ -1,7 +1,7 @@
 IMAPAccount nxtbook
 Host imap.gmail.com
 User neagleson@nxtbookmedia.com
-PassCmd "offlineimap.py neagleson@nxtbookmedia.com imap.gmail.com"
+PassCmd "pass show imap.gmail.com/neagleson@nxtbookmedia.com"
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
