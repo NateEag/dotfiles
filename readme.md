@@ -11,14 +11,9 @@ TrulyErgonomic keyboard. They are implemented with
 
 * A semi-random collection of useful third-party commands, mostly npm packages.
 
-* A not-very-comprehensive [Slate](https://github.com/mattr-/slate) config.
-  Since Slate is abandonware these days, I'm considering moving to
-  [Hammerspoon](http://www.hammerspoon.org/), but then I'm considering leaving
-  OS X entirely, so it might just be a waste of time.
-
-* My personal [Plover](http://stenoknight.com/wiki/Main_Page) dictionary. Note
-  that I am a complete novice with Plover and stenography, so it may contain
-  some poor choices. You have to start somewhere...
+* A [Hammerspoon](http://www.hammerspoon.org/) configuration that's midway
+  through replacing my [Slate](https://github.com/mattr-/slate) config, since
+  Slate is abandonware these days.
 
 Usage
 =====
