@@ -26,7 +26,6 @@ bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
 
 
 # Window movement keys.
-bind h:${hyper} corner top-left
 bind j:${hyper} corner top-right
 bind k:${hyper} corner bottom-left
 bind l:${hyper} corner bottom-right

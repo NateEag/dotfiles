@@ -21,6 +21,9 @@ end)
 
 function bindAppToHotkey(app, keycode)
     hs.hotkey.bind(hyper_keys, keycode, function()
+        -- FIXME Only focus the frontmost window. Slate worked that way and I
+        -- preferred it, as it was easier to leave a browser window and a
+        -- terminal side-by-side that way, for example.
         hs.application.launchOrFocus(app)
     end)
 end
@@ -49,3 +52,22 @@ bindCommandToHotkey("~/dotfiles/bin/dismiss-notifications", "N")
 
 -- Toggle whether my mic is on in a Slack call while I'm in a different app.
 bindCommandToHotkey("~/dotfiles/bin/mute-slack", "M")
+
+
+--
+-- Shortcuts for moving windows manually.
+--
+hs.hotkey.bind(hyper_keys, "h", function()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x
+    win_frame.y = screen_frame.y
+
+    -- FIXME Snap directly instead of animating. I liked that about Slate,
+    -- because who wants to wait for an animation?
+    win:setFrame(win_frame)
+end)
