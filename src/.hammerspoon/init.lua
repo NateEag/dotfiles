@@ -42,7 +42,7 @@ bindAppToHotkey("YakYak", "Y")
 --
 
 function bindCommandToHotkey(cmd, keycode)
-    hs.hotkey.bind(hyper_keys, "N", function()
+    hs.hotkey.bind(hyper_keys, keycode, function()
         os.execute(cmd)
     end)
 end
