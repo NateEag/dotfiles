@@ -9,6 +9,9 @@
 
 hyper_keys = {"ctrl", "shift"}
 
+-- I don't like waiting for cute little window animations.
+ANIMATION_DURATION = 0
+
 -- Give me a way to reload config when I want to. There are ways to be smarter
 -- but this is what I want.
 hs.hotkey.bind(hyper_keys, "R", function()
@@ -69,7 +72,7 @@ hs.hotkey.bind(hyper_keys, "H", function()
 
     -- FIXME Snap directly instead of animating. I liked that about Slate,
     -- because who wants to wait for an animation?
-    win:setFrame(win_frame)
+    win:setFrame(win_frame, ANIMATION_DURATION)
 end)
 
 
@@ -92,5 +95,5 @@ hs.hotkey.bind(hyper_keys, "O", function()
     windowFrame.w = ((windowFrame.w / focusedScreenFrame.w) * nextScreenFrame.w)
 
     -- Set the focused window's new frame dimensions
-    focusedWindow:setFrame(windowFrame)
+    focusedWindow:setFrame(windowFrame, ANIMATION_DURATION)
 end)
