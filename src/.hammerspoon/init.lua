@@ -57,7 +57,7 @@ bindCommandToHotkey("~/dotfiles/bin/mute-slack", "M")
 --
 -- Shortcuts for moving windows manually.
 --
-hs.hotkey.bind(hyper_keys, "h", function()
+hs.hotkey.bind(hyper_keys, "H", function()
     local win = hs.window.focusedWindow()
     local win_frame = win:frame()
 
