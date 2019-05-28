@@ -41,9 +41,6 @@ bind d:${hyper} move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 # window.
 bind s:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
-# Cycle windows between screens.
-bind o:${hyper} throw next
-
 # Window resizing
 
 # N.B.: There's a known bug where you cannot resize windows that are flush with
