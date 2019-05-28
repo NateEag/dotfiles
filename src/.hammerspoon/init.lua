@@ -60,6 +60,11 @@ bindCommandToHotkey("~/dotfiles/bin/mute-slack", "M")
 --
 -- Shortcuts for moving windows manually.
 --
+
+-- Note that Hammerspoon uses a window coordinate grid that covers all screens,
+-- with the primary's upper-left corner at 0, 0. That means window placement
+-- arithmetic is a bit fussier than it was under Slate, where each screen had
+-- its own coordinate system.
 hs.hotkey.bind(hyper_keys, "H", function()
     local win = hs.window.focusedWindow()
     local win_frame = win:frame()
@@ -70,8 +75,45 @@ hs.hotkey.bind(hyper_keys, "H", function()
     win_frame.x = screen_frame.x
     win_frame.y = screen_frame.y
 
-    -- FIXME Snap directly instead of animating. I liked that about Slate,
-    -- because who wants to wait for an animation?
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end)
+
+hs.hotkey.bind(hyper_keys, "J", function()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x + screen_frame.w - win_frame.w
+    win_frame.y = screen_frame.y
+
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end)
+
+hs.hotkey.bind(hyper_keys, "K", function()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x
+    win_frame.y = screen_frame.y + screen_frame.h - win_frame.h
+
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end)
+
+hs.hotkey.bind(hyper_keys, "L", function()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x + screen_frame.w - win_frame.w
+    win_frame.y = screen_frame.y + screen_frame.h - win_frame.h
+
     win:setFrame(win_frame, ANIMATION_DURATION)
 end)
 

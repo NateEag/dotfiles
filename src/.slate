@@ -25,11 +25,6 @@ alias mega cmd;alt;shift
 bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
 
 
-# Window movement keys.
-bind j:${hyper} corner top-right
-bind k:${hyper} corner bottom-left
-bind l:${hyper} corner bottom-right
-
 # Make current window half the monitor size, Useful for side-by-siding windows.
 # 'divide' is a bad mnemonic, but watcha gonna do?
 # ...besides call Ghostbusters.
