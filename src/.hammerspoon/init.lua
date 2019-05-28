@@ -56,6 +56,14 @@ bindCommandToHotkey("~/dotfiles/bin/dismiss-notifications", "N")
 -- Toggle whether my mic is on in a Slack call while I'm in a different app.
 bindCommandToHotkey("~/dotfiles/bin/mute-slack", "M")
 
+-- Start up a new Emacs instance. Useful when I'm writing init code and want to
+-- test it.
+bindCommandToHotkey("/usr/bin/open -n -a Emacs.app", "W")
+
+-- Activate screensaver from keyboard. If your machine is set up to lock the
+-- display on screensaver, this is a handy shortcut for locking the display.
+bindCommandToHotkey("/Users/neagleson/dotfiles/bin/screensaver", "A")
+
 
 --
 -- Shortcuts for moving windows manually.
