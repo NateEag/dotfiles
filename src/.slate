@@ -47,10 +47,6 @@ bind home:${hyper} resize -10% -0 top-left
 bind end:${hyper} resize -10% -0 top-right
 
 
-# Bindings for running one-off commands.
-
-
-
 # Bindings for changing keyboard layouts.
 #
 # These are for KeyRemap4MacBook. For Karabiner, I'd have to use
