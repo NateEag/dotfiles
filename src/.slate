@@ -25,11 +25,6 @@ alias mega cmd;alt;shift
 bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
 
 
-# Make current window half the monitor size, Useful for side-by-siding windows.
-# 'divide' is a bad mnemonic, but watcha gonna do?
-# ...besides call Ghostbusters.
-bind d:${hyper} move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
-
 # Made window take up the full screen. I don't really like OS X's actual
 # fullscreen feature, for reasons I can't articulate. Bound to s because it
 # wasn't taken and it's next to 'd', which I'm already using for half-sizing a
