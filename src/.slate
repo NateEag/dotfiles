@@ -1,16 +1,5 @@
 # My personal [Slate](https://github.com/jigish/slate) config.
 
-# Note - I'm also trying out Flycut, bound to a shortcut in my Slate
-# 'namespace', if you will - Control-Shift-v. We'll see how it works.
-
-# Not sure what this does. Someone recommended it.
-config defaultToCurrentScreen true
-
-# Make window hints show up for everything, with icons.
-config windowHintsShowIcons true
-config windowHintsIgnoreHiddenWindows false
-config windowHintsSpread true
-
 # Keybindings.
 
 # I use ctrl+shift as my trigger combo, as few apps use that particular
@@ -19,43 +8,6 @@ alias hyper ctrl;shift
 
 # There are a few things I use an alternate key combo for.
 alias mega cmd;alt;shift
-
-# Note that the hints are chosen to roughly distribute things evenly between
-# the left and right hands, starting with home row, then top, then bottom.
-bind s:${hyper} hint ALSKDJFHGQPWOEIRUTYZMXNCBV
-
-
-# Made window take up the full screen. I don't really like OS X's actual
-# fullscreen feature, for reasons I can't articulate. Bound to s because it
-# wasn't taken and it's next to 'd', which I'm already using for half-sizing a
-# window.
-bind s:${hyper} move screenOriginX;screenOriginY screenSizeX;screenSizeY
-
-# Window resizing
-
-# N.B.: There's a known bug where you cannot resize windows that are flush with
-# the right edge of the screen:
-#
-# https://github.com/jigish/slate/issues/259
-#
-# The easiest workaround is to shrink right-side windows to the left, expand
-# them to the left a few times, then throw them back to the right.
-bind left:${hyper} resize +10% +0 top-right
-bind right:${hyper} resize +10% +0 top-left
-
-bind home:${hyper} resize -10% -0 top-left
-bind end:${hyper} resize -10% -0 top-right
-
-
-# Bindings for changing keyboard layouts.
-#
-# These are for KeyRemap4MacBook. For Karabiner, I'd have to use
-# /Applications/Karabiner.app/Contents/Library/bin/karabiner as the command.
-
-# Activate MacBook Pro KeyRemap4MacBook profile.
-bind x:${mega} shell '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli select 2'
-# Activate Default KeyRemap4MacBook profile (mainly used by my wife).
-bind z:${mega} shell '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli select 1'
 
 
 # Window layouts.
