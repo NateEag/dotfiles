@@ -7,13 +7,20 @@
 -- The world is too much with us; slate and spoon,
 -- calling and binding we lay waste our powers;--
 
+
+-- My personal keybinding namespace. If I ever change baseline OSes, this may
+-- need to change, since Ctrl+Shift is a much more common combo on Linux and
+-- Windows.
 hyper_keys = {"ctrl", "shift"}
+
 
 -- I don't like waiting for cute little window animations.
 ANIMATION_DURATION = 0
 
--- Give me a way to reload config when I want to. There are ways to be smarter
--- but this is what I want.
+
+-- Give me a way to reload config when I want to. Auto-reloading is possible
+-- but seems like it will cause unpredictable breakage when I'm working on the
+-- config file.
 hs.hotkey.bind(hyper_keys, "R", function()
       hs.reload()
 end)
@@ -169,3 +176,35 @@ hs.hotkey.bind(hyper_keys, "O", function()
     -- Set the focused window's new frame dimensions
     focusedWindow:setFrame(windowFrame, ANIMATION_DURATION)
 end)
+
+
+--
+-- Set window size and position based on the currently-connected displays.
+--
+
+function layOutWindowsForDualMonitors()
+   local emacs = hs.appfinder.appFromName("Emacs")
+
+   local windows = emacs:allWindows()
+
+   for key, window in pairs(windows) do
+      window_frame = window:frame()
+      screen_frame = window:screen():frame()
+
+      window_frame.x = screen_frame.x
+      window_frame.y = screen_frame.y
+
+      window:setFrame(window_frame, ANIMATION_DURATION)
+   end
+end
+
+function layoutWindows()
+    local screens = hs.screen.allScreens()
+    local num_screens = #screens
+
+    if num_screens == 2 then
+        layOutWindowsForDualMonitors()
+    end
+end
+
+hs.hotkey.bind(hyper_keys, "1", layoutWindows)
