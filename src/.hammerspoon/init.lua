@@ -199,6 +199,11 @@ function layOutWindowsForDualMonitors()
 end
 
 function layoutWindows()
+    -- Tell Emacs to compute its frame size. I've taught it to size itself
+    -- based on screen size, and it's where I spend much of my workday, so it
+    -- becomes the point of reference for sizing and placing other windows.
+    os.execute("/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(my-set-up-frame)'")
+
     local screens = hs.screen.allScreens()
     local num_screens = #screens
 
