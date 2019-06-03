@@ -18,12 +18,20 @@ hyper_keys = {"ctrl", "shift"}
 ANIMATION_DURATION = 0
 
 
+--
+-- Hammerspoon-specific configuration.
+--
+
+
 -- Give me a way to reload config when I want to. Auto-reloading is possible
 -- but seems like it will cause unpredictable breakage when I'm working on the
 -- config file.
-hs.hotkey.bind(hyper_keys, "R", function()
-      hs.reload()
-end)
+hs.hotkey.bind(hyper_keys, "R", hs.reload)
+
+-- This is a stupid shortcut but I want *something* that does this, and "E"
+-- (for evaluate) and "L" (for Lua) are already taken.
+hs.hotkey.bind(hyper_keys, "P", hs.openConsole)
+
 
 --
 -- Shortcuts for jumping straight to apps.
@@ -188,13 +196,23 @@ function layOutWindowsForDualMonitors()
    local windows = emacs:allWindows()
 
    for key, window in pairs(windows) do
-      window_frame = window:frame()
+      local window_frame = window:frame()
       screen_frame = window:screen():frame()
 
       window_frame.x = screen_frame.x
       window_frame.y = screen_frame.y
 
       window:setFrame(window_frame, ANIMATION_DURATION)
+   end
+
+   -- Move Terminal windows to the second monitor, flush with the left side.
+   local screens = hs.screen.allScreens()
+   local terminal = hs.appfinder.appFromName("Terminal")
+   windows = terminal:allWindows()
+
+   local half_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
+   for key, window in pairs(windows) do
+      window:move(half_screen_rect, screens[2], true, ANIMATION_DURATION)
    end
 end
 
