@@ -208,7 +208,7 @@ function layOutWindowsForDualMonitors()
       window:setFrame(window_frame, ANIMATION_DURATION)
    end
 
-   -- Move Terminal windows to the second monitor, flush with the left side.
+   -- Move Terminal windows to the second monitor, taking up the left half.
    local second_screen = primary_screen:toEast()
 
    local terminal = hs.appfinder.appFromName("Terminal")
@@ -219,6 +219,7 @@ function layOutWindowsForDualMonitors()
       window:move(left_half_screen_rect, second_screen, true, ANIMATION_DURATION)
    end
 
+   -- Move Chrome windows to the second monitor, taking up the right half.
    local chrome = hs.appfinder.appFromName("Google Chrome")
    windows = chrome:allWindows()
 
