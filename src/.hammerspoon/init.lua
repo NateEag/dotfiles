@@ -53,6 +53,7 @@ bindAppToHotkey("Calendar", "C")
 bindAppToHotkey("Finder", "F")
 bindAppToHotkey("Slack", "I")
 bindAppToHotkey("YakYak", "Y")
+bindAppToHotkey("Signal", "S")
 
 
 --
