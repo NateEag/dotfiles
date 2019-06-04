@@ -191,11 +191,14 @@ end)
 --
 
 function layOutWindowsForDualMonitors()
+   local primary_screen = hs.screen.primaryScreen()
    local emacs = hs.appfinder.appFromName("Emacs")
-
    local windows = emacs:allWindows()
 
    for key, window in pairs(windows) do
+      window:moveToScreen(primary_screen, false, true, ANIMATION_DURATION)
+
+      -- Now make sure it's at the current screen's top corner.
       local window_frame = window:frame()
       screen_frame = window:screen():frame()
 
@@ -206,13 +209,22 @@ function layOutWindowsForDualMonitors()
    end
 
    -- Move Terminal windows to the second monitor, flush with the left side.
-   local screens = hs.screen.allScreens()
+   local second_screen = primary_screen:toEast()
+
    local terminal = hs.appfinder.appFromName("Terminal")
    windows = terminal:allWindows()
 
-   local half_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
+   local left_half_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
    for key, window in pairs(windows) do
-      window:move(half_screen_rect, screens[2], true, ANIMATION_DURATION)
+      window:move(left_half_screen_rect, second_screen, true, ANIMATION_DURATION)
+   end
+
+   local chrome = hs.appfinder.appFromName("Google Chrome")
+   windows = chrome:allWindows()
+
+   local right_half_screen_rect = hs.geometry.new(0.5, 0, 0.5, 1)
+   for key, window in pairs(windows) do
+      window:move(right_half_screen_rect, second_screen, true, ANIMATION_DURATIO)
    end
 end
 
@@ -220,6 +232,10 @@ function layoutWindows()
     -- Tell Emacs to compute its frame size. I've taught it to size itself
     -- based on screen size, and it's where I spend much of my workday, so it
     -- becomes the point of reference for sizing and placing other windows.
+    --
+    -- TODO Do this after moving Emacs to the appropriate screen? I think this
+    -- happens to work with my current setup but is not generally correct in
+    -- principle.
     os.execute("/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(my-set-up-frame)'")
 
     local screens = hs.screen.allScreens()
