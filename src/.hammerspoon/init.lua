@@ -39,9 +39,19 @@ hs.hotkey.bind(hyper_keys, "P", hs.openConsole)
 
 function bindAppToHotkey(app, keycode)
     hs.hotkey.bind(hyper_keys, keycode, function()
-        -- FIXME Only focus the frontmost window. Slate worked that way and I
-        -- preferred it, as it was easier to leave a browser window and a
-        -- terminal side-by-side that way, for example.
+        local app = hs.appfinder.appFromName(app)
+
+        -- Funny little dance to both start the app if it's not running but
+        -- focus it *without bringing all windows forward* if it is running.
+        --
+        -- TODO File an issue to make launchOrFocus() support an optional arg
+        -- for this like app:activate().
+        if app == nil then
+           hs.application.launchOrFocus(app)
+        else
+           app:activate()
+        end
+
         hs.application.launchOrFocus(app)
     end)
 end
