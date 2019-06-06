@@ -100,6 +100,7 @@ bindCommandToHotkey("/Users/neagleson/dotfiles/bin/screensaver", "A")
 -- arithmetic is a bit fussier than it was under Slate, where each screen had
 -- its own coordinate system.
 
+
 -- 'Divide' is a poor mnemonic for "Make window half-width, full-height", but
 -- it's what I went with back in the day.
 hs.hotkey.bind(hyper_keys, "D", function()
@@ -116,6 +117,26 @@ hs.hotkey.bind(hyper_keys, "D", function()
 
     win:setFrame(win_frame, ANIMATION_DURATION)
 end)
+
+
+-- 'Quarter' is a slightly better mnemonic.
+--
+-- TODO Put the window in the corner it's closest to.
+hs.hotkey.bind(hyper_keys, "Q", function()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x
+    win_frame.y = screen_frame.y
+    win_frame.w = screen_frame.w / 2
+    win_frame.h = screen_frame.h / 2
+
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end)
+
 
 -- The following four rules just let me pin a window to one of the four corners
 -- of the world.
