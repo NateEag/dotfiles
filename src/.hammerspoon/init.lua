@@ -280,3 +280,8 @@ function layoutWindows()
 end
 
 hs.hotkey.bind(hyper_keys, "1", layoutWindows)
+
+-- Automatically re-layout screen when my available monitors change.
+
+screen_watcher = hs.screen.watcher.newWithActiveScreen(layoutWindows)
+screen_watcher:start()
