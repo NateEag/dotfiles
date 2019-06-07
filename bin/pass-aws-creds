@@ -1,0 +1,28 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="A tool for getting credentials out from pass (https://passwordstore.org) in
+the aws command's external processes format:
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html
+
+Usage: $script_name <pass_id_for_aws_key_id> <pass_id_for_aws_key>"
+
+if [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ "$#" -ne 2 ]; then
+    echo "$msg" >&2
+
+    exit 2
+fi
+
+access_key_id="$(pass show "$1")"
+access_key="$(pass show "$2")"
+
+echo "{
+  \"Version\": 1,
+  \"AccessKeyId\": \"$access_key_id\",
+  \"SecretAccessKey\": \"$access_key\"
+}"
