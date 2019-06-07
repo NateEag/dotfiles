@@ -11,9 +11,9 @@ TrulyErgonomic keyboard. They are implemented with
 
 * A semi-random collection of useful third-party commands, mostly npm packages.
 
-* A [Hammerspoon](http://www.hammerspoon.org/) configuration that's midway
-  through replacing my [Slate](https://github.com/mattr-/slate) config, since
-  Slate is abandonware these days.
+* A small [Hammerspoon](http://www.hammerspoon.org/) configuration aimed mostly
+  at letting me manage windows and swap apps with minimal mouse and keyboard
+  usage.
 
 Usage
 =====
