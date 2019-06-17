@@ -220,6 +220,15 @@ end)
 -- Set window size and position based on the currently-connected displays.
 --
 
+function layoutAppWindows(app_name, window_rect, screen)
+   local app = hs.appfinder.appFromName(app_name)
+   local windows = app:allWindows()
+
+   for key, window in pairs(windows) do
+      window:move(window_rect, screen, true, ANIMATION_DURATION)
+   end
+end
+
 function layOutWindowsForDualMonitors()
    local primary_screen = hs.screen.primaryScreen()
    local emacs = hs.appfinder.appFromName("Emacs")
@@ -241,22 +250,21 @@ function layOutWindowsForDualMonitors()
    -- Move Terminal windows to the second monitor, taking up the left half.
    local second_screen = primary_screen:toEast()
 
-   local terminal = hs.appfinder.appFromName("Terminal")
-   windows = terminal:allWindows()
-
    local left_half_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
-   for key, window in pairs(windows) do
-      window:move(left_half_screen_rect, second_screen, true, ANIMATION_DURATION)
-   end
 
-   -- Move Chrome windows to the second monitor, taking up the right half.
-   local chrome = hs.appfinder.appFromName("Google Chrome")
-   windows = chrome:allWindows()
+   layoutAppWindows("Terminal", left_half_screen_rect, second_screen)
 
    local right_half_screen_rect = hs.geometry.new(0.5, 0, 0.5, 1)
-   for key, window in pairs(windows) do
-      window:move(right_half_screen_rect, second_screen, true, ANIMATION_DURATIO)
-   end
+   layoutAppWindows("Google Chrome", right_half_screen_rect, second_screen)
+
+   local lower_right_screen_rect = hs.geometry.new(0.5, 0.5, 0.5, 0.5)
+   layoutAppWindows("Slack", lower_right_screen_rect, primary_screen)
+
+   local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
+   layoutAppWindows("Signal", upper_right_screen_rect, primary_screen)
+
+   local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
+   layoutAppWindows("YakYak", upper_right_screen_rect, primary_screen)
 end
 
 function layoutWindows()
