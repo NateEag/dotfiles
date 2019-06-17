@@ -37,9 +37,9 @@ hs.hotkey.bind(hyper_keys, "P", hs.openConsole)
 -- Shortcuts for jumping straight to apps.
 --
 
-function bindAppToHotkey(app, keycode)
+function bindAppToHotkey(app_name, keycode)
     hs.hotkey.bind(hyper_keys, keycode, function()
-        local app = hs.appfinder.appFromName(app)
+        local app = hs.appfinder.appFromName(app_name)
 
         -- Funny little dance to both start the app if it's not running but
         -- focus it *without bringing all windows forward* if it is running.
@@ -47,12 +47,10 @@ function bindAppToHotkey(app, keycode)
         -- TODO File an issue to make launchOrFocus() support an optional arg
         -- for this like app:activate().
         if app == nil then
-           hs.application.launchOrFocus(app)
+           hs.application.launchOrFocus(app_name)
         else
            app:activate()
         end
-
-        hs.application.launchOrFocus(app)
     end)
 end
 
