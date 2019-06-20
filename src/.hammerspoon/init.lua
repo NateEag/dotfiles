@@ -229,7 +229,19 @@ function layoutAppWindows(app_name, window_rect, screen)
    end
 end
 
-function layOutWindowsForDualMonitors()
+function layoutWindows()
+    -- Tell Emacs to compute its frame size. I've taught it to size itself
+    -- based on screen size, and it's where I spend much of my workday, so it
+    -- becomes the point of reference for sizing and placing other windows.
+    --
+    -- TODO Do this after moving Emacs to the appropriate screen? I think this
+    -- happens to work with my current setup but is not generally correct in
+    -- principle.
+    os.execute("/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(my-set-up-frame)'")
+
+   local screens = hs.screen.allScreens()
+   local num_screens = #screens
+
    local primary_screen = hs.screen.primaryScreen()
    local emacs = hs.appfinder.appFromName("Emacs")
    local windows = emacs:allWindows()
@@ -265,24 +277,6 @@ function layOutWindowsForDualMonitors()
 
    local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
    layoutAppWindows("YakYak", upper_right_screen_rect, primary_screen)
-end
-
-function layoutWindows()
-    -- Tell Emacs to compute its frame size. I've taught it to size itself
-    -- based on screen size, and it's where I spend much of my workday, so it
-    -- becomes the point of reference for sizing and placing other windows.
-    --
-    -- TODO Do this after moving Emacs to the appropriate screen? I think this
-    -- happens to work with my current setup but is not generally correct in
-    -- principle.
-    os.execute("/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(my-set-up-frame)'")
-
-    local screens = hs.screen.allScreens()
-    local num_screens = #screens
-
-    if num_screens == 2 then
-        layOutWindowsForDualMonitors()
-    end
 end
 
 hs.hotkey.bind(hyper_keys, "1", layoutWindows)
