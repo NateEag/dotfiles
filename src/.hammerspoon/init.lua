@@ -266,6 +266,8 @@ function layoutWindows()
 
    layoutAppWindows("Terminal", left_half_screen_rect, second_screen)
 
+   layoutAppWindows("Calendar", left_half_screen_rect, primary_screen)
+
    local right_half_screen_rect = hs.geometry.new(0.5, 0, 0.5, 1)
    layoutAppWindows("Google Chrome", right_half_screen_rect, second_screen)
 
