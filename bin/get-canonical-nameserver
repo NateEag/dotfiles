@@ -1,0 +1,37 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Output a domain's canonical nameserver to stdout.
+
+A dumb wrapper around nslookup because I always forget the option I actually
+need to do this.
+
+To pass target domain on stdin, pass '-' as the first argument.
+
+Based on answer at https://stackoverflow.com/a/38028/1128957
+
+Usage: $script_name <domain>"
+
+if [ $1 == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 2
+fi
+
+domain="$1"
+if [ "$1" == '-' ]; then
+    domain="$(cat /dev/stdin)"
+fi
+
+# Drop any subdomain portion, as subdomains must necessarily use the same
+# nameserver as the actual domain.
+domain="$(echo "$domain" |
+               sed -E 's/^.*\.([a-zA-Z0-9\-]+\.[a-zA-Z0-9\-]+)$/\1/')"
+
+nslookup -type=soa "$domain" |
+    grep 'origin = ' |
+    awk -F ' = ' '{print $2;}'
