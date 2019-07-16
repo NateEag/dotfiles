@@ -281,6 +281,11 @@ if [ $(command -v direnv) ]; then
     eval "$(direnv hook bash)"
 fi
 
+# Set up AWS completions, if available.
+if command -v aws_completer > /dev/null; then
+    complete -C aws_completer aws
+fi
+
 # Load any machine-specific customizations.
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
