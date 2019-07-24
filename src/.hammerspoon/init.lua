@@ -318,7 +318,11 @@ function layoutWindows()
       right_side_screen_rect = remaining_space_rect
    end
 
-   layoutAppWindows("Terminal", left_side_screen_rect, second_screen)
+   if using_laptop_display then
+      layoutAppWindows("Terminal", upper_right_screen_rect, primary_screen)
+   else
+      layoutAppWindows("Terminal", left_side_screen_rect, second_screen)
+   end
 
    layoutAppWindows("Calendar", left_side_screen_rect, primary_screen)
 
