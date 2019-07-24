@@ -266,6 +266,9 @@ function layoutWindows()
 
    -- Move Terminal windows to the second monitor, taking up the left half.
    --
+   -- Non-obvious fact: second_screen and primary_screen are the same if
+   -- there's one display.
+   --
    -- TODO Keep them on main monitor if the Emacs window has left enough space
    -- to reasonably put it there?
    local second_screen = primary_screen:toEast()
@@ -278,9 +281,6 @@ function layoutWindows()
    if num_screens == 1 then
       -- Since there's just one display, everything is on the same display as
       -- Emacs. Therefore, size windows to fit around it.
-      --
-      -- Non-obvious fact: second_screen and primary_screen are the same if
-      -- there's one display.
       --
       -- TODO Apply similar logic when using multiple monitors large enough that
       -- there's space for more than just Emacs on the primary display.
