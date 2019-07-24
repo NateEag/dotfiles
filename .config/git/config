@@ -58,7 +58,7 @@
     current-branch = symbolic-ref HEAD --short
 
     # Pretty command-line history.
-    graph-log = log --graph --pretty=oneline --decorate --abbrev-commit
+    graph-log = log --all --graph --oneline --decorate
 
     # Useful for working gitflow-style.
     strict-merge = merge --no-commit --no-ff
