@@ -265,24 +265,65 @@ function layoutWindows()
    end
 
    -- Move Terminal windows to the second monitor, taking up the left half.
+   --
+   -- TODO Keep them on main monitor if the Emacs window has left enough space
+   -- to reasonably put it there?
    local second_screen = primary_screen:toEast()
 
-   local left_half_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
-
-   layoutAppWindows("Terminal", left_half_screen_rect, second_screen)
-
-   layoutAppWindows("Calendar", left_half_screen_rect, primary_screen)
-
-   local right_half_screen_rect = hs.geometry.new(0.5, 0, 0.5, 1)
-   layoutAppWindows("Google Chrome", right_half_screen_rect, second_screen)
-
+   local left_side_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
+   local right_side_screen_rect = hs.geometry.new(0.5, 0, 0.5, 1)
    local lower_right_screen_rect = hs.geometry.new(0.5, 0.5, 0.5, 0.5)
+   local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
+
+   if num_screens == 1 then
+      -- Since there's just one display, everything is on the same display as
+      -- Emacs. Therefore, size windows to fit around it.
+      --
+      -- Non-obvious fact: second_screen and primary_screen are the same if
+      -- there's one display.
+      --
+      -- TODO Apply similar logic when using multiple monitors large enough that
+      -- there's space for more than just Emacs on the primary display.
+      local current_emacs_window = emacs:focusedWindow()
+      local emacs_window_rect = current_emacs_window:frame()
+      local primary_screen_frame = primary_screen:frame()
+
+      left_side_screen_rect = emacs_window_rect
+
+      local remaining_space_rect = hs.geometry.new(
+         emacs_window_rect.x2,
+         emacs_window_rect.y,
+         primary_screen_frame.x2 - emacs_window_rect.w,
+         emacs_window_rect.h
+      )
+
+      lower_right_screen_rect = hs.geometry.new(
+         remaining_space_rect.x,
+         remaining_space_rect.h / 2,
+         remaining_space_rect.w,
+         remaining_space_rect.h / 2
+      )
+
+      upper_right_screen_rect = hs.geometry.new(
+         remaining_space_rect.x,
+         remaining_space_rect.y,
+         remaining_space_rect.w,
+         remaining_space_rect.h / 2
+      )
+
+      right_side_screen_rect = remaining_space_rect
+   end
+
+   layoutAppWindows("Terminal", left_side_screen_rect, second_screen)
+
+   layoutAppWindows("Calendar", left_side_screen_rect, primary_screen)
+
+   layoutAppWindows("Google Chrome", right_side_screen_rect, second_screen)
+
    layoutAppWindows("Slack", lower_right_screen_rect, primary_screen)
 
-   local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
    layoutAppWindows("Signal", upper_right_screen_rect, primary_screen)
 
-   local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
    layoutAppWindows("YakYak", upper_right_screen_rect, primary_screen)
 end
 
