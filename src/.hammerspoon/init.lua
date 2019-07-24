@@ -278,7 +278,11 @@ function layoutWindows()
    local lower_right_screen_rect = hs.geometry.new(0.5, 0.5, 0.5, 0.5)
    local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
 
-   if num_screens == 1 then
+   -- I don't use a desktop computer with one display these days, so this is a
+   -- decent proxy for "am I running on a laptop with no external display?"
+   local using_laptop_display = num_screens == 1
+
+   if using_laptop_display then
       -- Since there's just one display, everything is on the same display as
       -- Emacs. Therefore, size windows to fit around it.
       --
