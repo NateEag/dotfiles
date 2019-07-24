@@ -222,6 +222,11 @@ end)
 
 function layoutAppWindows(app_name, window_rect, screen)
    local app = hs.appfinder.appFromName(app_name)
+   if app == nil then
+      -- Don't try to adjust windows for an app that's not running.
+      return
+   end
+
    local windows = app:allWindows()
 
    for key, window in pairs(windows) do
