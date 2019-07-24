@@ -294,11 +294,19 @@ function layoutWindows()
 
       left_side_screen_rect = emacs_window_rect
 
+      -- I originally computed this as absolute pixel-based rects, but that
+      -- resulted in the menubar not being accounted for somehow.
+      --
+      -- I had the empirical data that my older, dumber setup worked. It used
+      -- unit rects, so I tried that as a workaround.
+      --
+      -- It worked, and so the following code came to be.
+
       local remaining_space_rect = hs.geometry.new(
-         emacs_window_rect.x2,
-         emacs_window_rect.y,
-         primary_screen_frame.x2 - emacs_window_rect.w,
-         emacs_window_rect.h
+         emacs_window_rect.x2 / primary_screen_frame.w,
+         emacs_window_rect.y / primary_screen_frame.h,
+         (primary_screen_frame.x2 - emacs_window_rect.w) / primary_screen_frame.w,
+         1
       )
 
       lower_right_screen_rect = hs.geometry.new(
@@ -310,7 +318,7 @@ function layoutWindows()
 
       upper_right_screen_rect = hs.geometry.new(
          remaining_space_rect.x,
-         remaining_space_rect.y,
+         0,
          remaining_space_rect.w,
          remaining_space_rect.h / 2
       )
