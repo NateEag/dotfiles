@@ -345,7 +345,11 @@ end
 
 hs.hotkey.bind(hyper_keys, "1", layoutWindows)
 
--- Automatically re-layout screen when my available monitors change.
+-- Automatically re-layout screen when my available monitors change or I change
+-- spaces (since inactive spaces will not be updated on monitor setup change)
 
 screen_watcher = hs.screen.watcher.newWithActiveScreen(layoutWindows)
 screen_watcher:start()
+
+space_watcher = hs.spaces.watcher.new(layoutWindows)
+space_watcher:start()
