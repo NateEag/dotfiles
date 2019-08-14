@@ -13,10 +13,11 @@ interaction time" and a sleeping poll loop to see when you're inactive then
 kick off a load.
 
 2017-12-18 Figure out how to use multiple password stores with pass (e.g., work
-and personal). I guess one answer could be setting PASSWORD_STORE_DIR with
-direnv in, say, ~/personal/.envrc, except direnv does not have great support
-for nested direnvs. Maybe I can add something to ~/direnvrc to get me there (or
-just skip direnv and add my own bash hook for setting env vars in ~/personal).
+and personal). Turns out the answer is the built-in `-p`, which lets you
+specify a different GPG key for a subfolder. Remaining questions: is there a
+smart way to manage subfolders (so I can just check out my personal repo as a
+subrepo or something), and can I get gpg-agent to expire some keys faster than
+others?
 
 2016-10-27 Figure out a way to get notified when third-party files are updated
 (for instance, lib/git-svn.sh). A list of RSS feed URLs that install.sh
