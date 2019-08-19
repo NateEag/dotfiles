@@ -1,6 +1,14 @@
 #! /bin/bash
 
-# My configuration for building Emacs from source.
+# My configuration for building Emacs from source for use on OS X. Largely done
+# so that I can have automatic resizing of images to fit in a frame when
+# reading email, which only works if ImageMagick support is compiled into your
+# build (and in turn that doesn't just happen in the Emacs for OS X builds:
+# https://github.com/caldwell/build-emacs/issues/1).
+#
+# Note that when building from a Git checkout, you'll need to run
+# `./autogen.sh` first, per the CONTRIBUTE document in the project's
+# repository.
 #
 # Largely ripped from this post on Reddit:
 #
