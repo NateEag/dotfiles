@@ -18,6 +18,7 @@ dirmngr
 dnsmasq
 editorconfig
 fswatch
+fx
 ghc@8.2
 ghostscript
 gifsicle
@@ -26,6 +27,8 @@ gnuplot
 gpg-agent
 gradle
 graphviz
+grep
+gron
 gsl
 gtkmm
 httpie
@@ -73,5 +76,6 @@ the_silver_searcher
 tidy-html5
 unar
 wine
+wordnet
 xmlstarlet
 xmlto
