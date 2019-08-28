@@ -63,6 +63,11 @@ export GPG_TTY
 # you call it on.
 alias getheaders='curl -s -D - -o /dev/null'
 
+# Magit is my preferred Git client, but I do plenty of work in a terminal
+# emulator. This alias fires up the magit-status prompt directly from my
+# terminal emulator.
+alias mg='emacsclient -a emacs -e "(magit-status)" && open -a Emacs.app'
+
 # Source lib files for my dotfiles.
 # GRIPE Hardcoding this is not as clean as letting my dotfiles dir live
 # anywhere, but I'm not sure how to achieve that, since I install dotfiles by
