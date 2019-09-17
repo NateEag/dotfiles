@@ -1,5 +1,4 @@
 flake8
-proselint
 cram
 LinkChecker
 td-watson
