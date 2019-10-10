@@ -9,7 +9,6 @@ if [[ $# -lt 1 ]]; then
 fi
 
 remote=$(git config branch."$1".remote)
-
 upstream=$(git config branch."$1".merge)
 upstream="${upstream#refs/heads/}"
 
