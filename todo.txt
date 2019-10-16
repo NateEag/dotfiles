@@ -1,3 +1,10 @@
+2019-10-16 Automatically trigger notification on prompt display if the previous
+command took more than four seconds to run? I could build this via
+PROMPT_COMMAND. Not sure it's a great idea since I'd get notified whenever I
+intentionally kill a long-running process I spawned interactively, but it would
+be handy for all the times I kick off a build of X, Y, or Z and move on to
+something else for a minute or two.
+
 2019-03-11 Filter emails based on dumb keywords - if it contains the text
 "Unsubscribe", there's a good chance I don't want to read it. Hat tip:
 https://news.ycombinator.com/item?id=19328189
