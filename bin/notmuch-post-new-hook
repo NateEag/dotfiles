@@ -98,3 +98,17 @@ if [ $num_unread_threads -gt 0 ]; then
 
     notify "$msg" 'New Watched Emails'
 fi
+
+# Some software systems (mostly ticketing ones) use email replies for updates
+# and notifications but break email threading, so my "watched thread"
+# notifications don't trigger notifications when I get an email from the
+# system.
+#
+# Therefore, I have hardcoded some watched senders here.
+num_unread_watched_authors=$(notmuch search \
+                                     from:"MRW Help" and tag:unread | wc -l)
+if [ $num_unread_watched_authors -gt 0 ]; then
+    msg="You have unread emails from correspondents you're watching."
+
+    notify "$msg" 'New Watched Emails'
+fi
