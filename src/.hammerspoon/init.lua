@@ -239,6 +239,12 @@ function layoutWindows()
     -- based on screen size, and it's where I spend much of my workday, so it
     -- becomes the point of reference for sizing and placing other windows.
     --
+    -- FIXME Try to at least position other windows when Emacs is not running.
+    -- Conceptually that's difficult when the logic is centered around Emacs
+    -- windows. I have not really worried about this bug since I don't really
+    -- use computers without running Emacs, but I have bumped into it once or
+    -- twice.
+    --
     -- TODO Do this after moving Emacs to the appropriate screen? I think this
     -- happens to work with my current setup but is not generally correct in
     -- principle.
@@ -301,6 +307,8 @@ function layoutWindows()
       -- unit rects, so I tried that as a workaround.
       --
       -- It worked, and so the following code came to be.
+      --
+      -- TODO Understand the pixel logic failure and file bug if appropriate.
 
       local remaining_space_rect = hs.geometry.new(
          emacs_window_rect.x2 / primary_screen_frame.w,
