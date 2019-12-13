@@ -4,6 +4,18 @@ msg="A bash script for choosing one of several options at pseudorandom.
 
 I use it to help me make decisions.
 
+The decision-making algorithm is:
+
+When uncertain which of two options to choose, flip a coin. If you feel bad
+about the outcome, you now know you wanted the other one. Choose it, and carry
+on.
+
+By the magic of software, your coin may have as many faces as you like. It even
+allows you to simulate the fabled three-sided die.
+
+The script is named for the decision-making algorithm, not for literally
+modeling coin flips.
+
 With no arguments, outputs one of 'Heads' or 'Tails'.
 
 With arguments, outputs exactly one of them to stdout.
