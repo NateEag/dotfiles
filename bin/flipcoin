@@ -1,0 +1,23 @@
+#! /bin/bash
+
+msg="A bash script for choosing one of several options at pseudorandom.
+
+I use it to help me make decisions.
+
+With no arguments, outputs one of 'Heads' or 'Tails'.
+
+With arguments, outputs exactly one of them to stdout.
+
+Usage: $0 [<choice>...]"
+
+if [ $# -eq 0 ]; then
+    choices=(Heads Tails)
+else
+    choices=( "$@" )
+fi
+
+num_choices="${#choices[@]}"
+
+((index=RANDOM % num_choices))
+
+echo "${choices[$index]}"
