@@ -235,6 +235,15 @@ function layoutAppWindows(app_name, window_rect, screen)
 end
 
 function layoutWindows()
+   -- First make sure Emacs is running. If not, gently remind the user/author
+   -- that the logic to lay out windows does not actually work unless Emacs is
+   -- running, as Emacs is central to it.
+   local emacs = hs.appfinder.appFromName("Emacs")
+   if emacs == nil then
+      hs.dialog.alert(0, 0, nil, "Cannot position windows if Emacs is not running.")
+      return
+   end
+
     -- Tell Emacs to compute its frame size. I've taught it to size itself
     -- based on screen size, and it's where I spend much of my workday, so it
     -- becomes the point of reference for sizing and placing other windows.
@@ -254,7 +263,6 @@ function layoutWindows()
    local num_screens = #screens
 
    local primary_screen = hs.screen.primaryScreen()
-   local emacs = hs.appfinder.appFromName("Emacs")
    local windows = emacs:allWindows()
 
    for key, window in pairs(windows) do
