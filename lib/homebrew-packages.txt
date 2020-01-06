@@ -1,3 +1,4 @@
+wix/brew/applesimutils
 asciidoc
 aspell
 automake
@@ -7,6 +8,7 @@ bats
 bdw-gc
 boost-build
 cabal-install
+carthage
 cmake
 cmark
 colordiff
@@ -23,6 +25,7 @@ ghc@8.2
 ghostscript
 gifsicle
 git
+git-quick-stats
 gnuplot
 gpg-agent
 gradle
@@ -40,6 +43,7 @@ isync
 jp2a
 jq
 ledger
+libxml2
 little-cms
 makedepend
 msgpack
@@ -48,11 +52,9 @@ nginx
 nmap
 notmuch
 offlineimap
-openssl@1.1
 pandoc
 pass
 pdfgrep
-php@7.1
 popt
 postgresql
 potrace
@@ -75,7 +77,9 @@ texinfo
 the_silver_searcher
 tidy-html5
 unar
+unixodbc
 wine
 wordnet
 xmlstarlet
 xmlto
+xsv
