@@ -117,6 +117,24 @@ hs.hotkey.bind(hyper_keys, "D", function()
 end)
 
 
+-- ';' is not a mnemonic for maximizing a window, but it's next to my other
+-- window manipulation keys.
+hs.hotkey.bind(hyper_keys, ";", function()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x
+    win_frame.y = screen_frame.y
+    win_frame.w = screen_frame.w
+    win_frame.h = screen_frame.h
+
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end)
+
+
 -- 'Quarter' is a slightly better mnemonic.
 --
 -- TODO Put the window in the corner it's closest to.
