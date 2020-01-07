@@ -1,5 +1,4 @@
-dotfiles
-========
+## dotfiles
 
 A set of dotfiles for use on a Unixy system, along with a few extras:
 
@@ -15,17 +14,28 @@ TrulyErgonomic keyboard. They are implemented with
   at letting me manage windows and swap apps with minimal mouse and keyboard
   usage.
 
-Usage
-=====
+* A basic configuration for using
+  [mbsync](http://isync.sourceforge.net/mbsync.html) and
+  [notmuch](https://notmuchmail.org/) to retrieve and filter email. It's
+  tightly coupled with my [emacs
+  configuration](https://github.com/NateEag/.emacs.d), which I use for reading
+  and writing emails.
+
+
+## Usage
+
+`install.sh` symlinks each file or top-level folder in src/ to ~/$filename. It
+also registers `lib/.crontab` as the executing user's crontab.
+
+`uninstall.sh` undoes `install.sh`'s hard work. It might give odd results if
+you have not previously run `install.sh`.
+
+
+## Layout
 
 `src/` contains the actual dotfiles.
 
 `.config/` contains folders to be symlinked into `~/.config`.
-
-`install.sh` symlinks each file or top-level folder in src/ to ~/.$filename.
-
-`uninstall.sh` undoes `install.sh`'s hard work. It might give odd results if
-you have not previously run `install.sh`.
 
 `bin/` contains my personal collection of command-line programs. They're mostly
 wrappers around existing tools so I don't have to remember arcane interfaces.
