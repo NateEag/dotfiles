@@ -33,6 +33,31 @@ hs.hotkey.bind(hyper_keys, "R", hs.reload)
 hs.hotkey.bind(hyper_keys, "P", hs.openConsole)
 
 
+-- A little-known OS X builtin keybinding I rely on extensively is
+-- Control-F2. It focuses the menu bar, from which you can navigate by
+-- typing the next name you want to focus. Windows users will know how much
+-- better this is.
+--
+-- There is an unfortunate issue with this keybinding, which is that sometimes
+-- it just mysteriously fails to do anything. So far I have discerned no
+-- pattern, but I do have a (ridiculous) workaround:
+--
+-- Do Control-F3 first. That focuses the Dock, and for some reason, once
+-- the Dock is focused, Control-F2 works consistently.
+--
+-- And now you know why the following bizarre keybinding exists - because I
+-- hate doing two keyboard shortcuts to get the effect of one. "," is not a
+-- great mnemonic, but it'll work for now.
+--
+-- (Bonus - I don't have to hold down the Fn modifier to trigger the menubar [I
+-- use it on both my laptop's internal keyboard and in my ErgoDox EZ layout for
+-- triggering Fkeys]).
+hs.hotkey.bind(hyper_keys, ",", nil, function()
+    hs.eventtap.keyStroke({"ctrl"}, "f3", 100)
+    hs.eventtap.keyStroke({"ctrl"}, "f2", 100)
+end)
+
+
 --
 -- Shortcuts for jumping straight to apps.
 --
