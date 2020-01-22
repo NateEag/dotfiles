@@ -7,4 +7,4 @@ reputed to solve such hangs.
 
 I've turned it into a command because I sometimes forget the invocation."
 
-killall -SIGUSR2 -m Emacs
+killall -SIGUSR2 -m emacs
