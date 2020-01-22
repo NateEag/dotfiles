@@ -63,6 +63,13 @@ fi
 
 mbsync "$1"
 
+if [ $? -ne 0 ]; then
+    echo "mbsync failed!" >&2
+
+    exit 1
+fi
+
+
 # TODO I should arguably just call my offlineimap-postsync script in here. In
 # turn, I guess that script should maybe just be named 'check-mail-postsync',
 # since it's actually just running after syncs, no matter what program you use
