@@ -64,12 +64,13 @@ program you run.
 it's Slack's frontmost window). My Hammerspoon config gives that command a
 global keybinding, thus giving me a global keyboard shortcut for muting Slack.
 
-The same general principle applies on almost any OS. If it has a solid
-accessibility API, you can use it to automate graphical programs.
+The same general principle applies on any OS, platform, or program. If it has a
+useful accessibility API, you can use it to automate graphical components
+(which, I should note, means you have a usable mechanism for writing functional
+tests).
 
 It's tempting to call that "abusing the accessibility API", but it really
 isn't. The whole purpose of such an API is to do exactly these sorts of things,
-to make it easier for people to use programs that didn't consider their needs
-fully.
+to make it easier for people to use programs that do not fit their needs.
 
-Assistive devices are useful even to those without traditional handicaps.
+Assistive devices are useful even for those without handicaps.
