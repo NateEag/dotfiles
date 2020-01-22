@@ -1,0 +1,13 @@
+#! /usr/bin/osascript
+
+activate application "Reminders"
+tell application "System Events"
+	tell process "Reminders"
+		set frontmost to true
+
+        -- This fails. Looks like maybe I need to specify the whole path to
+        -- window's contents to find the button, using the hierarchy from
+        -- Accessibility Inspector?
+		click button "Add Reminder" of window "Reminders"
+	end tell
+end tell

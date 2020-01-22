@@ -1,3 +1,6 @@
+2020-01-22 Add a keybinding to create a new reminder in Reminders.app. An
+unfinished stab at this is in bin/add-reminder.
+
 2019-10-16 Automatically trigger notification on prompt display if the previous
 command took more than four seconds to run? I could build this via
 PROMPT_COMMAND. Not sure it's a great idea since I'd get notified whenever I
