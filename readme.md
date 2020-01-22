@@ -41,3 +41,35 @@ you have not previously run `install.sh`.
 wrappers around existing tools so I don't have to remember arcane interfaces.
 
 `lib/` contains dependencies that do not need to be installed elsewhere.
+
+
+## OS X Automation Notes
+
+I used to love Mac OS X but no longer trust Apple to develop it well. It is
+slowly growing more and more closed-off and iOS-like.
+
+Nonetheless, as a developer it's a pragmatic choice for a desktop, as it's the
+only supported platform for writing and testing code that works on all desktop
+/ mobile OSes (be it web code or native).
+
+Thus, I live in it, until the day I can't stand it any more.
+
+Accessibility Inspector.app is an essential tool for automating graphical
+programs. Paired with AppleScript's command-line interpreter `osascript` (and
+the necessary permissions for Terminal.app, which is not without risk but sure
+is handy), you can write command-line programs to automate almost any graphical
+program you run.
+
+`bin/mute-slack` is an example. It mutes the current Slack call (as long as
+it's Slack's frontmost window). My Hammerspoon config gives that command a
+global keybinding, thus giving me a global keyboard shortcut for muting Slack.
+
+The same general principle applies on almost any OS. If it has a solid
+accessibility API, you can use it to automate graphical programs.
+
+It's tempting to call that "abusing the accessibility API", but it really
+isn't. The whole purpose of such an API is to do exactly these sorts of things,
+to make it easier for people to use programs that didn't consider their needs
+fully.
+
+Assistive devices are useful even to those without traditional handicaps.
