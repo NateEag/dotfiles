@@ -43,5 +43,5 @@ echo "(setq site-run-file)" > ./lisp/site-init.el
             LDFLAGS="-L/usr/local/lib" \
             LDFLAGS="-L/usr/lib" \
             CPPFLAGS="-I/usr/local/include" \
-            CPPFLAGS="-I/usr/local/Cellar/libxml2/2.9.7/include/libxml2" \
+            CPPFLAGS="-I$(brew --prefix libxml2)/include/libxml2" \
             CC=clang OBJC=clang CFLAGS="-g -O2"
