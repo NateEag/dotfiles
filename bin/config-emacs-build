@@ -10,13 +10,7 @@
 # builds ignore site files. A wrapper binary that always passes --no-site-file
 # doesn't play well with OS X's Emacs.app, and editing or removing the site
 # files themselves means bypassing SIP on Mojave, which didn't seem ideal.
-#
-# N.B.: I have not tested this approach exactly. In the build that worked, I
-# put this file in place by hand. It's possible this needs to be there before
-# autogen.sh runs.
-#
-# I just thought this was the obvious place to document it.
-echo "(setq site-run-file)" > ./lisp/site-init.el
+echo "(setq site-run-file nil)" > ./lisp/site-init.el
 
 # My configuration for building Emacs from source for use on OS X. Largely done
 # so that I can have automatic resizing of images to fit in a frame when
