@@ -257,6 +257,9 @@ if command -v brew > /dev/null ; then
     if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
         source $(brew --prefix)/etc/bash_completion
     fi
+
+    # For some reason this is where Homebrew puts PHP. *shrugs*
+    PATH="/usr/local/opt/bin/php:$PATH"
 fi
 
 # Install local completions
