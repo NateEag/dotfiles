@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+# A dumb quick script to output the current git branch's name.
+#
+# Used to be an alias in .config/git/config, but I wanted to suppress the
+# trailing newline when used in a pipeline (because in those cases I'm often
+# copying it to the clipboard, e.g. `git current-branch | pbcopy`).
+
+branch_name="$(git symbolic-ref HEAD --short)"
+
+# For interactive use, output a newline afterwards. In pipelines, don't.
+#
+# https://stackoverflow.com/a/911213/1128957
+if [ -t 1 ]; then
+    echo "$branch_name"
+else
+    echo -n "$branch_name"
+fi
