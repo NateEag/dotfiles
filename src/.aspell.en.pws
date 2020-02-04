@@ -1,4 +1,4 @@
-personal_ws-1.1 en 71 
+personal_ws-1.1 en 72 
 API
 Auth
 Biggerstaff
@@ -63,6 +63,7 @@ timestamp
 transpile
 tstzrange
 txt
+unwritable
 url
 vertices
 virtualenv
