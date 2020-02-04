@@ -2,6 +2,14 @@
 
 script_name="$(basename "$0")"
 
+# It's nice if output messages are about the right size for your terminal.
+# Exception: when your terminal is stupid-wide, because saccades are a thing.
+term_width="$(tput cols)"
+fold_width="$term_width"
+if [ "$term_width" -gt 80 ]; then
+    fold_width=80
+fi
+
 help_msg="Usage: $script_name <datestring> <target_timezone>
 
 <datestring> can be fairly arbitrary, but it must include a timezone specifier.
@@ -13,11 +21,11 @@ This is just a wrapper around GNU date - hence the 'fairly arbitrary' claim.
 TODO Support tab completion of tzinfo DB names."
 
 if [ "$1" == '--help' ]; then
-    echo "$help_msg"
+    echo "$help_msg" | fold -sw "$fold_width"
 
     exit
 elif [ $# -ne 2 ]; then
-    echo "$help_msg" >&2
+    echo "$help_msg" | fold -sw "$fold_width" >&2
 
     exit 2
 fi
@@ -25,10 +33,9 @@ fi
 if [ ! -f "/usr/share/zoneinfo/$2" ]; then
     msg="$2 is not a valid timezone identifier!
 
-If you feel this is wrong, check your /usr/share/zoneinfo installation. It may be
-out of date or in a different path."
+If you feel this is wrong, check your /usr/share/zoneinfo installation. It may be out of date or in a different path."
 
-    echo "$msg" >&2
+    echo "$msg" | fold -sw "$fold_width"  >&2
 
     exit 2
 fi
