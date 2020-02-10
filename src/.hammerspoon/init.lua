@@ -144,6 +144,9 @@ end)
 
 -- ';' is not a mnemonic for maximizing a window, but it's next to my other
 -- window manipulation keys.
+--
+-- Note that I dislike OS X's "full screen" functionality. I almost never want
+-- to make all my other windows vanish, which is why I do it this way.
 hs.hotkey.bind(hyper_keys, ";", function()
     local win = hs.window.focusedWindow()
     local win_frame = win:frame()
