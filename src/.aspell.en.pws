@@ -1,4 +1,4 @@
-personal_ws-1.1 en 72 
+personal_ws-1.1 en 77 
 API
 Auth
 Biggerstaff
@@ -20,12 +20,14 @@ Str
 TODO
 UI
 Xcode
+ansible
 arg
 cacheable
 codebase
 codebases
 config
 cordova
+cron
 cryptographically
 customizations
 dataset
@@ -39,6 +41,7 @@ iOS
 iframe
 jitter
 keystores
+logfiles
 metadata
 millennia
 monospace
@@ -68,6 +71,8 @@ url
 vertices
 virtualenv
 vml
+webserver
 website
 whitespace
 xml
+yml
