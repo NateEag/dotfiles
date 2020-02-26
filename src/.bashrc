@@ -65,8 +65,8 @@ alias getheaders='curl -s -D - -o /dev/null'
 
 # Magit is my preferred Git client, but I do plenty of work in a terminal
 # emulator. This alias fires up the magit-status prompt directly from my
-# terminal emulator.
-alias mg='emacsclient -a emacs -e "(magit-status)" && open -a Emacs.app'
+# terminal emulator and makes sure Emacs.app is focused.
+alias mg='emacsclient -a emacs -e "(magit-status)" && focus-emacs'
 
 # Source lib files for my dotfiles.
 # GRIPE Hardcoding this is not as clean as letting my dotfiles dir live
