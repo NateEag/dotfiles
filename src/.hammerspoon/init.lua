@@ -423,3 +423,12 @@ screen_watcher:start()
 
 space_watcher = hs.spaces.watcher.new(layoutWindows)
 space_watcher:start()
+
+-- FIXME Get this to actually fire. It doesn't and I don't know why. This guy
+-- is doing something quite similar:
+-- https://github.com/zzamboni/hammerspoon-config/blob/master/audio/headphones_watcher.lua
+hs.audiodevice.watcher.setCallback(function(event)
+   logger.i('An event occurred! %s', event)
+end)
+
+hs.audiodevice.watcher.start()
