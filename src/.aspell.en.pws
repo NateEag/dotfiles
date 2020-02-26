@@ -1,4 +1,4 @@
-personal_ws-1.1 en 77 
+personal_ws-1.1 en 80 
 API
 Auth
 Biggerstaff
@@ -15,6 +15,7 @@ JSHint
 JSON
 Linode
 NXT
+Nxtbook
 README
 Str
 TODO
@@ -46,6 +47,7 @@ metadata
 millennia
 monospace
 nullable
+num
 param
 params
 prepended
@@ -63,6 +65,7 @@ svg
 timeline
 timesink
 timestamp
+tmp
 transpile
 tstzrange
 txt
