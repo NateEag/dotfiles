@@ -8,6 +8,14 @@
 -- calling and binding we lay waste our powers;--
 
 
+-- Set up the logger so I can debug things in my config.
+--
+-- logger.i('Message here')
+--
+-- will output to the Hammerspoon Console (which has a display
+-- keybinding elsewhere in this file - search for openConsole).
+logger = hs.logger.new('ne-debugger', 'info');
+
 -- My personal keybinding namespace. If I ever change baseline OSes, this may
 -- need to change, since Ctrl+Shift is a much more common combo on Linux and
 -- Windows.
