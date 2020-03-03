@@ -18,11 +18,25 @@ lockfile_path="$HOME/.check-mail-active"
 # file exist?" check before the other one manages to create the file.
 #
 # In practice it's been working okay.
-#
-# That said, I have to clean it up by hand in event of a power outage or
-# similar hard interruption that keeps the trap from running.
 if [ -f "$lockfile_path" ]; then
-    exit
+    cur_unix_time="$(date +%s)"
+
+    # Last time this file's contents or metadata changed.
+    lockfile_ctime="$(stat -s -t %s "$lockfile_path" |
+                           sed -E 's/.*st_ctime=([^ ]+)'.*/\\1/)"
+
+    (( time_delta = cur_unix_time - lockfile_ctime ))
+    (( ten_minutes = 60 * 10 ))
+
+    # My check-mail cron job runs every 5 minutes, so if it's been more than ten
+    # minutes, this file is almost certainly a leftover from a previous run
+    # that was terminated without a chance to run cleanup (kill -9, OS crash,
+    # power outage, etc).
+    if [ $time_delta -gt $ten_minutes ]; then
+        rm "$lockfile_path"
+    else
+        exit
+    fi
 fi
 
 touch "$lockfile_path"
