@@ -1,0 +1,43 @@
+#! /bin/bash
+
+script_name="$(basename $0)"
+
+msg="A dumb trick for comparing two configuration files.
+
+Mostly exists to help me remember that this is a viable strategy for
+comparing minimal .ini-style configuration systems (basically, ones that do
+simple assignments and in which the order of individual lines doesn't
+matter).
+
+What you get out the other end is a minimal diff of non-comment contents,
+ordered alphabetically.
+
+That usually makes it way easier to compare two versions of a config file for
+semantics (again, assuming lines are not dependent on each other in any way).
+
+Usage: $script_name <comment_syntax> <left_file> <right_right>"
+
+if [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -ne 3 ]; then
+    echo "$msg" >&2
+
+    exit 2
+fi
+
+comment_char="$1"
+
+strip-comments-and-empty-lines() {
+    # Remove all comment lines
+    grep -v "^$comment_char" "$1" |
+        # Remove blank lines so block comments don't add noise via whitespace.
+        sed '/^\s*$/d' |
+        # Sort, so that matching options in the config file wind up diffing
+        # against each other.
+        sort
+}
+
+
+diff -U 3 <(strip-comments-and-empty-lines "$2") <(strip-comments-and-empty-lines "$3")
