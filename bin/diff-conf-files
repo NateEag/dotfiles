@@ -40,4 +40,7 @@ strip-comments-and-empty-lines() {
 }
 
 
-diff -U 3 <(strip-comments-and-empty-lines "$2") <(strip-comments-and-empty-lines "$3")
+diff -U 3 <(strip-comments-and-empty-lines "$2") <(strip-comments-and-empty-lines "$3") |
+    # Fix the /dev/fd filenames in the resulting diff.
+    sed -E "s|--- [^\s]+ (.*)|--- $2 \1|" |
+    sed -E "s|\+\+\+ [^\s]+ (.*)|\+\+\+ $3 \1|"
