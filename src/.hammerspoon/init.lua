@@ -65,11 +65,6 @@ hs.hotkey.bind(hyper_keys, ",", nil, function()
     hs.eventtap.keyStroke({"ctrl"}, "f2", 100)
 end)
 
-
---
--- Shortcuts for jumping straight to apps.
---
-
 function bindAppToHotkey(app_name, keycode)
     hs.hotkey.bind(hyper_keys, keycode, function()
         local app = hs.appfinder.appFromName(app_name)
@@ -87,39 +82,55 @@ function bindAppToHotkey(app_name, keycode)
     end)
 end
 
-bindAppToHotkey("Emacs", "E")
-bindAppToHotkey("Terminal", "T")
-bindAppToHotkey("Google Chrome", "B")
-bindAppToHotkey("Calendar", "C")
-bindAppToHotkey("Finder", "F")
-bindAppToHotkey("Slack", "I")
-bindAppToHotkey("YakYak", "Y")
-bindAppToHotkey("Signal", "S")
-
-
---
--- Shortcuts for running commands with keybindings.
---
-
 function bindCommandToHotkey(cmd, keycode)
     hs.hotkey.bind(hyper_keys, keycode, function()
         os.execute(cmd)
     end)
 end
 
--- Dismiss all notifications in a single key combo.
-bindCommandToHotkey("~/dotfiles/bin/dismiss-notifications", "N")
 
--- Toggle whether my mic is on in a Slack call while I'm in a different app.
-bindCommandToHotkey("~/dotfiles/bin/mute-slack", "M")
+--
+-- Shortcuts for jumping straight to apps.
+--
 
--- Start up a new Emacs instance. Useful when I'm writing init code and want to
--- test it.
-bindCommandToHotkey("/usr/bin/open -n -a Emacs.app", "W")
+app_key_bindings = {
+   E = "Emacs",
+   T = "Terminal",
+   B = "Google Chrome",
+   C = "Calendar",
+   F = "Finder",
+   I = "Slack",
+   S = "Signal"
+}
 
--- Activate screensaver from keyboard. If your machine is set up to lock the
--- display on screensaver, this is a handy shortcut for locking the display.
-bindCommandToHotkey("/Users/neagleson/dotfiles/bin/screensaver", "A")
+--
+-- Shortcuts for running commands with keybindings.
+--
+
+cmd_key_bindings = {
+   -- Dismiss all notifications in a single key combo.
+   N = "~/dotfiles/bin/dismiss-notifications",
+
+   -- Toggle whether my mic is on in a Slack call while I'm in a different app.
+   M = "~/dotfiles/bin/mute-slack",
+
+   -- Start up a new Emacs instance. Useful when I'm writing init code and want
+   -- to test it.
+   W = "/usr/bin/open -n -a Emacs.app",
+
+   -- Activate screensaver from keyboard. If your machine is set up to lock the
+   -- display on screensaver, this is a handy shortcut for locking the display.
+   A = "/Users/neagleson/dotfiles/bin/screensaver"
+}
+
+
+for mnemonic, app_name in pairs(app_key_bindings) do
+   bindAppToHotkey(app_name, mnemonic)
+end
+
+for mnemonic, command in pairs(cmd_key_bindings) do
+   bindCommandToHotkey(command, mnemonic)
+end
 
 
 --
@@ -425,10 +436,10 @@ space_watcher = hs.spaces.watcher.new(layoutWindows)
 space_watcher:start()
 
 -- FIXME Get this to actually fire. It doesn't and I don't know why. This guy
--- is doing something quite similar:
+-- appears to have a test that may not be working either.
+--
 -- https://github.com/zzamboni/hammerspoon-config/blob/master/audio/headphones_watcher.lua
 hs.audiodevice.watcher.setCallback(function(event)
    logger.i('An event occurred! %s', event)
 end)
-
 hs.audiodevice.watcher.start()
