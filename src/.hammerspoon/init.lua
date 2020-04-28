@@ -94,13 +94,13 @@ end
 --
 
 app_key_bindings = {
-   E = "Emacs",
-   T = "Terminal",
-   B = "Google Chrome",
-   C = "Calendar",
-   F = "Finder",
-   I = "Slack",
-   S = "Signal"
+   E = {bindAppToHotkey, "Emacs"},
+   T = {bindAppToHotkey, "Terminal"},
+   B = {bindAppToHotkey, "Google Chrome"},
+   C = {bindAppToHotkey, "Calendar"},
+   F = {bindAppToHotkey, "Finder"},
+   I = {bindAppToHotkey, "Slack"},
+   S = {bindAppToHotkey, "Signal"}
 }
 
 --
@@ -124,8 +124,11 @@ cmd_key_bindings = {
 }
 
 
-for mnemonic, app_name in pairs(app_key_bindings) do
-   bindAppToHotkey(app_name, mnemonic)
+for mnemonic, callback_info in pairs(app_key_bindings) do
+   callback = callback_info[1]
+   args = { callback_info[2], mnemonic }
+
+   callback(table.unpack(args))
 end
 
 for mnemonic, command in pairs(cmd_key_bindings) do
