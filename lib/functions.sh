@@ -13,6 +13,6 @@ abspath () {
 }
 
 # Adapted from http://stackoverflow.com/a/449890/1128957.
-rand-line () {
+randline () {
     head -$((RANDOM % `wc -l < "$1"` + 1)) "$1" | tail -1
 }
