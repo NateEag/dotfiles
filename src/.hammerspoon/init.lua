@@ -354,17 +354,35 @@ function layoutWindows()
    -- TODO Keep them on main monitor if the Emacs window has left enough space
    -- to reasonably put it there?
    local second_screen = primary_screen:toEast()
+   local third_screen = nil
+
+   -- If I have three displays, it almost certainly means my laptop display is
+   -- open while hooked up to two externals, as I don't usually use three
+   -- external monitors (my experiments with triple 27"s at MapQuest taught me
+   -- I couldn't reasonably use that much space).
+   --
+   -- I position the laptop display logically beneath my two main displays and
+   -- centered between them, which means it's the next display "toEast()" from
+   -- primary.
+   --
+   -- Semantically, I want to treat it as an optional third screen - hence this
+   -- odd dance.
+   if num_screens == 3 then
+      third_screen = second_screen
+      second_screen = second_screen:toEast()
+   end
 
    local left_side_screen_rect = hs.geometry.new(0, 0, 0.5, 1)
    local right_side_screen_rect = hs.geometry.new(0.5, 0, 0.5, 1)
    local lower_right_screen_rect = hs.geometry.new(0.5, 0.5, 0.5, 0.5)
    local upper_right_screen_rect = hs.geometry.new(0.5, 0, 0.5, 0.5)
+   local full_screen_rect = hs.geometry.new(0, 0, 1, 1)
 
    -- I don't use a desktop computer with one display these days, so this is a
    -- decent proxy for "am I running on a laptop with no external display?"
-   local using_laptop_display = num_screens == 1
+   local using_only_laptop_display = num_screens == 1
 
-   if using_laptop_display then
+   if using_only_laptop_display then
       -- Since there's just one display, everything is on the same display as
       -- Emacs. Therefore, size windows to fit around it.
       --
@@ -410,7 +428,7 @@ function layoutWindows()
       right_side_screen_rect = remaining_space_rect
    end
 
-   if using_laptop_display then
+   if using_only_laptop_display then
       layoutAppWindows("Terminal", upper_right_screen_rect, primary_screen)
    else
       layoutAppWindows("Terminal", left_side_screen_rect, second_screen)
@@ -425,6 +443,15 @@ function layoutWindows()
    layoutAppWindows("Signal", upper_right_screen_rect, primary_screen)
 
    layoutAppWindows("YakYak", upper_right_screen_rect, primary_screen)
+
+   -- As noted elsewhere, if I have three screens it almost certainly means I'm
+   -- using my laptop display while hooked up to two external screens.
+   --
+   -- I mainly do this for video calls and maybe sometimes screenshares, which
+   -- is why Slack goes there in this case.
+   if num_screens == 3 then
+      layoutAppWindows("Slack", full_screen_rect, third_screen)
+   end
 end
 
 hs.hotkey.bind(hyper_keys, "1", layoutWindows)
