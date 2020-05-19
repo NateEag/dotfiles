@@ -8,6 +8,10 @@
 script_name=$(basename "$0")
 usage_msg="Send a notification after a certain amount of time has passed.
 
+If you want to cancel a timer, 'pgrep -lf timer' should help you find the
+processes to kill, from whence pkill can be handy (using the timer message to
+target the specific timer you want to cancel).
+
 Usage: $script_name <message> <minutes> [<seconds>]"
 
 if [ "$1" = '--help' ]; then
