@@ -3,8 +3,10 @@ asciidoc
 aspell
 automake
 avr-libc
+awscli
 bash-completion
 bats
+bats-core
 bdw-gc
 boost-build
 cabal-install
@@ -53,6 +55,7 @@ nmap
 notmuch
 offlineimap
 pandoc
+parallel
 pass
 pdfgrep
 popt
@@ -78,6 +81,7 @@ the_silver_searcher
 tidy-html5
 unar
 unixodbc
+wget
 wine
 wordnet
 xmlstarlet
