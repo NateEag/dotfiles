@@ -15,7 +15,7 @@
 	editor = emacsclient
 	excludesfile = ~/.gitignore
 	eol = lf
-	pager = delta
+	pager = delta --theme 'Solarized (dark)' --keep-plus-minus-markers --hunk-style plain
 
 [push]
 	default = simple
