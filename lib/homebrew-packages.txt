@@ -5,6 +5,7 @@ automake
 avr-libc
 awscli
 bash-completion
+bat
 bats
 bats-core
 bdw-gc
@@ -27,6 +28,7 @@ ghc@8.2
 ghostscript
 gifsicle
 git
+git-delta
 git-quick-stats
 gnuplot
 gpg-agent
@@ -61,6 +63,7 @@ pdfgrep
 popt
 postgresql
 potrace
+progress
 pstree
 pwgen
 pyenv
