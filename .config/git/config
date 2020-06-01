@@ -15,19 +15,13 @@
 	editor = emacsclient
 	excludesfile = ~/.gitignore
 	eol = lf
+	pager = delta
 
 [push]
 	default = simple
 
 [merge]
 	conflictstyle = diff3
-
-[pager]
-	# Highlight sub-line changes.
-	# These lines are why the alias exists.
-	log = diff-highlight | less
-	diff = diff-highlight | less
-	show = diff-highlight | less
 
 [interactive]
 	diffFilter = diff-highlight
