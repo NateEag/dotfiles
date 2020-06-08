@@ -1,3 +1,8 @@
+2020-06-02 Add support for concatenating multiple crontab files at install
+time. At $DAYJOBs I may want to run work-specific cron jobs on my machine as a
+workaround for not having sane places to do it, and that obviously doesn't
+belong in my dotfiles.
+
 2020-01-22 Add a keybinding to create a new reminder in Reminders.app. An
 unfinished stab at this is in bin/add-reminder.
 
