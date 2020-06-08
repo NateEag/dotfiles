@@ -243,6 +243,15 @@ export SLACK_CLI_TOKEN_CMD='pass show api.slack.com/token'
 # exec 3>&2 2>/tmp/bashstart.$$.log
 # set -x
 
+# Append to the bash history file rather than overwriting it.
+shopt -s histappend
+# Save bash history after every command.
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+# Explicitly write history to ~/.bash_history - on OS X 10.14 each terminal
+# seems to write to its own history file (I think to help with restoring state
+# after quitting Terminal.app?).
+HISTFILE=~/.bash_history
+
 # Customizations that require [Homebrew](http://brew.sh) to be installed.
 if command -v brew > /dev/null ; then
     # If available, use Homebrew's SSL cert file. This works around various
