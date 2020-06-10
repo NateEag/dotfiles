@@ -234,6 +234,11 @@ end)
 -- Move window to next monitor. Yanked from here:
 --
 -- https://www.reddit.com/r/hammerspoon/comments/aexm45/request_move_between_multiple_monitors/
+--
+-- Note that Hammerspoon uses a window coordinate grid that covers all screens,
+-- with the primary's upper-left corner at 0, 0. That means window placement
+-- arithmetic is a bit fussier than it was under Slate, where each screen had
+-- its own coordinate system.
 hs.hotkey.bind(hyper_keys, "O", function()
     -- Get the focused window, its window frame dimensions, its screen frame
     -- dimensions, and the next screen's frame dimensions.
