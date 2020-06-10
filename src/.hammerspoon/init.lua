@@ -65,64 +65,59 @@ hs.hotkey.bind(hyper_keys, ",", nil, function()
     hs.eventtap.keyStroke({"ctrl"}, "f2", 100)
 end)
 
-function bindAppToHotkey(app_name, keycode)
-    hs.hotkey.bind(hyper_keys, keycode, function()
-        local app = hs.appfinder.appFromName(app_name)
+function focusApp(app_name, keycode)
+   local app = hs.appfinder.appFromName(app_name)
 
-        -- Funny little dance to both start the app if it's not running but
-        -- focus it *without bringing all windows forward* if it is running.
-        --
-        -- TODO File an issue to make launchOrFocus() support an optional arg
-        -- for this like app:activate().
-        if app == nil then
-           hs.application.launchOrFocus(app_name)
-        else
-           app:activate()
-        end
-    end)
+   -- Funny little dance to both start the app if it's not running but
+   -- focus it *without bringing all windows forward* if it is running.
+   --
+   -- TODO File an issue to make launchOrFocus() support an optional arg
+   -- for this like app:activate().
+   if app == nil then
+      hs.application.launchOrFocus(app_name)
+   else
+      app:activate()
+   end
 end
 
-function bindCommandToHotkey(cmd, keycode)
-    hs.hotkey.bind(hyper_keys, keycode, function()
-        os.execute(cmd)
-    end)
+function runCommand(cmd)
+   os.execute(cmd)
 end
 
-function bindFocusedWindowPositionToHotkey(x,
-                                           y,
-                                           screen_width_fraction,
-                                           screen_height_fraction,
-                                           keycode)
-   hs.hotkey.bind(hyper_keys, keycode, function()
-      local win = hs.window.focusedWindow()
-      local win_frame = win:frame()
+function positionFocusedWindow(x,
+                               y,
+                               screen_width_fraction,
+                               screen_height_fraction,
+                               keycode)
+   local win = hs.window.focusedWindow()
+   local win_frame = win:frame()
 
-      local screen = win:screen()
-      local screen_frame = screen:frame()
+   local screen = win:screen()
+   local screen_frame = screen:frame()
 
-      win_frame.x = screen_frame.x
-      win_frame.y = screen_frame.y
-      win_frame.w = screen_frame.w * screen_width_fraction
-      win_frame.h = screen_frame.h * screen_height_fraction
+   win_frame.x = screen_frame.x
+   win_frame.y = screen_frame.y
+   win_frame.w = screen_frame.w * screen_width_fraction
+   win_frame.h = screen_frame.h * screen_height_fraction
 
-      win:setFrame(win_frame, ANIMATION_DURATION)
-   end)
+   win:setFrame(win_frame, ANIMATION_DURATION)
 end
 
-
---
--- Shortcuts for jumping straight to apps.
---
+-- Most of my keybindings. Some have not yet been ported to the generic
+-- declaration method I'm using here.
 
 key_bindings = {
-   -- Apps I have bound to a hotkey.
-   E = {bindAppToHotkey, "Emacs"},
-   T = {bindAppToHotkey, "Terminal"},
-   B = {bindAppToHotkey, "Google Chrome"},
-   C = {bindAppToHotkey, "Calendar"},
-   F = {bindAppToHotkey, "Finder"},
-   I = {bindAppToHotkey, "Slack"},
-   S = {bindAppToHotkey, "Signal"},
+   --
+   -- App hotkeys.
+   --
+
+   E = {focusApp, "Emacs"},
+   T = {focusApp, "Terminal"},
+   B = {focusApp, "Google Chrome"},
+   C = {focusApp, "Calendar"},
+   F = {focusApp, "Finder"},
+   I = {focusApp, "Slack"},
+   S = {focusApp, "Signal"},
 
 
    --
@@ -131,44 +126,47 @@ key_bindings = {
 
    -- Activate screensaver from keyboard. If your machine is set up to lock the
    -- display on screensaver, this is a handy shortcut for locking the display.
-   A = {bindCommandToHotkey, "/Users/neagleson/dotfiles/bin/screensaver"},
+   A = {runCommand, "/Users/neagleson/dotfiles/bin/screensaver"},
 
    -- Dismiss all notifications in a single key combo.
-   N = {bindCommandToHotkey, "~/dotfiles/bin/dismiss-notifications"},
+   N = {runCommand, "~/dotfiles/bin/dismiss-notifications"},
 
    -- Toggle whether my mic is on in a Slack call while I'm in a different app.
-   M = {bindCommandToHotkey, "~/dotfiles/bin/mute-slack"},
+   M = {runCommand, "~/dotfiles/bin/mute-slack"},
 
    -- Start up a new Emacs instance. Useful when I'm writing init code and want
    -- to test it.
-   W = {bindCommandToHotkey, "/usr/bin/open -n -a Emacs.app"},
+   W = {runCommand, "/usr/bin/open -n -a Emacs.app"},
 
 
    --
    -- Window management hotkeys.
    --
 
-   Q = {bindFocusedWindowPositionToHotkey, 0, 0, 0.5, 0.5},
+   Q = {positionFocusedWindow, 0, 0, 0.5, 0.5},
 
    -- 'Divide' is a poor mnemonic for "Make window half-width, full-height", but
    -- it's what I went with back in the day.
-   D = {bindFocusedWindowPositionToHotkey, 0, 0, 0.5, 1},
+   D = {positionFocusedWindow, 0, 0, 0.5, 1},
 
    -- ';' is not a mnemonic for maximizing a window, but it's next to my other
    -- window manipulation keys.
    --
    -- Note that I dislike OS X's "full screen" functionality. I almost never
    -- want to make all my other windows vanish, which is why I do it this way.
-   [";"] =  {bindFocusedWindowPositionToHotkey, 0, 0, 1, 1}
+   [";"] =  {positionFocusedWindow, 0, 0, 1, 1}
 }
 
 
 for mnemonic, callback_info in pairs(key_bindings) do
-   callback = callback_info[1]
-   args = { table.unpack(callback_info, 2) }
-   table.insert(args, mnemonic)
+   hs.hotkey.bind(hyper_keys, mnemonic, function()
+      callback_info = key_bindings[mnemonic]
 
-   callback(table.unpack(args))
+      callback = callback_info[1]
+      args = { table.unpack(callback_info, 2) }
+
+      callback(table.unpack(args))
+   end)
 end
 
 
