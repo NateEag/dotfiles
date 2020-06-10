@@ -88,121 +88,93 @@ function bindCommandToHotkey(cmd, keycode)
     end)
 end
 
+function bindFocusedWindowPositionToHotkey(x,
+                                           y,
+                                           screen_width_fraction,
+                                           screen_height_fraction,
+                                           keycode)
+   hs.hotkey.bind(hyper_keys, keycode, function()
+      local win = hs.window.focusedWindow()
+      local win_frame = win:frame()
+
+      local screen = win:screen()
+      local screen_frame = screen:frame()
+
+      win_frame.x = screen_frame.x
+      win_frame.y = screen_frame.y
+      win_frame.w = screen_frame.w * screen_width_fraction
+      win_frame.h = screen_frame.h * screen_height_fraction
+
+      win:setFrame(win_frame, ANIMATION_DURATION)
+   end)
+end
+
 
 --
 -- Shortcuts for jumping straight to apps.
 --
 
-app_key_bindings = {
+key_bindings = {
+   -- Apps I have bound to a hotkey.
    E = {bindAppToHotkey, "Emacs"},
    T = {bindAppToHotkey, "Terminal"},
    B = {bindAppToHotkey, "Google Chrome"},
    C = {bindAppToHotkey, "Calendar"},
    F = {bindAppToHotkey, "Finder"},
    I = {bindAppToHotkey, "Slack"},
-   S = {bindAppToHotkey, "Signal"}
-}
+   S = {bindAppToHotkey, "Signal"},
 
---
--- Shortcuts for running commands with keybindings.
---
 
-cmd_key_bindings = {
-   -- Dismiss all notifications in a single key combo.
-   N = "~/dotfiles/bin/dismiss-notifications",
-
-   -- Toggle whether my mic is on in a Slack call while I'm in a different app.
-   M = "~/dotfiles/bin/mute-slack",
-
-   -- Start up a new Emacs instance. Useful when I'm writing init code and want
-   -- to test it.
-   W = "/usr/bin/open -n -a Emacs.app",
+   --
+   -- CLI tools I have bound to a hotkey.
+   --
 
    -- Activate screensaver from keyboard. If your machine is set up to lock the
    -- display on screensaver, this is a handy shortcut for locking the display.
-   A = "/Users/neagleson/dotfiles/bin/screensaver"
+   A = {bindCommandToHotkey, "/Users/neagleson/dotfiles/bin/screensaver"},
+
+   -- Dismiss all notifications in a single key combo.
+   N = {bindCommandToHotkey, "~/dotfiles/bin/dismiss-notifications"},
+
+   -- Toggle whether my mic is on in a Slack call while I'm in a different app.
+   M = {bindCommandToHotkey, "~/dotfiles/bin/mute-slack"},
+
+   -- Start up a new Emacs instance. Useful when I'm writing init code and want
+   -- to test it.
+   W = {bindCommandToHotkey, "/usr/bin/open -n -a Emacs.app"},
+
+
+   --
+   -- Window management hotkeys.
+   --
+
+   Q = {bindFocusedWindowPositionToHotkey, 0, 0, 0.5, 0.5},
+
+   -- 'Divide' is a poor mnemonic for "Make window half-width, full-height", but
+   -- it's what I went with back in the day.
+   D = {bindFocusedWindowPositionToHotkey, 0, 0, 0.5, 1},
+
+   -- ';' is not a mnemonic for maximizing a window, but it's next to my other
+   -- window manipulation keys.
+   --
+   -- Note that I dislike OS X's "full screen" functionality. I almost never
+   -- want to make all my other windows vanish, which is why I do it this way.
+   [";"] =  {bindFocusedWindowPositionToHotkey, 0, 0, 1, 1}
 }
 
 
-for mnemonic, callback_info in pairs(app_key_bindings) do
+for mnemonic, callback_info in pairs(key_bindings) do
    callback = callback_info[1]
-   args = { callback_info[2], mnemonic }
+   args = { table.unpack(callback_info, 2) }
+   table.insert(args, mnemonic)
 
    callback(table.unpack(args))
-end
-
-for mnemonic, command in pairs(cmd_key_bindings) do
-   bindCommandToHotkey(command, mnemonic)
 end
 
 
 --
 -- Shortcuts for moving windows manually.
 --
-
--- Note that Hammerspoon uses a window coordinate grid that covers all screens,
--- with the primary's upper-left corner at 0, 0. That means window placement
--- arithmetic is a bit fussier than it was under Slate, where each screen had
--- its own coordinate system.
-
-
--- 'Divide' is a poor mnemonic for "Make window half-width, full-height", but
--- it's what I went with back in the day.
-hs.hotkey.bind(hyper_keys, "D", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x
-    win_frame.y = screen_frame.y
-    win_frame.w = screen_frame.w / 2
-    win_frame.h = screen_frame.h
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
-
--- ';' is not a mnemonic for maximizing a window, but it's next to my other
--- window manipulation keys.
---
--- Note that I dislike OS X's "full screen" functionality. I almost never want
--- to make all my other windows vanish, which is why I do it this way.
-hs.hotkey.bind(hyper_keys, ";", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x
-    win_frame.y = screen_frame.y
-    win_frame.w = screen_frame.w
-    win_frame.h = screen_frame.h
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
-
--- 'Quarter' is a slightly better mnemonic.
---
--- TODO Put the window in the corner it's closest to.
-hs.hotkey.bind(hyper_keys, "Q", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x
-    win_frame.y = screen_frame.y
-    win_frame.w = screen_frame.w / 2
-    win_frame.h = screen_frame.h / 2
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
 
 -- The following four rules just let me pin a window to one of the four corners
 -- of the world.
