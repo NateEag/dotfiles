@@ -12,7 +12,12 @@ If you want to cancel a timer, 'pgrep -lf timer' should help you find the
 processes to kill, from whence pkill can be handy (using the timer message to
 target the specific timer you want to cancel).
 
-Usage: $script_name <message> <minutes>]"
+If <length> is an integer it is the number of minutes to wait before notifying.
+If it looks roughly like a time string, it is passed to the date command to
+compute a stop time. '3:20', '17:00', and '4:45 PM' are all valid values. It
+does a simple sanity check but don't expect it to be ingenious.
+
+Usage: $script_name <message> <length>"
 
 if [ "$1" = '--help' ]; then
     echo "$usage_msg"
@@ -30,15 +35,26 @@ is-int () {
     return $?
 }
 
-if ! is-int "$2"; then
-    echo "$2 is not an integer!" >&2
+is-clock-time() {
+    if [[ "$1" =~ ^[0-2]*[0-9]:[0-5][0-9].* ]]; then
+          return 0
+    fi
+
+    return 1
+}
 
 
+if is-clock-time "$2"; then
+    now="$(gdate +%s)"
+    then="$(gdate -d "$2" +%s)"
+    (( seconds = then - now ))
+elif is-int "$2"; then
+    seconds="$(( $2 * 60 ))"
+else
+    echo "$2 is not a valid stop time!" >&2
 
     exit 1
 fi
-
-seconds="$(( $2 * 60 ))"
 
 applescript="display notification \"$1\" with title \"Time's up\" "
 $(sleep "$seconds" && osascript -e "$applescript") &
