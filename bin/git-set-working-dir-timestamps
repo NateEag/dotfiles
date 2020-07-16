@@ -1,0 +1,15 @@
+#! /bin/bash
+
+# Yanked from https://stackoverflow.com/a/2179876/1128957, for when you want
+# files to have modification timestamps from their latest commit.
+#
+# You don't often need this, but I wanted it once, so I saved it.
+
+IFS="
+"
+for FILE in $(git ls-files)
+do
+    TIME=$(git log --pretty=format:%cd -n 1 --date=iso -- "$FILE")
+    TIME=$(date -j -f '%Y-%m-%d %H:%M:%S %z' "$TIME" +%Y%m%d%H%M.%S)
+    touch -m -t "$TIME" "$FILE"
+done
