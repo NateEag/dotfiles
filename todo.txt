@@ -1,3 +1,9 @@
+2020-07-16 Change bin/timezone-date-converter to accept timezone identifiers as
+separate arguments from the datetime string itself, so I can use this logic to
+reliably convert between all timezone names:
+https://crashcourse.housegordon.org/gnu-date-timezones.html Would also make it
+easier to add tab completion for timezones.
+
 2020-06-02 Add support for concatenating multiple crontab files at install
 time. At $DAYJOBs I may want to run work-specific cron jobs on my machine as a
 workaround for not having sane places to do it, and that obviously doesn't
