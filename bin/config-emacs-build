@@ -12,11 +12,8 @@
 # files themselves means bypassing SIP on Mojave, which didn't seem ideal.
 echo "(setq site-run-file nil)" > ./lisp/site-init.el
 
-# My configuration for building Emacs from source for use on OS X. Largely done
-# so that I can have automatic resizing of images to fit in a frame when
-# reading email, which only works if ImageMagick support is compiled into your
-# build (and in turn that doesn't just happen in the Emacs for OS X builds:
-# https://github.com/caldwell/build-emacs/issues/1).
+# My configuration for building Emacs from source for use on OS X. Easier to
+# tweak things in the build if I have this automated.
 #
 # Note that when building from a Git checkout, you'll need to run
 # `./autogen.sh` first, per the CONTRIBUTE document in the project's
@@ -30,7 +27,6 @@ echo "(setq site-run-file nil)" > ./lisp/site-init.el
 # including libxml2's include files in /usr/local/include.
 
 ./configure --with-ns \
-            --with-imagemagick \
             --with-modules \
             --enable-silent-rules \
             PKG_CONFIG_PATH=/opt/local/lib/pkgconfig \
