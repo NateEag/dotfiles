@@ -198,6 +198,10 @@ PATH=~/npm/bin:$PATH
 PATH="$dotfiles_path/lib/node_modules/.bin:$PATH"
 PATH="$dotfiles_path/bin:$PATH"
 
+# Get `ts` on my path (installing moreutils with Homebrew is not
+# compatible with installing GNU Parallel, as there is a name collision).
+PATH="$PATH:$HOME/third-party/moreutils"
+
 export PATH
 
 # Use CDPATH to get a poor man's 'named directories' from zsh.
