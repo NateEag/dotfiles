@@ -1,0 +1,63 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="A quick hack to automate tarballing and fetching a remote dir via SSH.
+
+I may regret this rapidly, but I see several more of these jobs in my next
+hour or two, and I've had to do it a few times recently.
+
+Creates a tarbomb, because that's mostly what I'm doing right now - pulling
+ad-hoc binaries into tarbombs for installation purposes.
+
+Does *not* delete the files it generates, to reduce the risk of a bug somehow
+nuking valuable data - I hacked this out because I'm working on making tarballs
+on a bunch of existing production servers, so I'm being paranoid. It leaves the
+tarballs in /tmp, though, and outputs their paths so you can kill them if you
+like.
+
+Usage: $script_name <ssh_remote_spec> <remote_dir>
+
+    ssh_remote_dest - spec for connecting to remote server via SSH. If you have
+                      a passwordless setup in your ~/.ssh/config, this can just
+                      be a servername.
+
+    remote_dir - absolute path to the remote path you'd like to fetch.
+"
+
+if [ $1 == --help ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -ne 2 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+remote_dest="$1"
+remote_dir="$2"
+
+# Replace / with - in the pathname, so we have a probably-unused tarball name
+# that's still related to the original.
+remote_tarball="/tmp/${remote_dir//\//_}"
+
+remote_script="tar -cvzf $remote_tarball -C '$remote_dir' . ;"
+
+# $remote_dest is intentionally not double-quoted, to allow passing SSH params.
+#
+# $remote_script should be evaluated locally, so we run the generated script on
+# the remote.
+#
+# shellcheck disable=SC2086 disable=SC2029
+ssh $remote_dest "$remote_script"
+
+remote_domain_name="$(echo "$remote_dest" | awk '{print $NF};')"
+remote_dirname="$(basename "$remote_dirname")"
+local_tarball_name="$remote_dirname@$remote_domain_name.tar.gz"
+
+# Again, $remote_host intentionally allows whitespace.
+#
+# shellcheck disable=SC2086
+scp $remote_dest:"$remote_tarball" "$local_tarball_name"
+
+echo "Consider deleting $remote_tarball on $remote_domain_name ."
