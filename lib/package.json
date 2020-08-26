@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "bars": "git+https://github.com/jez/bars.git",
+    "bash-language-server": "^1.17.0",
     "coffee-script": "1.8.0",
     "coffeelint": "1.6.0",
     "cordova-plugins-tern-condense": "git+https://github.com/albertinad/cordova-plugins-tern-condense.git",
