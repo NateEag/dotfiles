@@ -23,9 +23,12 @@ TAGS
 # OS X cruft.
 .DS_Store
 
-# Patch files are quite often handy, but you almost never want them under
-# version control.
-*.patch
+# Patch files are quite often handy, but I often use them for local review, and
+# such patches should not be committed to a repo.
+changes.patch
+changes.diff
+review.patch
+review.diff
 
 # Sometimes you want to keep an old copy of something around, but you don't
 # usually want it in version control.
