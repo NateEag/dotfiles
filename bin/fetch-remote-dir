@@ -52,7 +52,7 @@ remote_script="tar -cvzf $remote_tarball -C '$remote_dir' . ;"
 ssh $remote_dest "$remote_script"
 
 remote_domain_name="$(echo "$remote_dest" | awk '{print $NF};')"
-remote_dirname="$(basename "$remote_dirname")"
+remote_dirname="$(basename "$remote_dir")"
 local_tarball_name="$remote_dirname@$remote_domain_name.tar.gz"
 
 # Again, $remote_host intentionally allows whitespace.
