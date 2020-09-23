@@ -60,6 +60,9 @@ hs.hotkey.bind(hyper_keys, "P", hs.openConsole)
 -- (Bonus - I don't have to hold down the Fn modifier to trigger the menubar [I
 -- use it on both my laptop's internal keyboard and in my ErgoDox EZ layout for
 -- triggering Fkeys]).
+--
+-- Note that an arguably-better feature in OS X is the Command-Shift-? keyboard
+-- shortcut, which lets you search across menus.
 hs.hotkey.bind(hyper_keys, ",", nil, function()
     hs.eventtap.keyStroke({"ctrl"}, "f3", 100)
     hs.eventtap.keyStroke({"ctrl"}, "f2", 100)
@@ -437,6 +440,13 @@ hs.hotkey.bind(hyper_keys, "1", layoutWindows)
 screen_watcher = hs.screen.watcher.newWithActiveScreen(layoutWindows)
 screen_watcher:start()
 
+-- This setting is only reasonable if you turn off "each display has its own
+-- space" in System Preferences.
+--
+-- Otherwise, relayout happens when I switch between apps on different
+-- displays, and since I don't have a completely automated window sizing /
+-- positioning setup for every situation I encounter, it mangles things I've
+-- done manually.
 space_watcher = hs.spaces.watcher.new(layoutWindows)
 space_watcher:start()
 
