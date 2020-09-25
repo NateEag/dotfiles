@@ -5,9 +5,9 @@ PassCmd "pass show imap.gmail.com/neagleson@nxtbookmedia.com"
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
-# On OS X, if OpenSSL has been installed by homebrew, there's a CA cert at this
+# On OS X, if GnuTLS has been installed by homebrew, there's a CA cert at this
 # path: http://stackoverflow.com/a/28274272/1128957
-CertificateFile /usr/local/etc/openssl/cert.pem
+CertificateFile /usr/local/etc/gnutls/cert.pem
 
 
 IMAPAccount gmail
@@ -17,9 +17,9 @@ PassCmd "offlineimap.py nate4d@gmail.com imap.gmail.com"
 AuthMechs LOGIN
 SSLType IMAPS
 SSLVersions TLSv1
-# On OS X, if OpenSSL has been installed by homebrew, there's a CA cert at this
+# On OS X, if GnuTLS has been installed by homebrew, there's a CA cert at this
 # path: http://stackoverflow.com/a/28274272/1128957
-CertificateFile /usr/local/etc/openssl/cert.pem
+CertificateFile /usr/local/etc/gnutls/cert.pem
 
 IMAPStore gmail-remote
 Account gmail
