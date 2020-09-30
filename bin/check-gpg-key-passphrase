@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# Yanked from Stack Overflow: https://stackoverflow.com/a/11484411
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <keyid>" >&2
+
+    exit 2
+fi
+
+echo "1234" |
+    gpg --batch --passphrase-fd 1 -o /dev/null --local-user "$1" -as - && echo "The correct passphrase was entered for this key"
