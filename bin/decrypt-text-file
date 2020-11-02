@@ -1,0 +1,27 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Decrypt file at <filepath> using GPG.
+
+The file's contents will be written to stdout, so be careful what you use it for.
+
+I use it as a workaround for GPG pinentry not working correctly when I open an
+encrypted text document in emacs. For whatever reason, decrypting it this way
+gets pinentry to trigger in my terminal session, and once the relevant key has
+been loaded, then Emacs can decrypt the text file successfully.
+
+Usage: $script_name <filepath>"
+
+if [ $1 == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+filepath="$1"
+
+gpg -q --decrypt "$filepath"
