@@ -4,7 +4,7 @@ A set of dotfiles for use on a Unixy system, along with a few extras:
 
 * Keyboard remappings to make a MacBook Pro's keyboard feel more like a
 TrulyErgonomic keyboard. They are implemented with
-[Karabiner-Elements][https://github.com/tekezo/Karabiner-Elements] for macOS >=
+[Karabiner-Elements](https://github.com/tekezo/Karabiner-Elements) for macOS >=
 10.12, and [Karabiner](https://pqrs.org/osx/karabiner/) and
 [Seil](https://pqrs.org/osx/karabiner/seil.html.en) for older Macs.
 
