@@ -316,3 +316,10 @@ fi
 #
 # set +x
 # exec 2>&3 3>&-
+
+# Perl settings to support edbi (Emacs DataBase Interface)
+PATH="/Users/neagleson/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/neagleson/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/neagleson/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/neagleson/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/neagleson/perl5"; export PERL_MM_OPT;
