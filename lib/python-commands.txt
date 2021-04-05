@@ -1,3 +1,4 @@
+jmespath-terminal
 flake8
 cram
 LinkChecker
