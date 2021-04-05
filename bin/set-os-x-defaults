@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# Keeping a record of settings I've customized with the OS X `defaults` CLI
+# tool.
+
+defaults write com.apple.Finder AppleShowAllFiles TRUE
