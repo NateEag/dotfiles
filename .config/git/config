@@ -105,3 +105,5 @@
 # machine's global cert bundle to some private location, and add each cert you
 # want to trust to that file. Then, set http.sslCAInfo to point to that file.
 # That way, you'll be warned in event of man-in-the-middle attacks in future.
+[pull]
+	ff = only
