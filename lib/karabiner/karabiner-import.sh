@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cli=/Applications/Karabiner.app/Contents/Library/bin/karabiner
+cli=/Applications/Karabiner-Elements.app/Contents/MacOS/Karabiner-Elements
 
 $cli set private.f19ToCapsLock 1
 /bin/echo -n .
