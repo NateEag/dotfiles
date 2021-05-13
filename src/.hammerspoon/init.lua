@@ -420,7 +420,7 @@ function layoutWindows()
 
    layoutAppWindows("Signal", upper_right_screen_rect, primary_screen)
 
-   layoutAppWindows("YakYak", upper_right_screen_rect, primary_screen)
+   layoutAppWindows("Pandora", upper_right_screen_rect, primary_screen)
 
    -- As noted elsewhere, if I have three screens it almost certainly means I'm
    -- using my laptop display while hooked up to two external screens.
