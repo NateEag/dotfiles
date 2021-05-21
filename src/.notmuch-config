@@ -14,3 +14,11 @@ name=Nate Eagleson
 
 [maildir]
 synchronize_flags=true
+
+# Work around known bug in Notmuch 0.32:
+#
+# https://nmbug.notmuchmail.org/nmweb/show/20210510103918.56511-1-david%40tethera.net
+#
+# TODO Remove this after upgrading to next release.
+[database]
+path=/Users/neagleson/mail
