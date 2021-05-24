@@ -28,10 +28,15 @@ echo "(setq site-run-file nil)" > ./lisp/site-init.el
 
 ./configure --with-ns \
             --with-modules \
+            --with-rsvg \
             --enable-silent-rules \
             PKG_CONFIG_PATH=/opt/local/lib/pkgconfig \
+            PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix libxml2 ):$PKG_CONFIG_PATH"
             LDFLAGS="-L/usr/local/lib" \
             LDFLAGS="-L/usr/lib" \
+            LDFLAGS="-L$(brew --prefix libxml2)/lib" \
+            LDFLAGS="-L$(brew --prefix librsvg)/lib" \
             CPPFLAGS="-I/usr/local/include" \
             CPPFLAGS="-I$(brew --prefix libxml2)/include/libxml2" \
+            LDFLAGS="-L$(brew --prefix librsvg)/include/librsvg-2.0" \
             CC=clang OBJC=clang CFLAGS="-g -O2"
