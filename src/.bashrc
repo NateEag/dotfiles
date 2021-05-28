@@ -283,15 +283,19 @@ done
 # Tab completions for PHP tools like Composer, Artisan, and the like.
 eval "$(symfony-autocomplete)"
 
+
 ## Shell extensions.
 
+# Load Pipsi into my shell.
+PATH="$HOME/.local/bin:$PATH"
+
 # Load pyenv into my shell.
-export PATH="$HOME/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# Load Pipsi into my shell.
-export PATH="$HOME/.local/bin:$PATH"
 
 # Load nvm into my shell.
 export NVM_DIR=~/.nvm
