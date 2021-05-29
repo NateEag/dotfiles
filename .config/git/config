@@ -2,14 +2,13 @@
 # can be used to override settings per-machine. This is handy for working on an
 # employer's machine, so you can default repos to your work email address but
 # keep your other git settings. Note: Older gits will not read from this path.
-#
-# You may want to set credential.helper to empty string in any personal repos
-# that you run on your employer's machine, so your personal GitHub or similar
-# passwords do not wind up saved in Keychain Access or similar.
 
 [user]
 	name = Nate Eagleson
 	email = nate@nateeag.com
+
+[credential]
+	helper = !pass-git-helper $@
 
 [core]
 	editor = emacsclient
