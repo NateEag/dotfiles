@@ -29,8 +29,8 @@ Path ~/mail/gmail/
 Inbox ~/mail/gmail/Inbox
 
 Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns *
 Create Both
 SyncState *
@@ -46,8 +46,8 @@ Inbox ~/mail/nxtbook/Inbox
 SubFolders Legacy
 
 Channel nxtbook
-Master :nxtbook-remote:
-Slave :nxtbook-local:
+Far :nxtbook-remote:
+Near :nxtbook-local:
 Patterns *
 Create Both
 SyncState *
