@@ -7,7 +7,7 @@ SSLType IMAPS
 SSLVersions TLSv1
 # On OS X, if GnuTLS has been installed by homebrew, there's a CA cert at this
 # path: http://stackoverflow.com/a/28274272/1128957
-CertificateFile /usr/local/etc/gnutls/cert.pem
+CertificateFile /usr/local/etc/openssl@1.1/cert.pem
 
 
 IMAPAccount gmail
@@ -19,7 +19,7 @@ SSLType IMAPS
 SSLVersions TLSv1
 # On OS X, if GnuTLS has been installed by homebrew, there's a CA cert at this
 # path: http://stackoverflow.com/a/28274272/1128957
-CertificateFile /usr/local/etc/gnutls/cert.pem
+CertificateFile /usr/local/etc/openssl@1.1/cert.pem
 
 IMAPStore gmail-remote
 Account gmail
