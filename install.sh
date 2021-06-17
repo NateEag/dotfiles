@@ -12,6 +12,8 @@ src_dir="$dotfiles_dir/src/"
 config_dir="$dotfiles_dir/.config"
 bin_dir="$dotfiles_dir/bin"
 
+mkdir -p "$config_dir"
+
 config_files_to_install=$(cd "$dotfiles_dir"; find "src" -depth 1)
 config_dirs_to_install=$(cd "$dotfiles_dir"; find ".config" -depth 1)
 
