@@ -25,6 +25,7 @@ hyper_keys = {"ctrl", "shift"}
 -- I don't like waiting for cute little window animations.
 ANIMATION_DURATION = 0
 
+cli_installed = hs.ipc.cliStatus()
 
 --
 -- Hammerspoon-specific configuration.
@@ -38,7 +39,7 @@ hs.hotkey.bind(hyper_keys, "R", hs.reload)
 
 -- This is a stupid shortcut but I want *something* that does this, and "E"
 -- (for evaluate) and "L" (for Lua) are already taken.
-hs.hotkey.bind(hyper_keys, "P", hs.openConsole)
+hs.hotkey.bind(hyper_keys, "O", hs.openConsole)
 
 
 -- A little-known OS X builtin keybinding I rely on extensively is
@@ -121,6 +122,7 @@ key_bindings = {
    F = {focusApp, "Finder"},
    I = {focusApp, "Slack"},
    S = {focusApp, "Signal"},
+   P = {focusApp, "Pandora"},
 
 
    --
