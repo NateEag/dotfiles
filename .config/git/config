@@ -55,6 +55,10 @@
     # Pretty command-line history.
     graph-log = log --all --graph --oneline --decorate
 
+	# Handy when you want to extract something from a commit message. I use it to
+	# snag the closing "Issue #" line from a previous commit fairly often.
+	show-commit-msg = log --format=%B -n 1
+
     # Useful for working gitflow-style.
     strict-merge = merge --no-commit --no-ff
 
