@@ -88,3 +88,8 @@ for filename in $config_dirs_to_install; do
     fi
 
 done
+
+# Install Anonymous Pro font.
+#
+# TODO Figure out if there's a way to check whether it's already installed.
+open "$dotfiles_dir/anonymous-pro-font/"*.ttf
