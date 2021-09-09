@@ -89,6 +89,14 @@ for filename in $config_dirs_to_install; do
 
 done
 
+if [ `uname -s` == 'Darwin' ] ; then
+    "$bin_dir/set-os-x-defaults"
+
+    echo "OS X preferences set.
+
+You will need to log out for all changes to take effect."
+fi
+
 # Install Anonymous Pro font.
 #
 # TODO Figure out if there's a way to check whether it's already installed.

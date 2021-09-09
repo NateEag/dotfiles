@@ -1,6 +1,51 @@
 #! /bin/bash
 
 # Keeping a record of settings I've customized with the OS X `defaults` CLI
-# tool.
+# tool. This is useful for more than just OS X built-in features - you can
+# manipulate app preferences generally with it.
+#
+# You have to log out for at least some of these changes to take effect. Not
+# sure if that's true for all of them or just the OS X builtins yet.
+#
+# Since setting defaults is idempotent, this script should be idempotent.
+#
+# A useful tutorial on working with the defaults command can be found here:
+# https://www.shell-tips.com/mac/defaults/.
+#
+# In summary, you can use `defaults domains | tr , '\n'` to figure out what
+# apps are available to manipulate, and `defaults <domain> read` to see all set
+# preferences for an app. Turn on a preference in the target app manually, use
+# `defaults <domain> read` to see how it's named in the plist file, then slap
+# the result in here so it's easy to apply on future Macs.
 
+# Have Finder show files whose names begin with . Occasionally makes it easier
+# for me to grab something (usually in file dialog boxes).
 defaults write com.apple.Finder AppleShowAllFiles TRUE
+
+# Make key repeat a little faster than the GUI will let you set it.
+defaults write NSGlobalDomain KeyRepeat -int 1
+
+# Let me tap for clicks.
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+# Let me tap for drags instead of having to press down hard while dragging.
+defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+
+# Let me double-tap for drags so I can pick my fingers up mid-drag.
+defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
+
+# Turn off that darned translucent menubar.
+defaults write com.apple.universalaccess.reduceTransparency -int 1
+
+
+# Set up Flycut basics.
+#
+# TODO Figure out how to manage its keyboard shortcut. The property path has a
+# space in the name and I haven't figured out how to handle that.
+defaults write com.generalarcade.flycut loadOnStartup -int 1
+defaults write com.generalarcade.flycut stickyBezel -int 1
+
+
+# Set up preferences for Scroll Reverser.
+defaults write com.pilotmoon.scroll-reverser InvertScrollingOn -int 1
+defaults write com.pilotmoon.scroll-reverser StartAtLogin -int 1
