@@ -16,6 +16,7 @@
       myPackages = pkgs.buildEnv {
         name = "my-packages";
         paths = [
+          nix
           delta
           pass-git-helper
         ];
