@@ -19,6 +19,8 @@
           nix
           delta
           pass-git-helper
+          notmuch
+          isync
         ];
         pathsToLink = [ "/share" "/bin" "/Applications" ];
       };
