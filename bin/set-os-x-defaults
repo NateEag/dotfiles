@@ -18,6 +18,9 @@
 # `defaults <domain> read` to see how it's named in the plist file, then slap
 # the result in here so it's easy to apply on future Macs.
 
+# The dock is a waste of screen space.
+defaults write com.apple.dock autohide -int 1
+
 # Have Finder show files whose names begin with . Occasionally makes it easier
 # for me to grab something (usually in file dialog boxes).
 defaults write com.apple.Finder AppleShowAllFiles TRUE
