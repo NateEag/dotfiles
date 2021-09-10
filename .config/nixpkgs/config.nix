@@ -47,6 +47,7 @@
           # Aspell isn't a perfect spellchecker, but it works reasonably well
           # for me.
           aspell
+          aspellDicts.en
         ];
         pathsToLink = [ "/share" "/bin" "/etc" "/Applications" ];
       };
