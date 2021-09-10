@@ -9,6 +9,11 @@
 # nix-env -irA nixpkgs.myPackages
 #
 # which I may eventually get around to adding a dumb shell script for.
+#
+# The -r flag has forced me to explicitly list some packages I otherwise
+# wouldn't need to. I'm using it to increase the odds of a cleanly-reproducible
+# evironment, so that I don't do anything interactively at some point that I
+# come to depend on without realizing it.
 
 {
     allowUnfree = true;
@@ -19,11 +24,9 @@
           # The invocation I use to install my packages mean the nix tools get
           # nuked if I don't explicitly include them.
           nix
-
-          # Make SSL certificates available? Apparently they get deleted if I
-          # don't explicitly install them, rendering nix-env unable to fetch
-          # files from HTTPS servers due to SSL cert verification failures.
-          # Therefore.
+          # In the same vein, apparently the CA SSL certs get deleted due to
+          # the -r flag, rendering nix-env unable to fetch files from HTTPS
+          # servers due to SSL cert verification failures. Therefore.
           cacert
 
           # Yay for diff coloration and prettiness!
