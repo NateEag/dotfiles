@@ -42,6 +42,9 @@
           notmuch
           isync
 
+          # I'm not a big networking guy, but nmap sure can be handy.
+          nmap
+
           # Send CLI notifications on OS X.
           #
           # TODO Only install this on OS X.
