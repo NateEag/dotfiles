@@ -59,6 +59,9 @@
           # for me.
           aspell
           aspellDicts.en
+
+          # Vagrant is my preferred dev environment creator. Therefore...
+          vagrant
         ];
         pathsToLink = [ "/share" "/bin" "/etc" "/Applications" ];
       };
