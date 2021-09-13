@@ -29,6 +29,11 @@
           # servers due to SSL cert verification failures. Therefore.
           cacert
 
+          # Since I currently use Mac OS X as my operating system, I have
+          # accumulated scripts that refer to BSD date as 'date' and GNU date
+          # as 'gdate'. Therefore, make 'gdate' and friends available to me.
+          coreutils-prefixed
+
           # Yay for diff coloration and prettiness!
           delta
 
