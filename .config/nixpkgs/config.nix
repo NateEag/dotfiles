@@ -16,6 +16,13 @@
 # come to depend on without realizing it.
 
 {
+    # An attempt to get git-svn to install.
+    #
+    # TODO Remove these settings. I think they're from years ago and installing
+    # the gitSVN package below is all I actually need to do.
+    git = { svnSupport = true; };
+    subversion = { perlBindings = true; };
+
     allowUnfree = true;
     packageOverrides = pkgs: with pkgs; {
       myPackages = pkgs.buildEnv {
@@ -36,6 +43,14 @@
 
           # Yay for diff coloration and prettiness!
           delta
+
+          # Install Subversion so I have it when I need it.
+          subversion
+
+          # Life without git is difficult. Install the version that includes
+          # git-svn, because I prefer that for dealing with Subversion when
+          # feasible.
+          gitSVN
 
           # Password safes are handy.
           pass
