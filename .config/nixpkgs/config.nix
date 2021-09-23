@@ -61,7 +61,7 @@
           # I try not to avoid AWS for my own personal infrastructure, but I
           # regularly work with it, so it's useful to have the official CLI
           # tool installed..
-          awscli
+          awscli2
 
           # Tools I use for synchronizing and managing email.
           notmuch
