@@ -22,7 +22,7 @@ if [[ $# -gt 0 ]]; then
     files_to_install="$@"
 fi
 
-crontab "$dotfiles_dir/lib/.crontab"
+"$bin_dir/install-crontab"
 
 # Install Karabiner (KeyRemap4Macbook on older OS Xs) preferences if necessary.
 karabiner_name="Karabiner"

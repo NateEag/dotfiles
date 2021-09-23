@@ -11,8 +11,3 @@ MAILTO=""
 # I write plenty of stuff in bash, so loading my config won't work if we don't
 # use it.
 SHELL="/bin/bash"
-
-# Sync email every five minutes. Mostly I ignore email apart from scheduled
-# email processing times - the frequent refresh is just to make sure that when
-# I do get emails I want to be notified of, it happens quickly.
-*/5 * * * * source "$HOME/.bashrc"; check-mail nxtbook >> "$HOME/cron.log" 2>>/"$HOME/cron.err"
