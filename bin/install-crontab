@@ -8,7 +8,7 @@ destroying any cron jobs I may have added manually.
 TODO Come up with a better path for work crontabs than ~/bin/crontab. I chose that
 because it was the easiest version-controlled location on my current work machine."
 
-if [ $1 == '--help' ]; then
+if [ "$1" == '--help' ]; then
     echo "$usage_msg"
 
     exit
@@ -24,4 +24,4 @@ dotfiles_dir="$(dirname $bin_dir)"
 
 crontab -l > "$HOME/crontab.$(date +%Y-%m-%d-%H-%M).bak"
 
-cat "$dotfiles_dir/lib/.crontab" "$HOME/bin/crontab" | crontab
+cat "$dotfiles_dir/lib/.crontab" "$HOME/bin/crontab" | crontab -
