@@ -52,3 +52,4 @@ defaults write com.generalarcade.flycut stickyBezel -int 1
 # Set up preferences for Scroll Reverser.
 defaults write com.pilotmoon.scroll-reverser InvertScrollingOn -int 1
 defaults write com.pilotmoon.scroll-reverser StartAtLogin -int 1
+defaults write com.pilotmoon.scroll-reverser ReverseX -int 1
