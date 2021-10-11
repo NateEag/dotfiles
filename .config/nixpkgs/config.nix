@@ -83,7 +83,7 @@
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
         ];
-        pathsToLink = [ "/share" "/bin" "/etc" "/Applications" ];
+        pathsToLink = [ "/share" "/bin" "/etc" "/lib" "/Applications" ];
       };
     };
 }
