@@ -23,6 +23,7 @@
           # The invocation I use to install my packages mean the nix tools get
           # nuked if I don't explicitly include them.
           nix
+
           # In the same vein, apparently the CA SSL certs get deleted due to
           # the -r flag, rendering nix-env unable to fetch files from HTTPS
           # servers due to SSL cert verification failures. Therefore.
