@@ -72,6 +72,11 @@
           aspell
           aspellDicts.en
 
+          # I use syncthing for keeping several files (and collections of
+          # files) in sync across multiple devices. Thus, I want it installed
+          # automatically.
+          syncthing
+
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
         ];
