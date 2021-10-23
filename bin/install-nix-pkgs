@@ -1,0 +1,11 @@
+#! /bin/bash
+
+# A small script to create and configure my personal Nix environment per
+# .config/nixpkgs/config.nix in this repository.
+#
+# The -r flag has forced me to explicitly list some packages I otherwise
+# wouldn't need to. I'm using it to increase the odds of a cleanly-reproducible
+# environment, so that I don't do anything interactively at some point that I
+# come to depend on without realizing it.
+
+nix-env -irA nixpkgs.myPackages

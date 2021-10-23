@@ -4,16 +4,8 @@
 # This is based on
 # https://nixos.org/manual/nixpkgs/stable/#sec-declarative-package-management
 #
-# I've been able to install the listed packages by running
-#
-# nix-env -irA nixpkgs.myPackages
-#
-# which I may eventually get around to adding a dumb shell script for.
-#
-# The -r flag has forced me to explicitly list some packages I otherwise
-# wouldn't need to. I'm using it to increase the odds of a cleanly-reproducible
-# evironment, so that I don't do anything interactively at some point that I
-# come to depend on without realizing it.
+# I install the listed packages by running the bin/install-nix-pkgs command in
+# this repository.
 
 {
     # An attempt to get git-svn to install.
