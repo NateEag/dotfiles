@@ -56,6 +56,10 @@
           # tool installed.
           awscli2
 
+          # MySQL is not my favorite database, but I need to work with it
+          # pretty regularly.
+          mysql-client
+
           # Tools I use for synchronizing and managing email.
           notmuch
           isync
