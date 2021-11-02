@@ -1,0 +1,29 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Exit with 0 status if we can fetch www.google.com, nonzero otherwise.
+
+In practice, I mostly use this as a pragmatic hack to check whether an internet
+connection is working.
+
+Usage: $script_name"
+
+if [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ "$#" -ne 0 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+if curl --fail-early --silent http://wwww.google.com > /dev/null; then
+    echo "We got a goog!"
+
+    exit
+else
+    echo "Noooo goog!"
+
+    exit 1
+fi
