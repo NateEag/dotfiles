@@ -73,9 +73,13 @@
           terminal-notifier
 
           # Aspell isn't a perfect spellchecker, but it works reasonably well
-          # for me.
+          # for me. Note that I integrate this closely with my Emacs config.
           aspell
           aspellDicts.en
+
+          # Shellcheck saves me from dumb Bash mistakes on a regular basis. It,
+          # too, is here primarily to support my Emacs configuration.
+          shellcheck
 
           # I use syncthing for keeping several files (and collections of
           # files) in sync across multiple devices. Thus, I want it installed
