@@ -18,7 +18,7 @@ elif [ "$#" -ne 0 ]; then
     exit 1
 fi
 
-if curl --fail-early --silent http://wwww.google.com > /dev/null; then
+if curl --fail-early --silent http://www.google.com > /dev/null; then
     echo "We got a goog!"
 
     exit
