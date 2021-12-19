@@ -72,6 +72,9 @@
           # TODO Only install this on OS X.
           terminal-notifier
 
+          # Ledger is a wonderful CLI tool for managing financial data.
+          ledger
+
           # Aspell isn't a perfect spellchecker, but it works reasonably well
           # for me. Note that I integrate this closely with my Emacs config.
           aspell
