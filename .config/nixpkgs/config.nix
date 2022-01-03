@@ -76,6 +76,28 @@
           notmuch
           isync
 
+          # jp is a tool for querying JSON documents using the JMESPath
+          # language. The reasons I try to prefer jp to jq are:
+          #
+          # * jp is less powerful than jq, which means solutions written using
+          #   it will likely be simpler
+          #
+          # * JMESPath is a standard with a test suite and independent
+          #  implementations rather than just a program (and thus tools using
+          #  it are at least theoretically vendor-independent)
+          #
+          # * AWS tools use JMESPath, so if you have its syntax in your head
+          #   you'll be better at using AWS tools.
+          jp
+
+          # jq is an amazingly overpowered tool for querying JSON documents. It
+          # is Turing-complete, as illustrated by this glorious bit of
+          # insanity: https://github.com/andrewarchi/wsjq
+          #
+          # I try to use jp in preference to jq, but sometimes I do find I want
+          # the chainsaw.
+          jq
+
           # nmap is my preferred tool for exploring networks. I'm not a
           # networking expert - there could well be better options for any
           # number of focused tasks, but it gets the job done for me.
