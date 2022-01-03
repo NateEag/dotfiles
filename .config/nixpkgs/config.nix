@@ -98,6 +98,11 @@
           # the chainsaw.
           jq
 
+          # jid is an interactive tool for building JSON path queries. Isn't
+          # strictly compatible with either jq or JMESPath, but is still handy
+          # for exploring a fresh dump of JSON from somewhere.
+          jid
+
           # nmap is my preferred tool for exploring networks. I'm not a
           # networking expert - there could well be better options for any
           # number of focused tasks, but it gets the job done for me.
