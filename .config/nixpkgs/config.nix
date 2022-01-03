@@ -130,6 +130,10 @@
           # following tool is handy.
           qmk
 
+          # pipx is a tool for running CLI Python tools in standalone
+          # environments. It's here to support bin/install-python-commands.sh.
+          python39Packages.pipx
+
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
         ];
