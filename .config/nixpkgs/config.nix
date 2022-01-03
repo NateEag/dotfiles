@@ -89,6 +89,11 @@
           # automatically.
           syncthing
 
+          # I use a much-beloved ErgoDox EZ keyboard for typing. I run a custom
+          # firmware so I can have the layout be what I want, and for that the
+          # following tool is handy.
+          qmk
+
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
         ];
