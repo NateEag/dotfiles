@@ -34,24 +34,34 @@
           # as 'gdate'. Therefore, make 'gdate' and friends available to me.
           coreutils-prefixed
 
-          # Yay for diff coloration and prettiness!
+          # Delta is a filter for prettifying unified diffs. It makes diffs
+          # massively easier to read.
+          #
+          # By default it hides useful details for simplicity's sake, but it
+          # can be configured to leave them intact for those of us used to
+          # reading diffs.
           delta
 
           # Install Subversion so I have it when I need it.
           subversion
 
-          # Life without git is difficult. Install the version that includes
-          # git-svn, because I prefer that for dealing with Subversion when
-          # feasible.
+          # Git is my preferred version control system (well, leaving aside the
+          # system I slowly plan at https://github.com/NateEag/next-vcs).
+          #
+          # This is the version that includes git-svn, because I prefer it for
+          # dealing with Subversion when feasible.
           gitSVN
 
-          # Password safes are handy.
+          # pass is "the standard unix password manager". Your secrets are
+          # stored locally as plain text and versioned in a Git repo, making
+          # backup and sharing across multiple machines reasonably
+          # straightforward. I use it every working day.
           pass
 
-          # I sometimes use pass as the source for Git credentials.
+          # I sometimes use pass as a source for Git credentials.
           pass-git-helper
 
-          # I try not to avoid AWS for my own personal infrastructure, but I
+          # I try to avoid AWS for my own personal infrastructure, but I
           # regularly work with it, so it's useful to have the official CLI
           # tool installed.
           awscli2
@@ -60,11 +70,15 @@
           # pretty regularly.
           mysql-client
 
-          # Tools I use for synchronizing and managing email.
+          # Tools I use for synchronizing and managing email. Emacs is where I
+          # do most of my email from - these are the CLI plumbing to make that
+          # possible.
           notmuch
           isync
 
-          # I'm not a big networking guy, but nmap sure can be handy.
+          # nmap is my preferred tool for exploring networks. I'm not a
+          # networking expert - there could well be better options for any
+          # number of focused tasks, but it gets the job done for me.
           nmap
 
           # Send CLI notifications on OS X.
