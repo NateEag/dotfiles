@@ -130,6 +130,10 @@
           # automatically.
           syncthing
 
+          # Syncthing is great, but I am a web developer and sometime
+          # sysadmin/devoperator, so how can I live without rsync?
+          rsync
+
           # I use a much-beloved ErgoDox EZ keyboard for typing. I run a custom
           # firmware so I can have the layout be what I want, and for that the
           # following tool is handy.
