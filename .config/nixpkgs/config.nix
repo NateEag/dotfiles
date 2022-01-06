@@ -24,6 +24,13 @@
           # nuked if I don't explicitly include them.
           nix
 
+          # In theory, nix could completely subsume direnv's purpose with
+          # per-project Nix shells and configurations.
+          #
+          # In practice, a lot of projects without Nix setups have .envrc
+          # files.
+          direnv
+
           # In the same vein, apparently the CA SSL certs get deleted due to
           # the -r flag, rendering nix-env unable to fetch files from HTTPS
           # servers due to SSL cert verification failures. Therefore.
