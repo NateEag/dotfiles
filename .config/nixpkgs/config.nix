@@ -53,6 +53,11 @@
           # as 'gdate'. Therefore, make 'gdate' and friends available to me.
           coreutils-prefixed
 
+          # I have a project or two that depends on fswatch being installed. If
+          # I were a purist I would build out nix profiles for those projects,
+          # but for the moment this should work.
+          fswatch
+
           # Delta is a filter for prettifying unified diffs. It makes diffs
           # massively easier to read.
           #
@@ -134,6 +139,10 @@
 
           # Ledger is a wonderful CLI tool for managing financial data.
           ledger
+
+          # Pandoc is a Swiss-army-knife for working with plain-text documents.
+          # I have used it for a few jobs in a few different contexts.
+          pandoc
 
           # Aspell isn't a perfect spellchecker, but it works reasonably well
           # for me. Note that I integrate this closely with my Emacs config.
