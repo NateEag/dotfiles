@@ -58,6 +58,15 @@ fi
 GPG_TTY="$(tty)"
 export GPG_TTY
 
+# fc -ln -1 gets the last command from your history. Strip off whitespace and
+# the trailing newline, and bam - last command is on your clipboard!
+#
+# I used (\t| ) to match tabs and spaces because \t didn't work in a character
+# class and literal tabs are harder to read.
+#
+# TODO Sub in a portable command for pbcopy. I know Linux does it differently.
+alias copy-last-cmd="fc -ln -1 | sed -E 's/^(\t| )*//' | tr -d '\n' | pbcopy"
+
 # Sometimes, you want to see the headers you get from a site. Enter this
 # handy curl alias, which prints the headers received from whatever URL
 # you call it on.
