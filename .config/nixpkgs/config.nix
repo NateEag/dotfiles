@@ -100,6 +100,9 @@
           notmuch
           isync
 
+          # A collection to tools that can help with SSH
+          ssh-tools
+
           # jp is a tool for querying JSON documents using the JMESPath
           # language. The reasons I try to prefer jp to jq are:
           #
