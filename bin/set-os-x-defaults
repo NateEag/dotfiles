@@ -40,6 +40,10 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 # Turn off that darned translucent menubar.
 defaults write com.apple.universalaccess.reduceTransparency -int 1
 
+# Don't put screenshots on my desktop. :P
+mkdir -p "~/Documents/Screenshots"
+defaults write com.apple.screencapture.location ~/Documents/Screenshots
+
 
 # Set up Flycut basics.
 #
