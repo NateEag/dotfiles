@@ -152,6 +152,12 @@
           aspell
           aspellDicts.en
 
+          # I use sdcv to look up words in the dictionary (I have a
+          # copyright-free 1913 edition of Webster's for the actual dictionary)
+          # I use sdcv toup words in the dictionary (I have a copyright-free
+          # 1913 edition of Webster's for the actual dictionary).
+          sdcv
+
           # Shellcheck saves me from dumb Bash mistakes on a regular basis. It,
           # too, is here primarily to support my Emacs configuration.
           shellcheck
