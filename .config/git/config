@@ -118,3 +118,8 @@
 # That way, you'll be warned in event of man-in-the-middle attacks in future.
 [pull]
 	ff = only
+
+[init]
+	# "main" seems clearer and simpler than "master" or "trunk", and it's less
+	# likely to offend people than "master".
+	defaultBranch = main
