@@ -26,8 +26,8 @@
 
           # If you looked at my Emacs configuration, you'd probably expect me
           # to be a zsh user with a heavily-customized environment, but I stick
-          # with bash because I wind up working on remote systems or ones I
-          # don't conrol a lot - I don't want to get used to idioms I won't
+          # with bash because I regularly wind up working on systems without my
+          # personal configuration - I don't want to get used to idioms I won't
           # have elsewhere.
           #
           # This is here mostly because I want to have a current version of
