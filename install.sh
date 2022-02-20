@@ -89,12 +89,17 @@ for filename in $config_dirs_to_install; do
 
 done
 
+# TODO Move the large quantity of OS X-specific logic into this branch.
+#
+# Doesn't really matter until the day I start trying a Linux desktop.
 if [ `uname -s` == 'Darwin' ] ; then
     "$bin_dir/set-os-x-defaults"
 
     echo "OS X preferences set.
 
 You will need to log out for all changes to take effect."
+
+    "$bin_dir/install-syncthing-launchd-job"
 fi
 
 # Install Anonymous Pro font.

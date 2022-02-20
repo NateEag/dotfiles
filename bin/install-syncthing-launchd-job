@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# Install Syncthing launchd job.
+#
+# Only useful on Mac OS X, obviously.
+#
+# Keep in mind that since I have saved the launchd template it could get out of
+# sync with the upstream (which was extracted from
+# https://github.com/syncthing/syncthing/releases/download/v1.19.0/syncthing-macos-universal-v1.19.0.zip
+# and tweaked to meet my needs).
+
+bin_dir="$(dirname "$0")"
+project_dir="$(dirname "$bin_dir")"
+lib_dir="$project_dir/lib"
+
+cp "$lib_dir/syncthing.plist" "$HOME/Library/LaunchAgents/"
+
+sed -i '' 's|\$HOME|'"$HOME"'|' "$HOME/Library/LaunchAgents/syncthing.plist"
+
+launchctl load "$HOME/Library/LaunchAgents/syncthing.plist"
