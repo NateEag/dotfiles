@@ -9,6 +9,8 @@ source $dotfiles_dir/lib/functions.sh
 dotfiles_dir=$(abspath $dotfiles_dir)
 
 src_dir="$dotfiles_dir/src/"
+# TODO Figure out why I didn't just symlink .config and be done with it. Seems
+# like that should have worked?
 config_dir="$dotfiles_dir/.config"
 bin_dir="$dotfiles_dir/bin"
 
