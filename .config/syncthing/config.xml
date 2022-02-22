@@ -44,6 +44,8 @@
         </device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
+            <param key="cleanoutDays" val="31"></param>
+            <param key="keep" val="30"></param>
             <cleanupIntervalS>3600</cleanupIntervalS>
             <fsPath></fsPath>
             <fsType>basic</fsType>
@@ -230,7 +232,9 @@
                 <encryptionPassword></encryptionPassword>
             </device>
             <minDiskFree unit="%">1</minDiskFree>
-            <versioning>
+            <versioning type="simple">
+                <param key="cleanoutDays" val="31"></param>
+                <param key="keep" val="30"></param>
                 <cleanupIntervalS>3600</cleanupIntervalS>
                 <fsPath></fsPath>
                 <fsType>basic</fsType>
