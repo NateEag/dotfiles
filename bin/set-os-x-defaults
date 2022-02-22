@@ -41,7 +41,7 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 defaults write com.apple.universalaccess.reduceTransparency -int 1
 
 # Don't put screenshots on my desktop. :P
-mkdir -p "~/Documents/Screenshots"
+mkdir -p "$HOME/Documents/Screenshots"
 defaults write com.apple.screencapture.location ~/Documents/Screenshots
 
 
