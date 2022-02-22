@@ -8,6 +8,10 @@
 # sync with the upstream (which was extracted from
 # https://github.com/syncthing/syncthing/releases/download/v1.19.0/syncthing-macos-universal-v1.19.0.zip
 # and tweaked to meet my needs).
+#
+# Note that syncthing.plist specifies the config dir explicitly, because I want
+# to keep my config files under version control in this repo, and on Mac OS X
+# it defaults to putting them in a different place.
 
 bin_dir="$(dirname "$0")"
 project_dir="$(dirname "$bin_dir")"

@@ -7,6 +7,8 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>$HOME/.nix-profile/bin/syncthing</string>
+        <string>--home</string>
+        <string>$HOME/.config/syncthing</string>
 	</array>
 	<key>EnvironmentVariables</key>
 	<dict>
