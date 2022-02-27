@@ -1,0 +1,5 @@
+#! /bin/bash
+
+## TODO Run scripts to commit and push the changes.
+
+echo "Imagine I did something after syncing todo.txt." >> ~/.syncthing_test.log
