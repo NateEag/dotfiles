@@ -1,0 +1,34 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Save all changes in the passed git repo, using the passed commit message.
+
+Exists primarily to commit changes propagated to a repo by Syncthing, via the
+NodeJS syncthing-hooks package.
+
+Usage: $script_name <repo_path> <commit_message>"
+
+
+if [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -lt 2 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+if ! [ -d "$1" ]; then
+    echo "$1 is not a directory!" &>2
+
+    exit 1
+fi
+
+pushd "$1"
+
+git add .
+
+git commit -m "$2"
+
+# TODO Consider pushing the resultant commit if it's mirroring a remote branch?
