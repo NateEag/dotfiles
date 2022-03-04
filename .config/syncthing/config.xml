@@ -72,6 +72,44 @@
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
     </folder>
+    <folder id="f9ks7-5x1uc" label="Waistline Backup" path="/Users/neagleson/personal/smartphone-config/backups/calorie-tracker" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="I7YNNEG-2CSSBSK-VLKZK36-VKM4BEK-UACZVSJ-EBVC2SX-FDW3DC6-KNEOMQE" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning type="simple">
+            <param key="cleanoutDays" val="31"></param>
+            <param key="keep" val="30"></param>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+    </folder>
     <folder id="jy667-pt83d" label="Syncthing Config Backup" path="/Users/neagleson/personal/smartphone-config/backups/syncthing-config" type="receiveonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
