@@ -9,3 +9,10 @@ target_dir="$(curl -H "X-API-Key: 6SaSk9VaWyaWYja64feMzraXn7VisvMH" \
               jp --unquoted "folders[?id == 'ybmwh-9ehdk'].path | [0]")"
 
 git commit-changes "$target_dir" "[auto] Save synced todo items" >& ~/.syncthing_test.log
+
+# FIXME Really should have some sort of status dashboard for info like this.
+# Notifications are too easy to miss or dismiss. Dashboards and historical
+# records show patterns.
+if ! git push; then
+    notify "Todo list not uploaded!"
+fi
