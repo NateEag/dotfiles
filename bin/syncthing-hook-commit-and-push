@@ -1,0 +1,32 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+msg="Syncthing post-sync hook that commits and pushes the synced folder.
+
+Meant for use with the syncthing-hooks npm package (though it wouldn't be hard to adapt it for use with some other system that long-polls the syncthing API).
+
+Usage: $script_name <syncthing-folder-id> <commit-msg>"
+
+if [ $# -ne 2 ]; then
+    echo "$msg" >&2
+
+    exit 1
+elif [ "$1" == '--help' ]; then
+    echo "$msg"
+
+    exit
+fi
+
+target_dir="$(curl -H "X-API-Key: 6SaSk9VaWyaWYja64feMzraXn7VisvMH" \
+                   http://127.0.0.1:8384/rest/config |
+              jp --unquoted "folders[?id == '$1'].path | [0]")"
+
+git commit-changes "$target_dir" "$2" >& ~/.syncthing_hooks.log
+
+# FIXME Set up some sort of dashboard so I can monitor backup success daily.
+#
+# Active human observation is the only sane way to keep track of backup status.
+cd "$target_dir"
+if ! git push; then
+    notify "'$1' was not pushed!"
+fi
