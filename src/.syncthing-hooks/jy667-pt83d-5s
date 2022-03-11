@@ -1,0 +1,3 @@
+#! /bin/bash
+
+syncthing-hook-commit-and-push jy667-pt83d '[auto] Back up Syncthing config'

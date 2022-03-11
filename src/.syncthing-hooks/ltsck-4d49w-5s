@@ -1,0 +1,3 @@
+#! /bin/bash
+
+syncthing-hook-commit-and-push ltsck-4d49w '[auto] Save SMS messages'

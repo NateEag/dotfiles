@@ -3,7 +3,11 @@
 script_name="$(basename "$0")"
 msg="Syncthing post-sync hook that commits and pushes the synced folder.
 
-Meant for use with the syncthing-hooks npm package (though it wouldn't be hard to adapt it for use with some other system that long-polls the syncthing API).
+Meant for use with the syncthing-hooks npm package (though it wouldn't be hard
+to adapt it for use with some other system that long-polls the syncthing API).
+
+FIXME If this is used for multiple folders in the same repo, it's a race
+condition.
 
 Usage: $script_name <syncthing-folder-id> <commit-msg>"
 
