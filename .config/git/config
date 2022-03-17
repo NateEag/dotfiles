@@ -40,6 +40,14 @@
     algorithm = patience
 	compactionHeuristic = true
 
+# Make json-diff command available as a diff driver (it's installed in my
+# dotfiles repo's lib/node_modules dir, and thus should always be on my path).
+#
+# TODO Get this working with delta - syntax coloration would be great. I'm not
+# sure why delta has no effect on json-diff's output.
+[diff "json-diff"]
+	command = json-diff -C
+
 [color]
 	ui = true
 

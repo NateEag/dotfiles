@@ -16,7 +16,7 @@
     "iectrl": "*",
     "jshint": "2.5.2",
     "json": "9.0.4",
-    "json-diff": "0.3.1",
+    "json-diff": "^0.3.1",
     "jsonlint": "1.6.2",
     "syncthing-hooks": "^0.2.0",
     "tern": "0.24.1",
