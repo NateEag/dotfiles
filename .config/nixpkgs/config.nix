@@ -94,6 +94,32 @@
           # pretty regularly.
           mysql-client
 
+          # I use Signal for text chats with several people I care about. It's
+          # my preferred medium for its open-source nature and because of the
+          # reportedlyy-robust end-to-end encryption.
+          #
+          # I care about the encryption not because I'm obsessive about my
+          # communications remaining completely secret, but because I do not
+          # like nation-states being able to run mass surveillance programs on
+          # their citizens easily.
+          #
+          # At a personal threat model level, I'd far rather risk someone
+          # reading all my personal messages than risk losing all that history.
+          #
+          # Hence this tool, which does a good job of letting me archive my
+          # messages decrypted. I do it for several reasons:
+          #
+          # 1) out of worry that I'll lose my encryption keys and lose all that
+          # information to eternity, 2) out of a vague concern for future
+          # historians, as our all-digital culture is all too likely to lose
+          # every ounce of the ephemera that makes up our lives and which
+          # historians find so valuable for reconstructing the gory details of
+          # the past, and 3) that it is just conceivable my children might want
+          # to see what my wife and I had to say to each other in the distant
+          # future, and storing our chat logs decrypted at rest means it's not
+          # a priori impossible.
+          signalbackup-tools
+
           # Tools I use for synchronizing and managing email. Emacs is where I
           # do most of my email from - these are the CLI plumbing to make that
           # possible.
