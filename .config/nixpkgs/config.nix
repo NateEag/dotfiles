@@ -36,6 +36,14 @@
           bash-completion
           nix-bash-completions
 
+          # bat is like cat + less + syntax coloration. It also includes some
+          # git integration features that I have no use for.
+          #
+          # I'm almost embarrassed by the fact that I have it installed, but
+          # sometimes it's nice to get syntax coloration when viewing a file
+          # you do not want to edit accidentally.
+          bat
+
           # In theory, nix could completely subsume direnv's purpose with
           # per-project Nix shells and configurations.
           #
