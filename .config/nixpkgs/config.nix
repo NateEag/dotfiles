@@ -177,6 +177,10 @@
           # Ledger is a wonderful CLI tool for managing financial data.
           ledger
 
+          # pdfgrep is occasionally handy for extracting text from PDFs (such
+          # as PDF copies of financial statements).
+          pdfgrep
+
           # Pandoc is a Swiss-army-knife for working with plain-text documents.
           # I have used it for a few jobs in a few different contexts.
           pandoc
