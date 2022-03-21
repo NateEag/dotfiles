@@ -77,6 +77,12 @@
           # Install Subversion so I have it when I need it.
           subversion
 
+          # I used to be a heavy GNU screen user in my twenties. I'm giving
+          # tmux a try, mainly to see if I like it better than using actual
+          # terminal tabs (might be particularly helpful for using terminals in
+          # Emacs with libvterm, which I hope to try soon).
+          tmux
+
           # Git is my preferred version control system (well, leaving aside the
           # system I slowly plan at https://github.com/NateEag/next-vcs).
           #
