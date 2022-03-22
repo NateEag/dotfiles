@@ -16,100 +16,15 @@
 -- keybinding elsewhere in this file - search for openConsole).
 logger = hs.logger.new('ne-debugger', 'info');
 
+
 -- My personal keybinding namespace. If I ever change baseline OSes, this may
 -- need to change, since Ctrl+Shift is a much more common combo on Linux and
 -- Windows.
 hyper_keys = {"ctrl", "shift"}
 
 
--- I don't like waiting for cute little window animations.
-ANIMATION_DURATION = 0
-
-cli_installed = hs.ipc.cliStatus()
-
---
--- Hammerspoon-specific configuration.
---
-
-
--- Give me a way to reload config when I want to. Auto-reloading is possible
--- but seems like it will cause unpredictable breakage when I'm working on the
--- config file.
-hs.hotkey.bind(hyper_keys, "R", hs.reload)
-
--- This is a stupid shortcut but I want *something* that does this, and "E"
--- (for evaluate) and "L" (for Lua) are already taken.
-hs.hotkey.bind(hyper_keys, "O", hs.openConsole)
-
-
--- A little-known OS X builtin keybinding I rely on extensively is
--- Control-F2. It focuses the menu bar, from which you can navigate by
--- typing the next name you want to focus. Windows users will know how much
--- better this is.
---
--- There is an unfortunate issue with this keybinding, which is that sometimes
--- it just mysteriously fails to do anything. So far I have discerned no
--- pattern, but I do have a (ridiculous) workaround:
---
--- Do Control-F3 first. That focuses the Dock, and for some reason, once
--- the Dock is focused, Control-F2 works consistently.
---
--- And now you know why the following bizarre keybinding exists - because I
--- hate doing two keyboard shortcuts to get the effect of one. "," is not a
--- great mnemonic, but it'll work for now.
---
--- (Bonus - I don't have to hold down the Fn modifier to trigger the menubar [I
--- use it on both my laptop's internal keyboard and in my ErgoDox EZ layout for
--- triggering Fkeys]).
---
--- Note that an arguably-better feature in OS X is the Command-Shift-? keyboard
--- shortcut, which lets you search across menus.
-hs.hotkey.bind(hyper_keys, ",", nil, function()
-    hs.eventtap.keyStroke({"ctrl"}, "f3", 100)
-    hs.eventtap.keyStroke({"ctrl"}, "f2", 100)
-end)
-
-function focusApp(app_name, keycode)
-   local app = hs.appfinder.appFromName(app_name)
-
-   -- Funny little dance to both start the app if it's not running but
-   -- focus it *without bringing all windows forward* if it is running.
-   --
-   -- TODO File an issue to make launchOrFocus() support an optional arg
-   -- for this like app:activate().
-   if app == nil then
-      hs.application.launchOrFocus(app_name)
-   else
-      app:activate()
-   end
-end
-
-function runCommand(cmd)
-   os.execute(cmd)
-end
-
-function positionFocusedWindow(x,
-                               y,
-                               screen_width_fraction,
-                               screen_height_fraction,
-                               keycode)
-   local win = hs.window.focusedWindow()
-   local win_frame = win:frame()
-
-   local screen = win:screen()
-   local screen_frame = screen:frame()
-
-   win_frame.x = screen_frame.x
-   win_frame.y = screen_frame.y
-   win_frame.w = screen_frame.w * screen_width_fraction
-   win_frame.h = screen_frame.h * screen_height_fraction
-
-   win:setFrame(win_frame, ANIMATION_DURATION)
-end
-
--- Most of my keybindings. Some have not yet been ported to the generic
--- declaration method I'm using here.
-
+-- My personal keybindings. Currently all defined to be a key combo of the form
+-- Control-Shift-<key>. Maybe someday I'll expand beyond that.
 key_bindings = {
    --
    -- App hotkeys.
@@ -123,6 +38,18 @@ key_bindings = {
    I = {focusApp, "Slack"},
    S = {focusApp, "Signal"},
    P = {focusApp, "Pandora"},
+
+
+   -- Hammerspoon-specific keybindings.
+
+   -- Give me a way to reload config when I want to. Auto-reloading is possible
+   -- but seems like it will cause unpredictable breakage when I'm working on
+   -- the config file.
+   R = {hs.reload},
+
+   -- This is a stupid shortcut but I want *something* that does this, and "E"
+   -- (for evaluate) and "L" (for Lua) are already taken.
+   ["'"] = {hs.openConsole},
 
 
    --
@@ -154,87 +81,91 @@ key_bindings = {
    -- it's what I went with back in the day.
    D = {positionFocusedWindow, 0, 0, 0.5, 1},
 
+   -- The following aren't mnemonically reasonable - I misapplied vim keyindings
+   -- because I wanted these under my fingers.
+   --
+   -- In retrospect, I actually don't use these that often, but now they're
+   -- reflexive, so I guess I'll live with it.
+   H = {moveFocusedWindowToTopLeft},
+   J = {moveFocusedWindowToTopRight},
+   K = {moveFocusedWindowToBottomLeft},
+   L = {moveFocusedWindowToBottomRight},
+
+   O = {moveFocusedWindowToNextScreen},
+
+   -- Force screen layout. I used to have more of these and had them assigned to a
+   -- few different numkeys, but then the logic defining my screen layout got a
+   -- lot smarter.
+   ["1"] = {layoutWindows},
+
    -- ';' is not a mnemonic for maximizing a window, but it's next to my other
    -- window manipulation keys.
    --
    -- Note that I dislike OS X's "full screen" functionality. I almost never
    -- want to make all my other windows vanish, which is why I do it this way.
-   [";"] =  {positionFocusedWindow, 0, 0, 1, 1}
+   [";"] =  {positionFocusedWindow, 0, 0, 1, 1},
+
+   -- "," is not a great mnemonic, but it'll work.
+   [","] = {focusMenuBar}
 }
 
 
-for mnemonic, callback_info in pairs(key_bindings) do
-   hs.hotkey.bind(hyper_keys, mnemonic, function()
-      callback_info = key_bindings[mnemonic]
+-- I don't like waiting for cute little window animations.
+ANIMATION_DURATION = 0
 
-      callback = callback_info[1]
-      args = { table.unpack(callback_info, 2) }
+cli_installed = hs.ipc.cliStatus()
 
-      callback(table.unpack(args))
-   end)
+
+-- A little-known OS X builtin keybinding I rely on extensively is
+-- Control-F2. It focuses the menu bar, from which you can navigate by
+-- typing the next name you want to focus. Windows users will know how much
+-- better this is.
+--
+-- There is an unfortunate issue with this keybinding, which is that sometimes
+-- it just mysteriously fails to do anything. So far I have discerned no
+-- pattern, but I do have a (ridiculous) workaround:
+--
+-- Do Control-F3 first. That focuses the Dock, and for some reason, once
+-- the Dock is focused, Control-F2 works consistently.
+--
+-- And now you know why the following bizarre function exists - because I hate
+-- doing two keyboard shortcuts to get the effect of one.
+--
+-- (Bonus - I don't have to hold down the Fn modifier to trigger the menubar [I
+-- use it on both my laptop's internal keyboard and in my ErgoDox EZ layout for
+-- triggering Fkeys]).
+--
+-- Note that an arguably-better feature in OS X is the Command-Shift-? keyboard
+-- shortcut, which lets you search across menus.
+function focusMenuBar()
+    hs.eventtap.keyStroke({"ctrl"}, "f3", 100)
+    hs.eventtap.keyStroke({"ctrl"}, "f2", 100)
+end
+
+function focusApp(app_name, keycode)
+   local app = hs.appfinder.appFromName(app_name)
+
+   -- Funny little dance to both start the app if it's not running but
+   -- focus it *without bringing all windows forward* if it is running.
+   --
+   -- TODO File an issue to make launchOrFocus() support an optional arg
+   -- for this like app:activate().
+   if app == nil then
+      hs.application.launchOrFocus(app_name)
+   else
+      app:activate()
+   end
+end
+
+
+function runCommand(cmd)
+   os.execute(cmd)
 end
 
 
 --
--- Shortcuts for moving windows manually.
+-- Functions for manipulating windows.
 --
-
--- The following four rules just let me pin a window to one of the four corners
--- of the world.
---
--- I mean screen.
-hs.hotkey.bind(hyper_keys, "H", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x
-    win_frame.y = screen_frame.y
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
-hs.hotkey.bind(hyper_keys, "J", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x + screen_frame.w - win_frame.w
-    win_frame.y = screen_frame.y
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
-hs.hotkey.bind(hyper_keys, "K", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x
-    win_frame.y = screen_frame.y + screen_frame.h - win_frame.h
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
-hs.hotkey.bind(hyper_keys, "L", function()
-    local win = hs.window.focusedWindow()
-    local win_frame = win:frame()
-
-    local screen = win:screen()
-    local screen_frame = screen:frame()
-
-    win_frame.x = screen_frame.x + screen_frame.w - win_frame.w
-    win_frame.y = screen_frame.y + screen_frame.h - win_frame.h
-
-    win:setFrame(win_frame, ANIMATION_DURATION)
-end)
-
 
 -- Move window to next monitor. Yanked from here:
 --
@@ -244,7 +175,7 @@ end)
 -- with the primary's upper-left corner at 0, 0. That means window placement
 -- arithmetic is a bit fussier than it was under Slate, where each screen had
 -- its own coordinate system.
-hs.hotkey.bind(hyper_keys, "O", function()
+function moveFocusedWindowToNextScreen()
     -- Get the focused window, its window frame dimensions, its screen frame
     -- dimensions, and the next screen's frame dimensions.
     local focusedWindow = hs.window.focusedWindow()
@@ -261,7 +192,78 @@ hs.hotkey.bind(hyper_keys, "O", function()
 
     -- Set the focused window's new frame dimensions
     focusedWindow:setFrame(windowFrame, ANIMATION_DURATION)
-end)
+end
+
+function positionFocusedWindow(x,
+                               y,
+                               screen_width_fraction,
+                               screen_height_fraction,
+                               keycode)
+   local win = hs.window.focusedWindow()
+   local win_frame = win:frame()
+
+   local screen = win:screen()
+   local screen_frame = screen:frame()
+
+   win_frame.x = screen_frame.x
+   win_frame.y = screen_frame.y
+   win_frame.w = screen_frame.w * screen_width_fraction
+   win_frame.h = screen_frame.h * screen_height_fraction
+
+   win:setFrame(win_frame, ANIMATION_DURATION)
+end
+
+function moveFocusedWindowToTopLeft()
+   local win = hs.window.focusedWindow()
+   local win_frame = win:frame()
+
+   local screen = win:screen()
+   local screen_frame = screen:frame()
+
+   win_frame.x = screen_frame.x
+   win_frame.y = screen_frame.y
+
+   win:setFrame(win_frame, ANIMATION_DURATION)
+end
+
+function moveFocusedWindowToTopRight()
+   local win = hs.window.focusedWindow()
+   local win_frame = win:frame()
+
+   local screen = win:screen()
+   local screen_frame = screen:frame()
+
+   win_frame.x = screen_frame.x + screen_frame.w - win_frame.w
+   win_frame.y = screen_frame.y
+
+   win:setFrame(win_frame, ANIMATION_DURATION)
+end
+
+function moveFocusedWindowToBottomLeft()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x
+    win_frame.y = screen_frame.y + screen_frame.h - win_frame.h
+
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end
+
+function moveFocusedWindowToBottomRight()
+    local win = hs.window.focusedWindow()
+    local win_frame = win:frame()
+
+    local screen = win:screen()
+    local screen_frame = screen:frame()
+
+    win_frame.x = screen_frame.x + screen_frame.w - win_frame.w
+    win_frame.y = screen_frame.y + screen_frame.h - win_frame.h
+
+    win:setFrame(win_frame, ANIMATION_DURATION)
+end
 
 
 --
@@ -434,8 +436,6 @@ function layoutWindows()
    end
 end
 
-hs.hotkey.bind(hyper_keys, "1", layoutWindows)
-
 -- Automatically re-layout screen when my available monitors change or I change
 -- spaces (since inactive spaces will not be updated on monitor setup change)
 
@@ -460,3 +460,18 @@ hs.audiodevice.watcher.setCallback(function(event)
    logger.i('An event occurred! %s', event)
 end)
 hs.audiodevice.watcher.start()
+
+
+-- Register my keybindings.
+--
+-- We do this last so all defined functions are available.
+for mnemonic, callback_info in pairs(key_bindings) do
+   hs.hotkey.bind(hyper_keys, mnemonic, function()
+      callback_info = key_bindings[mnemonic]
+
+      callback = callback_info[1]
+      args = { table.unpack(callback_info, 2) }
+
+      callback(table.unpack(args))
+   end)
+end
