@@ -1,2 +1,10 @@
 /lib/flake8-env
 /src/.composer/cache
+
+# Help me avoid committing GPG files.
+*.gpg
+**/private-keys-v1.d/
+random_seed
+
+# Do not commit Composer auth credentials.
+**/.composer/auth.json
