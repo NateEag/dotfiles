@@ -1,0 +1,21 @@
+#! /bin/bash
+
+issue_keywords='Issue:
+Task:
+Bug:'
+
+issue_url_regex='\(Issue|Task|\): [^[:whitespace:]]+'
+
+script_name="$(basename "$0")"
+msg="A hack to make it easier to open issue / task URLs from commit messages.
+
+Pass it a ref and it will open in a browser any URLs that are preceded by one
+of the following strings:
+
+$issue_keywords
+
+Usage: $script_name <ref>"
+
+echo 'This command has not yet been implemented!' &>2
+
+exit 1
