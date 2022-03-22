@@ -1,6 +1,7 @@
-jmespath-terminal
 flake8
 cram
 LinkChecker
 td-watson
 xmldiff
+jpterm
+git+https://github.com/carderne/signal-export.git
