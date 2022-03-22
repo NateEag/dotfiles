@@ -5,6 +5,7 @@
 *.gpg
 **/private-keys-v1.d/
 random_seed
+.gpg-v21-migrated
 
 # Do not commit Composer auth credentials.
 **/.composer/auth.json
