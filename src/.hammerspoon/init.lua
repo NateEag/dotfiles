@@ -31,7 +31,7 @@ key_bindings = {
    --
 
    E = {focusApp, "Emacs"},
-   T = {focusApp, "Terminal"},
+   T = {focusApp, "cool-retro-term"},
    B = {focusApp, "Google Chrome"},
    C = {focusApp, "Calendar"},
    F = {focusApp, "Finder"},
@@ -328,7 +328,7 @@ function layoutWindows()
       window:setFrame(window_frame, ANIMATION_DURATION)
    end
 
-   -- Move Terminal windows to the second monitor, taking up the left half.
+   -- Move terminal windows to the second monitor, taking up the left half.
    --
    -- Non-obvious fact: second_screen and primary_screen are the same if
    -- there's one display.
@@ -411,9 +411,9 @@ function layoutWindows()
    end
 
    if using_only_laptop_display then
-      layoutAppWindows("Terminal", upper_right_screen_rect, primary_screen)
+      layoutAppWindows("cool-retro-term", upper_right_screen_rect, primary_screen)
    else
-      layoutAppWindows("Terminal", left_side_screen_rect, second_screen)
+      layoutAppWindows("cool-retro-term", left_side_screen_rect, second_screen)
    end
 
    layoutAppWindows("Calendar", left_side_screen_rect, primary_screen)
