@@ -83,6 +83,9 @@
           # Emacs with libvterm, which I hope to try soon).
           tmux
 
+          # I need this to compile libvterm for use with Emacs, apparently.
+          cmake
+
           # Git is my preferred version control system (well, leaving aside the
           # system I slowly plan at https://github.com/NateEag/next-vcs).
           #
