@@ -66,6 +66,9 @@ PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 PATH="$HOME/icsv2ledger:$PATH"
 PATH="$HOME/.composer/vendor/bin:$PATH"
 
+# Load pipx-installed variables into my shell.
+PATH="$HOME/.local/bin:$PATH"
+
 # Set up for building Chrome.
 PATH="$HOME/chromium-build/depot_tools:$PATH"
 
@@ -82,9 +85,12 @@ PATH=~/.cask/bin:$PATH
 # I'm trying out installing npm locally. We'll see how it goes.
 PATH=~/npm/bin:$PATH
 
+# I have a local collection of Node modules, mostly installed to get binaries
+# on my PATH.
+PATH="$dotfiles_path/lib/node_modules/.bin:$PATH"
+
 # Add my custom shell commands to path, for when an alias or function just
 # won't hack it.
-PATH="$dotfiles_path/lib/node_modules/.bin:$PATH"
 PATH="$dotfiles_path/bin:$PATH"
 
 # Get `ts` on my path (installing moreutils with Homebrew is not
@@ -175,8 +181,6 @@ eval "$(symfony-autocomplete)"
 
 ## Shell extensions.
 
-# Load Pipsi into my shell.
-PATH="$HOME/.local/bin:$PATH"
 
 # Load pyenv into my shell.
 export PYENV_ROOT="$HOME/.pyenv"
