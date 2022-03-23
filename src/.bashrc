@@ -1,55 +1,6 @@
 #! /bin/bash
 
-if [[ "$OSTYPE" == "msys" ]]; then
-    # Support for Windows ssh-agent.
-    # This seems like it should work fine on other OSes too, but I haven't
-    # really used ssh-agent before, so I'm keeping this Windows-specific for
-    # now.
-    SSH_ENV="$HOME/.ssh/environment"
 
-    # start the ssh-agent
-    function start_agent {
-        echo "Initializing new SSH agent..."
-        # spawn ssh-agent
-        ssh-agent | sed 's/^echo/#echo/' > "$SSH_ENV"
-        echo succeeded
-        chmod 600 "$SSH_ENV"
-        . "$SSH_ENV" > /dev/null
-        ssh-add
-    }
-
-    # test for identities
-    function test_identities {
-        # test whether standard identities have been added to the agent already
-        ssh-add -l | grep "The agent has no identities" > /dev/null
-        if [ $? -eq 0 ]; then
-            ssh-add
-            # $SSH_AUTH_SOCK broken so we start a new proper agent
-            if [ $? -eq 2 ];then
-                start_agent
-            fi
-        fi
-    }
-
-    # check for running ssh-agent with proper $SSH_AGENT_PID
-    if [ -n "$SSH_AGENT_PID" ]; then
-        ps -ef | grep "$SSH_AGENT_PID" | grep ssh-agent > /dev/null
-        if [ $? -eq 0 ]; then
-            test_identities
-        fi
-        # if $SSH_AGENT_PID is not properly set, we might be able to load one from
-        # $SSH_ENV
-    else
-        if [ -f "$SSH_ENV" ]; then
-            . "$SSH_ENV" > /dev/null
-        fi
-        ps -ef | grep "$SSH_AGENT_PID" | grep -v grep | grep ssh-agent > /dev/null
-        if [ $? -eq 0 ]; then
-            test_identities
-        else
-            start_agent
-        fi
-    fi
 fi
 
 # We export GPG_TTY to work around a failure I don't really understand but
@@ -88,83 +39,6 @@ for file in "$dotfiles_lib_path"/*.sh; do
         source "$file"
     fi
 done
-
-# Print an absolute path to the directory containing the script that calls it.
-# DEBUG This is not usefully reusable. For it to be defined in one place
-# usefully, I'd need a way to actually return a value from the function...
-abs_script_dirname () {
-    echo "$( cd "$( dirname "${BASH_ARGV[0]}" )" && pwd )"
-}
-
-# Command-line multi-file find-and-replace.
-# Just a thin wrapper around find, xargs, and sed, but sufficient for most
-# purposes.
-re-replace () {
-    if [ -z "$3" ]; then
-        echo 'Usage: replace <pattern-to-match> <replacement> <path> [<file-glob>] '
-        echo
-        echo 'The sed call uses ":" as a delimiter, so watch out for that.'
-        return 1
-    fi
-
-    file_glob='.*'
-    if [ -n "$4" ]; then
-        file_glob=$4
-    fi
-
-    find "$3" -iname "$file_glob" -print0 | \
-        xargs -0 sed -i '' "s:$1:$2:g"
-}
-
-# Strip excess whitespace from files in a path.
-strip-whitespace () {
-    if [ -z "$1" ]; then
-        echo 'Usage: strip-whitespace <path> [<file-regex]'
-        return 1
-    fi
-
-    # GRIPE I should probably generalize the list of text-ish files to an
-    # array, then set an environment variable to control the defaults throughout
-    # my dotfiles.
-    file_regex='.*\.(html|css|js|py|php|c|h|htm|tmpl|xml|xsd|sh)'
-    if [ -n "$2" ]; then
-        file_regex=$2
-    fi
-
-    find $1 -regextype posix-extended -regex $file_regex -print0 | \
-        xargs -0 sed -i 's/[ \t]*$//g'
-}
-
-# Convert files from DOS line endings to Unix.
-dos2unix () {
-    if [ -z "$2]" ]; then
-        echo "Usage: dos2unix <file>"
-    else
-        perl -i -p -e 's/\r\n/\n/' $1
-    fi
-}
-
-# Convert files from Unix line endings to DOS.
-unix2dos () {
-    if [ -z "$2]" ]; then
-        echo "Usage: unix2dos <file>"
-    else
-        perl -i -p -e 's/\n/\r\n/' $1
-    fi
-}
-
-# Recursively print the number of lines contained in $1, with optional
-# name filter in $2.
-# GRIPE A regex would be a better filter for $2 than shell globbing.
-linecount () {
-    name=''
-    if [ -n "$2" ]; then
-        name="-name $2"
-    fi
-
-    files=$(find $1 -type f $name)
-    echo $files | xargs wc -l
-}
 
 # Return a string listing all .jars in $1, suitable for use in java -classpath.
 # DEBUG Might not quite work; hasn't been entirely tested. I just didn't want
