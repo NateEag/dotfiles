@@ -181,6 +181,28 @@ eval "$(symfony-autocomplete)"
 
 ## Shell extensions.
 
+# I use nvm for managing different versions of node.
+#
+# Loading it fully at shell start makes for a slow shell startup, despite
+# https://github.com/nvm-sh/nvm/issues/1277 being closed.
+#
+# I also use some node commands day-to-day here in my dotfiles repository,
+# which means it's awkward to just not load it at all, cause then those don't
+# work.
+#
+# I saw the "slap latest node in $PATH" workaround here and thought "yeah, that
+# should work if I pair it with --no-use".
+#
+# I guess we'll see if it works out okay for me.
+export NVM_DIR="$HOME/.nvm"
+node_versions_dir="$NVM_DIR/versions/node"
+latest_node_path="$(find "$node_versions_dir" -type d -maxdepth 1 |
+                         sort -V |
+                         tail -n1)/bin/"
+PATH="$latest_node_path:$PATH"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 
 # Load pyenv into my shell.
 export PYENV_ROOT="$HOME/.pyenv"
@@ -189,10 +211,6 @@ eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# Load nvm into my shell.
-export NVM_DIR=~/.nvm
-source ~/.nvm/nvm.sh
 
 # Load direnv, if available.
 if [ $(command -v direnv) ]; then
