@@ -99,10 +99,11 @@ PATH="$PATH:$HOME/third-party/moreutils"
 
 export PATH
 
+# I use Emacs. To minimize the pain of my many-second boot, I use it in server
+# mode when feasible. Sadly, Emacs isn't available everywhere, so I have a few
+# backup options listed.
 #
-# I use Emacs. To minimize the pain of my several-second boot, I use it in
-# server mode when feasible. Sadly, Emacs isn't available everywhere, so I
-# have a few backup options listed.
+# OPTIMIZE Get Emacs booting quickly and this would be much less necessary.
 declare -a EDITORS=("emacsclient" "emacs" "vim" "vi")
 for editor in "${EDITORS[@]}"; do
     editor_path=$(which $editor 2> /dev/null)
