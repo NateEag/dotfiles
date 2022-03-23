@@ -23,93 +23,6 @@ logger = hs.logger.new('ne-debugger', 'info');
 hyper_keys = {"ctrl", "shift"}
 
 
--- My personal keybindings. Currently all defined to be a key combo of the form
--- Control-Shift-<key>. Maybe someday I'll expand beyond that.
-key_bindings = {
-   --
-   -- App hotkeys.
-   --
-
-   E = {focusApp, "Emacs"},
-   T = {focusApp, "cool-retro-term"},
-   B = {focusApp, "Google Chrome"},
-   C = {focusApp, "Calendar"},
-   F = {focusApp, "Finder"},
-   I = {focusApp, "Slack"},
-   S = {focusApp, "Signal"},
-   P = {focusApp, "Pandora"},
-
-
-   -- Hammerspoon-specific keybindings.
-
-   -- Give me a way to reload config when I want to. Auto-reloading is possible
-   -- but seems like it will cause unpredictable breakage when I'm working on
-   -- the config file.
-   R = {hs.reload},
-
-   -- This is a stupid shortcut but I want *something* that does this, and "E"
-   -- (for evaluate) and "L" (for Lua) are already taken.
-   ["'"] = {hs.openConsole},
-
-
-   --
-   -- CLI tools I have bound to a hotkey.
-   --
-
-   -- Activate screensaver from keyboard. If your machine is set up to lock the
-   -- display on screensaver, this is a handy shortcut for locking the display.
-   A = {runCommand, "/Users/neagleson/dotfiles/bin/screensaver"},
-
-   -- Dismiss all notifications in a single key combo.
-   N = {runCommand, "~/dotfiles/bin/dismiss-notifications"},
-
-   -- Toggle whether my mic is on in a Slack call while I'm in a different app.
-   M = {runCommand, "~/dotfiles/bin/mute-slack"},
-
-   -- Start up a new Emacs instance. Useful when I'm writing init code and want
-   -- to test it.
-   W = {runCommand, "/usr/bin/open -n -a Emacs.app"},
-
-
-   --
-   -- Window management hotkeys.
-   --
-
-   Q = {positionFocusedWindow, 0, 0, 0.5, 0.5},
-
-   -- 'Divide' is a poor mnemonic for "Make window half-width, full-height", but
-   -- it's what I went with back in the day.
-   D = {positionFocusedWindow, 0, 0, 0.5, 1},
-
-   -- The following aren't mnemonically reasonable - I misapplied vim keyindings
-   -- because I wanted these under my fingers.
-   --
-   -- In retrospect, I actually don't use these that often, but now they're
-   -- reflexive, so I guess I'll live with it.
-   H = {moveFocusedWindowToTopLeft},
-   J = {moveFocusedWindowToTopRight},
-   K = {moveFocusedWindowToBottomLeft},
-   L = {moveFocusedWindowToBottomRight},
-
-   O = {moveFocusedWindowToNextScreen},
-
-   -- Force screen layout. I used to have more of these and had them assigned to a
-   -- few different numkeys, but then the logic defining my screen layout got a
-   -- lot smarter.
-   ["1"] = {layoutWindows},
-
-   -- ';' is not a mnemonic for maximizing a window, but it's next to my other
-   -- window manipulation keys.
-   --
-   -- Note that I dislike OS X's "full screen" functionality. I almost never
-   -- want to make all my other windows vanish, which is why I do it this way.
-   [";"] =  {positionFocusedWindow, 0, 0, 1, 1},
-
-   -- "," is not a great mnemonic, but it'll work.
-   [","] = {focusMenuBar}
-}
-
-
 -- I don't like waiting for cute little window animations.
 ANIMATION_DURATION = 0
 
@@ -465,7 +378,95 @@ hs.audiodevice.watcher.start()
 -- Register my keybindings.
 --
 -- We do this last so all defined functions are available.
+
+-- My personal keybindings. Currently all defined to be a key combo of the form
+-- Control-Shift-<key>. Maybe someday I'll expand beyond that.
+key_bindings = {
+   --
+   -- App hotkeys.
+   --
+
+   E = {focusApp, "Emacs"},
+   T = {focusApp, "cool-retro-term"},
+   B = {focusApp, "Google Chrome"},
+   C = {focusApp, "Calendar"},
+   F = {focusApp, "Finder"},
+   I = {focusApp, "Slack"},
+   S = {focusApp, "Signal"},
+   P = {focusApp, "Pandora"},
+   G = {focusApp, "Anki"},
+
+   -- Hammerspoon-specific keybindings.
+
+   -- Give me a way to reload config when I want to. Auto-reloading is possible
+   -- but seems like it will cause unpredictable breakage when I'm working on
+   -- the config file.
+   R = {hs.reload},
+
+   -- This is a stupid shortcut but I want *something* that does this, and "E"
+   -- (for evaluate) and "L" (for Lua) are already taken.
+   ["'"] = {hs.openConsole},
+
+
+   --
+   -- CLI tools I have bound to a hotkey.
+   --
+
+   -- Activate screensaver from keyboard. If your machine is set up to lock the
+   -- display on screensaver, this is a handy shortcut for locking the display.
+   A = {runCommand, "/Users/neagleson/dotfiles/bin/screensaver"},
+
+   -- Dismiss all notifications in a single key combo.
+   N = {runCommand, "~/dotfiles/bin/dismiss-notifications"},
+
+   -- Toggle whether my mic is on in a Slack call while I'm in a different app.
+   M = {runCommand, "~/dotfiles/bin/mute-slack"},
+
+   -- Start up a new Emacs instance. Useful when I'm writing init code and want
+   -- to test it.
+   W = {runCommand, "/usr/bin/open -n -a Emacs.app"},
+
+
+   --
+   -- Window management hotkeys.
+   --
+
+   Q = {positionFocusedWindow, 0, 0, 0.5, 0.5},
+
+   -- 'Divide' is a poor mnemonic for "Make window half-width, full-height", but
+   -- it's what I went with back in the day.
+   D = {positionFocusedWindow, 0, 0, 0.5, 1},
+
+   -- The following aren't mnemonically reasonable - I misapplied vim keyindings
+   -- because I wanted these under my fingers.
+   --
+   -- In retrospect, I actually don't use these that often, but now they're
+   -- reflexive, so I guess I'll live with it.
+   H = {moveFocusedWindowToTopLeft},
+   J = {moveFocusedWindowToTopRight},
+   K = {moveFocusedWindowToBottomLeft},
+   L = {moveFocusedWindowToBottomRight},
+
+   O = {moveFocusedWindowToNextScreen},
+
+   -- Force screen layout. I used to have more of these and had them assigned to a
+   -- few different numkeys, but then the logic defining my screen layout got a
+   -- lot smarter.
+   ["1"] = {layoutWindows},
+
+   -- ';' is not a mnemonic for maximizing a window, but it's next to my other
+   -- window manipulation keys.
+   --
+   -- Note that I dislike OS X's "full screen" functionality. I almost never
+   -- want to make all my other windows vanish, which is why I do it this way.
+   [";"] =  {positionFocusedWindow, 0, 0, 1, 1},
+
+   -- "," is not a great mnemonic, but it'll work.
+   [","] = {focusMenuBar}
+}
+
 for mnemonic, callback_info in pairs(key_bindings) do
+   logger.i('Registering %s for %s', mnemonic, callback_info[1])
    hs.hotkey.bind(hyper_keys, mnemonic, function()
       callback_info = key_bindings[mnemonic]
 
