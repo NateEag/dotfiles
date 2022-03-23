@@ -203,6 +203,10 @@ PATH="$latest_node_path:$PATH"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# Load direnv, if available.
+if [ $(command -v direnv) ]; then
+    eval "$(direnv hook bash)"
+fi
 
 # Load pyenv into my shell.
 export PYENV_ROOT="$HOME/.pyenv"
@@ -211,11 +215,6 @@ eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# Load direnv, if available.
-if [ $(command -v direnv) ]; then
-    eval "$(direnv hook bash)"
-fi
 
 # Set up AWS completions, if available.
 if command -v aws_completer > /dev/null; then
