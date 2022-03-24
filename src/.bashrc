@@ -1,7 +1,12 @@
 #! /bin/bash
 
+# Load bash completions for Nix-installed bash (I use Nix to get Bash 4 on OS
+# X).
+#
+# (The nix bash completion setup takes care of only running on bash > 4.)
+export XDG_DATA_DIRS="$HOME/.nix-profile/share/:$XDG_DATA_DIRS"
+source "$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
 
-fi
 
 # We export GPG_TTY to work around a failure I don't really understand but
 # resolved with the aid of this post:
@@ -158,9 +163,13 @@ if command -v brew > /dev/null ; then
         export SSL_CERT_FILE="$INSTALLED_SSL_CERT_PATH"
     fi
 
-    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-        source $(brew --prefix)/etc/bash_completion
-    fi
+    # N.B.: I used to load brew's bash completions here, but am using the
+    # Nix-installed ones now. We'll see how that goes.
+
+    # # TODO Run this only in shells that don't support the Nix-installed version?
+    # if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    #     source "$(brew --prefix)/etc/bash_completion"
+    # fi
 
     # For some reason this is where Homebrew puts PHP. *shrugs*
     PATH="/usr/local/opt/bin/php:$PATH"
@@ -280,4 +289,3 @@ PERL_MM_OPT="INSTALL_BASE=/Users/neagleson/perl5"; export PERL_MM_OPT;
 #
 # https://github.com/Homebrew/homebrew-core/issues/52490#issuecomment-860488062
 export GITPERLLIB="/usr/local/opt/git/share/perl5:$(echo /usr/local/opt/subversion/lib/perl5/site_perl/*/darwin-thread-multi-2level):$(echo /usr/local/Cellar/git/*/share/perl5/)"
-
