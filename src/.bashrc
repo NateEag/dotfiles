@@ -199,6 +199,14 @@ fi
 
 ## Shell extensions.
 
+# Load direnv if available.
+#
+# Note that this takes virtually no time. Perhaps there's something to be said
+# for writing shell extensions in compiled languages.
+if [ $(command -v direnv) ]; then
+    eval "$(direnv hook bash)"
+fi
+
 # I use nvm for managing different versions of node.
 #
 # Loading it fully at shell start makes for a slow shell startup, despite
@@ -220,11 +228,6 @@ latest_node_path="$(find "$node_versions_dir" -type d -maxdepth 1 |
 PATH="$latest_node_path:$PATH"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# Load direnv, if available.
-if [ $(command -v direnv) ]; then
-    eval "$(direnv hook bash)"
-fi
 
 # Load pyenv into my shell.
 export PYENV_ROOT="$HOME/.pyenv"
