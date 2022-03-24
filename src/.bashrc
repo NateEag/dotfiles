@@ -170,8 +170,31 @@ for file in "$dotfiles_path/etc/completions.d/"*; do
     source "$file"
 done
 
-# Tab completions for PHP tools like Composer, Artisan, and the like.
-eval "$(symfony-autocomplete)"
+# Check whether my tab completions for PHP tools like Composer, Artisan, and
+# the like need to be updated.
+#
+# Because I like my shell to start quickly, rather than the recommended
+# configuration of running symfony-autocomplete every time I spawn a new shell,
+# I've dumped its output into a regular completion script.
+#
+# To be aware when it might have changed, I pay a few milliseconds to check
+# whether the script's hash has changed since I generated the dump.
+#
+# This should work because symfony-autocomplete is a .phar archive, so any
+# update to the command will necessarily yield a different SHA1 (barring
+# collision attacks, but there have to be simpler ways to suborn my machine).
+#
+# The approach would not work with all interpreted tools, alas. Running them
+# from git checkouts and checking the current commit ID might be workable,
+# though...
+symfony_autocomplete_hash="$(gsha1sum "$dotfiles_path/src/.composer/vendor/bin/symfony-autocomplete" |
+                                      awk '{print $1}')"
+if [ "$symfony_autocomplete_hash" != "31a802b1711fb5dcb76c17d1dd20d044a49af4f5" ]; then
+    echo "WARNING: You should re-cache symfony-autocomplete's output!" >&2
+    # TODO Automatically update the cached output from symfony-autocomplete. That
+    # would also require updating the hash, which would mean storing it outside
+    # the script..
+fi
 
 
 ## Shell extensions.
