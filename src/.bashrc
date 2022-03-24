@@ -33,6 +33,7 @@ alias mg='emacsclient -a emacs -e "(magit-status)" && focus-emacs'
 # anywhere, but I'm not sure how to achieve that, since I install dotfiles by
 # symlinking them.
 dotfiles_path=~/dotfiles
+dotfiles_etc="$dotfiles_path/etc"
 dotfiles_lib_path=$dotfiles_path/lib/
 for file in "$dotfiles_lib_path"/*.sh; do
     if [[ ! -d "$file" ]]; then
@@ -230,12 +231,27 @@ PATH="$latest_node_path:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Load pyenv into my shell.
+#
+# Note that I use a manually-generated cache of pyenv's self-generated
+# configuration, instead of the recommended approach of running pyenv to
+# generate the required configuration on demand.
+#
+# That lets me avoid the slight delay in shell start brought on by running
+# pyenv, at the cost of having to maintain a fragile method for detecting
+# whether pyenv has been updated and thus that I should regenerate the
+# initialization code.
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+source "$dotfiles_etc/pyenv-init"
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# Check whether pyenv may have been updated, and thus whether I should
+# regenerate the cached configuration that's loaded above.
+pyenv_binary="$(which pyenv)"
+if ! [ -L "$pyenv_binary" ]; then
+    echo "WARNING: pyenv binary is no longer a symlink! Update pyenv conf?" >&2
+elif [ "$(readlink "$pyenv_binary" | cut -d / -f 4)" != '2.2.3' ]; then
+    echo "WARNING: Could not confirm pyenv version is 2.2.3! Update pyenv conf?" >&2
+fi
 
 # Set up AWS completions, if available.
 if command -v aws_completer > /dev/null; then
