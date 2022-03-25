@@ -66,6 +66,14 @@
           # but for the moment this should work.
           fswatch
 
+          # A dependency for building Colossal Cave Adventure. Yes, the right
+          # thing is to submit a PR to https://gitlab.com/esr/open-adventure
+          # telling it how to do this, but I just wanted to get it working.
+          libedit
+
+          # Who doesn't like Zork?
+          frotz
+
           # Delta is a filter for prettifying unified diffs. It makes diffs
           # massively easier to read.
           #
