@@ -9,3 +9,6 @@ random_seed
 
 # Do not commit Composer auth credentials.
 **/.composer/auth.json
+
+# Syncthing files that are not of interest.
+.config/syncthing/csrftokens.txt
