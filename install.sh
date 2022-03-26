@@ -17,6 +17,8 @@ bin_dir="$dotfiles_dir/bin"
 mkdir -p "$config_dir"
 
 config_files_to_install=$(cd "$dotfiles_dir"; find "src" -depth 1)
+# TODO Make this a straight symlink to the .config folder? I don't understand
+# why I didn't do that originally.
 config_dirs_to_install=$(cd "$dotfiles_dir"; find ".config" -depth 1)
 
 # Let you manually override the list of files to symlink.
