@@ -1,12 +1,51 @@
 #! /bin/bash
 
-# Load bash completions for Nix-installed bash (I use Nix to get Bash 4 on OS
-# X).
+# A few useful constants.
+dotfiles_path="$HOME/dotfiles"
+dotfiles_etc="$dotfiles_path/etc"
+dotfiles_lib_path="$dotfiles_path/lib"
+
+
+## Bash Completions
+#
+# Life without them is frustrating. These target bash 4 and up.
+
+# Load bash completions for Nix-installed bash.
 #
 # (The nix bash completion setup takes care of only running on bash > 4.)
 export XDG_DATA_DIRS="$HOME/.nix-profile/share/:$XDG_DATA_DIRS"
 source "$HOME/.nix-profile/etc/profile.d/bash_completion.sh"
 
+# Load my non-standard completions explicitly.
+for file in "$dotfiles_path/bash-completions/"*; do
+    if [ -f "$file" ]; then
+        source "$file"
+    fi
+done
+
+# Tell bash completion where to find my personal lazy-loaded completions
+#
+# Tabbing after a command name that does not yet have any completions defined
+# causes a search in all configured directories for a file matching the command
+# name (see the base bash completion script for exact patterns). If one is
+# found, it will be sourced.
+#
+# That makes it very easy to lazy-load completions for tools that suggest you
+# eval their output to define completions.
+#
+# In turn, that means I can have lots of nice autocompletions work seamlessly
+# for various slow-starting tools without having a shell startup time measured
+# in seconds.
+#
+# TODO Make sure there are docs on defining your own lazy-loaded completions. I
+# wound up reading code to figure it out, and I'm hoping I just missed
+# something, because that does not seem like it should be necessary.
+#
+# ...that said, I'm a little suspicious they're _not_ out there, because
+# otherwise wouldn't some of the projects where the command generates its own
+# autocompletions would tell you do something like I'm doing here, rather than
+# saying "just eval this output".
+export BASH_COMPLETION_USER_DIR="$HOME/dotfiles/bash-completions"
 
 # We export GPG_TTY to work around a failure I don't really understand but
 # resolved with the aid of this post:
@@ -34,17 +73,12 @@ alias getheaders='curl -s -D - -o /dev/null'
 alias mg='emacsclient -a emacs -e "(magit-status)" && focus-emacs'
 
 # Source lib files for my dotfiles.
-# GRIPE Hardcoding this is not as clean as letting my dotfiles dir live
-# anywhere, but I'm not sure how to achieve that, since I install dotfiles by
-# symlinking them.
-dotfiles_path=~/dotfiles
-dotfiles_etc="$dotfiles_path/etc"
-dotfiles_lib_path=$dotfiles_path/lib/
 for file in "$dotfiles_lib_path"/*.sh; do
     if [[ ! -d "$file" ]]; then
         source "$file"
     fi
 done
+
 
 # Return a string listing all .jars in $1, suitable for use in java -classpath.
 # DEBUG Might not quite work; hasn't been entirely tested. I just didn't want
@@ -163,47 +197,8 @@ if command -v brew > /dev/null ; then
         export SSL_CERT_FILE="$INSTALLED_SSL_CERT_PATH"
     fi
 
-    # N.B.: I used to load brew's bash completions here, but am using the
-    # Nix-installed ones now. We'll see how that goes.
-
-    # # TODO Run this only in shells that don't support the Nix-installed version?
-    # if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    #     source "$(brew --prefix)/etc/bash_completion"
-    # fi
-
     # For some reason this is where Homebrew puts PHP. *shrugs*
     PATH="/usr/local/opt/bin/php:$PATH"
-fi
-
-# Install local completions
-for file in "$dotfiles_path/etc/completions.d/"*; do
-    source "$file"
-done
-
-# Check whether my tab completions for PHP tools like Composer, Artisan, and
-# the like need to be updated.
-#
-# Because I like my shell to start quickly, rather than the recommended
-# configuration of running symfony-autocomplete every time I spawn a new shell,
-# I've dumped its output into a regular completion script.
-#
-# To be aware when it might have changed, I pay a few milliseconds to check
-# whether the script's hash has changed since I generated the dump.
-#
-# This should work because symfony-autocomplete is a .phar archive, so any
-# update to the command will necessarily yield a different SHA1 (barring
-# collision attacks, but there have to be simpler ways to suborn my machine).
-#
-# The approach would not work with all interpreted tools, alas. Running them
-# from git checkouts and checking the current commit ID might be workable,
-# though...
-symfony_autocomplete_hash="$(gsha1sum "$dotfiles_path/src/.composer/vendor/bin/symfony-autocomplete" |
-                                      awk '{print $1}')"
-if [ "$symfony_autocomplete_hash" != "31a802b1711fb5dcb76c17d1dd20d044a49af4f5" ]; then
-    echo "WARNING: You should re-cache symfony-autocomplete's output!" >&2
-    # TODO Automatically update the cached output from symfony-autocomplete. That
-    # would also require updating the hash, which would mean storing it outside
-    # the script..
 fi
 
 
@@ -260,11 +255,6 @@ if ! [ -L "$pyenv_binary" ]; then
     echo "WARNING: pyenv binary is no longer a symlink! Update pyenv conf?" >&2
 elif [ "$(readlink "$pyenv_binary" | cut -d / -f 4)" != '2.2.3' ]; then
     echo "WARNING: Could not confirm pyenv version is 2.2.3! Update pyenv conf?" >&2
-fi
-
-# Set up AWS completions, if available.
-if command -v aws_completer > /dev/null; then
-    complete -C aws_completer aws
 fi
 
 # Load any machine-specific customizations.
