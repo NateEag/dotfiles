@@ -273,9 +273,3 @@ PERL5LIB="/Users/neagleson/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PER
 PERL_LOCAL_LIB_ROOT="/Users/neagleson/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/neagleson/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/neagleson/perl5"; export PERL_MM_OPT;
-
-# Perl settings to make git-svn work on Mac OS X Big Sur, given that it was
-# built from source:
-#
-# https://github.com/Homebrew/homebrew-core/issues/52490#issuecomment-860488062
-export GITPERLLIB="/usr/local/opt/git/share/perl5:$(echo /usr/local/opt/subversion/lib/perl5/site_perl/*/darwin-thread-multi-2level):$(echo /usr/local/Cellar/git/*/share/perl5/)"
