@@ -208,9 +208,10 @@ fi
 #
 # Note that this takes virtually no time. Perhaps there's something to be said
 # for writing shell extensions in compiled languages.
-if [ $(command -v direnv) ]; then
+if command -v direnv > /dev/null; then
     eval "$(direnv hook bash)"
 fi
+
 
 # I use nvm for managing different versions of node.
 #
