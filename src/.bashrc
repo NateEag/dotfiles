@@ -258,7 +258,8 @@ elif [ "$(readlink "$pyenv_binary" | cut -d / -f 4)" != '2.2.3' ]; then
     echo "WARNING: Could not confirm pyenv version is 2.2.3! Update pyenv conf?" >&2
 fi
 
-# Load any machine-specific customizations.
+# Load any machine-specific customizations (usually settings specific to
+# $DAYJOB).
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
 fi
