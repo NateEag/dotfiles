@@ -205,6 +205,9 @@
           # as PDF copies of financial statements).
           pdfgrep
 
+          # Ripgrep is a fast tool for searching code.
+          ripgrep
+
           # Pandoc is a Swiss-army-knife for working with plain-text documents.
           # I have used it for a few jobs in a few different contexts.
           pandoc
