@@ -8,11 +8,18 @@
 # this repository.
 
 {
-    # An attempt to get git-svn to install.
+    # TODO Remove svnSupport flag and Subversion config. I think I added them
+    # based on information from years ago and installing the gitSVN package
+    # below is all I actually needed to have a working git-svn.
     #
-    # TODO Remove these settings. I think they're from years ago and installing
-    # the gitSVN package below is all I actually need to do.
-    git = { svnSupport = true; };
+    # That said, the osxkeychainSupport = false invocation is an attempt to
+    # keep git from using OS X's Keychain by default. It had no effect I could
+    # see, so presumably I need to figure out how to actually specify it.
+    #
+    # For the moment, I worked around that issue by manually running sudo git
+    # config --system --unset credential.helper, but that cheap trick may not
+    # be sustainable.
+    git = { svnSupport = true; osxkeychainSupport = false; };
     subversion = { perlBindings = true; };
 
     allowUnfree = true;
