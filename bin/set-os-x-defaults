@@ -25,6 +25,9 @@ defaults write com.apple.dock autohide -int 1
 # for me to grab something (usually in file dialog boxes).
 defaults write com.apple.Finder AppleShowAllFiles TRUE
 
+# Do not show me the accent menu popup when I'm holding down a key.
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 # Make key repeat a little faster than the GUI will let you set it.
 defaults write NSGlobalDomain KeyRepeat -int 1
 
