@@ -39,6 +39,8 @@
 [diff]
     algorithm = patience
 	compactionHeuristic = true
+	tool = difftastic
+	external = difft
 
 # Make json-diff command available as a diff driver (it's installed in my
 # dotfiles repo's lib/node_modules dir, and thus should always be on my path).
@@ -46,7 +48,14 @@
 # TODO Get this working with delta - syntax coloration would be great. I'm not
 # sure why delta has no effect on json-diff's output.
 [diff "json-diff"]
-	command = json-diff -C
+	# difftastic may be better at diffing JSON than json-diff is.
+	command = difft
+
+[difftool]
+	prompt = false
+
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
 
 [color]
 	ui = true
