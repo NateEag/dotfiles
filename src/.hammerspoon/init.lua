@@ -395,6 +395,11 @@ key_bindings = {
    S = {focusApp, "Signal"},
    P = {focusApp, "Pandora"},
    G = {focusApp, "Anki"},
+   -- This isn't a mnemonic at all. It's one of the few letters I haven't bound
+   -- yet.
+   --
+   -- TODO Figure out a more long-term sustainable keybinding strategy, since
+   -- I'm almost out of available ones.
    U = {focusApp, "Timer"},
 
    -- Hammerspoon-specific keybindings.
