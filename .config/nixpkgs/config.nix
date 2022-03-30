@@ -89,6 +89,11 @@
           # reading diffs.
           delta
 
+          # Difftastic is a syntax-aware diffing tool based on tree-sitter.
+          # It's apparently early days for it yet, but I'm definitely going to
+          # give it a shot and see how it does as my git-diff driver.
+          difftastic
+
           # Install Subversion so I have it when I need it.
           subversion
 
