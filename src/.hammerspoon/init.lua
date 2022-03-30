@@ -395,6 +395,7 @@ key_bindings = {
    S = {focusApp, "Signal"},
    P = {focusApp, "Pandora"},
    G = {focusApp, "Anki"},
+   U = {focusApp, "Timer"},
 
    -- Hammerspoon-specific keybindings.
 
@@ -476,3 +477,38 @@ for mnemonic, callback_info in pairs(key_bindings) do
       callback(table.unpack(args))
    end)
 end
+
+-- Log unused Hammerspoon keybindings so I can easily see what's available.
+function getUnusedKeybindings()
+   local keyboard_chars = {",", "-", "=", "\\", "/", "[", "]", ".", "'", " ", '`'}
+   local unused_chars = {}
+
+   for ascii = 65, 65 + 25 do
+      table.insert(keyboard_chars, string.char(ascii))
+   end
+
+   for ascii = 48, 57 do
+      table.insert(keyboard_chars, string.char(ascii))
+   end
+
+   table.insert(keyboard_chars, ",")
+
+   for i, char in pairs(keyboard_chars) do
+      local char_used = false
+      for mnemonic, callback_info in pairs(key_bindings) do
+         if mnemonic == char then
+            char_used = true
+         end
+      end
+
+      if char_used == false then
+         table.insert(unused_chars, char)
+      end
+   end
+
+   logger.i('Unused keys are:')
+   for i, char in pairs(unused_chars) do
+      logger.i(char)
+   end
+end
+getUnusedKeybindings()
