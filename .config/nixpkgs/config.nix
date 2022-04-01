@@ -43,6 +43,11 @@
           bash-completion
           nix-bash-completions
 
+          # I like ASCII art. Let the cow speak, and the proclamations ring
+          # forth.
+          cowsay
+          figlet
+
           # bat is like cat + less + syntax coloration. It also includes some
           # git integration features that I have no use for.
           #
