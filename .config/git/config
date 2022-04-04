@@ -40,7 +40,11 @@
     algorithm = patience
 	compactionHeuristic = true
 	tool = difftastic
-	external = difft
+	# TODO Decide if I want to use difftastic as my diff daily driver. It's
+    # cool but I'm not sure I'm sold on it by default - I'm _really_ used to
+    # working with patches.
+	#
+	#external = difft
 
 # Make json-diff command available as a diff driver (it's installed in my
 # dotfiles repo's lib/node_modules dir, and thus should always be on my path).
