@@ -1,6 +1,6 @@
 ## dotfiles
 
-A set of dotfiles for use on a Unixy system, along with a few extras:
+A set of dotfiles for use on a macOS system, along with a few extras:
 
 * Keyboard remappings to make a MacBook Pro's keyboard feel more like a
 TrulyErgonomic keyboard. They are implemented with

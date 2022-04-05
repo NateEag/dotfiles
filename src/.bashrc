@@ -23,7 +23,7 @@ for file in "$dotfiles_path/bash-completions/"*; do
     fi
 done
 
-# Tell bash completion where to find my personal lazy-loaded completions
+# Tell bash completion where to find my personal lazy-loaded completions.
 #
 # Tabbing after a command name that does not yet have any completions defined
 # causes a search in all configured directories for a file matching the command
@@ -37,14 +37,15 @@ done
 # for various slow-starting tools without having a shell startup time measured
 # in seconds.
 #
-# TODO Make sure there are docs on defining your own lazy-loaded completions. I
-# wound up reading code to figure it out, and I'm hoping I just missed
-# something, because that does not seem like it should be necessary.
+# TODO Make sure the bash_completion project has docs on defining your own
+# lazy-loaded completions. I wound up reading code to figure it out, and I'm
+# hoping I just missed something, because that does not seem like it should be
+# necessary.
 #
-# ...that said, I'm a little suspicious they're _not_ out there, because
-# otherwise wouldn't some of the projects where the command generates its own
-# autocompletions would tell you do something like I'm doing here, rather than
-# saying "just eval this output".
+# ...that said, I'm a little suspicious this may _not_ be clearly documented,
+# because otherwise wouldn't some of the commands that generate their own
+# completion configuration tell you do something like this, rather than saying
+# "eval this output in your .bashrc"?
 export BASH_COMPLETION_USER_DIR="$HOME/dotfiles/bash-completions"
 
 # We export GPG_TTY to work around a failure I don't really understand but
