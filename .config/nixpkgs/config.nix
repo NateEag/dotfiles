@@ -8,6 +8,9 @@
 # this repository.
 
 {
+    # TODO Uncomment Linux-only packages if I start using Nix on Linux. That
+    # may require me to figure out how to choose packages based on platform.
+
     # TODO Remove svnSupport flag and Subversion config. I think I added them
     # based on information from years ago and installing the gitSVN package
     # below is all I actually needed to have a working git-svn.
@@ -136,6 +139,9 @@
           # pretty regularly.
           mysql-client
 
+          # xsv is a great tool to have around for wrangling CSVs.
+          xsv
+
           # I use Signal for text chats with several people I care about. It's
           # my preferred medium for its open-source nature and because of the
           # reportedlyy-robust end-to-end encryption.
@@ -168,7 +174,7 @@
           notmuch
           isync
 
-          # A collection to tools that can help with SSH
+          # A collection of tools that can help with SSH
           ssh-tools
 
           # jp is a tool for querying JSON documents using the JMESPath
@@ -218,6 +224,19 @@
           # Ripgrep is a fast tool for searching code.
           ripgrep
 
+          # fd is for finding files in a directory that meet certain criteria.
+          # It's mostly a friendlier, faster alternative to the venerable find
+          # command.
+          #
+          # I'm not sure I'll really use fd much at all, because find is highly
+          # portable, but fd does look interesting, so I'm installing it.
+          fd
+
+          # plocate is a faster implementation of the standardish Linux tool
+          # locate. Commented out because it's only available on Linux and I'm
+          # too lazy to figure out how to say "do not install on macOS" atm.
+          #plocate
+
           # Pandoc is a Swiss-army-knife for working with plain-text documents.
           # I have used it for a few jobs in a few different contexts.
           pandoc
@@ -229,8 +248,6 @@
 
           # I use sdcv to look up words in the dictionary (I have a
           # copyright-free 1913 edition of Webster's for the actual dictionary)
-          # I use sdcv toup words in the dictionary (I have a copyright-free
-          # 1913 edition of Webster's for the actual dictionary).
           sdcv
 
           # Shellcheck saves me from dumb Bash mistakes on a regular basis. It,
@@ -245,6 +262,13 @@
           # Syncthing is great, but I am a web developer and sometime
           # sysadmin/devoperator, so how can I live without rsync?
           rsync
+
+          # Dog is a DNS lookup tool, essentially dig with a nicer UI. I'll
+          # probably always use dig as it's installed almost everywhere by
+          # default, but dog looks like it could be nicer for several purposes.
+          dogdns
+
+
 
           # I use a much-beloved ErgoDox EZ keyboard for typing. I run a custom
           # firmware so I can have the layout be what I want, and for that the
