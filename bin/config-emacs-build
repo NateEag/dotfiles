@@ -12,31 +12,37 @@
 # files themselves means bypassing SIP on Mojave, which didn't seem ideal.
 echo "(setq site-run-file nil)" > ./lisp/site-init.el
 
+# If you want native JSON support, be sure to download and compile libjansson:
+#
+# https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.gz
+#
+# which dropped its files in /usr/local/lib/ when I followed its
+# build instructions blindly.
+
 # My configuration for building Emacs from source for use on OS X. Easier to
 # tweak things in the build if I have this automated.
 #
 # Note that when building from a Git checkout, you'll need to run
 # `./autogen.sh` first, per the CONTRIBUTE document in the project's
 # repository.
+
+# FIXME This is getting somewhere, but it's still failing due to ld not finding
+# the System shared library when doing the gccjit conftest:
 #
-# Largely ripped from this post on Reddit:
-#
-# https://www.reddit.com/r/emacs/comments/bclyyc/building_emacs_from_source_on_macos/
-#
-# Note that the second instance of CPPFLAGS is a workaround for brew not
-# including libxml2's include files in /usr/local/include.
+# configure:17133: /usr/bin/clang -o conftest -g3 -O2   -I/Users/neagleson/.nix-profile/include -L/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/lib/ -L/Users/neagleson/.nix-profile/lib -L/Users/neagleson/.nix-profile/lib64 -L/usr/lib conftest.c -lgccjit   >&5
+# configure:17133: $? = 0
+# configure:17133: ./conftest
+# ld: library not found for -lSystem
+
+export LD_LIBRARY_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/lib/:${HOME}/.nix-profile/lib:${HOME}/.nix-profile/lib64 "
+export LDFLAGS="-L/Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/lib/ -L${HOME}/.nix-profile/lib -L${HOME}/.nix-profile/lib64 -L/usr/lib"
+export CC=/usr/bin/clang
+export CPPFLAGS="-I${HOME}/.nix-profile/include"
 
 ./configure --with-ns \
             --with-modules \
             --with-rsvg \
+            --with-modules \
+            --with-imagemagick \
+            --with-native-compilation \
             --enable-silent-rules \
-            PKG_CONFIG_PATH=/opt/local/lib/pkgconfig \
-            PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(brew --prefix libxml2 ):$PKG_CONFIG_PATH"
-            LDFLAGS="-L/usr/local/lib" \
-            LDFLAGS="-L/usr/lib" \
-            LDFLAGS="-L$(brew --prefix libxml2)/lib" \
-            LDFLAGS="-L$(brew --prefix librsvg)/lib" \
-            CPPFLAGS="-I/usr/local/include" \
-            CPPFLAGS="-I$(brew --prefix libxml2)/include/libxml2" \
-            LDFLAGS="-L$(brew --prefix librsvg)/include/librsvg-2.0" \
-            CC=clang OBJC=clang CFLAGS="-g -O2"
