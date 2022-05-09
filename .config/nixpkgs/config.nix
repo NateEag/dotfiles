@@ -148,6 +148,10 @@
           # needed to.
           nginx
 
+          # oha seems to be a decent CLI tool for load-testing HTTP servers.
+          # Installing it so I can give it a whirl.
+          oha
+
           # xsv is a great tool to have around for wrangling CSVs.
           xsv
 
