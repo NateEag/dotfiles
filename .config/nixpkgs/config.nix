@@ -281,7 +281,8 @@
           # default, but dog looks like it could be nicer for several purposes.
           dogdns
 
-
+          # Sometimes people use xz to compress things. Emacs tarballs, even.
+          xz
 
           # I use a much-beloved ErgoDox EZ keyboard for typing. I run a custom
           # firmware so I can have the layout be what I want, and for that the
