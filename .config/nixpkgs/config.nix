@@ -139,6 +139,15 @@
           # pretty regularly.
           mysql-client
 
+          # Having nginx installed locally can occasionally be useful for
+          # testing. That said, you have to be pretty careful about the
+          # specific version you're using, so it might be pointless...
+          #
+          # TODO Figure out how to configure Nix-installed nginx. So far I've
+          # just used it for syntax-checking nginx conf files, so I haven't
+          # needed to.
+          nginx
+
           # xsv is a great tool to have around for wrangling CSVs.
           xsv
 
