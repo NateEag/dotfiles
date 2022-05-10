@@ -17,3 +17,5 @@
 2013-06-26 Tweak my bash history setup based on this post: http://www.talug.org/events/20030709/cmdline_history.html
 
 2013-06-26 Figure out how to make git grep colorize output when being routed through a terminal.
+
+2022-05-10 Try updating my tmux config to support nested tmux sessions a la https://github.com/aleclearmind/nested-tmux
