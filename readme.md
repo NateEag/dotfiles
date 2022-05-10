@@ -85,3 +85,37 @@ isn't. The whole purpose of such an API is to do exactly these sorts of things,
 to make it easier for people to use programs that do not fit their needs.
 
 Assistive devices are useful even for those without handicaps.
+
+
+## .password-store Notes
+
+I use [pass](https://passwordstore.org) to manage my personal password
+collection.
+
+I also use it for managing most work password collections.
+
+Keeping those collections distinct but usable on the same machine is very
+easy - keep your personal collection in its own git repository, with a
+`.gpg-id` in its root folder as usual.
+
+On a machine where you want multiple password collections available but kept
+distinct, check the extra ones out to somewhere other than `~/.password-store`,
+then symlink their folders from `~/.password-store`.
+
+For example, checkout a personal repo at `~/personal/.password-store`, then do
+`ln -s $HOME/personal/.password-store $HOME/.password-store/personal`. Showing,
+inserting, listing, and editing passwords should work exactly like you expect,
+as long as the GPG key for the repo is loaded.
+
+I have not figured out how to push / pull the nested repositories with `pass
+git push` and `pass git pull`. It's not too hard to do it manually, though.
+
+This process could work okay for managing password sets for different teams in
+a software company, as long as the teams stick to an agreed-upon convention for
+password repo layout and password file contents. OTOH, you could also just use
+a single repo with differing `.gpg-id` files per directory, and only share GPG
+keys/passwords with team members who are supposed to have access to a given
+resource.
+
+This strategy should be at least workable for managing shared passwords for
+multiple teams
