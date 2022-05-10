@@ -1,51 +1,19 @@
-2020-07-16 Change bin/timezone-date-converter to accept timezone identifiers as
-separate arguments from the datetime string itself, so I can use this logic to
-reliably convert between all timezone names:
-https://crashcourse.housegordon.org/gnu-date-timezones.html Would also make it
-easier to add tab completion for timezones.
+2020-07-16 Change bin/timezone-date-converter to accept timezone identifiers as separate arguments from the datetime string itself, so I can use this logic to reliably convert between all timezone names: https://crashcourse.housegordon.org/gnu-date-timezones.html Would also make it easier to add tab completion for timezones.
 
-2020-06-02 Add support for concatenating multiple crontab files at install
-time. At $DAYJOBs I may want to run work-specific cron jobs on my machine as a
-workaround for not having sane places to do it, and that obviously doesn't
-belong in my dotfiles.
+2020-06-02 Add support for concatenating multiple crontab files at install time. At $DAYJOBs I may want to run work-specific cron jobs on my machine as a workaround for not having sane places to do it, and that obviously doesn't belong in my dotfiles.
 
-2020-01-22 Add a keybinding to create a new reminder in Reminders.app. An
-unfinished stab at this is in bin/add-reminder.
+2020-01-22 Add a keybinding to create a new reminder in Reminders.app. An unfinished stab at this is in bin/add-reminder.
 
-2019-10-16 Automatically trigger notification on prompt display if the previous
-command took more than four seconds to run? I could build this via
-PROMPT_COMMAND. Not sure it's a great idea since I'd get notified whenever I
-intentionally kill a long-running process I spawned interactively, but it would
-be handy for all the times I kick off a build of X, Y, or Z and move on to
-something else for a minute or two. Bob Stouffer pointed out I could start this at ten seconds and reduce it from there as seems reasonable.
+2019-10-16 Automatically trigger notification on prompt display if the previous command took more than four seconds to run? I could build this via PROMPT_COMMAND. Not sure it's a great idea since I'd get notified whenever I intentionally kill a long-running process I spawned interactively, but it would be handy for all the times I kick off a build of X, Y, or Z and move on to something else for a minute or two. Bob Stouffer pointed out I could start this at ten seconds and reduce it from there as seems reasonable.
 
-2019-03-11 Filter emails based on dumb keywords - if it contains the text
-"Unsubscribe", there's a good chance I don't want to read it. Hat tip:
-https://news.ycombinator.com/item?id=19328189
+2019-03-11 Filter emails based on dumb keywords - if it contains the text "Unsubscribe", there's a good chance I don't want to read it. Hat tip: https://news.ycombinator.com/item?id=19328189
 
-2019-02-11 Get High Sierra to wake / end screensaver on keyboard input. This
-seems to be an unacknowledged bug, which can be worked around by giving each
-external monitor its own Space (yuck):
-https://apple.stackexchange.com/a/320402/307408
+2019-02-11 Get High Sierra to wake / end screensaver on keyboard input. This seems to be an unacknowledged bug, which can be worked around by giving each external monitor its own Space (yuck): https://apple.stackexchange.com/a/320402/307408
 
-2018-02-16 Load expensive bash extensions (nvm, pyenv, etc) in background if
-possible. I think you could probably abuse PROMPT_COMMAND to save "last
-interaction time" and a sleeping poll loop to see when you're inactive then
-kick off a load.
+2017-12-18 Figure out how to use multiple password stores with pass (e.g., work and personal). Turns out the answer is the built-in `-p`, which lets you specify a different GPG key for a subfolder. Remaining questions: is there a smart way to manage subfolders (so I can just check out my personal repo as a subrepo or something), and can I get gpg-agent to expire some keys faster than others?
 
-2017-12-18 Figure out how to use multiple password stores with pass (e.g., work
-and personal). Turns out the answer is the built-in `-p`, which lets you
-specify a different GPG key for a subfolder. Remaining questions: is there a
-smart way to manage subfolders (so I can just check out my personal repo as a
-subrepo or something), and can I get gpg-agent to expire some keys faster than
-others?
+2016-10-27 Figure out a way to get notified when third-party files are updated (for instance, lib/git-svn.sh). A list of RSS feed URLs that install.sh subscribes to is the obvious way, I guess, but arbitrary software doesn't necessarily have an RSS feed for updates.
 
-2016-10-27 Figure out a way to get notified when third-party files are updated
-(for instance, lib/git-svn.sh). A list of RSS feed URLs that install.sh
-subscribes to is the obvious way, I guess, but arbitrary software doesn't
-necessarily have an RSS feed for updates.
-
-2013-06-26 Tweak my bash history setup based on this post:
-http://www.talug.org/events/20030709/cmdline_history.html
+2013-06-26 Tweak my bash history setup based on this post: http://www.talug.org/events/20030709/cmdline_history.html
 
 2013-06-26 Figure out how to make git grep colorize output when being routed through a terminal.
