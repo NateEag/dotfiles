@@ -1,0 +1,21 @@
+#! /bin/bash
+
+# Starts up my baseline tmux session for working in/with my dotfiles.
+
+session=dotfiles
+
+tmux new-session -d -s $session
+window=0
+tmux rename-window -t $session:0 home
+
+tmux new-window -t $session:1 -n dotfiles
+tmux send-keys -t $session:1 'cd ~/dotfiles' C-m
+
+tmux new-window -t $session:2 -n emacs
+tmux send-keys -t $session:2 'cd ~/.emacs.d' C-m
+
+tmux new-window -t $session:3 -n sync-hooks
+tmux send-keys -t $session:3 'cd ~/dotfiles' C-m
+tmux send-keys -t $session:3 'API_KEY=6SaSk9VaWyaWYja64feMzraXn7VisvMH syncthing-hooks | ts | tee -a syncthing-hooks.log' C-m
+
+tmux attach-session -t $session
