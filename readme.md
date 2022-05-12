@@ -103,9 +103,13 @@ distinct, check the extra ones out to somewhere other than `~/.password-store`,
 then symlink their folders from `~/.password-store`.
 
 For example, checkout a personal repo at `~/personal/.password-store`, then do
-`ln -s $HOME/personal/.password-store $HOME/.password-store/personal`. Showing,
-inserting, listing, and editing passwords should work exactly like you expect,
-as long as the GPG key for the repo is loaded.
+`ln -s $HOME/personal/.password-store $HOME/.password-store/personal`. Remember
+to also run `echo 'personal' >> .git/info/exclude` in
+`~/.password-store`.
+
+Showing, inserting, listing, and editing passwords should now work exactly like
+you expect, as long as the GPG key for the repo has been imported to your
+keyring.
 
 I have not figured out how to push / pull the nested repositories with `pass
 git push` and `pass git pull`. It's not too hard to do it manually, though.
