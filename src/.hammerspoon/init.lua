@@ -225,7 +225,17 @@ function layoutWindows()
    local screens = hs.screen.allScreens()
    local num_screens = #screens
 
+   -- Sometimes no primary screen is returned. I *think* this happens when the
+   -- screen watcher triggers an event before OS X has finished adjusting to
+   -- the new monitor - sometimes I see only the laptop screen active but it
+   -- has no menubar, which seems to suggest there would be no primary screen
+   -- at that point.
    local primary_screen = hs.screen.primaryScreen()
+   if primary_screen == nil then
+      logger.i('Primary screen not found!')
+
+      return
+   end
    local windows = emacs:allWindows()
 
    for key, window in pairs(windows) do
