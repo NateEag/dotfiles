@@ -111,6 +111,11 @@
           # Emacs with libvterm, which I hope to try soon).
           tmux
 
+          # tmate is a fork of tmux that lets you easily share terminal
+          # sessions over the internet between desktops (at the price of
+          # depending on its website).
+          tmate
+
           # I need this to compile libvterm for use with Emacs, apparently.
           cmake
 
@@ -130,7 +135,7 @@
           # I sometimes use pass as a source for Git credentials.
           pass-git-helper
 
-          # I try to avoid AWS for my own personal infrastructure, but I
+          # I tend to avoid AWS for my own personal infrastructure, but I
           # regularly work with it, so it's useful to have the official CLI
           # tool installed.
           awscli2
@@ -157,7 +162,7 @@
 
           # I use Signal for text chats with several people I care about. It's
           # my preferred medium for its open-source nature and because of the
-          # reportedlyy-robust end-to-end encryption.
+          # reportedly-robust end-to-end encryption.
           #
           # I care about the encryption not because I'm obsessive about my
           # communications remaining completely secret, but because I do not
@@ -211,6 +216,11 @@
           # I try to use jp in preference to jq, but sometimes I do find I want
           # the chainsaw.
           jq
+
+          # pup is a CLI HTML query tool. Use CSS selectors to select elements.
+          # Answering questions about HTML-bound data is massively easier this
+          # way.
+          pup
 
           # jid is an interactive tool for building JSON path queries. Isn't
           # strictly compatible with either jq or JMESPath, but is still handy
