@@ -9,6 +9,7 @@
 
 [credential]
 	helper = !pass-git-helper $@
+	useHttpPath = true
 
 [core]
 	editor = emacsclient
