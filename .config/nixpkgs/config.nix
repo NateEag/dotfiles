@@ -244,6 +244,12 @@
           # as PDF copies of financial statements).
           pdfgrep
 
+          # I'd like to try using diffpdf, but as of 2022-06-28 it isn't
+          # supported on Darwin. I think it might be useful as a Git diff
+          # driver for PDFs, though.
+          #
+          #diffpdf
+
           # Ripgrep is a fast tool for searching code.
           ripgrep
 
@@ -302,6 +308,14 @@
           # pipx is a tool for running CLI Python tools in standalone
           # environments. It's here to support bin/install-python-commands.sh.
           python39Packages.pipx
+
+          # Go is a programming language.
+          go
+
+          # Gopls is a language server for the Go programming language. By
+          # having it installed, I gain decent Go intelligence while editing in
+          # Emacs.
+          gopls
 
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
