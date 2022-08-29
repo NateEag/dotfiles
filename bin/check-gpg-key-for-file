@@ -1,0 +1,15 @@
+#! /bin/bash
+
+usage_msg="A wrapper around GPG to tell me what key a file was encrypted with.
+
+Because the arcane combination of options isn't something I wanted to memorize.
+
+Straight from https://superuser.com/a/1458020."
+
+if [ $# -ne 1 ]; then
+    echo "$usage_msg"
+
+    exit 1
+fi
+
+gpg --pinentry-mode cancel --list-packets "$1"
