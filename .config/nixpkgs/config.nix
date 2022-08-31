@@ -46,6 +46,9 @@
           bash-completion
           nix-bash-completions
 
+          # Let's see if I can get working native compilation in Emacs via Nix.
+          emacs28NativeComp
+
           # I like ASCII art. Let the cow speak, and the proclamations ring
           # forth.
           cowsay
