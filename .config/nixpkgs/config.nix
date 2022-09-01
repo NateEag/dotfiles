@@ -320,6 +320,11 @@
           # Emacs.
           gopls
 
+          # I don't love PHP, but I've spent a lot of my career being paid to
+          # use it. Thus...
+          php81
+          php81Packages.psysh
+
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
 
