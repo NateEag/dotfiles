@@ -2,8 +2,12 @@
 
 # Install commands that ship as Python packages.
 #
-# Assumes [pipsi](https://github.com/mitsuhiko/pipsi) and virtualenv are
-# installed (not via pyenv-virtualenv, because pipsi doesn't know about S).
+# Assumes [pipx](https://pypi.org/project/pipx/) is installed.
+#
+# Note that packages which depend on Python 2 (such as jmespath-terminal) will
+# not work with this script. Installing them into pyenv's global python2
+# version is the best workaround I've come up with so far, but it's not a
+# satisfactory one.
 
 if ! command -v pipx; then
     brew install pipx

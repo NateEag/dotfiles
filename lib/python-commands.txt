@@ -3,5 +3,5 @@ cram
 LinkChecker
 td-watson
 xmldiff
-jpterm
+jmespath-terminal
 git+https://github.com/carderne/signal-export.git
