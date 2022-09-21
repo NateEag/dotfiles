@@ -20,7 +20,14 @@
 [delta]
 	features = decorations
 	keep-plus-minus-markers = true
-	syntax-theme = Solarized (dark)
+	# This is a workaround for cool-retro-term using the same foreground and
+	# background colors for added and removed comments when using delta. That
+	# happens not to occur with this theme.
+	#
+	# FIXME Pin down why most delta themes fail so badly in cool-retro-term.
+	# Would probably involve learning a lot more about terminal emulation and
+	# colors than I currently understand.
+	syntax-theme = ansi
 
 [delta "decorations"]
 	hunk-header-decoration-style = plain
