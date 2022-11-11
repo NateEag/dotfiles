@@ -16,6 +16,7 @@
 -- keybinding elsewhere in this file - search for openConsole).
 logger = hs.logger.new('ne-debugger', 'info');
 
+home_dir = os.getenv('HOME')
 
 -- My personal keybinding namespace. If I ever change baseline OSes, this may
 -- need to change, since Ctrl+Shift is a much more common combo on Linux and
@@ -430,7 +431,7 @@ key_bindings = {
 
    -- Activate screensaver from keyboard. If your machine is set up to lock the
    -- display on screensaver, this is a handy shortcut for locking the display.
-   A = {runCommand, "/Users/neagleson/dotfiles/bin/screensaver"},
+   A = {runCommand, home_dir .. "/dotfiles/bin/screensaver"},
 
    -- Dismiss all notifications in a single key combo.
    N = {runCommand, "~/dotfiles/bin/dismiss-notifications"},
