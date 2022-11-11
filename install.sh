@@ -28,27 +28,6 @@ fi
 
 "$bin_dir/install-crontab"
 
-# Install Karabiner (KeyRemap4Macbook on older OS Xs) preferences if necessary.
-karabiner_name="Karabiner"
-if [[ -d "/Applications/KeyRemap4MacBook.app" ]]; then
-    karabiner_name="KeyRemap4MacBook"
-fi
-
-karabiner_xml_path="$HOME/Library/Application Support/$karabiner_name"
-if [[ -d "$karabiner_xml_path" && ! -h "$karabiner_xml_path/private.xml" ]]; then
-    rm -f "$karabiner_xml_path/private.xml"
-    ln -s "$dotfiles_dir/lib/karabiner/private.xml" "$karabiner_xml_path/private.xml"
-fi
-
-karabiner_conf_path="$HOME/Library/Preferences"
-if [[ -d "$karabiner_conf_path" && ! -h "$karabiner_conf_path/org.pqrs.$karabiner_name.plist" ]]; then
-    rm -f "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
-    # Karabiner doesn't like symlinks for its preferences file - it replaces
-    # them with a real file. Copying back and forth seems to be the best we can
-    # do, since git operations would break a hardlink.
-    cp "$dotfiles_dir/lib/karabiner/org.pqrs.Karabiner.plist" "$karabiner_conf_path/org.pqrs.$karabiner_name.plist"
-fi
-
 if command -v notmuch > /dev/null; then
     # Make sure notmuch post-new hook is installed.
     notmuch_db_path="$(notmuch config get database.path)"
