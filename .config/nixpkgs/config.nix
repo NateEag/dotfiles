@@ -114,6 +114,12 @@
           # Emacs with libvterm, which I hope to try soon).
           tmux
 
+          # This is here solely to support the
+          # bin/fix-tmux-terminal-not-fully-functional-macos script, which is a
+          # workaround for an issue I had with tmux on macOS 12.6 / Terminal
+          # 2.12.7.
+          ncurses6
+
           # tmate is a fork of tmux that lets you easily share terminal
           # sessions over the internet between desktops (at the price of
           # depending on its website).

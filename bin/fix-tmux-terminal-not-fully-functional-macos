@@ -1,0 +1,24 @@
+#! /bin/bash
+
+# On macOS 12.6 using Terminal 2.12.7, I was getting the following error
+# message whenever I used less inside tmux:
+#
+#     WARNING: terminal is not fully functional
+#
+# Running the contents of this script fixed that for me. I hope by preserving
+# it that I may be able to resolve the issue again in future, should it happen
+# again.
+#
+# The solution is derived from
+#
+# https://github.com/tmux/tmux/issues/2262#issuecomment-640166755
+
+tmpfile="$TMPDIR/tmux-256color"
+
+cleanup() {
+    rm "$tmpfile"
+}
+trap cleanup INT TERM EXIT
+
+infocmp -x tmux-256color > "$tmpfile"
+/usr/bin/tic -x "$tmpfile"
