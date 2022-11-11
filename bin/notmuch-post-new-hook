@@ -105,11 +105,5 @@ fi
 # notifications don't trigger notifications when I get an email from the
 # system.
 #
-# Therefore, I have hardcoded some watched senders here.
-num_unread_watched_authors=$(notmuch search \
-                                     from:"MRW Help" and tag:unread | wc -l)
-if [ $num_unread_watched_authors -gt 0 ]; then
-    msg="You have unread emails from correspondents you're watching."
-
-    notify "$msg" 'New Watched Emails'
-fi
+# Therefore, I have sometimes hardcoded watched senders here. The git history
+# should give you the details of how I did that when I needed it.
