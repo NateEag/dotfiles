@@ -1,11 +1,13 @@
 #! /bin/bash
 
-# I've started experimenting with mbsync for fetching mail on my work machine.
+# I use mbsync for fetching mail on my work machine.
 #
-# It seems to be faster and cleaner than offlineimap, but it doesn't have hooks
-# built-in.
+# It doesn't have hooks built-in, which are useful for telling notmuch to index
+# new mail.
 #
-# Therefore, I have this tiny wrapper script to simulate that job.
+# Therefore, I have this tiny wrapper script to simulate that functionality.
+#
+# TODO Turn this into a proper hook-runner instead of hardcoding hooks.
 
 lockfile_path="$HOME/.check-mail-active"
 
@@ -39,12 +41,12 @@ if [ -f "$lockfile_path" ]; then
     fi
 fi
 
-touch "$lockfile_path"
-
 cleanup() {
     rm -f "$lockfile_path"
 }
 trap cleanup INT TERM EXIT
+
+touch "$lockfile_path"
 
 # Error out if GPG doesn't have authorization for a key linked to the active
 # email address in this session.
