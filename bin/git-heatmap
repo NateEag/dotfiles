@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Yoinked from https://github.com/jez/git-heatmap.
-#
-# TODO Come up with some plumbing to help me track programs from VCS.
-# Package managers are great but not all useful programs are packaged.
-# Guess I should just move over to Nix...
-
 # Build a commit frequency histogram
 
 ccyan="$(echo -ne '\033[0;36m')"
@@ -98,8 +92,17 @@ filter() {
 }
 
 histogram() {
-  bars --bar "$CHAR" --width "$WIDTH"
+  "$bars" --bar "$CHAR" --width "$WIDTH"
 }
+
+if command -v barchart &> /dev/null; then
+  bars="barchart"
+elif command -v bars &> /dev/null; then
+  bars="bars"
+else
+  >&2 echo "$0: This command requires a command called 'bars' or 'barchart'. See the README."
+  exit 1
+fi
 
 if [[ "$(git branch | grep '\*')" =~ $REVIEW_BASE ]]; then
   # If on master, show heatmap for whole repo
