@@ -20,6 +20,7 @@
 
 # The dock is a waste of screen space.
 defaults write com.apple.dock autohide -int 1
+defaults write com.apple.dock orientation left
 
 # Have Finder show files whose names begin with . Occasionally makes it easier
 # for me to grab something (usually in file dialog boxes).
@@ -41,11 +42,11 @@ defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
 defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 
 # Turn off that darned translucent menubar.
-defaults write com.apple.universalaccess.reduceTransparency -int 1
+defaults write com.apple.universalaccess reduceTransparency -int 1
 
 # Don't put screenshots on my desktop. :P
 mkdir -p "$HOME/Documents/Screenshots"
-defaults write com.apple.screencapture.location ~/Documents/Screenshots
+defaults write com.apple.screencapture location ~/Documents/Screenshots
 
 
 # Set up Flycut basics.
@@ -60,3 +61,11 @@ defaults write com.generalarcade.flycut stickyBezel -int 1
 defaults write com.pilotmoon.scroll-reverser InvertScrollingOn -int 1
 defaults write com.pilotmoon.scroll-reverser StartAtLogin -int 1
 defaults write com.pilotmoon.scroll-reverser ReverseX -int 1
+
+
+# Set up preferences for Hidden Bar.
+defaults write com.dwarvesv.minimalbar isAutoStart
+
+
+# Deselect the "Save in Keychain" checkbox in gpg's pinentry-mac dialog.
+defaults write org.gpgtools.common UseKeychain NO
