@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+stats_dir="$HOME/reference/daily-stats"
+
+mkdir -p "$stats_dir"
+
+# Keep a daily record of how many unprocessed emails are lurking in my inbox.
+data_file="$stats_dir/email-inbox-count.csv"
+
+if ! [ -f "$data_file" ]; then
+    echo "num_read_emails_in_inbox,counted_at" > "$data_file"
+fi
+
+num_emails="$(notmuch search tag:inbox and not tag:unread | grep -c ^)"
+timestamp="$(date '+%Y-%m-%d %H:%M:%S %Z')"
+echo "$num_emails,$timestamp" >> "$data_file"
+
+
+# Keep a daily record of how many todo items I have.
+data_file="$stats_dir/todo-item-count.csv"
+if ! [ -f "$data_file" ]; then
+    echo "num_items,counted_at" > "$data_file"
+fi
+
+num_items="$(grep -cve '^\s*$' ~/todo/todo.txt)"
+timestamp="$(date '+%Y-%m-%d %H:%M:%S %Z')"
+echo "$num_items,$timestamp" >> "$stats_dir/todo-item-count.csv"
