@@ -424,6 +424,9 @@ key_bindings = {
    -- (for evaluate) and "L" (for Lua) are already taken.
    ["'"] = {hs.openConsole},
 
+   -- I may demote this eventually, but at the moment I'm using Zoom a lot.
+   Z =  {focusApp, "zoom.us"},
+
 
    --
    -- CLI tools I have bound to a hotkey.
