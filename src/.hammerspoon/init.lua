@@ -221,7 +221,7 @@ function layoutWindows()
     -- TODO Do this after moving Emacs to the appropriate screen? I think this
     -- happens to work with my current setup but is not generally correct in
     -- principle.
-    os.execute("/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e '(my-set-up-frame)'")
+    os.execute(home_dir .. "/.nix-profile/bin/emacsclient -e '(my-set-up-frame)'")
 
    local screens = hs.screen.allScreens()
    local num_screens = #screens
@@ -441,7 +441,7 @@ key_bindings = {
 
    -- Start up a new Emacs instance. Useful when I'm writing init code and want
    -- to test it.
-   W = {runCommand, "/usr/bin/open -n -a Emacs.app"},
+   W = {runCommand, "/usr/bin/open -n -a ~/.nix-profile/Applications/Emacs.app"},
 
 
    --
