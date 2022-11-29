@@ -54,6 +54,9 @@ export BASH_COMPLETION_USER_DIR="$HOME/dotfiles/bash-completions"
 GPG_TTY="$(tty)"
 export GPG_TTY
 
+# I am not a prompt maximalist.
+PS1="\\u@\\h \\$ "
+
 # fc -ln -1 gets the last command from your history. Strip off whitespace and
 # the trailing newline, and bam - last command is on your clipboard!
 #
