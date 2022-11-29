@@ -145,6 +145,14 @@
           # straightforward. I use it every working day.
           pass
 
+          # pass doesn't work too well without gpg.
+          gnupg
+
+          # ...and if you're using gpg, you'll probably need pinentry.
+          pinentry
+          # FIXME Install pinentry_mac only on Macs.
+          pinentry_mac
+
           # I sometimes use pass as a source for Git credentials.
           pass-git-helper
 
