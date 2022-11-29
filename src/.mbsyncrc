@@ -1,4 +1,8 @@
 IMAPAccount nxtbook
+# http://frostyx.cz/posts/synchronize-your-2fa-gmail-with-mbsync is a very,
+# very helpful link for figuring out how to get a corporate SSO gmail account
+# to work with mbsync.
+
 Host imap.gmail.com
 User neagleson@nxtbookmedia.com
 PassCmd "pass show imap.gmail.com/neagleson@nxtbookmedia.com"

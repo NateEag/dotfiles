@@ -20,5 +20,3 @@ synchronize_flags=true
 # https://nmbug.notmuchmail.org/nmweb/show/20210510103918.56511-1-david%40tethera.net
 #
 # TODO Remove this after upgrading to next release.
-[database]
-path=/Users/neagleson/mail
