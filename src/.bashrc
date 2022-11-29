@@ -100,9 +100,7 @@ if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile
 
 PATH=~/Applications/LilyPond.app/Contents/Resources/bin:$PATH
 PATH="/Applications/VirtualBox.app/Contents/MacOS:$PATH"
-PATH=/usr/local/bin:/usr/local/git/bin:~/bin/cron:$PATH
 PATH=~/bin:$PATH
-PATH=~/the_silver_searcher:$PATH
 PATH=~/finances/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
 PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
@@ -113,21 +111,17 @@ PATH="$HOME/.composer/vendor/bin:$PATH"
 # Load pipx-installed variables into my shell.
 PATH="$HOME/.local/bin:$PATH"
 
-# Set up for building Chrome.
-PATH="$HOME/chromium-build/depot_tools:$PATH"
-
 # Add Emacs commands to my path, so that emacsclient works right on OS X.
-PATH=/Applications/Emacs.app/Contents/MacOS/bin:$PATH
-PATH=/Applications/Emacs.app/Contents/MacOS:$PATH
+emacs_app_path="$HOME/.nix-profile/Applications/Emacs.app"
+
+PATH="$emacs_app_path/Contents/MacOS/bin:$PATH"
+PATH="$emacs_app_path/Contents/MacOS:$PATH"
 
 # Set EMACS var for cask.
-EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+EMACS="$emacs_app_path/Contents/MacOS/Emacs"
 export EMACS
 
 PATH=~/.cask/bin:$PATH
-
-# I'm trying out installing npm locally. We'll see how it goes.
-PATH=~/npm/bin:$PATH
 
 # I have a local collection of Node modules, mostly installed to get binaries
 # on my PATH.
