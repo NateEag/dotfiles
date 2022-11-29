@@ -92,6 +92,20 @@
           # Who doesn't like Zork?
           frotz
 
+          # Git is my preferred version control system (well, leaving aside the
+          # system I slowly plan at https://github.com/NateEag/next-vcs).
+          #
+          # This is the version that includes git-svn, because I prefer it for
+          # dealing with Subversion when feasible.
+          gitSVN
+
+          # The git project itself deprecated git filter-branch in favor of
+          # this third-party tool.
+          git-filter-repo
+
+          # Install Subversion so I have it when I need it.
+          subversion
+
           # Delta is a filter for prettifying unified diffs. It makes diffs
           # massively easier to read.
           #
@@ -104,9 +118,6 @@
           # It's apparently early days for it yet, but I'm definitely going to
           # give it a shot and see how it does as my git-diff driver.
           difftastic
-
-          # Install Subversion so I have it when I need it.
-          subversion
 
           # I used to be a heavy GNU screen user in my twenties. I'm giving
           # tmux a try, mainly to see if I like it better than using actual
@@ -127,13 +138,6 @@
 
           # I need this to compile libvterm for use with Emacs, apparently.
           cmake
-
-          # Git is my preferred version control system (well, leaving aside the
-          # system I slowly plan at https://github.com/NateEag/next-vcs).
-          #
-          # This is the version that includes git-svn, because I prefer it for
-          # dealing with Subversion when feasible.
-          gitSVN
 
           # pass is "the standard unix password manager". Your secrets are
           # stored locally as plain text and versioned in a Git repo, making
