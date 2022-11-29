@@ -1,3 +1,11 @@
+2022-10-10 Add Hidden Bar preferences to bin/set-os-x-defaults.
+
+2022-10-10 Add Hammerspoon preferences to bin/set-os-x-defaults
+
+2022-10-10 Remove outdated Karabiner config - all we should need is the JSON in config.
+
+2022-10-10 Add optional flag to install.sh so that personal-specific setup (like SyncThing) is only run when I ask for it. Accidentally set up SyncThing config on work machine, which isn't a big deal since there's no actual data here, but it is an annoyance
+
 2020-07-16 Change bin/timezone-date-converter to accept timezone identifiers as separate arguments from the datetime string itself, so I can use this logic to reliably convert between all timezone names: https://crashcourse.housegordon.org/gnu-date-timezones.html Would also make it easier to add tab completion for timezones.
 
 2020-06-02 Add support for concatenating multiple crontab files at install time. At $DAYJOBs I may want to run work-specific cron jobs on my machine as a workaround for not having sane places to do it, and that obviously doesn't belong in my dotfiles.
