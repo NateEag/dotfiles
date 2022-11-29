@@ -216,6 +216,14 @@
           # A collection of tools that can help with SSH
           ssh-tools
 
+          # I mostly use Emacs and an Android app for managing my todo.txt
+          # files, but just in case...
+          todo-txt-cli
+
+          # Having an environment to learn new languages is nice. When that
+          # environment is OSS, it's even better: https://exercism.org
+          exercism
+
           # jp is a tool for querying JSON documents using the JMESPath
           # language. The reasons I try to prefer jp to jq are:
           #
@@ -261,6 +269,9 @@
           # Ledger is a wonderful CLI tool for managing financial data.
           ledger
 
+          # Explore filesystem hierarchies like it's 1989.
+          tree
+
           # pdfgrep is occasionally handy for extracting text from PDFs (such
           # as PDF copies of financial statements).
           pdfgrep
@@ -300,6 +311,12 @@
           # copyright-free 1913 edition of Webster's for the actual dictionary)
           sdcv
 
+          # I like having a thesaurus around. This is mostly support for my
+          # Emacs config, which is where I tend to be when I want a synonym
+          # (well, let's face it, Emacs is where I tend to be for the majority
+          # of my life :S)
+          wordnet
+
           # Shellcheck saves me from dumb Bash mistakes on a regular basis. It,
           # too, is here primarily to support my Emacs configuration.
           shellcheck
@@ -329,6 +346,9 @@
           # pipx is a tool for running CLI Python tools in standalone
           # environments. It's here to support bin/install-python-commands.sh.
           python39Packages.pipx
+
+          # Yay language servers.
+          nodePackages.typescript-language-server
 
           # Go is a programming language.
           go
