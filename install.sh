@@ -1,8 +1,10 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Set up the current user's account to use the files in src/ as their dotfiles.
 
 # If arguments are passed, each one is a filename to install from src/.
+
+platform="$(uname -s)"
 
 dotfiles_dir=$(dirname $0)
 source $dotfiles_dir/lib/functions.sh
@@ -16,10 +18,10 @@ bin_dir="$dotfiles_dir/bin"
 
 mkdir -p "$config_dir"
 
-config_files_to_install=$(cd "$dotfiles_dir"; find "src" -depth 1)
+config_files_to_install=$(cd "$dotfiles_dir"; find src -maxdepth 1)
 # TODO Make this a straight symlink to the .config folder? I don't understand
 # why I didn't do that originally.
-config_dirs_to_install=$(cd "$dotfiles_dir"; find ".config" -depth 1)
+config_dirs_to_install=$(cd "$dotfiles_dir"; find .config -maxdepth 1)
 
 # Let you manually override the list of files to symlink.
 if [[ $# -gt 0 ]]; then
@@ -72,10 +74,7 @@ for filename in $config_dirs_to_install; do
 
 done
 
-# TODO Move the large quantity of OS X-specific logic into this branch.
-#
-# Doesn't really matter until the day I start trying a Linux desktop.
-if [ `uname -s` == 'Darwin' ] ; then
+if [ $platform == 'Darwin' ] ; then
     "$bin_dir/set-os-x-defaults"
 
     echo "OS X preferences set.
@@ -88,4 +87,10 @@ fi
 # Install Anonymous Pro font.
 #
 # TODO Figure out if there's a way to check whether it's already installed.
-open "$dotfiles_dir/anonymous-pro-font/"*.ttf
+
+open_binary=open
+if [ "$platform" == "Linux" ]; then
+    open_binary=xdg-open
+fi   
+
+$open_binary "$dotfiles_dir/anonymous-pro-font/"*.ttf
