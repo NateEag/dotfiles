@@ -366,26 +366,6 @@
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
 
-          # These are all to support building my own Emacs.
-          #
-          # TODO Move these to a separate 'build-emacs' repo.
-          # Needed for fast JSON parsing (good for LSP support)
-          jansson
-          # Native compilation of Emacs Lisp for speed
-          libgccjit
-          # Needed so compressed .el files in core Emacs build can be processed
-          # by native compilation
-          zlib
-          # Various image formats I want support for.
-          librsvg
-          libjpeg
-          libpng
-          giflib
-          # Native XML parsing for xml-mode.
-          libxml2
-          # Is this all I need to get Emacs to build with ImageMagick support?
-          imagemagick
-
         ];
       };
     };
