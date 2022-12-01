@@ -1,12 +1,9 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 usage_msg="Concatenate my personal crontab with any work crontab and install them.
 
 Also backs up the existing crontab before doing that, to reduce the odds of
-destroying any cron jobs I may have added manually.
-
-TODO Come up with a better path for work crontabs than ~/bin/crontab. I chose that
-because it was the easiest version-controlled location on my current work machine."
+destroying any cron jobs I may have added manually."
 
 if [ "$1" == '--help' ]; then
     echo "$usage_msg"
@@ -24,4 +21,4 @@ dotfiles_dir="$(dirname $bin_dir)"
 
 crontab -l > "$HOME/crontab.$(date +%Y-%m-%d-%H-%M).bak"
 
-cat "$dotfiles_dir/lib/.crontab" "$HOME/bin/crontab" | crontab -
+cat "$dotfiles_dir/lib/.crontab" "$HOME/.crontab.work" | crontab -
