@@ -2,8 +2,6 @@
 
 # Set up the current user's account to use the files in src/ as their dotfiles.
 
-# If arguments are passed, each one is a filename to install from src/.
-
 platform="$(uname -s)"
 
 dotfiles_dir=$(dirname $0)
@@ -22,11 +20,6 @@ config_files_to_install=$(cd "$dotfiles_dir"; find src -maxdepth 1)
 # TODO Make this a straight symlink to the .config folder? I don't understand
 # why I didn't do that originally.
 config_dirs_to_install=$(cd "$dotfiles_dir"; find .config -maxdepth 1)
-
-# Let you manually override the list of files to symlink.
-if [[ $# -gt 0 ]]; then
-    files_to_install="$@"
-fi
 
 "$bin_dir/install-crontab"
 
