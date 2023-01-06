@@ -14,6 +14,8 @@ fi
 num_emails="$(notmuch search tag:inbox and not tag:unread | grep -c ^)"
 timestamp="$(date '+%Y-%m-%d %H:%M:%S %Z')"
 echo "$num_emails,$timestamp" >> "$data_file"
+echo "Email counts for past week:"
+tail -7 "$data_file" | awk -F, '{printf "%s%s",sep,$1; sep=", "} END{print ""}'
 
 
 # Keep a daily record of how many todo items I have.
@@ -25,3 +27,5 @@ fi
 num_items="$(grep -cve '^\s*$' ~/todo/todo.txt)"
 timestamp="$(date '+%Y-%m-%d %H:%M:%S %Z')"
 echo "$num_items,$timestamp" >> "$stats_dir/todo-item-count.csv"
+echo "Open todo items for past week:"
+tail -7 "$data_file" | awk -F, '{printf "%s%s",sep,$1; sep=", "} END{print ""}'
