@@ -1,0 +1,26 @@
+#! /bin/bash
+
+script_name="$(basename "$0")"
+usage_msg="Generate HTML version of a Markdown file using Pandoc.
+
+Usage: $0 <path/to/file.md>"
+
+if [ $1 == '--help' ] || [ $1 == 'help' ]; then
+    echo "$usage_msg"
+
+    exit
+elif [ $# -ne 1 ]; then
+    echo "$usage_msg" >&2
+
+    exit 1
+fi
+
+filedir="$(dirname "$1")"
+outfile="$(basename -s ".md" "$1").html"
+
+if [ -n $filedir ]; then
+    outfile="$filedir/$outfile"
+fi
+
+
+pandoc --standalone --to html5 --toc --output "$outfile" "$1"
