@@ -31,17 +31,7 @@ fi
 "$bin_dir/install-crontab"
 
 if command -v notmuch > /dev/null; then
-    # Make sure notmuch post-new hook is installed.
-    notmuch_db_path="$(notmuch config get database.path)"
-    notmuch_hooks_path="$notmuch_db_path/.notmuch/hooks"
-
-    mkdir -p "$notmuch_hooks_path"
-
-    if [ -e "$notmuch_hooks_path/post-new" ]; then
-        "Notmuch post-new hook already installed."
-    else
-        ln -s "$bin_dir/notmuch-post-new-hook" "$notmuch_hooks_path/post-new"
-    fi
+    install-notmuch-hooks
 fi
 
 

@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+bin_dir="$(cd "$(dirname "$0")"; pwd -P)"
+
+# Make sure notmuch post-new hook is installed.
+notmuch_hooks_path="$(notmuch config get database.hook_dir)"
+
+mkdir -p "$notmuch_hooks_path"
+
+if [ -e "$notmuch_hooks_path/post-new" ]; then
+    "Notmuch post-new hook already installed."
+else
+    ln -s "$bin_dir/notmuch-post-new-hook" "$notmuch_hooks_path/post-new"
+fi
