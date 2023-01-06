@@ -272,8 +272,8 @@ if [ -d "$PYENV_ROOT" ]; then
     pyenv_binary="$(which pyenv)"
     if ! [ -L "$pyenv_binary" ]; then
         echo "WARNING: pyenv binary is no longer a symlink! Update pyenv conf?" >&2
-    elif [ "$(readlink "$pyenv_binary" | cut -d / -f 4)" != '2.3.1' ]; then
-        echo "WARNING: Could not confirm pyenv version is 2.3.1! Update pyenv conf?" >&2
+    elif [ "$($pyenv_binary --version | cut -d ' ' -f 2)" != '2.3.5' ]; then
+        echo "WARNING: Could not confirm pyenv version is 2.3.5! Update pyenv conf?" >&2
     fi
 fi
 
