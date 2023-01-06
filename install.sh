@@ -65,6 +65,10 @@ if [ $platform == 'Darwin' ] ; then
 You will need to log out for all changes to take effect."
 
     "$bin_dir/install-syncthing-launchd-job"
+
+    echo "Don't forget to run the following after installing Nix:
+
+$bin_dir/fix-tmux-terminal-not-fully-functional-macos"
 fi
 
 # Install Anonymous Pro font.
