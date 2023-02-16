@@ -1,0 +1,9 @@
+#! /usr/bin/env node
+
+if (process.argv.length < 3) {
+  console.log(`Usage: ${process.argv[1]} <component>`);
+
+  process.exit(1);
+}
+
+console.log(encodeURIComponent(process.argv[2]));
