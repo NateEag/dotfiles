@@ -78,6 +78,6 @@ fi
 open_binary=open
 if [ "$platform" == "Linux" ]; then
     open_binary=xdg-open
-fi   
+fi
 
 $open_binary "$dotfiles_dir/anonymous-pro-font/"*.ttf
