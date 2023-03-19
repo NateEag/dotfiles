@@ -1,0 +1,52 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="Given a todo.txt file in a git repo, resolve git merge conflicts on it.
+
+The algorithm is dumb - just makes sure all todo items from both versions of
+the file are present. If you're worried about semantic conflicts, it's on you
+to read the diff.
+
+I wrote this because I needed to do it a second time during a rebase and thought
+'scripting this will be barely any more work than editing the commands manually.'
+
+If I need it again in the next year or two, it'll probably be time to figure
+out how to use it as a custom merge driver in git for files named 'todo.txt' or
+'done.txt'.
+
+Usage: $script_name <target_file>"
+
+if [ "$1" == 'help' ] || [ "$1" == '--help' ] || [ "$1" == '-h' ]; then
+    echo "$msg"
+
+    exit
+elif [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+file_path="$(cd "$(dirname "$1")" || exit; pwd -P)/$(basename "$1")"
+
+if ! [ -f "$file_path" ]; then
+    echo "'$file_path' does not exist!"
+
+    exit 1
+fi
+
+dir="$(dirname "$file_path")"
+pushd "$dir" || exit
+
+file_name="$(basename "$file_path")"
+
+tmpdir="$(mktemp -d)"
+
+git checkout --ours "$file_path"
+cp "$1" "$tmpdir/${file_name}-ours"
+
+git checkout --theirs "$file_path"
+cp "$1" "$tmpdir/${file_name}-theirs"
+
+cat <(sort "$tmpdir/${file_name}-ours") <(sort "$tmpdir/${file_name}-theirs") |
+    sort |
+    uniq > "$1"
