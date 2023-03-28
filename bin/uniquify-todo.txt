@@ -1,0 +1,53 @@
+#! /usr/bin/env node
+
+const fs = require('fs')
+
+let script_path_arr = process.argv[1].split('/'),
+    script_name = script_path_arr[script_path_arr.length - 1]
+
+const help_msg = `Usage: ${script_name} <todo.txt_file>
+
+Output a version of specified todo.txt file with duplicate items removed.
+
+'Duplicate' means 'items which have the exact same task description'.
+
+If one duplicate item is marked 'completed', it will be preferentially saved, as that likely preserves the truth about current status.
+
+If there is no difference in completion status, it prefers the version with more tags.`
+
+const args = process.argv.slice(2)
+
+console.log(args)
+
+if (args.length === 1 && ['help', '-h', '--help'].includes(args[0])) {
+    console.log(help_msg)
+
+    process.exit(0)
+}
+
+if (args.length !== 1) {
+    console.log(help_msg)
+
+    process.exit(1)
+}
+
+const lines = fs.readFileSync(args[0], 'utf-8').split('\n')
+
+lines.forEach(line => {
+    // FIXME Use a real todo.txt parsing library for this. Since I'm working with a
+    // single file managed by two tools with a tighter format than todo.txt
+    // requires, I can get away with this version.
+    const after_dates_regex = /\d{4}-\d{2}-\d{2} ([A-Za-z].*)/,
+        tags_and_due_date_regex = / (due|\+).*/,
+        without_dates = line.match(after_dates_regex)[1],
+        body = without_dates.replace(tags_and_due_date_regex, '')
+
+    const todo_item = {
+        // FIXME This
+        body: line.match(after_dates_regex)[1],
+        is_completed: line.startsWith('x ')
+    }
+
+    console.log(todo_item)
+    process.exit(0)
+})
