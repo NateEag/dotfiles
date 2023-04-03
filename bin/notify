@@ -1,9 +1,7 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 script_name="$(basename "$0")"
 help_msg="Send a notification to the user.
-
-Only works on Mac OS X, and then only if terminal-notifier is installed.
 
 It should be easy enough to port to other platforms next time I'm on one of them.
 
@@ -25,10 +23,17 @@ elif [ $# -lt 1 ]; then
     exit 2
 fi
 
-
 title='Notification'
 if [ -n "$2" ]; then
     title="$2"
 fi
 
-terminal-notifier -message "$1" -title "$title"
+if command -v terminal-notifier > /dev/null; then
+    # macOS CLI notification tool
+    terminal-notifier -message "$1" -title "$title"
+else
+    # The notification tool I use with my NixOS desktop.
+    #
+    # FIXME Figure out how to keep notifications from expiring.
+    notify-desktop "$title" "$1"
+fi
