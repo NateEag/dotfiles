@@ -33,21 +33,33 @@ if (args.length !== 1) {
 
 const lines = fs.readFileSync(args[0], 'utf-8').split('\n')
 
+let todo_items = {}
 lines.forEach(line => {
     // FIXME Use a real todo.txt parsing library for this. Since I'm working with a
     // single file managed by two tools with a tighter format than todo.txt
     // requires, I can get away with this version.
-    const after_dates_regex = /\d{4}-\d{2}-\d{2} ([A-Za-z].*)/,
-        tags_and_due_date_regex = / (due|\+).*/,
-        without_dates = line.match(after_dates_regex)[1],
+    const after_dates_regex = /\d{4}-\d{2}-\d{2} +([^0-9].*)/,
+        tags_and_due_date_regex = / (due|\+).*/
+
+    const match = line.match(after_dates_regex)
+
+    // Uncomment when debugging issues with the regex
+    // console.log(match, '\n\n', line)
+
+    const without_dates = match[1],
         body = without_dates.replace(tags_and_due_date_regex, '')
 
     const todo_item = {
         // FIXME This
         body: line.match(after_dates_regex)[1],
-        is_completed: line.startsWith('x ')
+        is_completed: line.startsWith('x '),
+        line: line
     }
 
-    console.log(todo_item)
-    process.exit(0)
+    todo_items[todo_item.body] ??= []
+
+    todo_items[todo_item.body]
+    todo_items[todo_item.body]?.push(todo_item)
 })
+
+console.log(todo_items)
