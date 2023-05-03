@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="Paste the OS clipboard's current item to stdout, across the platforms I use.
+
+A dumb wrapper around existing commands.
+
+Usage: $script_name argspec"
+
+if [ $# -ne 0 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+platform="$(uname -s)"
+
+binary=wl-paste
+if [ "$platform" == 'Darwin' ]; then
+    binary=pbpaste
+fi
+
+$binary
