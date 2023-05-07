@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+# a wrapper around wget that's supposed to handle cloning entire websites.
+#
+# I'm mostly just looking for a way to store HTML docs locally, for when I'm
+# offline.
+#
+# Loosely inspired by https://superuser.com/a/1415765
+
+domain="$(trurl "$1" --get {host})"
+
+echo "$domain"
+
+wget \
+     --recursive \
+     --level 5 \
+     --wait 2 \
+     --page-requisites \
+     --no-clobber \
+     --page-requisites \
+     --adjust-extension \
+     --span-hosts \
+     --convert-links \
+     --restrict-file-names=windows \
+     --domains "$domain" \
+     --no-parent \
+         "$1"
