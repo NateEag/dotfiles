@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 script_name="$(basename "$0")"
 usage_msg="Generate HTML version of a Markdown file using Pandoc.

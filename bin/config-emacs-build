@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # On OS X Mojave, /usr/share/emacs/ contains elisp that causes make-process to
 # take at least five seconds before actually creating the child process.

@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 script_name="$(basename "$0")"
 msg="A quick hack to automate tarballing and fetching a remote dir via SSH.

@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # A small script to create and configure my personal Nix environment per
 # .config/nixpkgs/config.nix in this repository.

@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Idiotic workaround for my funky keyboard shortcut setup sending an event after
 # I hit the binding that triggers this script, and thus waking it up

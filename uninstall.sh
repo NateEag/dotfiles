@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Undo the work of install.sh.
 # This may have unexpected results if you never ran install.sh.

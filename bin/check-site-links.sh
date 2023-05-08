@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Simple wrapper around linkchecker to check my personal websites for dead links.
 #

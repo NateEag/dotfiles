@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Simple wrapper around notification commands and sleep to send messages after
 # a set amount of time has passed.

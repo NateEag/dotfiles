@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 script_name="$(basename "$0")"
 msg="Exit with 0 status if we can fetch www.google.com, nonzero otherwise.

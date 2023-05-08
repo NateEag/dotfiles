@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 script_name="$(basename "$0")"
 msg="Save all changes in the passed git repo, using the passed commit message.

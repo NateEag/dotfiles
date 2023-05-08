@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 script_name="$(basename "$0")"
 msg="A tool for getting credentials out from pass (https://passwordstore.org) in

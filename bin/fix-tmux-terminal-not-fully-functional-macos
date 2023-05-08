@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # On macOS 12.6 using Terminal 2.12.7, I was getting the following error
 # message whenever I used less inside tmux:

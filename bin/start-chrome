@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # A stupid workaround for the fact that I'm having a hard time getting Chrome
 # to work with chrome-pass on my home machine.

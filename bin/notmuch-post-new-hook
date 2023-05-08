@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Script to process my notmuch Maildir after new emails have been added.
 

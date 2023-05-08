@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # TODO Figure out how to pass everything but file paths on to the json command.
 #

@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # A dumb little script to extract the svn commit ID of a given commit in a
 # git-svn repo.

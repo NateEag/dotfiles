@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Lame hack to notify me when a URL's status code changes.
 #

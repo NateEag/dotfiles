@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 usage_msg="Sometimes Emacs can hang hard enough that Control-G won't fix it.
 

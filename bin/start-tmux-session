@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Starts up my baseline tmux session for working in/with my dotfiles.
 

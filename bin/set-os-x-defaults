@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Keeping a record of settings I've customized with the OS X `defaults` CLI
 # tool. This is useful for more than just OS X built-in features - you can

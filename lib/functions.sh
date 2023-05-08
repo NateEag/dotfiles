@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # A small library of my own functions for use in bash scripting.
 #

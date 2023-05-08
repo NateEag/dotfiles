@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Yanked from https://stackoverflow.com/a/2179876/1128957, for when you want
 # files to have modification timestamps from their latest commit.

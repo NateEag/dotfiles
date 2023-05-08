@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Generate a Tern.js definition file for all the cordova plugins in the current
 # project.

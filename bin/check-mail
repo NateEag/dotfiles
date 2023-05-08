@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # I use mbsync for fetching mail on my work machine.
 #

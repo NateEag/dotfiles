@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 msg="A bash script for choosing one of several options at pseudorandom.
 

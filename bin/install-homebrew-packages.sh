@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Install homebrew packages listed in lib/homebrew-packages.txt.
 #

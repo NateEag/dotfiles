@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 usage_msg="A wrapper around GPG to tell me what key a file was encrypted with.
 
