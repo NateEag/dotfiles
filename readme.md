@@ -25,10 +25,10 @@ TrulyErgonomic keyboard. They are implemented with
 * A pile of my own scripts for various tasks and jobs that aren't big or
   general enough to warrant their own standalone project.
 
-* Simple bash 4 Tab completion setup that loads tool-generated completions
-  on-demand, so that Tab does the right thing for a variety of slow-starting
-  tools that generate their own completions, without giving me a horribly slow
-  shell startup.
+* bash 4 Tab completion setup that loads tool-generated completions on-demand,
+  so that Tab does the right thing for a variety of slow-starting tools that
+  generate their own completions, without giving me a horribly slow shell
+  startup.
 
 
 ## Usage
