@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="Start a new tmux session with two tabs in the specified directory.
+
+Assumes it's being executed from within a running tmux session.
+
+Usage: $script_name argspec"
+
+if [ $# -ne 1 ]; then
+    echo "$help_msg" >&2
+
+    exit 1
+fi
+
+session="$(basename "$1")"
+
+# If present, remove a common low-meaning prefix used at $DAYJOB.
+if [[ "$session" == 'se-'* ]]; then
+    session="${session#se-}"
+fi
+
+
+tmux new-session -s "$session" -d
+tmux send-keys -t "$session:0" "cd '$1'" C-m
+
+tmux new-window -t "$session:1"
+tmux send-keys -t "$session:1" "cd '$1'" C-m
+
+tmux switch-client -t "$session"
