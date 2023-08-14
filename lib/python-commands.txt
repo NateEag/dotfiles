@@ -1,7 +1,9 @@
+chrome-pass
 flake8
 cram
 LinkChecker
 td-watson
 xmldiff
+graphtage
 jmespath-terminal
 git+https://github.com/carderne/signal-export.git
