@@ -13,7 +13,10 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-session="$(basename "$1")"
+# tmux doesn't allow . characters in session names.
+#
+# FIXME Handle other unsupported characters? What chars does it allow?
+session="$(basename "$1" | sed s/\\./_/g)"
 
 # If present, remove a common low-meaning prefix used at $DAYJOB.
 if [[ "$session" == 'se-'* ]]; then
