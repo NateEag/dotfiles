@@ -52,6 +52,16 @@
           bash-completion
           nix-bash-completions
 
+          # macOS's official way to set default mail clients is to fire up
+          # Mail.app and choose one, but that only works if you've set up an
+          # account.
+          #
+          # Therefore.
+          #
+          # TODO Figure out how to get the Nix-based install to work. I wound
+          # up bailing and installing manually when it didn't Just Work.
+          swiftdefaultapps
+
           # Let's see if I can get working native compilation in Emacs via Nix.
           emacs28NativeComp
 
@@ -120,8 +130,12 @@
           # Install Subversion so I have it when I need it.
           subversion
 
-          # Delta is a filter for prettifying unified diffs. It makes diffs
-          # massively easier to read.
+          # Sometimes I work with GitHub. In those cases, their official CLI
+          # tool can be nice to have around.
+          gh
+
+          # Delta is a filter for prettifying and syntax-highlighting unified
+          # diffs. It makes diffs massively easier to read.
           #
           # By default it hides useful details for simplicity's sake, but it
           # can be configured to leave them intact for those of us used to
@@ -169,6 +183,12 @@
 
           # I sometimes use pass as a source for Git credentials.
           pass-git-helper
+
+          # ...and with Chrome.
+          #
+          # FIXME Move this over to using the declarative approach. Won't work
+          # with my macOS setup easily, but should do fine in my NixOS setup.
+          browserpass
 
           # I tend to avoid AWS for my own personal infrastructure, but I
           # regularly work with it, so it's useful to have the official CLI
