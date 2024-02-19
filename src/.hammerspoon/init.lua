@@ -73,6 +73,7 @@ end
 
 
 function runCommand(cmd)
+   logger.i("Running command: " .. cmd)
    os.execute(cmd)
 end
 
