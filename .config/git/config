@@ -33,7 +33,9 @@
 	hunk-header-decoration-style = plain
 
 [push]
-	default = simple
+	# This should auto-create a remote branch with a name matching the local branch
+    # if none can be found.
+	default = current
 
 [merge]
 	conflictstyle = zdiff3
