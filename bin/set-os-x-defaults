@@ -13,18 +13,20 @@
 # https://www.shell-tips.com/mac/defaults/.
 #
 # In summary, you can use `defaults domains | tr , '\n'` to figure out what
-# apps are available to manipulate, and `defaults <domain> read` to see all set
+# apps are available to manipulate, and `defaults read <domain>` to see all set
 # preferences for an app. Turn on a preference in the target app manually, use
 # `defaults <domain> read` to see how it's named in the plist file, then slap
 # the result in here so it's easy to apply on future Macs.
+#
+# TODO Set up a tab completer for 'defaults read' to complete available domains.
 
 # The dock is a waste of screen space.
 defaults write com.apple.dock autohide -int 1
 defaults write com.apple.dock orientation left
 
-# Have Finder show files whose names begin with . Occasionally makes it easier
-# for me to grab something (usually in file dialog boxes).
-defaults write com.apple.Finder AppleShowAllFiles TRUE
+# Have Finder show files whose names begin with '.'. Occasionally makes it
+# easier for me to grab something (usually in file dialog boxes).
+defaults write com.apple.Finder AppleShowAllFiles -bool true
 
 # Do not show me the accent menu popup when I'm holding down a key.
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -44,9 +46,35 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 # Turn off that darned translucent menubar.
 defaults write com.apple.universalaccess reduceTransparency -int 1
 
+# DON'T GIVE ME HOTCORNERS.
+defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-bl-corner -int 0
+defaults write com.apple.dock wvous-br-corner -int 0
+
+# Who actually writes RTFs?
+#
+# ...okay, I did. Years ago. But not any more.
+defaults write com.apple.TextEdit "RichText" -bool "false"
+
 # Don't put screenshots on my desktop. :P
 mkdir -p "$HOME/Documents/Screenshots"
-defaults write com.apple.screencapture location ~/Documents/Screenshots
+defaults write com.apple.screencapture location "$HOME/Documents/Screenshots"
+
+
+## TODO Automated installing below apps. Adding them as login items is pretty
+## darned unlikely to work before they're installed. :P
+
+
+# Set up Hammerspoon defaults.
+add-login-item '/Applications/Hammerspoon.app'
+
+
+# FIXME Install ActivityWatch so this can work.
+#
+# TODO Specify that aw-server, aw-watcher-afk, and aw-watcher-window should all
+# be active. I've at least once seen it not have aw-watcher-window active.
+add-login-item '/Applications/ActivityWatch.app'
 
 
 # Set up Flycut basics.
@@ -55,17 +83,22 @@ defaults write com.apple.screencapture location ~/Documents/Screenshots
 # space in the name and I haven't figured out how to handle that.
 defaults write com.generalarcade.flycut loadOnStartup -int 1
 defaults write com.generalarcade.flycut stickyBezel -int 1
-
+add-login-item '/Applications/Flycut.app'
 
 # Set up preferences for Scroll Reverser.
 defaults write com.pilotmoon.scroll-reverser InvertScrollingOn -int 1
 defaults write com.pilotmoon.scroll-reverser StartAtLogin -int 1
 defaults write com.pilotmoon.scroll-reverser ReverseX -int 1
-
+add-login-item '/Applications/Scroll Reverser.app'
 
 # Set up preferences for Hidden Bar.
 defaults write com.dwarvesv.minimalbar isAutoStart
-
+add-login-item '/Applications/Hidden Bar.app'
 
 # Deselect the "Save in Keychain" checkbox in gpg's pinentry-mac dialog.
 defaults write org.gpgtools.common UseKeychain NO
+
+# Set up preferences for activitywatch.
+activitywatch_watcher_prefs_path="$HOME/Library/Application Support/activitywatch"
+echo '[aw-watcher-afk]
+timeout = 300' > "$activitywatch_watcher_prefs_path/aw-watcher-afk/aw-watcher-afk.toml"

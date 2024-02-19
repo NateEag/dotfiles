@@ -1,0 +1,26 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="Add login item. Currently works only on macOS.
+
+Based entirely on the logic presented here:
+https://apple.stackexchange.com/a/310502/307408
+
+
+Usage: $script_name <login_item_path>"
+
+if [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+json='{path:"'"$1"'",hidden:false}'
+
+echo "$json"
+
+applescript='tell application "System Events" to make login item at end with properties '"$json"
+
+echo "$applescript"
+
+osascript -e "$applescript"
