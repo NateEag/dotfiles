@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+export GH_TOKEN="$(pass show github.com/personal-access-token-helm)"
+
+gh extensions install actions/gh-actions-cache

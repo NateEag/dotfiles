@@ -66,9 +66,11 @@ You will need to log out for all changes to take effect."
 
     "$bin_dir/install-syncthing-launchd-job"
 
+    # FIXME This actually should happen on Linux, too.
     echo "Don't forget to run the following after installing Nix:
 
-$bin_dir/fix-tmux-terminal-not-fully-functional-macos"
+$bin_dir/fix-tmux-terminal-not-fully-functional-macos
+$bin_dir/install-gh-extensions"
 fi
 
 # Install Anonymous Pro font.
