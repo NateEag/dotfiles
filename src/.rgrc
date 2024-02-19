@@ -1,0 +1,13 @@
+# I use ripgrep (a.k.a. rg) for search preferentially. I am annoyed that it
+# insists on ignoring dotfiles by default, as some tools store per-project
+# plaintext configurations in dotfiles (e.g. GitHub Actions using `.github` for
+# its config files).
+#
+# Since rg has explicitly rejected support for searching hidden files by default
+# (https://github.com/BurntSushi/ripgrep/issues/623), I have the below option:
+--hidden
+
+# ...that said, who wants to search the contents of their .git dirs all the
+# time?
+--glob
+!.git

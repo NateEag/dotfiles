@@ -98,6 +98,12 @@ if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile
 
 # Environment variables.
 
+# Tell rg where to find my config file.
+#
+# Since rg has explicitly rejected support for a default config file path, this
+# env var is required to load a default configuration file.
+export RIPGREP_CONFIG_PATH="$HOME/.rgrc"
+
 PATH=~/Applications/LilyPond.app/Contents/Resources/bin:$PATH
 PATH="/Applications/VirtualBox.app/Contents/MacOS:$PATH"
 PATH=~/bin:$PATH
