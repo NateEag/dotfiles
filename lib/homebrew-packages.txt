@@ -73,6 +73,7 @@ rsync
 sdcv
 shared-mime-info
 shellcheck
+shortcat
 sl
 sphinx-doc
 sqlmap
