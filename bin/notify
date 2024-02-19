@@ -3,6 +3,13 @@
 script_name="$(basename "$0")"
 help_msg="Send a notification to the user.
 
+Make sure you set terminal-notifier's alert style to Alerts, if you don't want
+them to auto-hide after a moment.
+
+TODO Automate setting various apps' preference alerts. Then the above reminder
+can go away. Looks like ~/Library/Preferences/com.apple.ncprefs.plist is the
+relevant victim, and this SO post should be a decent guide to doing it: https://apple.stackexchange.com/a/460501
+
 It should be easy enough to port to other platforms next time I'm on one of them.
 
 A number of the scripts in my dotfiles depend on this for letting me know if
