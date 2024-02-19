@@ -21,6 +21,14 @@ while read -r package_name; do
     pipx install "$package_name"
 done <"$package_list"
 
+if ! grep --quiet 'added by argcomplete' "$HOME/.bash_completion"; then
+    activate-global-python-argcomplete
+
+    # It seems to automatically create this, and offers no obvious way to tell it
+    # "Just bash, please."
+    rm "$HOME/.zshenv"
+fi
+
 echo "Remember to manually install chrome-pass with python3, then to run"
 echo
 echo "    nativePass install"
