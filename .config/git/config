@@ -46,7 +46,11 @@
 	diffFilter = diff-highlight
 
 [rebase]
+	# Autosquashing is a fairly useful trick, if you like to make small commits.
     autosquash = true
+	# Auto-update intermediate branches when rebasing the newest of a subtree on
+	# its base branch.
+	updateRefs = true
 
 [diff]
     algorithm = histogram
