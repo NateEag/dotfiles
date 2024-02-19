@@ -23,4 +23,4 @@ elif [ $# -gt 0 ]; then
 fi
 
 primary_email="$(notmuch config get user.primary_email)"
-notmuch tag -unread -inbox -- "from:$primary_email" and is:unread
+notmuch tag -unread -inbox +sent -- "from:$primary_email" and is:unread
