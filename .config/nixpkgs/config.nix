@@ -385,6 +385,12 @@
           # sysadmin/devoperator, so how can I live without rsync?
           rsync
 
+          # Added specifically so I could debug a Redis issue at $DAYJOB.
+          #
+          # TODO Decide if I really want to keep this in my baseline config
+          # long-term.
+          redis
+
           # Dog is a DNS lookup tool, essentially dig with a nicer UI. I'll
           # probably always use dig as it's installed almost everywhere by
           # default, but dog looks like it could be nicer for several purposes.
