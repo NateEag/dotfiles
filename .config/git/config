@@ -49,7 +49,7 @@
     autosquash = true
 
 [diff]
-    algorithm = patience
+    algorithm = histogram
 	compactionHeuristic = true
 	tool = difftastic
 	# TODO Decide if I want to use difftastic as my diff daily driver. It's
