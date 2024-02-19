@@ -1,19 +1,57 @@
 #! /usr/bin/env bash
 
-# Delete a local branch and whatever remote branch it tracks.
+script_name="$(basename "$0")"
 
-if [[ $# -lt 1 ]]; then
-    echo 'Usage: git nuke-branch <branch>'
+usage_msg="Delete a local branch and any remote tracking branch.
+
+Pass -f to delete local branch even when remote branch cannot be deleted (which
+happens often in workflows where the remote branch is auto-deleted post-merge).
+
+Usage: $script_name [-f] <branch>"
+
+if [ "$1" == 'help' ] || [ "$1" == '-h' ] || [ "$1" == '--help' ]; then
+    echo "$usage_msg"
+
+    exit
+elif [ $# -lt 1 ]; then
+    echo "$usage_msg" >&2
 
     exit 2
 fi
 
-remote=$(git config branch."$1".remote)
-upstream=$(git config branch."$1".merge)
+target_branch="$1"
+
+force=
+if [ "$1" == '-f' ]; then
+    if [ $# -ne 2 ]; then
+        echo "You must pass a target branch!" >&2
+
+        echo "$usage_msg" >&2
+
+        exit 1
+    fi
+
+    target_branch="$2"
+    force=1
+fi
+
+remote=$(git config branch."$target_branch".remote)
+upstream=$(git config branch."$target_branch".merge)
 upstream="${upstream#refs/heads/}"
 
 if [ -n "$upstream" ]; then
-    git push "$remote" :"$upstream" || exit 1
+    git push "$remote" :"$upstream"
+    delete_upstream_status_code=$?
+
+    if [ $delete_upstream_status_code -ne 0 ] && [ "$force" != '1' ]; then
+        msg="Deleting upstream branch failed - not deleting local branch.
+
+To delete local branch anyway, run '$script_name -f $target_branch'"
+
+        echo "$msg" >&2
+
+        exit 1
+    fi
 fi
 
-git branch -D "$1"
+git branch -D "$target_branch"
