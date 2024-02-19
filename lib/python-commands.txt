@@ -6,4 +6,5 @@ td-watson
 xmldiff
 graphtage
 jmespath-terminal
+argcomplete
 git+https://github.com/carderne/signal-export.git
