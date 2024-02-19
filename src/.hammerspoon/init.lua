@@ -340,6 +340,8 @@ function layoutWindows()
       layoutAppWindows("cool-retro-term", left_side_screen_rect, second_screen)
    end
 
+   layoutAppWindows("AWS VPN Client", lower_right_screen_rect, primary_screen)
+
    layoutAppWindows("Calendar", left_side_screen_rect, primary_screen)
 
    layoutAppWindows("Google Chrome", right_side_screen_rect, second_screen)
