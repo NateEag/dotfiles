@@ -5,7 +5,6 @@ dotfiles_path="$HOME/dotfiles"
 dotfiles_etc="$dotfiles_path/etc"
 dotfiles_lib_path="$dotfiles_path/lib"
 
-
 ## Bash Completions
 #
 # Life without them is frustrating. These target bash 4 and up.
@@ -83,18 +82,12 @@ for file in "$dotfiles_lib_path"/*.sh; do
     fi
 done
 
-
 # Return a string listing all .jars in $1, suitable for use in java -classpath.
 # DEBUG Might not quite work; hasn't been entirely tested. I just didn't want
 # to throw it out when it proved irrelevant.
-classpath () {
+classpath()  {
     find $1 -type f -name *.jar | awk '{printf "%s:",$0} END {print ""}'
 }
-
-# Load nix configuration first. This way, tools installed locally by things
-# like Homebrew should take precedence, which helps me stay on the
-# employer-sanctioned versions of tools in specific projects.
-if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # Environment variables.
 
@@ -109,25 +102,12 @@ PATH="/Applications/VirtualBox.app/Contents/MacOS:$PATH"
 PATH=~/bin:$PATH
 PATH=~/finances/bin:$PATH
 PATH="$HOME/Library/Haskell/bin:$PATH"
-PATH="$HOME/.gem/ruby/1.8/bin:$PATH"
 PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 PATH="$HOME/icsv2ledger:$PATH"
 PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # Load pipx-installed variables into my shell.
 PATH="$HOME/.local/bin:$PATH"
-
-# Add Emacs commands to my path, so that emacsclient works right on OS X.
-emacs_app_path="$HOME/.nix-profile/Applications/Emacs.app"
-
-PATH="$emacs_app_path/Contents/MacOS/bin:$PATH"
-PATH="$emacs_app_path/Contents/MacOS:$PATH"
-
-# Set EMACS var for cask.
-EMACS="$emacs_app_path/Contents/MacOS/Emacs"
-export EMACS
-
-PATH=~/.cask/bin:$PATH
 
 # I have a local collection of Node modules, mostly installed to get binaries
 # on my PATH.
@@ -150,7 +130,7 @@ export PATH
 # OPTIMIZE Get Emacs booting quickly and this would be much less necessary.
 declare -a EDITORS=("emacsclient" "emacs" "vim" "vi")
 for editor in "${EDITORS[@]}"; do
-    editor_path=$(which $editor 2> /dev/null)
+    editor_path=$(which $editor 2>/dev/null)
     if [ -n "$editor_path" ]; then
         EDITOR=$editor
         break
@@ -190,36 +170,56 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 # after quitting Terminal.app?).
 HISTFILE=~/.bash_history
 
+# Load nix configuration before Homebrew. This way, tools installed locally by
+# Homebrew should take precedence, which helps me stay on the
+# employer-sanctioned versions of tools in specific projects.
+if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Add Emacs commands to my path, so that emacsclient works right on OS X.
+emacs_app_path="$HOME/.nix-profile/Applications/Emacs.app"
+
+PATH="$emacs_app_path/Contents/MacOS/bin:$PATH"
+PATH="$emacs_app_path/Contents/MacOS:$PATH"
+
+# Set EMACS var for cask.
+EMACS="$emacs_app_path/Contents/MacOS/Emacs"
+export EMACS
+
+PATH=~/.cask/bin:$PATH
+
 # Customizations that require [Homebrew](http://brew.sh) to be installed.
+#
+# Note that 'ibrew' vs 'abrew' are a workaround for my having gone with the
+# default of using ARM-native brew on Apple Silicon devices, then discovering
+# that some of the tools at $DAYJOB would not work correctly if built for
+# ARM64.
+#
+# If I were doing it again I'd just install x86 brew and put up with the
+# performance hit of Rosetta 2 for everything.
+ibrew() {
+    arch -x86_64 /usr/local/bin/brew "$@"
+}
+
+abrew() {
+    arch -arm64e /opt/homebrew/bin/brew "$@"
+}
+
 if [ -x /opt/homebrew/bin/brew ]; then
     # Set PATH, MANPATH, etc., for Homebrew.
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$(ibrew shellenv)"
 
     # Set up homebrew-based bash completions.
-    if type brew &>/dev/null
-    then
-        HOMEBREW_PREFIX="$(brew --prefix)"
-        if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
-        then
+    if type brew &>/dev/null; then
+        HOMEBREW_PREFIX="$(ibrew --prefix)"
+        if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
             source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
         else
-            for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
-            do
+            for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
                 [[ -r "${COMPLETION}" ]] && source "${COMPLETION}"
             done
         fi
     fi
-
-    # If available, use Homebrew's SSL cert file. This works around various
-    # issues with SSL in the OS X command line:
-    #
-    # http://stackoverflow.com/questions/24675167/ca-certificates-mac-os-x
-    #INSTALLED_SSL_CERT_PATH=$(brew --prefix)/etc/openssl/cert.pem 2> /dev/null
-    #if [ -e "$INSTALLED_SSL_CERT_PATH" ]; then
-    #    export SSL_CERT_FILE="$INSTALLED_SSL_CERT_PATH"
-    #fi
 fi
-
 
 ## Shell extensions.
 
@@ -227,10 +227,9 @@ fi
 #
 # Note that this takes virtually no time. Perhaps there's something to be said
 # for writing shell extensions in compiled languages.
-if command -v direnv > /dev/null; then
+if command -v direnv >/dev/null; then
     eval "$(direnv hook bash)"
 fi
-
 
 # I use nvm for managing different versions of node (outside of the Nix
 # ecosystem, anyway).
@@ -256,7 +255,6 @@ if [ -d "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
-
 
 # Load pyenv into my shell.
 #
