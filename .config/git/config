@@ -37,6 +37,10 @@
 
 [merge]
 	conflictstyle = diff3
+	tool = emacsclient
+
+[mergetool.emacsclient]
+	cmd = ediff-emacsclient "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 [interactive]
 	diffFilter = diff-highlight
@@ -59,9 +63,12 @@
 #
 # TODO Get this working with delta - syntax coloration would be great. I'm not
 # sure why delta has no effect on json-diff's output.
-[diff "json-diff"]
+# [diff "json-diff"]
 	# difftastic may be better at diffing JSON than json-diff is.
-	command = difft
+	# command = json-diff
+
+#[diff "todiff"]
+#	command = todiff
 
 [difftool]
 	prompt = false
@@ -94,7 +101,7 @@
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
 
 	# List the unique authors in a git repo.
-	list-authors = log --format="%aN" | sort -u
+	list-authors = !git log --format="%aN" | sort -u
 
     # Find duplicate files. I had to tweak it for OS X because of non-portable
     # options to uniq, so it's not quite as slick as the original was. It used

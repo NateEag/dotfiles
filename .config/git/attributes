@@ -1,2 +1,5 @@
 # Use json structural diffing for JSON files.
 *.json diff=json-diff
+
+# Use todo-txt diff for todo files?
+todo.txt diff=todiff
