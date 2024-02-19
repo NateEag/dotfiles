@@ -1,3 +1,5 @@
+2023-09-08 Auto-configure notifications for main apps to Alerts on macOS based on this technique: https://apple.stackexchange.com/a/460501
+
 2022-10-10 Add Hidden Bar preferences to bin/set-os-x-defaults.
 
 2022-10-10 Add Hammerspoon preferences to bin/set-os-x-defaults
@@ -27,3 +29,5 @@
 2022-05-10 Try updating my tmux config to support nested tmux sessions a la https://github.com/aleclearmind/nested-tmux
 
 2022-07-08 Teach my laptop to shut off Bluetooth automatically after my earbuds disconnect? That's usually a cue that they're back in the case, and on average the next time I pull them out after that it tends to be for use with my phone.
+
+2023-07-18 Add https://github.com/nevesnunes/sh-manpage-completions to my bash completion setup
