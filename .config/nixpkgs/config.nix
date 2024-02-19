@@ -28,6 +28,12 @@
     allowUnfree = true;
     packageOverrides = pkgs: with pkgs; {
       myPackages = pkgs.buildEnv {
+        # To make 'nix upgrade-nix' work, I had to run
+        #
+        #     nix-env --set-flag priority 6 my-packages
+        #
+        # because otherwise my local install of nix conflicted with the system
+        # upgrade, at the same priority level.
         name = "my-packages";
         paths = [
           # The invocation I use to install my packages mean the nix tools get
@@ -102,6 +108,14 @@
           # The git project itself deprecated git filter-branch in favor of
           # this third-party tool.
           git-filter-repo
+
+          # Figure out who wrote what in a git repo.
+          git-fame
+
+          # A merge GUI that's recommended by various people. I've flirted with
+          # just using ediff in Emacs, but it's, well... not exactly intuitive,
+          # and I so rarely use mergetool anyway... Gonna give this a try.
+          meld
 
           # Install Subversion so I have it when I need it.
           subversion
@@ -220,9 +234,19 @@
           # files, but just in case...
           todo-txt-cli
 
+          # A nice diff driver for todo.txt files can be handy.
+          todiff
+
           # Having an environment to learn new languages is nice. When that
           # environment is OSS, it's even better: https://exercism.org
           exercism
+
+          # Sometimes you need to compare JSON documents. This makes it easier.
+          nodePackages.json-diff
+
+          # Other times you need to convert YAML and JSON docs back and forth.
+          # yj also supports TOML and HCL.
+          yj
 
           # jp is a tool for querying JSON documents using the JMESPath
           # language. The reasons I try to prefer jp to jq are:
@@ -246,15 +270,24 @@
           # the chainsaw.
           jq
 
+          # jid is an interactive tool for building JSON path queries. Isn't
+          # strictly compatible with either jq or JMESPath, but is still handy
+          # for exploring a fresh dump of JSON from somewhere.
+          jid
+
+          # yq is more limited than jq, but can query directly from YAML, XML,
+          # and a few other formats. I'm not sure I'd ever really use it, since
+          # you can always just use yj to convert to JSON then use jp / jq to
+          # query, but...
+          yq
+
           # pup is a CLI HTML query tool. Use CSS selectors to select elements.
           # Answering questions about HTML-bound data is massively easier this
           # way.
           pup
 
-          # jid is an interactive tool for building JSON path queries. Isn't
-          # strictly compatible with either jq or JMESPath, but is still handy
-          # for exploring a fresh dump of JSON from somewhere.
-          jid
+          # Sometimes you need to fiddle with JWTs
+          jwt-cli
 
           # nmap is my preferred tool for exploring networks. I'm not a
           # networking expert - there could well be better options for any
@@ -321,6 +354,8 @@
           # too, is here primarily to support my Emacs configuration.
           shellcheck
 
+          lilypond-with-fonts
+
           # I use syncthing for keeping several files (and collections of
           # files) in sync across multiple devices. Thus, I want it installed
           # automatically.
@@ -343,12 +378,18 @@
           # following tool is handy.
           qmk
 
+          # I don't like shfmt's default setup, but standardized formatting
+          # sure beats arguing about formatting.
+          shfmt
+
           # pipx is a tool for running CLI Python tools in standalone
           # environments. It's here to support bin/install-python-commands.sh.
           python39Packages.pipx
 
           # Yay language servers.
           nodePackages.typescript-language-server
+          nodePackages.bash-language-server
+          omnisharp-roslyn
 
           # Go is a programming language.
           go
@@ -365,6 +406,14 @@
 
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
+
+          # Terraform is a tool for declaratively defining and managing
+          # cloud-based computing environments. Currently using it in small
+          # amounts for $DAYJOB.
+
+          terraform
+          terraform-ls
+          tflint
 
         ];
       };
