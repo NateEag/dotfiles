@@ -9,3 +9,6 @@
 # come to depend on without realizing it.
 
 nix-env -irA nixpkgs.myPackages
+
+# FIXME Remove this once I have full declarative config working
+DESTDIR=~/.nix-profile make -f ~/.nix-profile/lib/browserpass/Makefile hosts-chrome-user
