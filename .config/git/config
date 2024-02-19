@@ -86,6 +86,15 @@
 	ui = true
 
 [fetch]
+	# Auto-prune local branches that have been removed on the remote.
+	#
+	# Should you have the misfortune of working on a project that uses GitHub's
+	# squash-and-merge, Git will rightly not prune your local branches, as the
+	# branch that merges and is auto-deleted points to a different commit than
+	# your local, so it's not safe to prune it.
+	#
+	# ...at least I think that's why it does nothing on those projects. I may
+	# be misunderstanding.
 	prune = true
 
 [alias]
