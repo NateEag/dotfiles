@@ -5,7 +5,10 @@
 # This makes it easy to keep my work and home machines running the same set of
 # tools (or at least close - this doesn't lock versions, which I'm sure will
 # bite me eventually).
- 1:22 PM
+#
+# TODO Get all brew-installed packages into my nix config instead.
+#
+# Note that shortcat is awesome and I don't know how I lived without it.
 if ! command -v brew > /dev/null; then
     echo 'Homebrew must be installed to install Homebrew packages!' >&2
 
