@@ -204,7 +204,8 @@ function layoutWindows()
    -- running, as Emacs is central to it.
    local emacs = hs.appfinder.appFromName("Emacs")
    if emacs == nil then
-      hs.dialog.alert(0, 0, nil, "Cannot position windows if Emacs is not running.")
+      runCommand(home_dir .. "/.nix-profile/bin/terminal-notifier -message " ..
+                 "'Cannot position windows if Emacs is not running.'")
       return
    end
 
