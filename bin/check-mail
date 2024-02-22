@@ -8,6 +8,10 @@
 # Therefore, I have this tiny wrapper script to simulate that functionality.
 #
 # TODO Turn this into a proper hook-runner instead of hardcoding hooks.
+#
+# TODO Add step to stitch together a single .mbsyncrc file from multiple confs.
+# Then I could keep each account's config in a separate file, and stop leaving
+# changed .mbsyncrc files with important contents lying around my dotfiles repo.
 
 lockfile_path="$HOME/.check-mail-active"
 
