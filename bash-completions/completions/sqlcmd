@@ -1,0 +1,2 @@
+# Bash completions for SQLServer's CLI sqlcmd tool.
+eval "$(sqlcmd completion bash)"

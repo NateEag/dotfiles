@@ -1,0 +1,4 @@
+# Set up ArgoCD completions, if available.
+if command -v argocd > /dev/null; then
+    source <(argocd completion bash)
+fi
