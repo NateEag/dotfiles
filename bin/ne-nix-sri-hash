@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+# Snagged from Reddit:
+#
+# https://www.reddit.com/r/Nix/comments/171ijju/comment/k3rbx44/
+nix hash to-sri --type sha256 "$(nix-prefetch-url ''"$1")"
