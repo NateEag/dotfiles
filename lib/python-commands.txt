@@ -8,3 +8,4 @@ graphtage
 jmespath-terminal
 argcomplete
 git+https://github.com/carderne/signal-export.git
+python-language-server[all]
