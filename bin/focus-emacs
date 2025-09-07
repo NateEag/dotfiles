@@ -1,12 +1,25 @@
-#! /usr/bin/osascript
+#! /usr/bin/env bash
 
--- Bring Emacs to the foreground.
---
--- Sometimes I want to do that from bash scripts. This makes it possible on OS
--- X (though it's noticeably slow, which bugs me).
---
--- TODO Try using the Hammerspoon `hs` tool for this to see if it's faster.
+# Bring Emacs to the foreground.
+#
+# Sometimes I want to do that from bash scripts. This makes it possible on OS X
+# (though it's noticeably slow, which bugs me).
+#
+# TODO Try using the Hammerspoon `hs` tool for this to see if it's faster.
 
-tell application "Emacs"
+platform="$(uname -s)"
+
+if [ "$platform" == 'Darwin' ] ; then
+    script="tell application \"Emacs\"
     activate
-end tell
+end tell"
+    echo "$script" | osascript -
+elif [ "$platform" == 'Linux' ] ; then
+     # TODO Support this somehow. https://github.com/adrienverge/gnome-magic-window
+     # could be helpful?
+     #
+     # jumpapp is exactly what I want, but it's X11-only. :/
+     echo "Not yet supported on Linux!"
+
+     exit 1
+fi
