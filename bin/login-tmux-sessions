@@ -1,0 +1,17 @@
+#! /usr/bin/env bash
+
+# Script to create my usual tmux sessions after login.
+#
+# TODO: Get it to leave me looking at one of the sessions after they've been 
+# started.
+# Presently it creates them but in the background.
+#
+# TODO: Add support for loading an optional set of "work" sessions instead of 
+# the defaults.
+
+start-tmux
+
+new-tmux-session ~/nixos-framework-setup
+new-tmux-session ~/personal/smartphone-config
+new-tmux-session ~/personal/health
+new-tmux-session ~/personal/journal
