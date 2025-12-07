@@ -15,5 +15,7 @@ new-tmux-session ~/nixos-framework-setup
 new-tmux-session ~/personal/smartphone-config
 new-tmux-session ~/personal/health
 new-tmux-session ~/personal/journal
+new-tmux-session ~/personal/how-i-code
+new-tmux-session ~/personal/nateeag.com
 
 tmux attach-session -t dotfiles
