@@ -1,4 +1,7 @@
+font-family = Anonymous Pro
+
 custom-shader = ~/.config/ghostty/shaders/lofi-crt.glsl
+
 background = 000800
 background-blur = 50
 background-opacity = 1
