@@ -92,7 +92,7 @@ const float FRAME_SHADOW = 1.38;          // Bevel shadow darkness
 const vec3 FRAME_COLOR = vec3(0.0, 0.0, 0.0);  // Base frame color (dark gray)
 
 // Glass Flare Settings
-const float FLARE_INTENSITY = 0.35;       // Flare brightness (0 = off)
+const float FLARE_INTENSITY = 0;       // Flare brightness (0 = off)
 const float FLARE_WIDTH = 0.58;           // Flare band width
 const float FLARE_POSITION = 0.18;        // Flare position on diagonal (0-1)
 const float FLARE_ANGLE = 1.0;            // Flare angle (1.0 = 45 degrees)
