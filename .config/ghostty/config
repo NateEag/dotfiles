@@ -1,5 +1,24 @@
 font-family = Anonymous Pro
+font-size = 14
 
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# On macOS, the default shell is zsh, but I'm a recalcitrant bash user.
+command = bash
+
+# I like Solarized.
+#
+# I may need to make my own theme so I can have my desired terminal coloration
+# but still get Solarized-ish colors for non-baseline text.
+theme = Builtin Solarized Dark
+
+# TODO: Port the cool-retro-term shaders to pure GLSL, so I can use them in
+# here.
+#
+# custom-shader can be specified repeatedly, so I can write them as distinct
+# files.
 custom-shader = ~/.config/ghostty/shaders/lofi-crt.glsl
 
 background = 000800
