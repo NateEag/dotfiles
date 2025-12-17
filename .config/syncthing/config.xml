@@ -1,5 +1,5 @@
-<configuration version="36">
-    <folder id="3m8gx-4ah91" label="Signal Backup" path="~/personal/smartphone-config/backups/signal/" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+<configuration version="37">
+    <folder id="3m8gx-4ah91" label="Signal Backup" path="~/personal/smartphone-config/backups/signal/" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -39,8 +39,16 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="564pl-3h4c9" label="Habit Tracker Backup" path="~/personal/smartphone-config/backups/habit-tracker" type="receiveonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="564pl-3h4c9" label="Habit Tracker Backup" path="~/personal/smartphone-config/backups/habit-tracker" type="receiveonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -80,8 +88,62 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="f9ks7-5x1uc" label="Waistline Backup" path="~/personal/smartphone-config/backups/calorie-tracker" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="dxooh-ivvcl" label="Photo Archive" path="/home/nateeag/Pictures/photo-archive" type="receiveonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="H74TSCN-ARAQYOU-MIB3L24-6RL3MTG-3JXME33-WJIU7VA-UZ4Z7N6-U3P7SAN" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <device id="75KNYZN-E7VTVUG-SB776UV-KPYFKYN-SXK3CHW-AYXJTZI-G7542RK-WY4AJAO" introducedBy="">
+            <encryptionPassword></encryptionPassword>
+        </device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning type="simple">
+            <param key="cleanoutDays" val="31"></param>
+            <param key="keep" val="30"></param>
+            <cleanupIntervalS>3600</cleanupIntervalS>
+            <fsPath></fsPath>
+            <fsType>basic</fsType>
+        </versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+        <maxConcurrentWrites>2</maxConcurrentWrites>
+        <disableFsync>false</disableFsync>
+        <blockPullOrder>standard</blockPullOrder>
+        <copyRangeMethod>standard</copyRangeMethod>
+        <caseSensitiveFS>false</caseSensitiveFS>
+        <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>1024</maxSingleEntrySize>
+            <maxTotalSize>4096</maxTotalSize>
+        </xattrFilter>
+    </folder>
+    <folder id="f9ks7-5x1uc" label="Waistline Backup" path="~/personal/smartphone-config/backups/calorie-tracker" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -121,8 +183,16 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="jy667-pt83d" label="Syncthing Config Backup" path="~/personal/smartphone-config/backups/syncthing-config" type="receiveonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="jy667-pt83d" label="Syncthing Config Backup" path="~/personal/smartphone-config/backups/syncthing-config" type="receiveonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -162,8 +232,16 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="ltsck-4d49w" label="SMS Backup" path="~/personal/smartphone-config/backups/sms" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="ltsck-4d49w" label="SMS Backup" path="~/personal/smartphone-config/backups/sms" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -203,8 +281,16 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="oveg2-1qiqf" label="GPSTracks" path="~/personal/smartphone-config/backups/gps-tracks/" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="oveg2-1qiqf" label="GPSTracks" path="~/personal/smartphone-config/backups/gps-tracks/" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -244,8 +330,16 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="samsung-sm-g891a_9qj2-photos" label="Camera" path="~/Pictures/smartphone-dump" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="samsung-sm-g891a_9qj2-photos" label="Camera" path="~/Pictures/smartphone-dump" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -285,8 +379,16 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
-    <folder id="ybmwh-9ehdk" label="todo.txt" path="~/todo" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="ybmwh-9ehdk" label="todo.txt" path="~/todo" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" introducedBy="">
             <encryptionPassword></encryptionPassword>
@@ -326,6 +428,14 @@
         <copyRangeMethod>standard</copyRangeMethod>
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>false</junctionsAsDirs>
+        <syncOwnership>false</syncOwnership>
+        <sendOwnership>false</sendOwnership>
+        <syncXattrs>false</syncXattrs>
+        <sendXattrs>false</sendXattrs>
+        <xattrFilter>
+            <maxSingleEntrySize>0</maxSingleEntrySize>
+            <maxTotalSize>0</maxTotalSize>
+        </xattrFilter>
     </folder>
     <device id="D2I6GMI-K4ZKYRO-YAN3GU2-ZH4DMZU-BYLTLTC-YSBQYD7-MZP6ZY6-UMG57AQ" name="Nates-smartphone" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
@@ -336,6 +446,7 @@
         <maxRequestKiB>0</maxRequestKiB>
         <untrusted>false</untrusted>
         <remoteGUIPort>0</remoteGUIPort>
+        <numConnections>0</numConnections>
     </device>
     <device id="H74TSCN-ARAQYOU-MIB3L24-6RL3MTG-3JXME33-WJIU7VA-UZ4Z7N6-U3P7SAN" name="nixos" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
@@ -346,6 +457,7 @@
         <maxRequestKiB>0</maxRequestKiB>
         <untrusted>false</untrusted>
         <remoteGUIPort>0</remoteGUIPort>
+        <numConnections>0</numConnections>
     </device>
     <device id="I7YNNEG-2CSSBSK-VLKZK36-VKM4BEK-UACZVSJ-EBVC2SX-FDW3DC6-KNEOMQE" name="Nates-laptop" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
@@ -356,8 +468,20 @@
         <maxRequestKiB>0</maxRequestKiB>
         <untrusted>false</untrusted>
         <remoteGUIPort>0</remoteGUIPort>
+        <numConnections>0</numConnections>
     </device>
-    <gui enabled="true" tls="false" debugging="false">
+    <device id="75KNYZN-E7VTVUG-SB776UV-KPYFKYN-SXK3CHW-AYXJTZI-G7542RK-WY4AJAO" name="users-iMac.local" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+        <address>dynamic</address>
+        <paused>false</paused>
+        <autoAcceptFolders>false</autoAcceptFolders>
+        <maxSendKbps>0</maxSendKbps>
+        <maxRecvKbps>0</maxRecvKbps>
+        <maxRequestKiB>0</maxRequestKiB>
+        <untrusted>false</untrusted>
+        <remoteGUIPort>0</remoteGUIPort>
+        <numConnections>0</numConnections>
+    </device>
+    <gui enabled="true" tls="false" debugging="false" sendBasicAuthPrompt="false">
         <address>127.0.0.1:8384</address>
         <apikey>6SaSk9VaWyaWYja64feMzraXn7VisvMH</apikey>
         <theme>default</theme>
@@ -386,7 +510,6 @@
         <urURL>https://data.syncthing.net/newdata</urURL>
         <urPostInsecurely>false</urPostInsecurely>
         <urInitialDelayS>1800</urInitialDelayS>
-        <restartOnWakeup>true</restartOnWakeup>
         <autoUpgradeIntervalH>12</autoUpgradeIntervalH>
         <upgradeToPreReleases>false</upgradeToPreReleases>
         <keepTemporariesH>24</keepTemporariesH>
@@ -412,9 +535,16 @@
         <connectionLimitEnough>0</connectionLimitEnough>
         <connectionLimitMax>0</connectionLimitMax>
         <insecureAllowOldTLSVersions>false</insecureAllowOldTLSVersions>
+        <connectionPriorityTcpLan>10</connectionPriorityTcpLan>
+        <connectionPriorityQuicLan>20</connectionPriorityQuicLan>
+        <connectionPriorityTcpWan>30</connectionPriorityTcpWan>
+        <connectionPriorityQuicWan>40</connectionPriorityQuicWan>
+        <connectionPriorityRelay>50</connectionPriorityRelay>
+        <connectionPriorityUpgradeThreshold>0</connectionPriorityUpgradeThreshold>
     </options>
+    <remoteIgnoredDevice time="2024-12-31T17:55:08.054Z" id="PGIB4VE-PTK5A7P-74LOQLG-MPXI5B3-M54ZO45-SLNLBYX-KPEPMN3-S5R56AW" name="neaglesonST900112.home" address="[fe80::885:c723:ede0:3a36%wlp166s0]:22000"></remoteIgnoredDevice>
     <defaults>
-        <folder id="" label="" path="/Users/neagleson" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <folder id="" label="" path="/Users/neagleson" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" fsWatcherTimeoutS="0" ignorePerms="false" autoNormalize="true">
             <filesystemType>basic</filesystemType>
             <device id="H74TSCN-ARAQYOU-MIB3L24-6RL3MTG-3JXME33-WJIU7VA-UZ4Z7N6-U3P7SAN" introducedBy="">
                 <encryptionPassword></encryptionPassword>
@@ -451,6 +581,14 @@
             <copyRangeMethod>standard</copyRangeMethod>
             <caseSensitiveFS>false</caseSensitiveFS>
             <junctionsAsDirs>false</junctionsAsDirs>
+            <syncOwnership>false</syncOwnership>
+            <sendOwnership>false</sendOwnership>
+            <syncXattrs>false</syncXattrs>
+            <sendXattrs>false</sendXattrs>
+            <xattrFilter>
+                <maxSingleEntrySize>1024</maxSingleEntrySize>
+                <maxTotalSize>4096</maxTotalSize>
+            </xattrFilter>
         </folder>
         <device id="" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
             <address>dynamic</address>
@@ -461,6 +599,7 @@
             <maxRequestKiB>0</maxRequestKiB>
             <untrusted>false</untrusted>
             <remoteGUIPort>0</remoteGUIPort>
+            <numConnections>0</numConnections>
         </device>
         <ignores></ignores>
     </defaults>
