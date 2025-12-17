@@ -21,7 +21,6 @@ theme = Builtin Solarized Dark
 # files.
 custom-shader = ~/.config/ghostty/shaders/lofi-crt.glsl
 
-background = 000800
 
 # The exact colors I've been using in cool-retro-term.
 foreground = #ff8100
