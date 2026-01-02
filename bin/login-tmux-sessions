@@ -12,6 +12,7 @@
 start-tmux &
 
 new-tmux-session ~/nixos-framework-setup
+new-tmux-session ~/personal/home-server
 new-tmux-session ~/personal/smartphone-config
 new-tmux-session ~/personal/health
 new-tmux-session ~/personal/finances
