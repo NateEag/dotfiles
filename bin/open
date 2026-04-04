@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg='A cross-platform wrapper for opening files in preferred desktop apps.
+
+Currently supports Linux (xdg-open) and macOS (open).
+
+Usage: $script_name <path>'
+
+if [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+
+if command -v xdg-open > /dev/null; then
+    xdg-open "$1"
+else
+    # Command location on macOS 13.
+    /usr/bin/open "$1"
+fi
