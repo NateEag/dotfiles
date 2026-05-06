@@ -3,3 +3,6 @@
 
 # Use todo-txt diff for todo files?
 todo.txt diff=todiff
+
+# Let's try syntax-aware merges. I suspect it is better.
+* merge=mergiraf
