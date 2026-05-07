@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+# TODO: Figure out how to force-load ssh-copy-id's completion.
+#
+# On NixOS finding the actual file it's loaded from is complicated.
+
+complete -F _comp_cmd_ssh_copy_id sync-remote-dotfiles

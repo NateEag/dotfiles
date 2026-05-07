@@ -1,0 +1,48 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="
+
+I sometimes make small tweaks to dotfiles or emacs config on machines I don't
+want to commit from.
+
+This lets me snag those files to my main laptop, where I can do the work of
+version controlling things.
+
+Assumes a ~/.ssh/config entry of the following form:
+
+Host $remote_name
+   User $username
+   Hostname $hostname    # (usually an mDNS name)
+   IdentityFile ~/.ssh/key_file
+
+The public key can be uploaded to the remote machine with the standard command, ssh-copy-id.
+
+Assumes I'm targeting a macOS box, as currently that is usually true. Easy
+enough to support more possible paths if I need to, though.
+
+Usage: $script_name <host>"
+
+if [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+host="$1"
+
+username="$(ssh -G "$host" |
+                grep '^user ' |
+                cut -d ' ' -f 2)"
+
+rsync -avz --exclude .git \
+      "$host":/Users/"$username"/dotfiles/ ~/"$host"-conf-clones/dotfiles
+
+rsync -avz --exclude .git \
+      --exclude elpa/archives \
+      --exclude eln-cache \
+      --exclude package-quickstart.el \
+      --exclude .python-environments \
+      --exclude .cache \
+      --exclude autosaves \
+      "$host":/Users/"$username"/.emacs.d/ ~/"$host"-conf-clones/.emacs.d
