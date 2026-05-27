@@ -20,5 +20,6 @@ new-tmux-session ~/personal/journal
 new-tmux-session ~/personal/how-i-code
 new-tmux-session ~/personal/nateeag.com
 new-tmux-session ~/personal/noise.nateeag.com
+new-tmux-session ~/personal/patches.nateeag.com
 
 tmux attach-session -t dotfiles
