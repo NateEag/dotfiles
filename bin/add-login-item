@@ -6,7 +6,6 @@ msg="Add login item. Currently works only on macOS.
 Based entirely on the logic presented here:
 https://apple.stackexchange.com/a/310502/307408
 
-
 Usage: $script_name <login_item_path>"
 
 if [ $# -ne 1 ]; then
