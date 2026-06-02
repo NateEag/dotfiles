@@ -1,9 +1,7 @@
 #! /usr/bin/env bash
 
 script_name="$(basename "$0")"
-msg="
-
-I sometimes make small tweaks to dotfiles or emacs config on machines I don't
+msg="I sometimes make small tweaks to dotfiles or emacs config on machines I don't
 want to commit from.
 
 This lets me snag those files to my main laptop, where I can do the work of
