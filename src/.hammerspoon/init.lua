@@ -410,6 +410,8 @@ key_bindings = {
    S = {focusApp, "Signal"},
    P = {focusApp, "Pandora"},
    G = {focusApp, "Anki"},
+   -- Terrible mnemonic for "todo", but T is already taken for the terminal.
+   Y = {focusApp, "sleek"},
    -- This isn't a mnemonic at all. It's one of the few letters I haven't bound
    -- yet.
    --
