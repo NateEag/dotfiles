@@ -503,6 +503,21 @@ for mnemonic, callback_info in pairs(key_bindings) do
    end)
 end
 
+function no_op()
+   logger.i('Doing nothing, successfully');
+end
+
+-- Nuke Slack's execrable keyboard shortcut for marking _all messages as read_.
+--
+-- I cannot justify that shortcut's existence, and on multiple occasions it has
+-- cost me a great deal.
+--
+-- By binding its shortcut combo to a no-op, we prevent it from ever firing.
+--
+-- If I ever discover a macOS app I want to use the shortcut with, I'll have to
+-- refine this so it only takes effect if Slack is the focused app.
+hs.hotkey.bind({ "shift" }, "escape", no_op);
+
 -- Log unused Hammerspoon keybindings so I can easily see what's available.
 function getUnusedKeybindings()
    local keyboard_chars = {",", "-", "=", "\\", "/", "[", "]", ".", "'", " ", '`'}
