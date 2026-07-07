@@ -223,7 +223,7 @@ function layoutWindows()
     -- TODO Do this after moving Emacs to the appropriate screen? I think this
     -- happens to work with my current setup but is not generally correct in
     -- principle.
-    os.execute(home_dir .. "/.nix-profile/bin/emacsclient -e '(my-set-up-frame)'")
+    os.execute(home_dir .. "/.nix-profile/bin/emacsclient -e '(my-set-up-all-frames)'")
 
    local screens = hs.screen.allScreens()
    local num_screens = #screens
