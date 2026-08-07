@@ -187,6 +187,7 @@ PATH=~/.cask/bin:$PATH
 
 if [ -x /opt/homebrew/bin/brew ]; then
     # Set PATH, MANPATH, etc., for Homebrew.
+    PATH="/opt/homebrew/bin:$PATH"
     eval "$(brew shellenv)"
 
     # Set up homebrew-based bash completions.
