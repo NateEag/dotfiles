@@ -1,6 +1,8 @@
 #! /usr/bin/env bash
 
-if [ "$(command -v bash)" != "$HOME/.nix-profile/bin/bash" ]; then
+NIX_BASH_PATH="$HOME/.nix-profile/bin/bash"
+
+if [ "$(command -v bash)" != "$NIX_BASH_PATH" ]; then
     if ! install-nix-pkgs; then
         echo "Could not install nix packages! Is nix installed?" >&2
 
