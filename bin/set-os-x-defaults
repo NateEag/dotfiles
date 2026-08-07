@@ -84,11 +84,10 @@ add-login-item '/Applications/ActivityWatch.app'
 
 
 # Set up multi-item clipboard.
-#
-# TODO Figure out how to manage its keyboard shortcut. The property path has a
-# space in the name and I haven't figured out how to handle that.
 brew install maccy
 add-login-item '/Applications/Maccy.app'
+defaults write org.p0deje.Maccy KeyboardShortcuts_popup '{"carbonKeyCode":9,"carbonModifiers":4608}'
+
 
 # Set up preferences for Scroll Reverser.
 brew install scroll-reverser --cask
