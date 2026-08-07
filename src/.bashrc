@@ -185,30 +185,13 @@ export EMACS
 
 PATH=~/.cask/bin:$PATH
 
-# Customizations that require [Homebrew](http://brew.sh) to be installed.
-#
-# Note that 'ibrew' vs 'abrew' are a workaround for my having gone with the
-# default of using ARM-native brew on Apple Silicon devices, then discovering
-# that some of the tools at $DAYJOB would not work correctly if built for
-# ARM64.
-#
-# If I were doing it again I'd just install x86 brew and put up with the
-# performance hit of Rosetta 2 for everything.
-ibrew() {
-    arch -x86_64 /usr/local/bin/brew "$@"
-}
-
-abrew() {
-    arch -arm64e /opt/homebrew/bin/brew "$@"
-}
-
 if [ -x /opt/homebrew/bin/brew ]; then
     # Set PATH, MANPATH, etc., for Homebrew.
-    eval "$(ibrew shellenv)"
+    eval "$(brew shellenv)"
 
     # Set up homebrew-based bash completions.
     if type brew &>/dev/null; then
-        HOMEBREW_PREFIX="$(ibrew --prefix)"
+        HOMEBREW_PREFIX="$(brew --prefix)"
         if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
             source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
         else
