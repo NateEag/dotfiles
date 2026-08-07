@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="Specify whether the system should be in dark mode.
+
+Usage: $script_name <true|false>"
+
+if [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+platform="$(uname -s)"
+if [ "$platform" == 'Darwin' ]; then
+    script='tell app "System Events" to tell appearance preferences to set dark mode to '"$1"
+
+    osascript -e "$script"
+else
+    echo "Not supported on '$platform'!" >&2
+
+    exit
+fi

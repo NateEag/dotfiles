@@ -9,16 +9,16 @@ source $dotfiles_dir/lib/functions.sh
 dotfiles_dir=$(abspath $dotfiles_dir)
 
 src_dir="$dotfiles_dir/src/"
-# TODO Figure out why I didn't just symlink .config and be done with it. Seems
-# like that should have worked?
 config_dir="$dotfiles_dir/.config"
 bin_dir="$dotfiles_dir/bin"
 
 mkdir -p "$config_dir"
 
 config_files_to_install=$(cd "$dotfiles_dir"; find src -maxdepth 1)
-# TODO Make this a straight symlink to the .config folder? I don't understand
-# why I didn't do that originally.
+# We symlink individual subdirs so programs which make new ~/.config
+# files aren't automatically creating new files in the git repo.
+#
+# When I want them, I'll explicitly add them.
 config_dirs_to_install=$(cd "$dotfiles_dir"; find .config -maxdepth 1)
 
 "$bin_dir/install-crontab"
