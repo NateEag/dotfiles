@@ -63,13 +63,15 @@ if [ "$platform" == 'Darwin' ] ; then
 
 You will need to log out for all changes to take effect."
 
-    "$bin_dir/install-syncthing-launchd-job"
-
-    # FIXME This actually should happen on Linux, too.
+    # FIXME Remove the following if no longer needed. It was for a
+    # now-quite-old macOS.
     echo "Don't forget to run the following after installing Nix:
 
-$bin_dir/fix-tmux-terminal-not-fully-functional-macos
-$bin_dir/install-gh-extensions"
+$bin_dir/fix-tmux-terminal-not-fully-functional-macos"
+fi
+
+if command -v gh >/dev/null; then
+    "$bin_dir"/install-gh-extensions
 fi
 
 # Install Anonymous Pro font.
