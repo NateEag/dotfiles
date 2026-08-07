@@ -64,6 +64,12 @@ defaults write com.apple.screencapture location "$HOME/Documents/Screenshots"
 
 if ! command -v brew; then
     /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Assumes Apple Silicon.
+    #
+    # Since I mostly use macOS for employers, that's a pretty safe bet -
+    # nobody's giving devs Intel Macs these years.
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Set up Hammerspoon defaults.
