@@ -92,7 +92,7 @@ defaults write com.pilotmoon.scroll-reverser ReverseX -int 1
 add-login-item '/Applications/Scroll Reverser.app'
 
 # Set up preferences for Hidden Bar.
-brew install hiddenbar --cask 
+brew install hiddenbar --cask
 defaults write com.dwarvesv.minimalbar isAutoStart
 add-login-item '/Applications/Hidden Bar.app'
 
