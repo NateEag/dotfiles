@@ -1,5 +1,13 @@
 #! /usr/bin/env bash
 
+if [ "$(command -v bash)" != "$HOME/.nix-profile/bin/bash" ]; then
+    if ! install-nix-pkgs; then
+        echo "Could not install nix packages! Is nix installed?" >&2
+
+        exit 1
+    fi
+fi
+
 # Keeping a record of settings I've customized with the OS X `defaults` CLI
 # tool. This is useful for more than just OS X built-in features - you can
 # manipulate app preferences generally with it.
