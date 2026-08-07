@@ -63,7 +63,12 @@
           swiftdefaultapps
 
           # Let's see if I can get working native compilation in Emacs via Nix.
-          emacs28NativeComp
+          ((emacsPackagesFor emacs-gtk).emacsWithPackages (
+              epkgs: with epkgs; [
+                  treesit-grammars.with-all-grammars
+              ]
+          ))
+
 
           # I like ASCII art. Let the cow speak, and the proclamations ring
           # forth.
@@ -177,7 +182,7 @@
           gnupg
 
           # ...and if you're using gpg, you'll probably need pinentry.
-          pinentry
+          #pinentry
           # FIXME Install pinentry_mac only on Macs.
           pinentry_mac
 
@@ -197,7 +202,7 @@
 
           # MySQL is not my favorite database, but I need to work with it
           # pretty regularly.
-          mysql-client
+          mariadb.client
 
           # Having nginx installed locally can occasionally be useful for
           # testing. That said, you have to be pretty careful about the
@@ -212,8 +217,8 @@
           # Installing it so I can give it a whirl.
           oha
 
-          # xsv is a great tool to have around for wrangling CSVs.
-          xsv
+          # xan is a great tool to have around for wrangling CSVs.
+          xan
 
           # I use Signal for text chats with several people I care about. It's
           # my preferred medium for its open-source nature and because of the
@@ -254,15 +259,12 @@
           # files, but just in case...
           todo-txt-cli
 
-          # A nice diff driver for todo.txt files can be handy.
-          todiff
-
           # Having an environment to learn new languages is nice. When that
           # environment is OSS, it's even better: https://exercism.org
           exercism
 
           # Sometimes you need to compare JSON documents. This makes it easier.
-          nodePackages.json-diff
+          json-diff
 
           # Other times you need to convert YAML and JSON docs back and forth.
           # yj also supports TOML and HCL.
@@ -394,15 +396,10 @@
           # Dog is a DNS lookup tool, essentially dig with a nicer UI. I'll
           # probably always use dig as it's installed almost everywhere by
           # default, but dog looks like it could be nicer for several purposes.
-          dogdns
+          doggo
 
           # Sometimes people use xz to compress things. Emacs tarballs, even.
           xz
-
-          # I use a much-beloved ErgoDox EZ keyboard for typing. I run a custom
-          # firmware so I can have the layout be what I want, and for that the
-          # following tool is handy.
-          qmk
 
           # I don't like shfmt's default setup, but standardized formatting
           # sure beats arguing about formatting.
@@ -410,11 +407,11 @@
 
           # pipx is a tool for running CLI Python tools in standalone
           # environments. It's here to support bin/install-python-commands.sh.
-          python39Packages.pipx
+          pipx
 
           # Yay language servers.
-          nodePackages.typescript-language-server
-          nodePackages.bash-language-server
+          typescript-language-server
+          bash-language-server
           omnisharp-roslyn
 
           # Go is a programming language.
@@ -427,8 +424,8 @@
 
           # I don't love PHP, but I've spent a lot of my career being paid to
           # use it. Thus...
-          php81
-          php81Packages.psysh
+          #php81
+          #php81Packages.psysh
 
           # Vagrant is my preferred dev environment creator. Therefore...
           vagrant
