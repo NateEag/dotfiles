@@ -4,9 +4,9 @@
 
 platform="$(uname -s)"
 
-dotfiles_dir=$(dirname $0)
-source $dotfiles_dir/lib/functions.sh
-dotfiles_dir=$(abspath $dotfiles_dir)
+dotfiles_dir=$(dirname "$0")
+source "$dotfiles_dir"/lib/functions.sh
+dotfiles_dir=$(abspath "$dotfiles_dir")
 
 src_dir="$dotfiles_dir/src/"
 config_dir="$dotfiles_dir/.config"
@@ -14,19 +14,18 @@ bin_dir="$dotfiles_dir/bin"
 
 mkdir -p "$config_dir"
 
-config_files_to_install=$(cd "$dotfiles_dir"; find src -maxdepth 1)
+config_files_to_install=$(cd "$dotfiles_dir" || exit; find src -maxdepth 1)
 # We symlink individual subdirs so programs which make new ~/.config
 # files aren't automatically creating new files in the git repo.
 #
 # When I want them, I'll explicitly add them.
-config_dirs_to_install=$(cd "$dotfiles_dir"; find .config -maxdepth 1)
+config_dirs_to_install=$(cd "$dotfiles_dir" || exit; find .config -maxdepth 1)
 
 "$bin_dir/install-crontab"
 
 if command -v notmuch > /dev/null; then
     install-notmuch-hooks
 fi
-
 
 for filename in $config_files_to_install;
 do
@@ -57,7 +56,7 @@ for filename in $config_dirs_to_install; do
 
 done
 
-if [ $platform == 'Darwin' ] ; then
+if [ "$platform" == 'Darwin' ] ; then
     "$bin_dir/set-os-x-defaults"
 
     echo "OS X preferences set.

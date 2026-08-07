@@ -96,6 +96,9 @@ brew install hiddenbar --cask
 defaults write com.dwarvesv.minimalbar isAutoStart
 add-login-item '/Applications/Hidden Bar.app'
 
+# Dark mode, generally.
+set-dark-mode true
+
 # Deselect the "Save in Keychain" checkbox in gpg's pinentry-mac dialog.
 defaults write org.gpgtools.common UseKeychain NO
 
