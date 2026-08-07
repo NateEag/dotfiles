@@ -9,10 +9,18 @@ source "$dotfiles_dir"/lib/functions.sh
 dotfiles_dir=$(abspath "$dotfiles_dir")
 
 src_dir="$dotfiles_dir/src/"
-config_dir="$dotfiles_dir/.config"
 bin_dir="$dotfiles_dir/bin"
+config_dir="$dotfiles_dir/.config"
 
-mkdir -p "$config_dir"
+# Ensure commands in this repo are available for use while installing.
+#
+# We still execute some commands explicitly from $bin_dir to improve
+# readability - this is mostly so commands we call can rely on other
+# dotfiles/bin commands without doing their own PATH juggling.
+PATH="$bin_dir:$PATH"
+export PATH
+
+mkdir -p "$HOME/.config"
 
 config_files_to_install=$(cd "$dotfiles_dir" || exit; find src -maxdepth 1)
 # We symlink individual subdirs so programs which make new ~/.config
