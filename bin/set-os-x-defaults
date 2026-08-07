@@ -62,36 +62,37 @@ mkdir -p "$HOME/Documents/Screenshots"
 defaults write com.apple.screencapture location "$HOME/Documents/Screenshots"
 
 
-## TODO Automated installing below apps. Adding them as login items is pretty
-## darned unlikely to work before they're installed. :P
-
+if ! command -v brew; then
+    /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 # Set up Hammerspoon defaults.
+brew install hammerspoon --cask
 add-login-item '/Applications/Hammerspoon.app'
 
 
-# FIXME Install ActivityWatch so this can work.
-#
 # TODO Specify that aw-server, aw-watcher-afk, and aw-watcher-window should all
 # be active. I've at least once seen it not have aw-watcher-window active.
+brew install activitywatch --cask
 add-login-item '/Applications/ActivityWatch.app'
 
 
-# Set up Flycut basics.
+# Set up multi-item clipboard.
 #
 # TODO Figure out how to manage its keyboard shortcut. The property path has a
 # space in the name and I haven't figured out how to handle that.
-defaults write com.generalarcade.flycut loadOnStartup -int 1
-defaults write com.generalarcade.flycut stickyBezel -int 1
-add-login-item '/Applications/Flycut.app'
+brew install maccy
+add-login-item '/Applications/Maccy.app'
 
 # Set up preferences for Scroll Reverser.
+brew install scroll-reverser --cask
 defaults write com.pilotmoon.scroll-reverser InvertScrollingOn -int 1
 defaults write com.pilotmoon.scroll-reverser StartAtLogin -int 1
 defaults write com.pilotmoon.scroll-reverser ReverseX -int 1
 add-login-item '/Applications/Scroll Reverser.app'
 
 # Set up preferences for Hidden Bar.
+brew install hiddenbar --cask 
 defaults write com.dwarvesv.minimalbar isAutoStart
 add-login-item '/Applications/Hidden Bar.app'
 
