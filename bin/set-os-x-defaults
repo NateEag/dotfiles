@@ -10,6 +10,12 @@ if [ "$(command -v bash)" != "$NIX_BASH_PATH" ]; then
     fi
 fi
 
+# Ensure I'm using bash, because I'm just not a zsh guy.
+cur_shell="$(dscl . -read "$HOME" UserShell)"
+if [ "$cur_shell" -ne "$NIX_BASH_PATH" ]; then
+    sudo chsh -s "$NIX_BASH_PATH"
+fi
+
 # Keeping a record of settings I've customized with the OS X `defaults` CLI
 # tool. This is useful for more than just OS X built-in features - you can
 # manipulate app preferences generally with it.
