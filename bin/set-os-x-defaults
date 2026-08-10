@@ -93,6 +93,17 @@ brew install hammerspoon --cask
 add-login-item '/Applications/Hammerspoon.app'
 
 
+# Install the little timer app I use.
+brew install michaelvillar-timer
+
+# Shortcat does a pretty solid job of letting you avoid the mouse.
+#
+# I do still use it occasionally, but I don't know that I actually need to.
+brew install shortcat
+add-login-item '/Applications/Shortcat.app'
+defaults write com.sproutcube.Shortcat KeyboardShortcuts_toggleShortcat \
+         "'"'{"carbonKeyCode":49,"carbonModifiers":4864}'"'"
+
 # TODO Specify that aw-server, aw-watcher-afk, and aw-watcher-window should all
 # be active. I've at least once seen it not have aw-watcher-window active.
 brew install activitywatch --cask
