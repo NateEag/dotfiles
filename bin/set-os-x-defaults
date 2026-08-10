@@ -114,6 +114,7 @@ add-login-item '/Applications/ActivityWatch.app'
 brew install maccy
 add-login-item '/Applications/Maccy.app'
 defaults write org.p0deje.Maccy KeyboardShortcuts_popup '{"carbonKeyCode":9,"carbonModifiers":4608}'
+defaults write org.p0deje.Maccy pasteByDefault 1
 
 
 # Set up preferences for Scroll Reverser.
