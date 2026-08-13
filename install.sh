@@ -65,7 +65,7 @@ for filename in $config_dirs_to_install; do
 done
 
 if [ "$platform" == 'Darwin' ] ; then
-    "$bin_dir/set-os-x-defaults"
+    "$bin_dir/setup-macos"
 
     echo "OS X preferences set.
 

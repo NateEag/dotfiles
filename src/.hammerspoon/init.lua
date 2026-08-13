@@ -431,7 +431,7 @@ key_bindings = {
    ["'"] = {hs.openConsole},
 
    -- I may demote this eventually, but at the moment I'm using Zoom a lot.
-   Z =  {focusApp, "zoom.us"},
+   Z =  {focusApp, "Zoom"},
 
 
    --
