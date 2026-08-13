@@ -238,29 +238,14 @@ if [ -d "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
-# Load pyenv into my shell.
+# Load pyenv into my shell if it's installed.
 #
-# Note that I use a manually-generated cache of pyenv's self-generated
-# configuration, instead of the recommended approach of running pyenv to
-# generate the required configuration on demand.
-#
-# That lets me avoid the slight delay in shell start brought on by running
-# pyenv, at the cost of having to maintain a fragile method for detecting
-# whether pyenv has been updated and thus that I should regenerate the
-# initialization code.
+# On NixOS it makes no sense, but elsewhere it's useful.
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d "$PYENV_ROOT" ]; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    source "$dotfiles_etc/pyenv-init"
+    [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-    # Check whether pyenv may have been updated, and thus whether I should
-    # regenerate the cached configuration that's loaded above.
-    pyenv_binary="$(which pyenv)"
-    if ! [ -L "$pyenv_binary" ]; then
-        echo "WARNING: pyenv binary is no longer a symlink! Update pyenv conf?" >&2
-    elif [ "$($pyenv_binary --version | cut -d ' ' -f 2)" != '2.3.5' ]; then
-        echo "WARNING: Could not confirm pyenv version is 2.3.5! Update pyenv conf?" >&2
-    fi
+    eval "$(pyenv init - bash)"
 fi
 
 # Load any machine-specific customizations (usually settings specific to
