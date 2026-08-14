@@ -152,6 +152,9 @@
           # give it a shot and see how it does as my git-diff driver.
           difftastic
 
+          # Syntax-aware merges are very cool, especially in rebases.
+          mergiraf
+
           # I used to be a heavy GNU screen user in my twenties. I'm giving
           # tmux a try, mainly to see if I like it better than using actual
           # terminal tabs (might be particularly helpful for using terminals in
