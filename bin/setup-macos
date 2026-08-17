@@ -16,14 +16,13 @@ if [ "$cur_shell" -ne "$NIX_BASH_PATH" ]; then
     sudo chsh -s "$NIX_BASH_PATH"
 fi
 
-# Keeping a record of settings I've customized with the OS X `defaults` CLI
-# tool. This is useful for more than just OS X built-in features - you can
+# The settings I've customized with the macOS `defaults` CLI tool.
+#
+# `defaults` is useful for more than just macOS built-in features - you can
 # manipulate app preferences generally with it.
 #
-# You have to log out for at least some of these changes to take effect. Not
-# sure if that's true for all of them or just the OS X builtins yet.
-#
-# Since setting defaults is idempotent, this script should be idempotent.
+# You have to log out for some of the changes to take effect. Not sure if
+# that's true for all of them or just the macOS builtins yet.
 #
 # A useful tutorial on working with the defaults command can be found here:
 # https://www.shell-tips.com/mac/defaults/.
