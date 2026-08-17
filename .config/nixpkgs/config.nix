@@ -273,6 +273,12 @@
           # yj also supports TOML and HCL.
           yj
 
+          # Sometimes you need to actually edit YAML by hand. This can help.
+          #
+          # ...especially when dealing with YAML that has a known, complicated,
+          # documented schema.
+          yaml-language-server
+
           # jp is a tool for querying JSON documents using the JMESPath
           # language. The reasons I try to prefer jp to jq are:
           #
@@ -411,6 +417,16 @@
           # pipx is a tool for running CLI Python tools in standalone
           # environments. It's here to support bin/install-python-commands.sh.
           pipx
+
+          # For CSS.
+          stylelint
+
+          # JS-relevant tools.
+          #
+          # They're often installed per-package, but global fallbacks can be
+          # handy.
+          eslint
+          prettier
 
           # Yay language servers.
           typescript-language-server
