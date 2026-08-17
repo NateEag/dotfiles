@@ -111,6 +111,7 @@ add-login-item '/Applications/ActivityWatch.app'
 
 # Install my MacBook Pro custom keybindings.
 brew install --cask karabiner-elements
+add-login-item /Applications/Karabiner-Elements.app
 
 # Set up multi-item clipboard.
 brew install maccy
