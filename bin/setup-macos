@@ -119,6 +119,7 @@ brew install maccy
 add-login-item '/Applications/Maccy.app'
 defaults write org.p0deje.Maccy KeyboardShortcuts_popup '{"carbonKeyCode":9,"carbonModifiers":4608}'
 defaults write org.p0deje.Maccy pasteByDefault 1
+defaults write org.p0deje.Maccy SUEnableAutomaticChecks 1
 
 
 # Set up preferences for Scroll Reverser.
@@ -130,7 +131,8 @@ add-login-item '/Applications/Scroll Reverser.app'
 
 # Set up preferences for Hidden Bar.
 brew install hiddenbar --cask
-defaults write com.dwarvesv.minimalbar isAutoStart
+defaults write com.dwarvesv.minimalbar isAutoStart = 1
+defaults write com.dwarvesv.minimalbar isAutoHide = 1
 add-login-item '/Applications/Hidden Bar.app'
 
 # Dark mode, generally.
