@@ -135,6 +135,11 @@ defaults write com.dwarvesv.minimalbar isAutoStart = 1
 defaults write com.dwarvesv.minimalbar isAutoHide = 1
 add-login-item '/Applications/Hidden Bar.app'
 
+# Set up a todo.txt client. Someday I'll move over to Emacs for it, but none of
+# the todo.txt modes I've tried so far filled me with joy.
+brew install sleek-app --cask
+add-login-item '/Applications/sleek.app'
+
 # Deselect the "Save in Keychain" checkbox in gpg's pinentry-mac dialog.
 defaults write org.gpgtools.common UseKeychain NO
 
