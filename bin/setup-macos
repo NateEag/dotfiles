@@ -135,11 +135,11 @@ defaults write com.dwarvesv.minimalbar isAutoStart = 1
 defaults write com.dwarvesv.minimalbar isAutoHide = 1
 add-login-item '/Applications/Hidden Bar.app'
 
-# Dark mode, generally.
-set-dark-mode true
-
 # Deselect the "Save in Keychain" checkbox in gpg's pinentry-mac dialog.
 defaults write org.gpgtools.common UseKeychain NO
+
+# Dark mode, generally.
+set-dark-mode true
 
 # Set up preferences for activitywatch.
 activitywatch_watcher_prefs_path="$HOME/Library/Application Support/activitywatch"
