@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+
+script_name="$(basename "$0")"
+msg="Output the app ID (bundle ID) of the .app at <path>.
+
+Useful for figuring out what ID to use with the defaults command, for dumping,
+preserving, and restoring app preferences.
+
+Usage: $script_name <path>"
+
+if [ $# -ne 1 ]; then
+    echo "$msg" >&2
+
+    exit 1
+fi
+
+if ! command -v plutil >/dev/null; then
+    echo "Requires plutil command! Are you on macOS?" >&2
+
+    exit 1
+fi
+
+plutil -extract CFBundleIdentifier raw "$1/Contents/Info.plist"
