@@ -109,7 +109,8 @@ brew install activitywatch --cask
 add-login-item '/Applications/ActivityWatch.app'
 
 
-# Install my MacBook Pro custom keybindings.
+# Install Karabiner-Elements, for custom keybindings - it should automatically
+# pick up the bindings from the .config directory after install is finished.
 brew install --cask karabiner-elements
 add-login-item /Applications/Karabiner-Elements.app
 
