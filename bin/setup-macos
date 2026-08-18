@@ -97,7 +97,8 @@ brew install michaelvillar-timer
 
 # Shortcat does a pretty solid job of letting you avoid the mouse.
 #
-# I do still use it occasionally, but I don't know that I actually need to.
+# I do still use the mouse occasionally, but I don't know that I actually need
+# to.
 brew install shortcat
 add-login-item '/Applications/Shortcat.app'
 defaults write com.sproutcube.Shortcat KeyboardShortcuts_toggleShortcat \
@@ -107,7 +108,6 @@ defaults write com.sproutcube.Shortcat KeyboardShortcuts_toggleShortcat \
 # be active. I've at least once seen it not have aw-watcher-window active.
 brew install activitywatch --cask
 add-login-item '/Applications/ActivityWatch.app'
-
 
 # Install Karabiner-Elements, for custom keybindings - it should automatically
 # pick up the bindings from the .config directory after install is finished.
@@ -121,15 +121,15 @@ defaults write org.p0deje.Maccy KeyboardShortcuts_popup '{"carbonKeyCode":9,"car
 defaults write org.p0deje.Maccy pasteByDefault 1
 defaults write org.p0deje.Maccy SUEnableAutomaticChecks 1
 
-
-# Set up preferences for Scroll Reverser.
+# I will fight "natural" scrolling on desktop computers until the day I die.
 brew install scroll-reverser --cask
 defaults write com.pilotmoon.scroll-reverser InvertScrollingOn -int 1
 defaults write com.pilotmoon.scroll-reverser StartAtLogin -int 1
 defaults write com.pilotmoon.scroll-reverser ReverseX -int 1
 add-login-item '/Applications/Scroll Reverser.app'
 
-# Set up preferences for Hidden Bar.
+# Hidden Bar helps tame the endless pileup of menubar items, by keeping the
+# ones you specify hidden until you ask for them to be shown.
 brew install hiddenbar --cask
 defaults write com.dwarvesv.minimalbar isAutoStart = 1
 defaults write com.dwarvesv.minimalbar isAutoHide = 1
