@@ -141,6 +141,10 @@ add-login-item '/Applications/Hidden Bar.app'
 brew install sleek-app --cask
 add-login-item '/Applications/sleek.app'
 
+# Night shift is handy. Let's have it on by default.
+brew install smudge/smudge/nightlight
+nightlight schedule start
+
 # Deselect the "Save in Keychain" checkbox in gpg's pinentry-mac dialog.
 defaults write org.gpgtools.common UseKeychain NO
 
