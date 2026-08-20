@@ -75,6 +75,7 @@ defaults write com.apple.TextEdit "RichText" -bool "false"
 # Don't put screenshots on my desktop. :P
 mkdir -p "$HOME/Documents/Screenshots"
 defaults write com.apple.screencapture location "$HOME/Documents/Screenshots"
+defaults write com.apple.screencapture show-thumbnail -bool false
 
 
 if ! command -v brew; then
