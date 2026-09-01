@@ -8,25 +8,31 @@
 # this repository.
 
 {
-    # TODO Uncomment Linux-only packages if I start using Nix on Linux. That
-    # may require me to figure out how to choose packages based on platform.
+  # TODO Uncomment Linux-only packages if I start using Nix on Linux. That
+  # may require me to figure out how to choose packages based on platform.
 
-    # TODO Remove svnSupport flag and Subversion config. I think I added them
-    # based on information from years ago and installing the gitSVN package
-    # below is all I actually needed to have a working git-svn.
-    #
-    # That said, the osxkeychainSupport = false invocation is an attempt to
-    # keep git from using OS X's Keychain by default. It had no effect I could
-    # see, so presumably I need to figure out how to actually specify it.
-    #
-    # For the moment, I worked around that issue by manually running sudo git
-    # config --system --unset credential.helper, but that cheap trick may not
-    # be sustainable.
-    git = { svnSupport = true; osxkeychainSupport = false; };
-    subversion = { perlBindings = true; };
+  # TODO Remove svnSupport flag and Subversion config. I think I added them
+  # based on information from years ago and installing the gitSVN package
+  # below is all I actually needed to have a working git-svn.
+  #
+  # That said, the osxkeychainSupport = false invocation is an attempt to
+  # keep git from using OS X's Keychain by default. It had no effect I could
+  # see, so presumably I need to figure out how to actually specify it.
+  #
+  # For the moment, I worked around that issue by manually running sudo git
+  # config --system --unset credential.helper, but that cheap trick may not
+  # be sustainable.
+  git = {
+    svnSupport = true;
+    osxkeychainSupport = false;
+  };
+  subversion = {
+    perlBindings = true;
+  };
 
-    allowUnfree = true;
-    packageOverrides = pkgs: with pkgs; {
+  allowUnfree = true;
+  packageOverrides =
+    pkgs: with pkgs; {
       myPackages = pkgs.buildEnv {
         # To make 'nix upgrade-nix' work, I had to run
         #
@@ -64,11 +70,10 @@
 
           # Let's see if I can get working native compilation in Emacs via Nix.
           ((emacsPackagesFor emacs-gtk).emacsWithPackages (
-              epkgs: with epkgs; [
-                  treesit-grammars.with-all-grammars
-              ]
+            epkgs: with epkgs; [
+              treesit-grammars.with-all-grammars
+            ]
           ))
-
 
           # I like ASCII art. Let the cow speak, and the proclamations ring
           # forth.
