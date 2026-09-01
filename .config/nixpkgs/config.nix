@@ -429,8 +429,10 @@
           # JS-relevant tools.
           #
           # They're often installed per-package, but global fallbacks can be
-          # handy.
+          # handy (and some of them seem to be needed to get
+          # typescript-language-server working).
           eslint
+          typescript
           prettier
 
           # Yay language servers.
