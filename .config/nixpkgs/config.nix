@@ -401,6 +401,14 @@
           # sysadmin/devoperator, so how can I live without rsync?
           rsync
 
+	  # Manipulate URLs on the CLI.
+	  #
+	  # Pairs nicely with CLI clipboard management tools, so you can do
+	  # things like
+	  #
+	  #     cb-paste | trurl --get '{path}' | cb-copy
+	  trurl
+
           # Added specifically so I could debug a Redis issue at $DAYJOB.
           #
           # TODO Decide if I really want to keep this in my baseline config
