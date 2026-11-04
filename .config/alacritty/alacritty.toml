@@ -1,0 +1,21 @@
+# Alacritty seems to be a pretty solid terminal generally, and I like that
+# they're firmly opposed to LLM contributions.
+#
+# So, giving it a try here - the main blocker for me adopting it is getting it
+# to look a quarter as pretty as my cool-retro-term setup.
+
+[general]
+live_config_reload = true
+
+[font]
+normal = { family = "Anonymous Pro", style = "Regular" }
+
+size = 14
+
+[colors.primary]
+# TODO: Get a coherent theme defined.
+#
+# For the moment, all I need is my orange-on-black, as a basis for trying to
+# write shaders that reproduce my cool-retro-term config.
+foreground = "#ff8100"
+background = "#000000"
