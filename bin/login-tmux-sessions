@@ -11,15 +11,16 @@
 
 start-tmux &
 
+new-tmux-session ~/.emacs.d
 new-tmux-session ~/nixos-framework-setup
 new-tmux-session ~/personal/home-server
-new-tmux-session ~/personal/smartphone-config
-new-tmux-session ~/personal/health
 new-tmux-session ~/personal/finances
 new-tmux-session ~/personal/journal
 new-tmux-session ~/personal/how-i-code
 new-tmux-session ~/personal/nateeag.com
 new-tmux-session ~/personal/noise.nateeag.com
 new-tmux-session ~/personal/patches.nateeag.com
+new-tmux-session ~/personal/smartphone-config
+new-tmux-session ~/personal/health
 
 tmux attach-session -t dotfiles
