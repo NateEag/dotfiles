@@ -1,9 +1,5 @@
 2023-09-08 Auto-configure notifications for main apps to Alerts on macOS based on this technique: https://apple.stackexchange.com/a/460501
 
-2022-10-10 Add Hidden Bar preferences to bin/set-os-x-defaults.
-
-2022-10-10 Add Hammerspoon preferences to bin/set-os-x-defaults
-
 2022-10-10 Remove outdated Karabiner config - all we should need is the JSON in config.
 
 2022-10-10 Add optional flag to install.sh so that personal-specific setup (like SyncThing) is only run when I ask for it. Accidentally set up SyncThing config on work machine, which isn't a big deal since there's no actual data here, but it is an annoyance
@@ -11,8 +7,6 @@
 2020-07-16 Change bin/timezone-date-converter to accept timezone identifiers as separate arguments from the datetime string itself, so I can use this logic to reliably convert between all timezone names: https://crashcourse.housegordon.org/gnu-date-timezones.html Would also make it easier to add tab completion for timezones.
 
 2020-06-02 Add support for concatenating multiple crontab files at install time. At $DAYJOBs I may want to run work-specific cron jobs on my machine as a workaround for not having sane places to do it, and that obviously doesn't belong in my dotfiles.
-
-2020-01-22 Add a keybinding to create a new reminder in Reminders.app. An unfinished stab at this is in bin/add-reminder.
 
 2019-10-16 Automatically trigger notification on prompt display if the previous command took more than four seconds to run? I could build this via PROMPT_COMMAND. Not sure it's a great idea since I'd get notified whenever I intentionally kill a long-running process I spawned interactively, but it would be handy for all the times I kick off a build of X, Y, or Z and move on to something else for a minute or two. Bob Stouffer pointed out I could start this at ten seconds and reduce it from there as seems reasonable.
 
