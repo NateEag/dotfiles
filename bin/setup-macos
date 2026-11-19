@@ -61,6 +61,10 @@ defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
 # Turn off that darned translucent menubar.
 defaults write com.apple.universalaccess reduceTransparency -int 1
 
+# Put Bluetooth and Sound settings in the menubar.
+defaults write com.apple.controlcenter "NSStatusItem VisibleCC Bluetooth"
+defaults write com.apple.controlcenter "NSStatusItem VisibleCC Sound"
+
 # DON'T GIVE ME HOTCORNERS.
 defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tr-corner -int 0
